@@ -53,13 +53,45 @@ namespace DAL
                 "MALOAI = @MALOAI " +
                 "where MATOUR = @oldMATOUR";
 
-            object[] para = new object[] 
+            object[] para = new object[]
             {
-                tour.matour, 
-                tour.tentour, 
-                tour.dacdiem, 
-                tour.maloai, 
+                tour.matour,
+                tour.tentour,
+                tour.dacdiem,
+                tour.maloai,
                 matour 
+            };
+
+            if (DataProvider.instance.ExecuteNonQuery(query, para) > 0)
+                return true;
+            return false;
+        }
+
+        public bool Insert(TourDTO tour)
+        {
+            string query = "insert into TOUR " +
+                "values (@MATOUR,@TENTOUR,@DACDIEM,@MALOAI)";
+
+            object[] para = new object[]
+            {
+                tour.matour,
+                tour.tentour,
+                tour.dacdiem,
+                tour.maloai,
+            };
+
+            if (DataProvider.instance.ExecuteNonQuery(query, para) > 0)
+                return true;
+            return false;
+        }
+
+        public bool Delete(string id)
+        {
+            string query = "delete from TOUR where MATOUR = @MATOUR";
+
+            object[] para = new object[]
+            {
+                id
             };
 
             if (DataProvider.instance.ExecuteNonQuery(query, para) > 0)

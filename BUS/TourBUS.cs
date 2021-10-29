@@ -39,5 +39,22 @@ namespace BUS
 
             return TourDAO.instance.Update(matour, tour);
         }
+
+        public bool Insert(DataGridView data)
+        {
+            DataGridViewRow row = data.SelectedCells[0].OwningRow;
+            string matour = row.Cells["MATOUR"].Value.ToString();
+            string tentour = row.Cells["TENTOUR"].Value.ToString();
+            string dacdiem = row.Cells["DACDIEM"].Value.ToString();
+            string maloai = row.Cells["MALOAI"].Value.ToString();
+
+            TourDTO tour = new TourDTO(matour, tentour, dacdiem, maloai);
+
+            return TourDAO.instance.Update(matour, tour);
+        }
+        public bool Delete(string data)
+        {
+            return TourDAO.instance.Delete(data);
+        }
     }
 }
