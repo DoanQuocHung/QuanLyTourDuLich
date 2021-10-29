@@ -1,24 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAL;
 using DTO;
 namespace BUS
 {
-    public class TourBUS
+    public class LoaiTourBUS
     {
-       
 
-        public TourBUS() { }
-        private static TourDAO dao = new TourDAO();
-        public void List(DataGridView data)
+        public LoaiTourBUS() { }
+        private static LoaiTourDAO dao = new LoaiTourDAO();
+        public void List(ComboBox data)
         {
-            TourDAO dao = new TourDAO();
-            data.DataSource = dao.List();
+            LoaiTourDAO dao = new LoaiTourDAO();
+
+            /*foreach (LoaiTourDTO item in dao.List())
+            {
+                data.Items.Add(item.Ten_Loai);
+            }*/
+            data.Items.Add("123456");
         }
-        public bool Update(DataGridView data)
+       /* public bool Update(DataGridView data)
         {
             DataGridViewRow row = data.SelectedCells[0].OwningRow;
             string matour = row.Cells["MATOUR"].Value.ToString();
@@ -46,6 +49,6 @@ namespace BUS
         public bool Delete(string data)
         {
             return dao.Delete(data);
-        }
+        }*/
     }
 }

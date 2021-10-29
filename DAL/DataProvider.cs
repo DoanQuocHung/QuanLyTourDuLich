@@ -8,37 +8,27 @@ namespace DAL
 {
     public class DataProvider
     {
-        public static DataProvider instance;
 
-        public DataProvider Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new DataProvider();
-                return instance;
-            }
-        }
+        public string connectionString = @"Data Source=.\;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
 
-        private DataProvider() { }
-        public string connectionString = @"Data Source=DESKTOP-P8VHEBN;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
-        
-        public DataTable ExecuteQuery(string query,object[] parameter = null)
+
+        public DataProvider() { }
+
+        public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-
                 connection.Open();
 
                 SqlCommand command = new SqlCommand(query, connection);
 
-                if(parameter != null)
+                if (parameter != null)
                 {
-                    string[] ListPara = query.Split(' ');
+                    string[] listPara = query.Split(' ');
                     int i = 0;
-
-                    foreach(string item in ListPara)
+                    foreach (string item in listPara)
                     {
                         if (item.Contains('@'))
                         {
@@ -57,6 +47,7 @@ namespace DAL
 
             return data;
         }
+
         public int ExecuteNonQuery(string query, object[] parameter = null)
         {
             int data = 0;

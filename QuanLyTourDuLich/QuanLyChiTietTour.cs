@@ -14,5 +14,12 @@ namespace QuanLyTourDuLich
         {
             InitializeComponent();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Hide();
+            QuanLyTour TOUR = new QuanLyTour();
+            TOUR.Show();
+        }
     }
 }
