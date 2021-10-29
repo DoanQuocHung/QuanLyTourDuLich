@@ -8,21 +8,11 @@ using System.Windows.Forms;
 
 namespace QuanLyTourDuLich
 {
-    public partial class QuanLyTour : Form
+    public partial class QuanLyChiTietTour : Form
     {
-        public QuanLyTour()
+        public QuanLyChiTietTour()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
