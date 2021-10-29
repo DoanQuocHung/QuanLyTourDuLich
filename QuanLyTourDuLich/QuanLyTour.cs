@@ -10,16 +10,15 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyTour : Form
     {
-        private TourBUS bus;
         public QuanLyTour()
         {
             InitializeComponent();
-            bus = new TourBUS();
             BindGrid();
         }
 
         public void BindGrid()
         {
+            TourBUS bus = new TourBUS();
             bus.List(Grid_Danhsachtour);
         }
 
@@ -36,22 +35,6 @@ namespace QuanLyTourDuLich
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Hide();
-            QuanLyChiTietTour chitiet = new QuanLyChiTietTour();
-            chitiet.Show();
         }
     }
 }

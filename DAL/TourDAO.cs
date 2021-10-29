@@ -8,17 +8,26 @@ namespace DAL
 {
     public class TourDAO
     {
-       
-        public TourDAO() { }
-        private static DataProvider dataget = new DataProvider();
+        public static TourDAO instance;
+
+        public TourDAO Instance
+        {
+            get {
+                if (instance == null)
+                    instance = new TourDAO();
+                return instance; 
+            }
+        }
+
+        private TourDAO() { }
+
         public List<TourDTO> List()
         {
             List<TourDTO> tours = new List<TourDTO>();
 
             string query = "select * from TOUR";
 
-
-            DataTable data = dataget.ExecuteQuery(query);
+            DataTable data = DataProvider.instance.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)
             {
@@ -53,7 +62,7 @@ namespace DAL
                 matour 
             };
 
-            if (dataget.ExecuteNonQuery(query, para) > 0)
+            if (DataProvider.instance.ExecuteNonQuery(query, para) > 0)
                 return true;
             return false;
         }
@@ -71,7 +80,7 @@ namespace DAL
                 tour.Id_Loai
             };
 
-            if (dataget.ExecuteNonQuery(query, para) > 0)
+            if (DataProvider.instance.ExecuteNonQuery(query, para) > 0)
                 return true;
             return false;
         }
@@ -85,7 +94,7 @@ namespace DAL
                 id
             };
 
-            if (dataget.ExecuteNonQuery(query, para) > 0)
+            if (DataProvider.instance.ExecuteNonQuery(query, para) > 0)
                 return true;
             return false;
         }
