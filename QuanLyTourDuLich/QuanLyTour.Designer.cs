@@ -48,7 +48,7 @@ namespace QuanLyTourDuLich
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Grid_Danhsachtour = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -69,7 +69,7 @@ namespace QuanLyTourDuLich
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -255,7 +255,7 @@ namespace QuanLyTourDuLich
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.Grid_Danhsachtour);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
@@ -267,16 +267,16 @@ namespace QuanLyTourDuLich
             this.panel2.Size = new System.Drawing.Size(1081, 516);
             this.panel2.TabIndex = 1;
             // 
-            // dataGridView1
+            // Grid_Danhsachtour
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 64);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(1053, 447);
-            this.dataGridView1.TabIndex = 10;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.Grid_Danhsachtour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grid_Danhsachtour.Location = new System.Drawing.Point(11, 64);
+            this.Grid_Danhsachtour.Name = "Grid_Danhsachtour";
+            this.Grid_Danhsachtour.RowHeadersWidth = 51;
+            this.Grid_Danhsachtour.RowTemplate.Height = 29;
+            this.Grid_Danhsachtour.Size = new System.Drawing.Size(1053, 447);
+            this.Grid_Danhsachtour.TabIndex = 10;
+            this.Grid_Danhsachtour.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button5
             // 
@@ -402,7 +402,7 @@ namespace QuanLyTourDuLich
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -423,7 +423,7 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView Grid_Danhsachtour;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel10;

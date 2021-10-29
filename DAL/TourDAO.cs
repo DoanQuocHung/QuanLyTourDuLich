@@ -31,10 +31,10 @@ namespace DAL
 
             foreach (DataRow item in data.Rows)
             {
-                string matour = item["MATOUR"].ToString();
-                string tentour = item["TENTOUR"].ToString();
-                string dacdiem = item["DACDIEM"].ToString();
-                string maloai = item["MALOAI"].ToString();
+                string matour = item["Id_Tour"].ToString();
+                string tentour = item["Ten_Tour"].ToString();
+                string dacdiem = item["Dacdiem_Tour"].ToString();
+                string maloai = item["Id_Loai"].ToString();
 
                 TourDTO newTour = new TourDTO(matour, tentour, dacdiem, maloai);
 
