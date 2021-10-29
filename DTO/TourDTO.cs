@@ -4,7 +4,8 @@ using System.Text;
 
 namespace DTO
 {
-    class TourDTO
+    public class TourDTO
     {
+
     }
 }

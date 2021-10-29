@@ -8,6 +8,19 @@ namespace DAL
 {
     public class DataProvider
     {
+        public static DataProvider instance;
+
+        public DataProvider Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new DataProvider();
+                return instance;
+            }
+        }
+
+        private DataProvider() { }
         public string connectionString = @"Data Source=DESKTOP-P8VHEBN;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         
         public DataTable ExecuteQuery(string query,object[] parameter = null)
