@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
+using BUS;
 namespace QuanLyTourDuLich
 {
     public partial class QuanLyTour : Form
@@ -14,6 +14,13 @@ namespace QuanLyTourDuLich
         public QuanLyTour()
         {
             InitializeComponent();
+            BindGrid();
+        }
+
+        public void BindGrid()
+        {
+            TourBUS bus = new TourBUS();
+            bus.List(Grid_Danhsachtour);
         }
 
         private void label1_Click(object sender, EventArgs e)

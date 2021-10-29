@@ -21,7 +21,7 @@ namespace BUS
             }
         }
 
-        private TourBUS() { }
+        public TourBUS() { }
 
         public void List(DataGridView data)
         {
