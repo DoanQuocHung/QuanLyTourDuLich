@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DTO
 {
-    class GiaDTO
+    public class GiaDTO
     {
         public string Id_Gia { get; set; }
         public string Id_Tour { get; set; }

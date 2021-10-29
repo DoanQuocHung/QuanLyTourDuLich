@@ -36,7 +36,7 @@ namespace DAL
                 string dacdiem = item["DACDIEM"].ToString();
                 string maloai = item["MALOAI"].ToString();
 
-                TourDTO newTour = TourDTO(matour, tentour, dacdiem, maloai);
+                TourDTO newTour = new TourDTO(matour, tentour, dacdiem, maloai);
 
                 tours.Add(newTour);
             }
@@ -55,10 +55,10 @@ namespace DAL
 
             object[] para = new object[]
             {
-                tour.matour,
-                tour.tentour,
-                tour.dacdiem,
-                tour.maloai,
+                tour.Id_Tour,
+                tour.Ten_Tour,
+                tour.Dacdiem_Tour,
+                tour.Id_Loai,
                 matour 
             };
 
@@ -74,10 +74,10 @@ namespace DAL
 
             object[] para = new object[]
             {
-                tour.matour,
-                tour.tentour,
-                tour.dacdiem,
-                tour.maloai,
+                tour.Id_Tour,
+                tour.Ten_Tour,
+                tour.Dacdiem_Tour,
+                tour.Id_Loai
             };
 
             if (DataProvider.instance.ExecuteNonQuery(query, para) > 0)

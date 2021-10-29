@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DTO
 {
-    class DoanDuLichDTO
+    public class DoanDuLichDTO
     {
         public string Id_Doan { get; set; }
         public string Ten_Doan { get; set; }

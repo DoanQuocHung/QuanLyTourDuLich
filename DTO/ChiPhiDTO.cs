@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DTO
 {
-    class ChiPhiDTO
+    public class ChiPhiDTO
     {
         public string Id_LoaiChiPhi { get; set; }
         public string Id_Doan { get; set; }
