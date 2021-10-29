@@ -4,10 +4,9 @@ using System.Text;
 
 namespace DTO
 {
-    class ChiTietTourDTO
+    class DiaDiemDTO
     {
-        public string Id_Tour { get; set; }
         public string Id_DiaDiem { get; set; }
-        public int Thutu { get; set; }
+        public string Ten_DiaDiem { get; set; }
     }
 }
