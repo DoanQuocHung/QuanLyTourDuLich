@@ -16,8 +16,7 @@ namespace DAL
             DataProvider datapro = new DataProvider();
             
             List<TourDTO> tours = new List<TourDTO>();
-
-            string query = "select * from TOUR";
+            string query = "Select * from TOUR";
 
             DataTable data = datapro.ExecuteQuery(query);
 

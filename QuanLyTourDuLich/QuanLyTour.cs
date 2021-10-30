@@ -6,15 +6,19 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BUS;
+using DAL;
+
 namespace QuanLyTourDuLich
 {
     public partial class QuanLyTour : Form
     {
-
         public QuanLyTour()
         {
             InitializeComponent();
-            BindGrid();
+            //BindGrid();
+            DataProvider provider = new DataProvider();
+            string query = "select * from TOUR";
+            Grid_Danhsachtour.DataSource = provider.ExecuteQuery(query);
         }
 
         public void BindGrid()
@@ -29,6 +33,11 @@ namespace QuanLyTourDuLich
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hello world !!");
+        }
+
         private void button6_Click(object sender, EventArgs e)
         {
 
@@ -39,9 +48,5 @@ namespace QuanLyTourDuLich
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
