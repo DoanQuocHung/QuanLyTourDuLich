@@ -9,9 +9,8 @@ namespace BUS
 {
     public class TourBUS
     {
-       
-
         public TourBUS() { }
+
         private TourDAO dao = new TourDAO();
         public void List(DataGridView data)
         {

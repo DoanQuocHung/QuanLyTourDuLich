@@ -31,9 +31,9 @@ namespace QuanLyTourDuLich
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.button16 = new System.Windows.Forms.Button();
-            this.panel10 = new System.Windows.Forms.Panel();
             this.button15 = new System.Windows.Forms.Button();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.button12 = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -92,42 +92,42 @@ namespace QuanLyTourDuLich
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.panel11.Controls.Add(this.button16);
+            this.panel11.Controls.Add(this.button15);
             this.panel11.Location = new System.Drawing.Point(16, 574);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(216, 59);
             this.panel11.TabIndex = 1;
             // 
-            // button16
+            // button15
             // 
-            this.button16.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button16.Location = new System.Drawing.Point(10, 11);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(196, 37);
-            this.button16.TabIndex = 7;
-            this.button16.Text = "Quản lý ";
-            this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button16.UseVisualStyleBackColor = true;
+            this.button15.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button15.Location = new System.Drawing.Point(5, 5);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(206, 48);
+            this.button15.TabIndex = 5;
+            this.button15.Text = "Quản lý";
+            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button15.UseVisualStyleBackColor = true;
             // 
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.panel10.Controls.Add(this.button15);
+            this.panel10.Controls.Add(this.button13);
             this.panel10.Location = new System.Drawing.Point(16, 497);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(216, 59);
             this.panel10.TabIndex = 1;
             // 
-            // button15
+            // button13
             // 
-            this.button15.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button15.Location = new System.Drawing.Point(10, 11);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(196, 37);
-            this.button15.TabIndex = 5;
-            this.button15.Text = "Quản lý";
-            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.UseVisualStyleBackColor = true;
+            this.button13.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button13.Location = new System.Drawing.Point(5, 5);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(206, 48);
+            this.button13.TabIndex = 5;
+            this.button13.Text = "Quản lý";
+            this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button13.UseVisualStyleBackColor = true;
             // 
             // panel9
             // 
@@ -141,11 +141,11 @@ namespace QuanLyTourDuLich
             // button12
             // 
             this.button12.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button12.Location = new System.Drawing.Point(10, 11);
+            this.button12.Location = new System.Drawing.Point(5, 5);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(196, 37);
-            this.button12.TabIndex = 4;
-            this.button12.Text = "Quản lý ";
+            this.button12.Size = new System.Drawing.Size(206, 48);
+            this.button12.TabIndex = 5;
+            this.button12.Text = "Quản lý";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.UseVisualStyleBackColor = true;
             // 
@@ -161,10 +161,10 @@ namespace QuanLyTourDuLich
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button11.Location = new System.Drawing.Point(10, 11);
+            this.button11.Location = new System.Drawing.Point(5, 5);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(196, 37);
-            this.button11.TabIndex = 4;
+            this.button11.Size = new System.Drawing.Size(206, 48);
+            this.button11.TabIndex = 5;
             this.button11.Text = "Quản lý";
             this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button11.UseVisualStyleBackColor = true;
@@ -181,10 +181,10 @@ namespace QuanLyTourDuLich
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button10.Location = new System.Drawing.Point(10, 11);
+            this.button10.Location = new System.Drawing.Point(5, 5);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(196, 37);
-            this.button10.TabIndex = 4;
+            this.button10.Size = new System.Drawing.Size(206, 48);
+            this.button10.TabIndex = 5;
             this.button10.Text = "Quản lý";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.UseVisualStyleBackColor = true;
@@ -201,9 +201,9 @@ namespace QuanLyTourDuLich
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button9.Location = new System.Drawing.Point(10, 11);
+            this.button9.Location = new System.Drawing.Point(4, 5);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(196, 37);
+            this.button9.Size = new System.Drawing.Size(206, 48);
             this.button9.TabIndex = 4;
             this.button9.Text = "Quản lý";
             this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -221,9 +221,9 @@ namespace QuanLyTourDuLich
             // button14
             // 
             this.button14.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button14.Location = new System.Drawing.Point(10, 11);
+            this.button14.Location = new System.Drawing.Point(4, 5);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(196, 37);
+            this.button14.Size = new System.Drawing.Size(206, 48);
             this.button14.TabIndex = 5;
             this.button14.Text = "Quản lý nhân viên";
             this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -243,9 +243,9 @@ namespace QuanLyTourDuLich
             // 
             this.button8.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(10, 11);
+            this.button8.Location = new System.Drawing.Point(4, 5);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(196, 37);
+            this.button8.Size = new System.Drawing.Size(206, 48);
             this.button8.TabIndex = 5;
             this.button8.Text = "Quản lý Tour";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -271,9 +271,9 @@ namespace QuanLyTourDuLich
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(262, 134);
+            this.panel2.Location = new System.Drawing.Point(262, 110);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1081, 529);
+            this.panel2.Size = new System.Drawing.Size(1081, 553);
             this.panel2.TabIndex = 1;
             // 
             // Grid_Danhsachtour
@@ -283,7 +283,7 @@ namespace QuanLyTourDuLich
             this.Grid_Danhsachtour.Name = "Grid_Danhsachtour";
             this.Grid_Danhsachtour.RowHeadersWidth = 51;
             this.Grid_Danhsachtour.RowTemplate.Height = 29;
-            this.Grid_Danhsachtour.Size = new System.Drawing.Size(1053, 447);
+            this.Grid_Danhsachtour.Size = new System.Drawing.Size(1053, 471);
             this.Grid_Danhsachtour.TabIndex = 10;
             this.Grid_Danhsachtour.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -354,23 +354,23 @@ namespace QuanLyTourDuLich
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.button6);
             this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(928, 24);
+            this.panel3.Location = new System.Drawing.Point(888, 24);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(415, 59);
+            this.panel3.Size = new System.Drawing.Size(455, 59);
             this.panel3.TabIndex = 2;
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(9, 10);
+            this.textBox1.Location = new System.Drawing.Point(9, 13);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(272, 34);
+            this.textBox1.Size = new System.Drawing.Size(323, 34);
             this.textBox1.TabIndex = 3;
             // 
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.Location = new System.Drawing.Point(287, 10);
+            this.button6.Location = new System.Drawing.Point(338, 11);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(111, 37);
             this.button6.TabIndex = 2;
@@ -381,10 +381,10 @@ namespace QuanLyTourDuLich
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(262, 48);
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(262, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 35);
+            this.label1.Size = new System.Drawing.Size(323, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Trang Quản Lý Tour";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -437,13 +437,9 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Panel panel5;
@@ -451,6 +447,10 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
     }
 }
