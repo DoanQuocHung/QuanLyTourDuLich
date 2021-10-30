@@ -15,10 +15,7 @@ namespace QuanLyTourDuLich
         public QuanLyTour()
         {
             InitializeComponent();
-            //BindGrid();
-            DataProvider provider = new DataProvider();
-            string query = "select * from TOUR";
-            Grid_Danhsachtour.DataSource = provider.ExecuteQuery(query);
+            BindGrid();
         }
 
         public void BindGrid()

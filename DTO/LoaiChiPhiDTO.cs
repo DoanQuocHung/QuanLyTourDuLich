@@ -6,6 +6,11 @@ namespace DTO
 {
     public class LoaiChiPhiDTO
     {
+        public LoaiChiPhiDTO(string Id_LoaiChiPhi, string Ten_Tour)
+        {
+            this.Id_LoaiChiPhi = Id_LoaiChiPhi;
+            this.Ten_LoaiChiPhi = Ten_LoaiChiPhi;
+        }
         public string Id_LoaiChiPhi { get; set; }
         public string Ten_LoaiChiPhi { get; set; }
     }
