@@ -9,23 +9,13 @@ namespace BUS
 {
     public class TourBUS
     {
-        public static TourBUS instance;
-
-        public TourBUS Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new TourBUS();
-                return instance;
-            }
-        }
+       
 
         public TourBUS() { }
-
+        private TourDAO dao = new TourDAO();
         public void List(DataGridView data)
         {
-            data.DataSource = TourDAO.instance.List();
+            data.DataSource = dao.List();
         }
         public bool Update(DataGridView data)
         {
@@ -37,7 +27,7 @@ namespace BUS
 
             TourDTO tour = new TourDTO(matour, tentour, dacdiem, maloai);
 
-            return TourDAO.instance.Update(matour, tour);
+            return dao.Update(matour, tour);
         }
 
         public bool Insert(DataGridView data)
@@ -50,11 +40,11 @@ namespace BUS
 
             TourDTO tour = new TourDTO(matour, tentour, dacdiem, maloai);
 
-            return TourDAO.instance.Update(matour, tour);
+            return dao.Update(matour, tour);
         }
         public bool Delete(string data)
         {
-            return TourDAO.instance.Delete(data);
+            return dao.Delete(data);
         }
     }
 }

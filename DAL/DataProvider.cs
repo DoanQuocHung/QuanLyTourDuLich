@@ -8,27 +8,19 @@ namespace DAL
 {
     public class DataProvider
     {
-        public static DataProvider instance;
-
-        public DataProvider Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new DataProvider();
-                return instance;
-            }
-        }
+       
 
         public DataProvider() { }
-        public string connectionString = @"Data Source=DESKTOP-48AE0SM\SQLEXPRESS;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
+        public string connectionString = @"Data Source=DESKTOP-P8VHEBN;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         
         public DataTable ExecuteQuery(string query,object[] parameter = null)
         {
             DataTable data = new DataTable();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+
                 connection.Open();
+
                 SqlCommand command = new SqlCommand(query, connection);
 
                 if(parameter != null)
