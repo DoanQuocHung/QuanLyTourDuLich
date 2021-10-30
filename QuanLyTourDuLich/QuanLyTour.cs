@@ -20,6 +20,7 @@ namespace QuanLyTourDuLich
 
         public void BindGrid()
         {
+            //thay doi nè
             TourBUS bus = new TourBUS();
             bus.List(Grid_Danhsachtour);
         }
