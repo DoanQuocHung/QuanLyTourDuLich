@@ -278,6 +278,7 @@ namespace QuanLyTourDuLich
             // 
             // Grid_Danhsachtour
             // 
+            this.Grid_Danhsachtour.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid_Danhsachtour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid_Danhsachtour.Location = new System.Drawing.Point(11, 64);
             this.Grid_Danhsachtour.Name = "Grid_Danhsachtour";

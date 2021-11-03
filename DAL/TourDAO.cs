@@ -31,7 +31,6 @@ namespace DAL
 
                 tours.Add(newTour);
             }
-
             return tours;
         }
 

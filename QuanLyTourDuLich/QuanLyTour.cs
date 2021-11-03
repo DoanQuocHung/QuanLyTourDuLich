@@ -32,7 +32,15 @@ namespace QuanLyTourDuLich
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello world !!");
+            //MessageBox.Show("Button \"Thêm\" is coming soon (^.-) !");
+            QuanLyTour_Them ql_ctt_them = new QuanLyTour_Them();
+            ql_ctt_them.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+
         }
 
         private void button6_Click(object sender, EventArgs e)
