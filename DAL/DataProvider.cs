@@ -11,9 +11,9 @@ namespace DAL
         public DataProvider() { }
 
             //Học
-        //public string connectionString = @"Data Source=DESKTOP-P8VHEBN;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
+        public string connectionString = @"Data Source=DESKTOP-P8VHEBN;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
             //Hùng
-        public string connectionString = @"Data Source=DESKTOP-48AE0SM\SQLEXPRESS;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
+        //public string connectionString = @"Data Source=DESKTOP-48AE0SM\SQLEXPRESS;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         
         public DataTable ExecuteQuery(string query,object[] parameter = null)
         {
@@ -91,20 +91,6 @@ namespace DAL
 
                 SqlCommand command = new SqlCommand(query, connection);
 
-                if (parameter != null)
-                {
-                    string[] ListPara = query.Split(' ');
-                    int i = 0;
-
-                    foreach (string item in ListPara)
-                    {
-                        if (item.Contains('@'))
-                        {
-                            command.Parameters.AddWithValue(item, parameter[i]);
-                            i++;
-                        }
-                    }
-                }
 
                 data = command.ExecuteScalar();
 
