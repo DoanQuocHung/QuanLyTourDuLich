@@ -36,6 +36,9 @@ namespace QuanLyTourDuLich
             QuanLyTour_Them ql_ctt_them = new QuanLyTour_Them();
             ql_ctt_them.ShowDialog();
         }
+        public void Sua(DataGridView data)
+        {
+        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -50,8 +53,13 @@ namespace QuanLyTourDuLich
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int tourid = Convert.ToInt32(Grid_Danhsachtour.Rows[e.RowIndex].Cells[0].Value);
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
