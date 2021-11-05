@@ -60,7 +60,7 @@ namespace DAL
         public bool Insert(TourDTO tour)
         {
             string query = "insert into TOUR " +
-                "values (@MATOUR,@TENTOUR,@DACDIEM,@MALOAI)";
+                "values( @MATOUR , @TENTOUR , @DACDIEM , @MALOAI )";
 
             object[] para = new object[]
             {

@@ -29,15 +29,14 @@ namespace BUS
             return dao.Update(matour, tour);
         }
 
-        public bool Insert(string matour,string tentour,string dacdiem,string maloai)
+        public bool Insert(string matour,string tentour,string dacdiem,string tenloai)
         {
             string ma = matour;
             string ten = tentour;
             string dd = dacdiem;
-            string loai = maloai;
-
+            LoaiTourDAO loaidao = new LoaiTourDAO();
+            string maloai=loaidao.get(tenloai);
             TourDTO tour = new TourDTO(matour, tentour, dacdiem, maloai);
-
             return dao.Insert(tour);
         }
         public bool Delete(string data)

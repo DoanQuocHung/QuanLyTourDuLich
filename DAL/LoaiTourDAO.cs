@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using DTO;
 using System.Data;
-
+using System.Windows.Forms;
 namespace DAL
 {
     public class LoaiTourDAO
@@ -31,17 +31,22 @@ namespace DAL
             }
             return tours;
         }
-        public LoaiTourDTO  get(string tenloai)
+        public string  get(string tenloai)
         {
 
             DataProvider datapro = new DataProvider();
-            string query = "Select * from LOAITOUR where tenloai = @tenloai";
+            string query = "Select Id_Loai from LOAITOUR where Ten_Loai = @tenloai";
             object[] para = new object[]
             {
                 tenloai
             };
-            LoaiTourDTO tour = (LoaiTourDTO)datapro.ExecuteScalar(query);
-            return tour;
+            string maloai = " ";
+            var firstColumn = datapro.ExecuteScalar(query,para);
+            if (firstColumn != null)
+            {
+                maloai = firstColumn.ToString();
+            }
+            return maloai;
         }
     }
 }

@@ -90,7 +90,20 @@ namespace DAL
                 connection.Open();
 
                 SqlCommand command = new SqlCommand(query, connection);
+                if (parameter != null)
+                {
+                    string[] ListPara = query.Split(' ');
+                    int i = 0;
 
+                    foreach (string item in ListPara)
+                    {
+                        if (item.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(item, parameter[i]);
+                            i++;
+                        }
+                    }
+                }
 
                 data = command.ExecuteScalar();
 

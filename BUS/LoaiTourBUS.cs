@@ -15,7 +15,7 @@ namespace BUS
         {
             data.DataSource = dao.List();
         }
-        public LoaiTourDTO get(string tenloai)
+        public string get(string tenloai)
         {
             return dao.get(tenloai);
         }
