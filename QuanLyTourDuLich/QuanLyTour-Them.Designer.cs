@@ -165,7 +165,6 @@ namespace QuanLyTourDuLich
             this.Name = "QuanLyTour_Them";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm Tour";
-            this.Load += new System.EventHandler(this.QuanLyTour_Them_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

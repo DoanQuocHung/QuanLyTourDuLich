@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BUS;
+using DAL;
 
 namespace QuanLyTourDuLich
 {
@@ -59,18 +60,6 @@ namespace QuanLyTourDuLich
         private void button3_Click(object sender, EventArgs e)
         {
             
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string matour = Grid_Danhsachtour.CurrentRow.Cells[0].Value.ToString();
-            string tentour = Grid_Danhsachtour.CurrentRow.Cells[1].Value.ToString();
-            string dacdiem = Grid_Danhsachtour.CurrentRow.Cells[2].Value.ToString();
-            string maloai = Grid_Danhsachtour.CurrentRow.Cells[3].Value.ToString();
-
-            
-            QuanLyTour_Sua ql_ctt_them = new QuanLyTour_Sua(matour,tentour,dacdiem,maloai);
-            ql_ctt_them.ShowDialog();
         }
     }
 }

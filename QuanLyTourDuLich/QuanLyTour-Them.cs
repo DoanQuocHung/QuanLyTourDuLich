@@ -36,16 +36,12 @@ namespace QuanLyTourDuLich
             string tentour = textBox2.Text;
             string dacdiem = textBox3.Text;
             string tenloai = comboBox1.SelectedItem.ToString();
+
             if (tourBus.Insert(matour, tentour, dacdiem, tenloai))
             {
                 MessageBox.Show("Thêm thành công");
                 Hide();
             }
-        }
-
-        private void QuanLyTour_Them_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
