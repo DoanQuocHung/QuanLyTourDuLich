@@ -1,7 +1,7 @@
 ﻿
 namespace QuanLyTourDuLich
 {
-    partial class QuanLyTour_Them
+    partial class QuanLyTour_Sua
     {
         /// <summary>
         /// Required designer variable.
@@ -59,7 +59,7 @@ namespace QuanLyTourDuLich
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(548, 380);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 1;
             // 
             // comboBox1
             // 
@@ -70,7 +70,6 @@ namespace QuanLyTourDuLich
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(317, 33);
             this.comboBox1.TabIndex = 9;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textBox3
             // 
@@ -151,21 +150,18 @@ namespace QuanLyTourDuLich
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 36);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Thêm";
+            this.button1.Text = "Sửa";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // QuanLyTour_Them
+            // QuanLyTour_Sua
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(574, 404);
             this.Controls.Add(this.panel1);
-            this.Name = "QuanLyTour_Them";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Thêm Tour";
-            this.Load += new System.EventHandler(this.QuanLyTour_Them_Load);
+            this.Name = "QuanLyTour_Sua";
+            this.Text = "QuanLyTour_Sua";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -175,15 +171,15 @@ namespace QuanLyTourDuLich
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
