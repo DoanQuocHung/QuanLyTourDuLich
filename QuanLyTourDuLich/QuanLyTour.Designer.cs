@@ -328,6 +328,7 @@ namespace QuanLyTourDuLich
             this.button2.TabIndex = 6;
             this.button2.Text = "Sửa";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -403,6 +404,7 @@ namespace QuanLyTourDuLich
             this.Controls.Add(this.panel1);
             this.Name = "QuanLyTour";
             this.Text = "Ứng dụng quản lý Tour du lịch";
+            this.Load += new System.EventHandler(this.QuanLyTour_Load);
             this.panel1.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
