@@ -35,6 +35,7 @@ namespace QuanLyTourDuLich
             QuanLyTour_Them ql_ctt_them = new QuanLyTour_Them();
             ql_ctt_them.ShowDialog();
         }
+
         private void button2_Click(object sender, EventArgs e)
         {
             QuanLyTour_Sua ql_ctt_sua = new QuanLyTour_Sua();
