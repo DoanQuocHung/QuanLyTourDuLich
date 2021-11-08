@@ -33,19 +33,40 @@ namespace DAL
             }
             return tours;
         }
+        public TourDTO get(string id)
+        {
 
+            DataProvider datapro = new DataProvider();
+
+            TourDTO newTour = new TourDTO();
+            string query = "Select * from TOUR where Id_Tour = @id";
+            object[] para = new object[]
+            {
+               id
+            };
+            DataTable data = datapro.ExecuteQuery(query,para);
+
+            foreach (DataRow item in data.Rows)
+            {
+                string matour = item["Id_Tour"].ToString();
+                string tentour = item["Ten_Tour"].ToString();
+                string dacdiem = item["Dacdiem_Tour"].ToString();
+                string maloai = item["Id_Loai"].ToString();
+
+                newTour = new TourDTO(matour, tentour, dacdiem, maloai);
+            }
+            return newTour;
+        }
         public bool Update(string matour, TourDTO tour)
         {
             string query = "update TOUR set " +
-                "MATOUR = @MATOUR, " +
-                "TENTOUR = @TENTOUR, " +
-                "DACDIEM = @DACDIEM, " +
-                "MALOAI = @MALOAI " +
-                "where MATOUR = @oldMATOUR";
+                "Ten_Tour = @TENTOUR , " +
+                "Dacdiem_Tour = @DACDIEM , " +
+                "Id_Loai = @MALOAI " +
+                "where Id_Tour = @oldMATOUR";
 
             object[] para = new object[]
             {
-                tour.Id_Tour,
                 tour.Ten_Tour,
                 tour.Dacdiem_Tour,
                 tour.Id_Loai,

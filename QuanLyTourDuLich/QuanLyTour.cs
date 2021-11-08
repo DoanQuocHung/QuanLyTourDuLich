@@ -12,6 +12,7 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyTour : Form
     {
+
         public QuanLyTour()
         {
             InitializeComponent();
@@ -20,57 +21,25 @@ namespace QuanLyTourDuLich
 
         public void BindGrid()
         {
-            //thay doi nè
-            TourBUS bus = new TourBUS();
-            bus.List(Grid_Danhsachtour);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            new TourBUS().List(Grid_Danhsachtour);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            QuanLyTour_Them ql_ctt_them = new QuanLyTour_Them();
-            ql_ctt_them.ShowDialog();
+            new QuanLyTour_Them().ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            QuanLyTour_Sua ql_ctt_sua = new QuanLyTour_Sua();
-            ql_ctt_sua.ShowDialog();
+            int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
+            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+            new QuanLyTour_Sua(cellValue).ShowDialog();
         }
 
-        public void Sua(DataGridView data)
+        private void button5_Click(object sender, EventArgs e)
         {
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int tourid = Convert.ToInt32(Grid_Danhsachtour.Rows[e.RowIndex].Cells[0].Value);
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void QuanLyTour_Load(object sender, EventArgs e)
-        {
-
+            BindGrid();
         }
     }
 }

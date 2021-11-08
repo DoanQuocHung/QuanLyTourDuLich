@@ -6,7 +6,10 @@ namespace DTO
 {
     public class TourDTO
     {
-        public TourDTO(string Id_Tour, string Ten_Tour, string Dacdiem_Tour, string Id_Loai)
+        public TourDTO()
+        {
+        }
+            public TourDTO(string Id_Tour, string Ten_Tour, string Dacdiem_Tour, string Id_Loai)
         {
             this.Id_Tour = Id_Tour;
             this.Ten_Tour = Ten_Tour;

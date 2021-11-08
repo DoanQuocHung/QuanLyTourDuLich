@@ -48,5 +48,22 @@ namespace DAL
             }
             return maloai;
         }
+        public string getname(string idloai)
+        {
+
+            DataProvider datapro = new DataProvider();
+            string query = "Select Ten_Loai from LOAITOUR where Id_Loai = @idloai";
+            object[] para = new object[]
+            {
+                idloai
+            };
+            string tenloai = " ";
+            var firstColumn = datapro.ExecuteScalar(query, para);
+            if (firstColumn != null)
+            {
+                tenloai = firstColumn.ToString();
+            }
+            return tenloai;
+        }
     }
 }
