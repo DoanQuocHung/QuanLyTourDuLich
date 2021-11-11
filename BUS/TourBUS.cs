@@ -35,6 +35,7 @@ namespace BUS
             string maloai = loaidao.get(tenloai);
             TourDTO tour = new TourDTO(matour, tentour, dacdiem, maloai);
             return dao.Update(matour,tour);
+            //
         }
 
         public bool Insert(string matour,string tentour,string dacdiem,string tenloai)
