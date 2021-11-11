@@ -129,6 +129,18 @@ namespace QuanLyTourDuLich
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.UseVisualStyleBackColor = true;
             // 
+            // button14
+            // 
+            this.button14.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button14.Location = new System.Drawing.Point(4, 5);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(206, 48);
+            this.button14.TabIndex = 5;
+            this.button14.Text = "Quản lý nhân viên";
+            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button14.UseVisualStyleBackColor = true;
+            //this.button14.Image = Icon.
+            // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -145,7 +157,7 @@ namespace QuanLyTourDuLich
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(206, 48);
             this.button12.TabIndex = 5;
-            this.button12.Text = "Quản lý";
+            this.button12.Text = "Quản lý phân công";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.UseVisualStyleBackColor = true;
             // 
@@ -165,7 +177,7 @@ namespace QuanLyTourDuLich
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(206, 48);
             this.button11.TabIndex = 5;
-            this.button11.Text = "Quản lý";
+            this.button11.Text = "Quản lý chi phí";
             this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button11.UseVisualStyleBackColor = true;
             // 
@@ -185,7 +197,7 @@ namespace QuanLyTourDuLich
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(206, 48);
             this.button10.TabIndex = 5;
-            this.button10.Text = "Quản lý";
+            this.button10.Text = "Quản lý đoàn";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.UseVisualStyleBackColor = true;
             // 
@@ -205,7 +217,7 @@ namespace QuanLyTourDuLich
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(206, 48);
             this.button9.TabIndex = 4;
-            this.button9.Text = "Quản lý";
+            this.button9.Text = "Quản lý khách hàng";
             this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button9.UseVisualStyleBackColor = true;
             // 
@@ -217,17 +229,7 @@ namespace QuanLyTourDuLich
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(216, 59);
             this.panel5.TabIndex = 1;
-            // 
-            // button14
-            // 
-            this.button14.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button14.Location = new System.Drawing.Point(4, 5);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(206, 48);
-            this.button14.TabIndex = 5;
-            this.button14.Text = "Quản lý nhân viên";
-            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.UseVisualStyleBackColor = true;
+            
             // 
             // panel4
             // 
