@@ -98,7 +98,7 @@ namespace DAL
 
         public bool Delete(string id)
         {
-            string query = "delete from TOUR where MATOUR = @MATOUR";
+            string query = "delete from TOUR where Id_Tour = @MATOUR";
 
             object[] para = new object[]
             {

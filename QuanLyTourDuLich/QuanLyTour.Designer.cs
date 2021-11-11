@@ -129,18 +129,6 @@ namespace QuanLyTourDuLich
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.UseVisualStyleBackColor = true;
             // 
-            // button14
-            // 
-            this.button14.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button14.Location = new System.Drawing.Point(4, 5);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(206, 48);
-            this.button14.TabIndex = 5;
-            this.button14.Text = "Quản lý nhân viên";
-            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.UseVisualStyleBackColor = true;
-            //this.button14.Image = Icon.
-            // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -229,7 +217,17 @@ namespace QuanLyTourDuLich
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(216, 59);
             this.panel5.TabIndex = 1;
-            
+            // 
+            // button14
+            // 
+            this.button14.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button14.Location = new System.Drawing.Point(4, 5);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(206, 48);
+            this.button14.TabIndex = 5;
+            this.button14.Text = "Quản lý nhân viên";
+            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button14.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
@@ -319,6 +317,7 @@ namespace QuanLyTourDuLich
             this.button3.TabIndex = 7;
             this.button3.Text = "Xóa";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 

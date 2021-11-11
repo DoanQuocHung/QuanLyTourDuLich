@@ -60,6 +60,14 @@ namespace QuanLyTourDuLich
             button14.TextAlign = ContentAlignment.MiddleLeft;
         }
 
-        
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
+            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+            if (new TourBUS().Delete(cellValue)) {
+                MessageBox.Show("Xóa thành công");
+            }
+        }
     }
 }
