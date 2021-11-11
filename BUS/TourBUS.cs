@@ -46,6 +46,7 @@ namespace BUS
             string maloai=loaidao.get(tenloai);
             TourDTO tour = new TourDTO(matour, tentour, dacdiem, maloai);
             return dao.Insert(tour);
+            //Hung
         }
         public bool Delete(string data)
         {
