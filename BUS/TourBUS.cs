@@ -47,6 +47,7 @@ namespace BUS
             TourDTO tour = new TourDTO(matour, tentour, dacdiem, maloai);
             return dao.Insert(tour);
             //Hung
+            //Hung
         }
         public bool Delete(string data)
         {
