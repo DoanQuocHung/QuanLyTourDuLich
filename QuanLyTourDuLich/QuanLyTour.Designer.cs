@@ -56,6 +56,8 @@ namespace QuanLyTourDuLich
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -66,6 +68,7 @@ namespace QuanLyTourDuLich
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -74,19 +77,18 @@ namespace QuanLyTourDuLich
             this.panel1.Controls.Add(this.panel9);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.panel6);
-            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(264, 679);
+            this.panel1.Size = new System.Drawing.Size(264, 787);
             this.panel1.TabIndex = 0;
             // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel9.Controls.Add(this.button12);
-            this.panel9.Location = new System.Drawing.Point(0, 586);
+            this.panel9.Location = new System.Drawing.Point(0, 583);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(264, 82);
             this.panel9.TabIndex = 2;
@@ -152,7 +154,7 @@ namespace QuanLyTourDuLich
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel5.Controls.Add(this.button14);
-            this.panel5.Location = new System.Drawing.Point(0, 127);
+            this.panel5.Location = new System.Drawing.Point(12, 140);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(264, 82);
             this.panel5.TabIndex = 1;
@@ -238,7 +240,7 @@ namespace QuanLyTourDuLich
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(282, 110);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1081, 581);
+            this.panel2.Size = new System.Drawing.Size(1081, 689);
             this.panel2.TabIndex = 1;
             // 
             // Grid_Danhsachtour
@@ -249,7 +251,7 @@ namespace QuanLyTourDuLich
             this.Grid_Danhsachtour.Name = "Grid_Danhsachtour";
             this.Grid_Danhsachtour.RowHeadersWidth = 51;
             this.Grid_Danhsachtour.RowTemplate.Height = 29;
-            this.Grid_Danhsachtour.Size = new System.Drawing.Size(1053, 506);
+            this.Grid_Danhsachtour.Size = new System.Drawing.Size(1053, 613);
             this.Grid_Danhsachtour.TabIndex = 10;
             // 
             // button5
@@ -371,14 +373,38 @@ namespace QuanLyTourDuLich
             this.label1.TabIndex = 0;
             this.label1.Text = "Trang Quản Lý Tour";
             // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel10.Controls.Add(this.button13);
+            this.panel10.Location = new System.Drawing.Point(12, 705);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(264, 82);
+            this.panel10.TabIndex = 3;
+            // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
+            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button13.Location = new System.Drawing.Point(7, 9);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(257, 65);
+            this.button13.TabIndex = 5;
+            this.button13.Text = "        Quản lý địa điểm";
+            this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button13.UseVisualStyleBackColor = true;
+            // 
             // QuanLyTour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1375, 703);
+            this.ClientSize = new System.Drawing.Size(1375, 811);
+            this.Controls.Add(this.panel10);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "QuanLyTour";
@@ -396,6 +422,7 @@ namespace QuanLyTourDuLich
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -429,5 +456,7 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button button13;
     }
 }
