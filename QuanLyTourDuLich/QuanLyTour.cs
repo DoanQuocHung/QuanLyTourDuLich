@@ -64,5 +64,15 @@ namespace QuanLyTourDuLich
                 MessageBox.Show("Xóa thành công");
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            new TourBUS().ListSearch(Grid_Danhsachtour,textBox1);
+        }
     }
 }

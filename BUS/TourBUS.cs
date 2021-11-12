@@ -16,6 +16,10 @@ namespace BUS
         {
             data.DataSource = dao.List();
         }
+        public void ListSearch(DataGridView data,TextBox text)
+        {
+            data.DataSource = dao.ListSearch(text.Text.ToString());
+        }
         public void get(string id,TextBox num1,TextBox num2, TextBox num3,ComboBox cb)
         {
             List<string> get = new List<string>();

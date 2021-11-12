@@ -33,6 +33,28 @@ namespace DAL
             }
             return tours;
         }
+        public List<TourDTO> ListSearch(string search)
+        {
+
+            DataProvider datapro = new DataProvider();
+
+            List<TourDTO> tours = new List<TourDTO>();
+            string query = "Select * from TOUR where Id_Tour LIKE '%" + search + "%'";
+            DataTable data = datapro.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                string matour = item["Id_Tour"].ToString();
+                string tentour = item["Ten_Tour"].ToString();
+                string dacdiem = item["Dacdiem_Tour"].ToString();
+                string maloai = item["Id_Loai"].ToString();
+
+                TourDTO newTour = new TourDTO(matour, tentour, dacdiem, maloai);
+
+                tours.Add(newTour);
+            }
+            return tours;
+        }
         public TourDTO get(string id)
         {
 
