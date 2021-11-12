@@ -1,7 +1,7 @@
 ﻿
 namespace QuanLyTourDuLich
 {
-    partial class QuanLyTour_Them
+    partial class QuanLyChiTietTour_Them
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@ namespace QuanLyTourDuLich
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyChiTietTour_Them));
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -38,19 +39,15 @@ namespace QuanLyTourDuLich
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -58,8 +55,8 @@ namespace QuanLyTourDuLich
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(548, 380);
-            this.panel1.TabIndex = 0;
+            this.panel1.Size = new System.Drawing.Size(548, 309);
+            this.panel1.TabIndex = 2;
             // 
             // textBox3
             // 
@@ -81,7 +78,6 @@ namespace QuanLyTourDuLich
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 27);
             this.textBox1.TabIndex = 6;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label3
             // 
@@ -89,9 +85,9 @@ namespace QuanLyTourDuLich
             this.label3.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(31, 180);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 25);
+            this.label3.Size = new System.Drawing.Size(72, 25);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Đặc điểm Tour";
+            this.label3.Text = "Thứ tự";
             // 
             // label2
             // 
@@ -99,9 +95,9 @@ namespace QuanLyTourDuLich
             this.label2.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(31, 119);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 25);
+            this.label2.Size = new System.Drawing.Size(125, 25);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Tên Tour";
+            this.label2.Text = "ID Đặc điểm";
             // 
             // label1
             // 
@@ -116,9 +112,9 @@ namespace QuanLyTourDuLich
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(415, 313);
+            this.button2.Location = new System.Drawing.Point(412, 253);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 36);
+            this.button2.Size = new System.Drawing.Size(113, 43);
             this.button2.TabIndex = 1;
             this.button2.Text = "Hủy";
             this.button2.UseVisualStyleBackColor = true;
@@ -126,44 +122,26 @@ namespace QuanLyTourDuLich
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(281, 313);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(282, 253);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 36);
+            this.button1.Size = new System.Drawing.Size(109, 43);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Thêm";
+            this.button1.Text = "      Thêm";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.DisplayMember = "(none)";
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(208, 238);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(317, 33);
-            this.comboBox1.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(31, 241);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 25);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Loại";
-            // 
-            // QuanLyTour_Them
+            // QuanLyChiTietTour_Them
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(574, 404);
+            this.ClientSize = new System.Drawing.Size(570, 330);
             this.Controls.Add(this.panel1);
-            this.Name = "QuanLyTour_Them";
+            this.Name = "QuanLyChiTietTour_Them";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Thêm Tour";
+            this.Text = "Thêm chi tiết Tour";
+            this.Load += new System.EventHandler(this.QuanLyChiTietTour_Them_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -173,15 +151,13 @@ namespace QuanLyTourDuLich
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
