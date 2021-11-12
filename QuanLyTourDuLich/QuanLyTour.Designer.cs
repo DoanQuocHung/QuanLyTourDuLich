@@ -330,6 +330,7 @@ namespace QuanLyTourDuLich
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(302, 34);
             this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button6
             // 
@@ -342,6 +343,7 @@ namespace QuanLyTourDuLich
             this.button6.TabIndex = 2;
             this.button6.Text = "       Tìm kiếm";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label1
             // 
