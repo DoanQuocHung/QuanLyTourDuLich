@@ -204,7 +204,7 @@ namespace QuanLyTourDuLich
             this.button8.Text = "        Quản lý Tour";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -241,7 +241,7 @@ namespace QuanLyTourDuLich
             this.Grid_Danhsachtour.RowTemplate.Height = 29;
             this.Grid_Danhsachtour.Size = new System.Drawing.Size(1053, 506);
             this.Grid_Danhsachtour.TabIndex = 10;
-            this.Grid_Danhsachtour.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_Danhsachtour_CellContentClick);
+            //this.Grid_Danhsachtour.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_Danhsachtour.CellContentClick);
             // 
             // button5
             // 
