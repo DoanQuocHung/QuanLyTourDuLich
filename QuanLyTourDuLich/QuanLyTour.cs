@@ -70,5 +70,15 @@ namespace QuanLyTourDuLich
                 MessageBox.Show("Xóa thành công");
             }
         }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Grid_Danhsachtour_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
