@@ -10,7 +10,7 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyChiTietTour : Form
     {
-        public QuanLyChiTietTour()
+        public QuanLyChiTietTour(String id)
         {
             InitializeComponent();
         }

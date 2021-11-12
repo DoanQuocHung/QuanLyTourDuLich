@@ -38,10 +38,20 @@ namespace QuanLyTourDuLich
             string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
             new QuanLyTour_Sua(cellValue).ShowDialog();
         }
+        //Button Chi tiết =======================================================================
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
+            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+            QuanLyChiTietTour ql_ctt = new QuanLyChiTietTour(cellValue);
+            ql_ctt.ShowDialog();
+        }
+
+        //Button Reload ==========================================================================
         private void button5_Click(object sender, EventArgs e)
         {
             BindGrid();
-            
         }
 
         private void button8_Click(object sender, EventArgs e)
