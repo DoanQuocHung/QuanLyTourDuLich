@@ -41,7 +41,7 @@ namespace QuanLyTourDuLich
         private void button5_Click(object sender, EventArgs e)
         {
             BindGrid();
-            //
+            
         }
 
         private void button8_Click(object sender, EventArgs e)
