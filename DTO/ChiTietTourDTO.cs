@@ -6,6 +6,7 @@ namespace DTO
 {
     public class ChiTietTourDTO
     {
+        public ChiTietTourDTO() { }
         public ChiTietTourDTO(string Id_Tour, string Id_DiaDiem, int Thutu)
         {
             this.Id_Tour = Id_Tour;
