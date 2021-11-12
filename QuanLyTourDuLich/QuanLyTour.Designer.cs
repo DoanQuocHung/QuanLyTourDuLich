@@ -270,7 +270,7 @@ namespace QuanLyTourDuLich
             this.button4.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(810, 10);
+            this.button4.Location = new System.Drawing.Point(809, 10);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(121, 45);
             this.button4.TabIndex = 8;
@@ -382,6 +382,7 @@ namespace QuanLyTourDuLich
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "QuanLyTour";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ỨNG DỤNG QUẢN LÝ TOUR";
             this.panel1.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
