@@ -52,7 +52,7 @@ namespace QuanLyTourDuLich
         //Button trang QL Nhân viên ============================================================
         private void button14_Click(object sender, EventArgs e)
         {
-            
+            //test
         }
         private void button14_icon()
         {
