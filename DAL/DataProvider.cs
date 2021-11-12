@@ -15,7 +15,7 @@ namespace DAL
         //Hùng
         public string connectionString = @"Data Source=DESKTOP-48AE0SM\SQLEXPRESS;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         //Doanh
-        //public string connectionString = "abc ...";
+        //public string connectionString = @"";
 
         public DataTable ExecuteQuery(string query,object[] parameter = null)
         {
