@@ -241,7 +241,6 @@ namespace QuanLyTourDuLich
             this.Grid_Danhsachtour.RowTemplate.Height = 29;
             this.Grid_Danhsachtour.Size = new System.Drawing.Size(1053, 506);
             this.Grid_Danhsachtour.TabIndex = 10;
-            //this.Grid_Danhsachtour.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_Danhsachtour.CellContentClick);
             // 
             // button5
             // 
@@ -257,7 +256,7 @@ namespace QuanLyTourDuLich
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(814, 10);
+            this.button4.Location = new System.Drawing.Point(810, 10);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(117, 45);
             this.button4.TabIndex = 8;
@@ -269,7 +268,7 @@ namespace QuanLyTourDuLich
             this.button3.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(682, 10);
+            this.button3.Location = new System.Drawing.Point(674, 10);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(117, 45);
             this.button3.TabIndex = 7;
@@ -282,7 +281,7 @@ namespace QuanLyTourDuLich
             this.button2.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(550, 10);
+            this.button2.Location = new System.Drawing.Point(539, 10);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 45);
             this.button2.TabIndex = 6;
@@ -295,7 +294,7 @@ namespace QuanLyTourDuLich
             this.button1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(381, 10);
+            this.button1.Location = new System.Drawing.Point(402, 10);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 45);
             this.button1.TabIndex = 5;
