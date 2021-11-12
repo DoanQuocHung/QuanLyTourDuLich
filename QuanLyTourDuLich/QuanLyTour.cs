@@ -54,12 +54,6 @@ namespace QuanLyTourDuLich
         {
             //test
         }
-        private void button14_icon()
-        {
-            button14.Image = Image.FromFile("img\\nv.jpg");
-            button14.ImageAlign = ContentAlignment.MiddleRight;
-            button14.TextAlign = ContentAlignment.MiddleLeft;
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
