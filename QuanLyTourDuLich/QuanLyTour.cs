@@ -21,7 +21,7 @@ namespace QuanLyTourDuLich
 
         public void BindGrid()
         {
-            new TourBUS().List(Grid_Danhsachtour);
+            Grid_Danhsachtour.DataSource = new TourBUS().List(Grid_Danhsachtour);
         }
 
         //Button thêm =========================================================================
@@ -83,6 +83,11 @@ namespace QuanLyTourDuLich
         private void button6_Click(object sender, EventArgs e)
         {
             new TourBUS().ListSearch(Grid_Danhsachtour,textBox1);
+        }
+
+        private void Grid_Danhsachtour_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

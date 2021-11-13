@@ -11,13 +11,17 @@ namespace BUS
         public LoaiTourBUS() { }
 
         private LoaiTourDAO dao = new LoaiTourDAO();
-        public void List(ComboBox data)
+        public List<LoaiTourDTO> List()
         {
-            data.DataSource = dao.List();
+            return new LoaiTourDAO().ListAll();
         }
-        public string get(string tenloai)
+        public string getID(string tenloai)
         {
-            return dao.get(tenloai);
+            return dao.getID(tenloai);
+        }
+        public string getName(string id)
+        {
+            return dao.getName(id);
         }
     }
 }

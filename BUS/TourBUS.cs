@@ -11,51 +11,32 @@ namespace BUS
     {
         public TourBUS() { }
 
-        private TourDAO dao = new TourDAO();
-        public void List(DataGridView data)
+        public List<TourDTO> List(DataGridView data)
         {
-            data.DataSource = dao.List();
+            return new TourDAO().ListAll();
         }
-        public void ListSearch(DataGridView data,TextBox text)
+        public List<TourDTO> ListSearch(DataGridView data,TextBox text)
         {
-            data.DataSource = dao.ListSearch(text.Text.ToString());
+           return new TourDAO().List(text.Text.ToString());
         }
-        public void get(string id,TextBox num1,TextBox num2, TextBox num3,ComboBox cb)
+        public void getName(string id)
         {
-            List<string> get = new List<string>();
-            TourDTO tour = new TourDAO().get(id);
-            num1.Text = tour.Id_Tour;
-            num2.Text = tour.Ten_Tour;
-            num3.Text = tour.Dacdiem_Tour;
-            cb.DataSource = new LoaiTourDAO().List();
-            cb.SelectedItem = new LoaiTourDAO().getname(tour.Id_Loai);
+            new LoaiTourDAO().getName(id);
         }
-        public bool Update(string matour, string tentour, string dacdiem, string tenloai)
+        public bool Update(string matour, TourDTO tour)
         {
-            string ma = matour;
-            string ten = tentour;
-            string dd = dacdiem;
-            LoaiTourDAO loaidao = new LoaiTourDAO();
-            string maloai = loaidao.get(tenloai);
-            TourDTO tour = new TourDTO(matour, tentour, dacdiem, maloai);
-            return dao.Update(matour,tour);
+            return new TourDAO().Update(matour,tour);
             //
         }
 
-        public bool Insert(string matour,string tentour,string dacdiem,string tenloai)
+        public bool Insert(TourDTO tour)
         {
-            string ma = matour;
-            string ten = tentour;
-            string dd = dacdiem;
-            LoaiTourDAO loaidao = new LoaiTourDAO();
-            string maloai=loaidao.get(tenloai);
-            TourDTO tour = new TourDTO(matour, tentour, dacdiem, maloai);
-            return dao.Insert(tour);
+            return new TourDAO().Insert(tour);
             //Hung
         }
-        public bool Delete(string data)
+        public bool Delete(string matour)
         {
-            return dao.Delete(data);
+            return new TourDAO().Delete(matour);
         }
     }
 }

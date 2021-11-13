@@ -10,7 +10,7 @@ namespace DAL
     {
         public TourDAO() { }
 
-        public List<TourDTO> List()
+        public List<TourDTO> ListAll()
         {
 
             DataProvider datapro = new DataProvider();
@@ -33,7 +33,7 @@ namespace DAL
             }
             return tours;
         }
-        public List<TourDTO> ListSearch(string search)
+        public List<TourDTO> List(string search)
         {
 
             DataProvider datapro = new DataProvider();
@@ -121,14 +121,15 @@ namespace DAL
         public bool Delete(string id)
         {
             string query = "delete from TOUR where Id_Tour = @MATOUR";
-
+            string query2 = "delete from CHITIETTOUR where Id_Tour = @MATOUR";
             object[] para = new object[]
             {
                 id
             };
             DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+            if (datapro.ExecuteNonQuery(query2, para) > 0)
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
             return false;
         }
     }

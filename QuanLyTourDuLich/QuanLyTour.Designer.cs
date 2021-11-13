@@ -37,13 +37,13 @@ namespace QuanLyTourDuLich
             this.button11 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button14 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Grid_Danhsachtour = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
@@ -62,9 +62,9 @@ namespace QuanLyTourDuLich
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).BeginInit();
             this.panel3.SuspendLayout();
@@ -150,28 +150,6 @@ namespace QuanLyTourDuLich
             this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.panel5.Controls.Add(this.button14);
-            this.panel5.Location = new System.Drawing.Point(12, 140);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(264, 82);
-            this.panel5.TabIndex = 1;
-            // 
-            // button14
-            // 
-            this.button14.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(7, 9);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(257, 65);
-            this.button14.TabIndex = 5;
-            this.button14.Text = "        Quản lý nhân viên";
-            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.UseVisualStyleBackColor = true;
-            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -228,6 +206,28 @@ namespace QuanLyTourDuLich
             this.button7.Text = "Tìm kiếm";
             this.button7.UseVisualStyleBackColor = true;
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel5.Controls.Add(this.button14);
+            this.panel5.Location = new System.Drawing.Point(12, 140);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(264, 82);
+            this.panel5.TabIndex = 1;
+            // 
+            // button14
+            // 
+            this.button14.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
+            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button14.Location = new System.Drawing.Point(7, 9);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(257, 65);
+            this.button14.TabIndex = 5;
+            this.button14.Text = "        Quản lý nhân viên";
+            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button14.UseVisualStyleBackColor = true;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -253,6 +253,7 @@ namespace QuanLyTourDuLich
             this.Grid_Danhsachtour.RowTemplate.Height = 29;
             this.Grid_Danhsachtour.Size = new System.Drawing.Size(1053, 613);
             this.Grid_Danhsachtour.TabIndex = 10;
+            this.Grid_Danhsachtour.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_Danhsachtour_CellContentClick);
             // 
             // button5
             // 
@@ -414,9 +415,9 @@ namespace QuanLyTourDuLich
             this.panel9.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).EndInit();

@@ -10,12 +10,12 @@ namespace DAL
     {
         public LoaiTourDAO() { }
 
-        public List<string> List()
+        public List<LoaiTourDTO> ListAll()
         {
 
             DataProvider datapro = new DataProvider();
 
-            List<string> tours = new List<string>();
+            List<LoaiTourDTO> tours = new List<LoaiTourDTO>();
             string query = "Select * from LOAITOUR";
 
             DataTable data = datapro.ExecuteQuery(query);
@@ -27,11 +27,11 @@ namespace DAL
 
                 LoaiTourDTO newTour = new LoaiTourDTO(maloai, tenloai);
 
-                tours.Add(tenloai);
+                tours.Add(newTour);
             }
             return tours;
         }
-        public string  get(string tenloai)
+        public string  getID(string tenloai)
         {
 
             DataProvider datapro = new DataProvider();
@@ -48,7 +48,7 @@ namespace DAL
             }
             return maloai;
         }
-        public string getname(string idloai)
+        public string getName(string idloai)
         {
 
             DataProvider datapro = new DataProvider();

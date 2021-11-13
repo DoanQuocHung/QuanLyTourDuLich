@@ -9,7 +9,7 @@ namespace DAL
     {
         public ChiTietTourDAO() { }
 
-        public List<ChiTietTourDTO> List(string id)
+        public List<ChiTietTourDTO> ListAll(string id)
         {
 
             DataProvider datapro = new DataProvider();
@@ -25,27 +25,6 @@ namespace DAL
                 string madiadiem = item["Id_DiaDiem"].ToString();
                 int thutu = Int32.Parse(item["Thutu"].ToString());
                 
-
-                ChiTietTourDTO newTour = new ChiTietTourDTO(matour, madiadiem, thutu);
-
-                tours.Add(newTour);
-            }
-            return tours;
-        }
-        public List<ChiTietTourDTO> ListSearch(string search)
-        {
-
-            DataProvider datapro = new DataProvider();
-
-            List<ChiTietTourDTO> tours = new List<ChiTietTourDTO>();
-            string query = "Select * from CHITIETTOUR where Id_Tour LIKE '%" + search + "%'";
-            DataTable data = datapro.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
-            {
-                string matour = item["Id_Tour"].ToString();
-                string madiadiem = item["Id_DiaDiem"].ToString();
-                int thutu = Int32.Parse(item["Thutu"].ToString());
 
                 ChiTietTourDTO newTour = new ChiTietTourDTO(matour, madiadiem, thutu);
 
@@ -115,13 +94,14 @@ namespace DAL
             return false;
         }
 
-        public bool Delete(string id)
+        public bool Delete(string idtour,string iddiadiem)
         {
-            string query = "delete from CHITIETTOUR where Id_Tour = @MATOUR";
+            string query = "delete from CHITIETTOUR where Id_Tour = @MATOUR AND Id_Diadiem = @MADIADIEM";
 
             object[] para = new object[]
             {
-                id
+                idtour,
+                iddiadiem,
             };
             DataProvider datapro = new DataProvider();
             if (datapro.ExecuteNonQuery(query, para) > 0)
