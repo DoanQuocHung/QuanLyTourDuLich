@@ -13,20 +13,20 @@ namespace QuanLyTourDuLich
         public QuanLyChiTietTour_Sua(string id)
         {
             InitializeComponent();
-            new ChiTietTourBUS().get(id, textBox1, textBox2, textBox3);
+            //new ChiTietTourBUS().get(id, textBox1, textBox2, textBox3);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string matour = textBox1.Text;
-            string madiadiem = textBox2.Text;
-            int thutu = Int32.Parse(textBox3.Text);
+            //string matour = textBox1.Text;
+            //string madiadiem = textBox2.Text;
+            //int thutu = Int32.Parse(textBox3.Text);
 
-            if (new ChiTietTourBUS().Update(matour, madiadiem, thutu))
-            {
-                MessageBox.Show("Sửa thành công");
-                Hide();
-            }
+            //if (new ChiTietTourBUS().Update(matour, madiadiem, thutu))
+            //{
+            //    MessageBox.Show("Sửa thành công");
+            //    Hide();
+            //}
         }
     }
 }

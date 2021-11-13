@@ -50,13 +50,13 @@ namespace QuanLyTourDuLich
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            if (new ChiTietTourBUS().Delete(cellValue))
-            {
-                MessageBox.Show("Xóa thành công");
-            }
+            //int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+            //DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+            //string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+            //if (new ChiTietTourBUS().Delete(cellValue))
+            //{
+            //    MessageBox.Show("Xóa thành công");
+            //}
         }
 
         private void button6_Click(object sender, EventArgs e)

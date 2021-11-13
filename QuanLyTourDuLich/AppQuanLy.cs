@@ -10,9 +10,10 @@ using DAL;
 
 namespace QuanLyTourDuLich
 {
-    public partial class QuanLyTour : Form
+    public partial class AppQuanLy : Form
     {
-        public QuanLyTour()
+
+        public AppQuanLy()
         {
             InitializeComponent();
             BindGrid();
@@ -74,6 +75,54 @@ namespace QuanLyTourDuLich
             new TourBUS().ListSearch(Grid_Danhsachtour, textBox1);
         }
 
+
+        //LEFT MENU BAR ===================================================================================================================
+        //Button chuyển trang Quản Lý Tour  
+        private void button8_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new QuanLyTour());
+        }
+
+        //Button chuyển trang Quản Lý Nhân viên
+        private void button14_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new QuanLyNhanVien());
+        }
+
+        //Button chuyển trang Quản Lý Khách hàng
+        private void button9_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new QuanLyKhachHang());
+        }
+
+
+        //Hàm xử lý chuyển trang ==========================================================================================================
+        private Form activeForm = null;
+        private void OpenChildForm(Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelChildForm.Controls.Add(childForm);
+            panelChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
+
+        //Other ===========================================================================================================================
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Grid_Danhsachtour_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
 
     }
 }

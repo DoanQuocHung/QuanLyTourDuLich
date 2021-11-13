@@ -1,7 +1,7 @@
 ﻿
 namespace QuanLyTourDuLich
 {
-    partial class QuanLyKhachHang
+    partial class QuanLyNhanVien
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace QuanLyTourDuLich
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyKhachHang));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyNhanVien));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -54,7 +54,7 @@ namespace QuanLyTourDuLich
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Location = new System.Drawing.Point(8, 8);
+            this.panel1.Location = new System.Drawing.Point(7, 7);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1081, 787);
             this.panel1.TabIndex = 0;
@@ -66,9 +66,9 @@ namespace QuanLyTourDuLich
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.label1.Location = new System.Drawing.Point(11, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(430, 38);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Trang Quản Lý Khách hàng";
+            this.label1.Size = new System.Drawing.Size(406, 38);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Trang Quản Lý Nhân Viên";
             // 
             // panel2
             // 
@@ -83,7 +83,7 @@ namespace QuanLyTourDuLich
             this.panel2.Location = new System.Drawing.Point(0, 80);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1081, 701);
-            this.panel2.TabIndex = 4;
+            this.panel2.TabIndex = 10;
             // 
             // Grid_Danhsachtour
             // 
@@ -162,9 +162,9 @@ namespace QuanLyTourDuLich
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(11, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(234, 27);
+            this.label2.Size = new System.Drawing.Size(218, 27);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Danh sách Khách hàng";
+            this.label2.Text = "Danh sách Nhân viên";
             // 
             // panel3
             // 
@@ -175,7 +175,7 @@ namespace QuanLyTourDuLich
             this.panel3.Location = new System.Drawing.Point(573, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(508, 59);
-            this.panel3.TabIndex = 5;
+            this.panel3.TabIndex = 11;
             // 
             // textBox1
             // 
@@ -197,16 +197,16 @@ namespace QuanLyTourDuLich
             this.button6.Text = "       Tìm kiếm";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // QuanLyKhachHang
+            // QuanLyNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1104, 807);
+            this.ClientSize = new System.Drawing.Size(1101, 807);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "QuanLyKhachHang";
-            this.Text = "QuanLyKhachHang";
+            this.Name = "QuanLyNhanVien";
+            this.Text = "QuanLyNhanVien";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

@@ -13,20 +13,20 @@ namespace QuanLyTourDuLich
         public QuanLyTour_Them()
         {
             InitializeComponent();
-            new LoaiTourBUS().List(comboBox1);
+            //new LoaiTourBUS().List(comboBox1);
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            string matour = textBox1.Text;
-            string tentour = textBox2.Text;
-            string dacdiem = textBox3.Text;
-            string tenloai = comboBox1.SelectedItem.ToString();
+            //string matour = textBox1.Text;
+            //string tentour = textBox2.Text;
+            //string dacdiem = textBox3.Text;
+            //string tenloai = comboBox1.SelectedItem.ToString();
 
-            if (new TourBUS().Insert(matour, tentour, dacdiem, tenloai))
-            {
-                MessageBox.Show("Thêm thành công");
-                Hide();
-            }
+            //if (new TourBUS().Insert(matour, tentour, dacdiem, tenloai))
+            //{
+            //    MessageBox.Show("Thêm thành công");
+            //    Hide();
+            //}
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

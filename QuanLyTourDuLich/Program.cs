@@ -17,7 +17,7 @@ namespace QuanLyTourDuLich
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QuanLyTour());
+            Application.Run(new AppQuanLy());
         }
     }
 }
