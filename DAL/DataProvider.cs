@@ -16,6 +16,9 @@ namespace DAL
         public string connectionString = @"Data Source=DESKTOP-48AE0SM\SQLEXPRESS;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         //Doanh
         //public string connectionString = @"";
+        //Nguyen
+        //public string connectionString = @"Data Source=DESKTOP-48AE0SM\SQLEXPRESS;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
+        //test
 
         public DataTable ExecuteQuery(string query,object[] parameter = null)
         {
