@@ -55,6 +55,27 @@ namespace DAL
             }
             return tours;
         }
+        public TourDTO getTour(string search)
+        {
+
+            DataProvider datapro = new DataProvider();
+
+            List<TourDTO> tours = new List<TourDTO>();
+            string query = "Select * from TOUR where Id_Tour = "+search;
+            DataTable data = datapro.ExecuteQuery(query);
+            TourDTO newTour = new TourDTO();
+            foreach (DataRow item in data.Rows)
+            {
+                string matour = item["Id_Tour"].ToString();
+                string tentour = item["Ten_Tour"].ToString();
+                string dacdiem = item["Dacdiem_Tour"].ToString();
+                string maloai = item["Id_Loai"].ToString();
+
+                newTour = new TourDTO(matour, tentour, dacdiem, maloai);
+
+            }
+            return newTour;
+        }
         public TourDTO get(string id)
         {
 
@@ -79,7 +100,7 @@ namespace DAL
             }
             return newTour;
         }
-        public bool Update(string matour, TourDTO tour)
+        public bool Update(TourDTO tour)
         {
             string query = "update TOUR set " +
                 "Ten_Tour = @TENTOUR , " +
@@ -92,7 +113,7 @@ namespace DAL
                 tour.Ten_Tour,
                 tour.Dacdiem_Tour,
                 tour.Id_Loai,
-                matour 
+                tour.Id_Tour
             };
             DataProvider datapro = new DataProvider();
             if (datapro.ExecuteNonQuery(query, para) > 0)

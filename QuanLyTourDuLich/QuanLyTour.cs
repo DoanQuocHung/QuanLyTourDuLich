@@ -22,7 +22,7 @@ namespace QuanLyTourDuLich
         //Hàm lấy danh sách
         public void BindGrid()
         {
-            Grid_Danhsachtour.DataSource = new TourBUS().List(Grid_Danhsachtour);
+            Grid_Danhsachtour.DataSource = new TourBUS().List();
         }
 
         //Button thêm 
@@ -36,7 +36,7 @@ namespace QuanLyTourDuLich
         {
             int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+            string cellValue =Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
             new QuanLyTour_Sua(cellValue).ShowDialog();
         }
 
@@ -71,9 +71,7 @@ namespace QuanLyTourDuLich
         //Button tìm kiếm
         private void button6_Click(object sender, EventArgs e)
         {
-            new TourBUS().ListSearch(Grid_Danhsachtour, textBox1);
         }
-
 
     }
 }

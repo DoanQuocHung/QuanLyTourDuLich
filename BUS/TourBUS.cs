@@ -11,21 +11,25 @@ namespace BUS
     {
         public TourBUS() { }
 
-        public List<TourDTO> List(DataGridView data)
+        public List<TourDTO> List()
         {
             return new TourDAO().ListAll();
         }
-        public List<TourDTO> ListSearch(DataGridView data,TextBox text)
+        public List<TourDTO> ListSearch(string text)
         {
-           return new TourDAO().List(text.Text.ToString());
+           return new TourDAO().List(text);
         }
-        public void getName(string id)
+        public TourDTO getTour(string id)
         {
-            new LoaiTourDAO().getName(id);
+            return new TourDAO().getTour(id);
         }
-        public bool Update(string matour, TourDTO tour)
+        public string getName(string id)
         {
-            return new TourDAO().Update(matour,tour);
+            return new LoaiTourDAO().getName(id);
+        }
+        public bool Update(TourDTO tour)
+        {
+            return new TourDAO().Update(tour);
             //
         }
 
