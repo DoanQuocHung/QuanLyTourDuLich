@@ -12,9 +12,9 @@ namespace BUS
         {
             return new ChiTietTourDAO().ListAll(id);
         }
-        public ChiTietTourDTO get(string id)
+        public ChiTietTourDTO get(string id,string diadiem)
         {
-            return new ChiTietTourDAO().get(id);
+            return new ChiTietTourDAO().get(id,diadiem);
         }
         public bool Update(ChiTietTourDTO chitiet)
         {

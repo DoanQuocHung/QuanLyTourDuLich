@@ -35,16 +35,17 @@ namespace DAL
             }
             return tours;
         }
-        public ChiTietTourDTO get(string id)
+        public ChiTietTourDTO get(string id,string diadiem)
         {
 
             DataProvider datapro = new DataProvider();
 
             ChiTietTourDTO newTour = new ChiTietTourDTO();
-            string query = "Select * from CHITIETTOUR where Id_Tour = @id";
+            string query = "Select * from CHITIETTOUR where Id_Tour = @id AND Id_DiaDiem = @diadiem ";
             object[] para = new object[]
             {
-               id
+               id,
+               diadiem
             };
             DataTable data = datapro.ExecuteQuery(query, para);
 

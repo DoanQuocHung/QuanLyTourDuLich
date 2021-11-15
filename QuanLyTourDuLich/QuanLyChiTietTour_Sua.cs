@@ -11,11 +11,11 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyChiTietTour_Sua : Form
     {
-        public QuanLyChiTietTour_Sua(string id)
+        public QuanLyChiTietTour_Sua(string id,string diadiem)
         {
             InitializeComponent();
             ChiTietTourDTO edit = new ChiTietTourDTO();
-            edit = new ChiTietTourBUS().get(id);
+            edit = new ChiTietTourBUS().get(id,diadiem);
 
             textBox1.Text = edit.Id_Tour;
             textBox2.Text = edit.Id_DiaDiem;

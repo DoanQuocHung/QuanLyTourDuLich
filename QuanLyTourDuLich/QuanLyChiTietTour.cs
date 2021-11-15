@@ -38,7 +38,8 @@ namespace QuanLyTourDuLich
             int selectedrowindex =  dataGridView1.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
             string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            QuanLyChiTietTour_Sua ql_ctt_sua = new QuanLyChiTietTour_Sua(cellValue);
+            string cellValue2 = Convert.ToString(selectedRow.Cells["Id_DiaDiem"].Value);
+            QuanLyChiTietTour_Sua ql_ctt_sua = new QuanLyChiTietTour_Sua(cellValue, cellValue2);
             ql_ctt_sua.ShowDialog();
         }
 
