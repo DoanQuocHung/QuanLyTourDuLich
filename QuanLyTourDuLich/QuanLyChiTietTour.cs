@@ -31,6 +31,8 @@ namespace QuanLyTourDuLich
             QuanLyChiTietTour_Them ql_ctt_them = new QuanLyChiTietTour_Them();
             ql_ctt_them.ShowDialog();
         }
+
+        //Button Sửa
         private void button2_Click(object sender, EventArgs e)
         {
             int selectedrowindex =  dataGridView1.SelectedCells[0].RowIndex;
