@@ -14,5 +14,6 @@ namespace QuanLyTourDuLich
         {
             InitializeComponent();
         }
+
     }
 }
