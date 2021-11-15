@@ -71,7 +71,8 @@ namespace QuanLyTourDuLich
         //Button tìm kiếm
         private void button6_Click(object sender, EventArgs e)
         {
+            string search = textBox1.Text;
+            Grid_Danhsachtour.DataSource = new TourBUS().ListSearch(search);
         }
-
     }
 }

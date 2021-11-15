@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BUS;
+using DTO;
 namespace QuanLyTourDuLich
 {
     public partial class QuanLyChiTietTour_Sua : Form
@@ -13,20 +14,25 @@ namespace QuanLyTourDuLich
         public QuanLyChiTietTour_Sua(string id)
         {
             InitializeComponent();
-            //new ChiTietTourBUS().get(id, textBox1, textBox2, textBox3);
+            ChiTietTourDTO edit = new ChiTietTourDTO();
+            edit = new ChiTietTourBUS().get(id);
+
+            textBox1.Text = edit.Id_Tour;
+            textBox2.Text = edit.Id_DiaDiem;
+            textBox3.Text = edit.Thutu.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //string matour = textBox1.Text;
-            //string madiadiem = textBox2.Text;
-            //int thutu = Int32.Parse(textBox3.Text);
+            string matour = textBox1.Text;
+            string madiadiem = textBox2.Text;
+            int thutu = Int32.Parse(textBox3.Text);
 
-            //if (new ChiTietTourBUS().Update(matour, madiadiem, thutu))
-            //{
-            //    MessageBox.Show("Sửa thành công");
-            //    Hide();
-            //}
+            if (new ChiTietTourBUS().Update(new ChiTietTourDTO(matour, madiadiem, thutu)))
+            {
+               MessageBox.Show("Sửa thành công");
+                Hide();
+            }
         }
     }
 }

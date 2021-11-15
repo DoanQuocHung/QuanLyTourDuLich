@@ -56,20 +56,18 @@ namespace DAL
             }
             return newTour;
         }
-        public bool Update(string matour, ChiTietTourDTO tour)
+        public bool Update(ChiTietTourDTO tour)
         {
             string query = "update CHITIETTOUR set " +
-                "Id_Tour = @id , " +
                 "Id_DiaDiem = @DIADIEM , " +
                 "Thutu = @thutu " +
                 "where Id_Tour = @oldMATOUR";
 
             object[] para = new object[]
             {
-                tour.Id_Tour,
                 tour.Id_DiaDiem,
                 tour.Thutu,
-                matour
+                tour.Id_Tour,
             };
             DataProvider datapro = new DataProvider();
             if (datapro.ExecuteNonQuery(query, para) > 0)

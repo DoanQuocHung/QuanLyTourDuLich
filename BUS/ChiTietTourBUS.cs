@@ -8,7 +8,7 @@ namespace BUS
 {
     public class ChiTietTourBUS
     {
-        public List<ChiTietTourDTO> List(DataGridView data,string id)
+        public List<ChiTietTourDTO> List(string id)
         {
             return new ChiTietTourDAO().ListAll(id);
         }
@@ -16,9 +16,9 @@ namespace BUS
         {
             return new ChiTietTourDAO().get(id);
         }
-        public bool Update(string matour, ChiTietTourDTO chitiet)
+        public bool Update(ChiTietTourDTO chitiet)
         {
-            return new ChiTietTourDAO().Update(matour,chitiet);
+            return new ChiTietTourDAO().Update(chitiet);
             //
         }
 

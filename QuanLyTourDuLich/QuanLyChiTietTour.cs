@@ -18,12 +18,14 @@ namespace QuanLyTourDuLich
             this.id = id;
             BindGrid(id);
         }
-
+        //QUẢN LÝ CHI TIẾT TOUR ====================================================================================================================
+        //Hàm lấy danh sách
         public void BindGrid(string id)
         {
-            new ChiTietTourBUS().List(dataGridView1,id);
+            dataGridView1.DataSource = new ChiTietTourBUS().List(id);
         }
 
+        //Button Thêm
         private void button1_Click(object sender, EventArgs e)
         {
             QuanLyChiTietTour_Them ql_ctt_them = new QuanLyChiTietTour_Them();
@@ -50,13 +52,14 @@ namespace QuanLyTourDuLich
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
-            //DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-            //string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            //if (new ChiTietTourBUS().Delete(cellValue))
-            //{
-            //    MessageBox.Show("Xóa thành công");
-            //}
+            int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+            string cellValue2 = Convert.ToString(selectedRow.Cells["Id_DiaDiem"].Value);
+            if (new ChiTietTourBUS().Delete(cellValue,cellValue2))
+            {
+                MessageBox.Show("Xóa thành công");
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
