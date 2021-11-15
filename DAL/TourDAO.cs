@@ -148,7 +148,7 @@ namespace DAL
                 id
             };
             DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query2, para) > 0)
+            datapro.ExecuteNonQuery(query2, para);
                 if (datapro.ExecuteNonQuery(query, para) > 0)
                     return true;
             return false;
