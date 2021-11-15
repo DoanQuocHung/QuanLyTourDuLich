@@ -15,12 +15,14 @@ namespace QuanLyTourDuLich
         public QuanLyTour_Them()
         {
             InitializeComponent();
+            
             List<LoaiTourDTO> listloai = new LoaiTourBUS().List();
             foreach (LoaiTourDTO i in listloai)
             {
                 tenloai.Add(i.Ten_Loai);
             }
             comboBox1.DataSource = tenloai;
+            textBox1.Text = new TourBUS().MakeID();
         }
         private void button1_Click(object sender, EventArgs e)
         {

@@ -35,32 +35,41 @@ namespace QuanLyTourDuLich
         //Button Sửa 
         private void button2_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            new QuanLyTour_Sua(cellValue).ShowDialog();
+            if (Grid_Danhsachtour.RowCount != 0)
+            {
+                int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+                new QuanLyTour_Sua(cellValue).ShowDialog();
+            }
         }
 
         //Button Xóa 
         private void button3_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            if (new TourBUS().Delete(cellValue))
+            if (Grid_Danhsachtour.RowCount != 0)
             {
-                MessageBox.Show("Xóa thành công");
+                int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+                if (new TourBUS().Delete(cellValue))
+                {
+                    MessageBox.Show("Xóa thành công");
+                }
             }
         }
 
         //Button Chi tiết 
         private void button4_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            QuanLyChiTietTour ql_ctt = new QuanLyChiTietTour(cellValue);
-            ql_ctt.ShowDialog();
+            if (Grid_Danhsachtour.RowCount != 0)
+            {
+                int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+                QuanLyChiTietTour ql_ctt = new QuanLyChiTietTour(cellValue);
+                ql_ctt.ShowDialog();
+            }
         }
 
         //Button Reload 

@@ -65,5 +65,32 @@ namespace DAL
             }
             return tenloai;
         }
+        public int Count()
+        {
+            string query = "select count(*) from LOAITOUR";
+            DataProvider datapro = new DataProvider();
+            int count = (int)datapro.ExecuteScalar(query);
+            return count;
+        }
+        public int Exist(String id)
+        {
+            string query = "select count(*) from LOAITOUR where Id_Loai = " + id;
+            DataProvider datapro = new DataProvider();
+            int count = (int)datapro.ExecuteScalar(query);
+            return count;
+        }
+        public String MakeID()
+        {
+            String id = "";
+            int count = Count();
+            while (true)
+            {
+                id = "L" + count;
+                if (Exist(id) == 0)
+                    break;
+                else count++;
+            }
+            return id;
+        }
     }
 }

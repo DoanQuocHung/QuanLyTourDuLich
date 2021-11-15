@@ -30,16 +30,16 @@ namespace QuanLyTourDuLich
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,16 @@ namespace QuanLyTourDuLich
             this.panel1.Size = new System.Drawing.Size(548, 380);
             this.panel1.TabIndex = 0;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DisplayMember = "(none)";
+            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(208, 238);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(317, 33);
+            this.comboBox1.TabIndex = 9;
+            // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(208, 180);
@@ -79,8 +89,19 @@ namespace QuanLyTourDuLich
             // 
             this.textBox1.Location = new System.Drawing.Point(208, 62);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(317, 27);
             this.textBox1.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(31, 241);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 25);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Loại";
             // 
             // label3
             // 
@@ -132,26 +153,6 @@ namespace QuanLyTourDuLich
             this.button1.Text = "Thêm";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DisplayMember = "(none)";
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(208, 238);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(317, 33);
-            this.comboBox1.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(31, 241);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 25);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Loại";
             // 
             // QuanLyTour_Them
             // 
