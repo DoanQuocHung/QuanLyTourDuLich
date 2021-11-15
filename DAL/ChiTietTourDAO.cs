@@ -64,13 +64,14 @@ namespace DAL
             string query = "update CHITIETTOUR set " +
                 "Id_DiaDiem = @DIADIEM , " +
                 "Thutu = @thutu " +
-                "where Id_Tour = @oldMATOUR";
+                "where Id_Tour = @oldMATOUR AND Id_DiaDiem = @madd";
 
             object[] para = new object[]
             {
                 tour.Id_DiaDiem,
                 tour.Thutu,
                 tour.Id_Tour,
+                tour.Id_DiaDiem
             };
             DataProvider datapro = new DataProvider();
             if (datapro.ExecuteNonQuery(query, para) > 0)
