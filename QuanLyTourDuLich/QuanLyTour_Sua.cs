@@ -41,8 +41,7 @@ namespace QuanLyTourDuLich
             string tentour = textBox2.Text;
             string dacdiem = textBox3.Text;
             string tenloai = comboBox2.SelectedItem.ToString();
-
-            if (new TourBUS().Update(new TourDTO(matour, tentour, dacdiem, tenloai)))
+            if (new TourBUS().Update(new TourDTO(matour, tentour, dacdiem, new LoaiTourBUS().getID(tenloai))))
             {
                 MessageBox.Show("Sửa thành công");
                 Hide();

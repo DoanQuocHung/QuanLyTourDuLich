@@ -15,9 +15,12 @@ namespace DAL
             DataProvider datapro = new DataProvider();
 
             List<ChiTietTourDTO> tours = new List<ChiTietTourDTO>();
-            string query = "Select * from CHITIETTOUR";
-
-            DataTable data = datapro.ExecuteQuery(query);
+            string query = "Select * from CHITIETTOUR where Id_Tour = @id";
+            object[] para = new object[]
+            {
+               id
+            };
+            DataTable data = datapro.ExecuteQuery(query,para);
 
             foreach (DataRow item in data.Rows)
             {
