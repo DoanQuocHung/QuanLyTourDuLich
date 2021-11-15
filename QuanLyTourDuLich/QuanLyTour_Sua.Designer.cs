@@ -91,6 +91,7 @@ namespace QuanLyTourDuLich
             // 
             this.textBox1.Location = new System.Drawing.Point(208, 62);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(317, 27);
             this.textBox1.TabIndex = 6;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);

@@ -35,12 +35,15 @@ namespace QuanLyTourDuLich
         //Button Sửa
         private void button2_Click(object sender, EventArgs e)
         {
-            int selectedrowindex =  dataGridView1.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            string cellValue2 = Convert.ToString(selectedRow.Cells["Id_DiaDiem"].Value);
-            QuanLyChiTietTour_Sua ql_ctt_sua = new QuanLyChiTietTour_Sua(cellValue, cellValue2);
-            ql_ctt_sua.ShowDialog();
+            if (dataGridView1.RowCount != 0)
+            {
+                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+                string cellValue2 = Convert.ToString(selectedRow.Cells["Id_DiaDiem"].Value);
+                QuanLyChiTietTour_Sua ql_ctt_sua = new QuanLyChiTietTour_Sua(cellValue, cellValue2);
+                ql_ctt_sua.ShowDialog();
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -55,13 +58,16 @@ namespace QuanLyTourDuLich
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            string cellValue2 = Convert.ToString(selectedRow.Cells["Id_DiaDiem"].Value);
-            if (new ChiTietTourBUS().Delete(cellValue,cellValue2))
+            if (dataGridView1.RowCount != 0)
             {
-                MessageBox.Show("Xóa thành công");
+                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+                string cellValue2 = Convert.ToString(selectedRow.Cells["Id_DiaDiem"].Value);
+                if (new ChiTietTourBUS().Delete(cellValue, cellValue2))
+                {
+                    MessageBox.Show("Xóa thành công");
+                }
             }
         }
 

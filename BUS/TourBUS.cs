@@ -30,17 +30,19 @@ namespace BUS
         public bool Update(TourDTO tour)
         {
             return new TourDAO().Update(tour);
-            //
         }
 
         public bool Insert(TourDTO tour)
         {
             return new TourDAO().Insert(tour);
-            //Hung
         }
         public bool Delete(string matour)
         {
             return new TourDAO().Delete(matour);
+        }
+        public String MakeID()
+        {
+            return new TourDAO().MakeID();
         }
     }
 }
