@@ -15,7 +15,7 @@ namespace DAL
         //Hùng
         public string connectionString = @"Data Source=DESKTOP-48AE0SM\SQLEXPRESS;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         //Doanh
-        //public string connectionString = @"";
+        //public string connectionString = @"Data Source=DESKTOP-TB623K0\MSSQLSERVERY;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         //Nguyen
         //public string connectionString = @"Data Source=DESKTOP-48AE0SM\SQLEXPRESS;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         //teơn 

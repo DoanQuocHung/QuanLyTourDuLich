@@ -106,6 +106,14 @@ namespace QuanLyTourDuLich
         }
 
 
+
+        //Button chuyển trang Quản Lý Địa điểm
+        private void button13_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new QuanLyDiaDiem());
+        }
+
+
         //Hàm xử lý chuyển trang ==========================================================================================================
         private Form activeForm = null;
         private void OpenChildForm(Form childForm)

@@ -6,6 +6,7 @@ namespace DTO
 {
     public class DiaDiemDTO
     {
+        public DiaDiemDTO() { }
         public DiaDiemDTO(string Id_DiaDiem, string Ten_DiaDiem)
         {
             this.Id_DiaDiem = Id_DiaDiem;
