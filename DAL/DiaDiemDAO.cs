@@ -115,14 +115,14 @@ namespace DAL
 
         public bool Update(DiaDiemDTO diadiem)
         {
-            string query = "update DIADIEM set " +
+            string query = "update dbo.DIADIEM set " +
                 "Ten_DiaDiem = @TENDIADIEM  " +
-                "where Id_DiaDiem = @oldMADIADIEM";
+                "where Id_DiaDiem = @oldMADIADIEM ";
 
             object[] para = new object[]
             {
-                diadiem.Id_DiaDiem,
-                diadiem.Ten_DiaDiem
+                diadiem.Ten_DiaDiem,
+                diadiem.Id_DiaDiem
             };
             DataProvider datapro = new DataProvider();
             if (datapro.ExecuteNonQuery(query, para) > 0)

@@ -46,7 +46,7 @@ namespace QuanLyTourDuLich
             int selectedrowindex = Grid_Danhsachdiadiem.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = Grid_Danhsachdiadiem.Rows[selectedrowindex];
             string cellValue = Convert.ToString(selectedRow.Cells["Id_DiaDiem"].Value);
-            if (new TourBUS().Delete(cellValue))
+            if (new DiaDiemBUS().Delete(cellValue))
             {
                 MessageBox.Show("Xóa thành công");
             }
