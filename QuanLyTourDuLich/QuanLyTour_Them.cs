@@ -34,6 +34,7 @@ namespace QuanLyTourDuLich
             if (new TourBUS().Insert(new TourDTO(matour, tentour, dacdiem, idloai)))
             {
                 MessageBox.Show("Thêm thành công");
+
                 Hide();
             }
         }

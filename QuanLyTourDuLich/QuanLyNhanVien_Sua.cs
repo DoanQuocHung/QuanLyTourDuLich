@@ -33,7 +33,7 @@ namespace QuanLyTourDuLich
             string email = txtEmail.Text;
             string sdt = txtSDT.Text;
             string gioiTinh = txtGioiTinh.Text;
-            int tinhTrang = int.Parse(txtTinhTrang.Text);
+            int tinhTrang = 1;
             if (new NhanVienBUS().Update(new NhanVienDTO(maNV, hotenNV, email, sdt, gioiTinh, tinhTrang)))
             {
                 MessageBox.Show("Sửa thành công");

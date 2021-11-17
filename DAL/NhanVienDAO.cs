@@ -27,7 +27,10 @@ namespace DAL
                 string email = item["Email_NV"].ToString();
                 string sdt = item["Sdt_NV"].ToString();
                 string gioiTinh = item["Gioitinh_NV"].ToString();
-                int tinhTrang = (int) item["Tinh_Trang"];
+                int tinhTrang = 0;
+                if ((bool)item["Tinh_Trang"])
+                    tinhTrang = 1;
+                else tinhTrang = 0;
 
                 NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
 
@@ -177,8 +180,7 @@ namespace DAL
 
         public bool Delete(string id)
         {
-            string query = "update NHANVIEN set " +
-                "Tinh_Trang = 0 " +
+            string query = "delete from NHANVIEN " +
                 "where Id_NV = @MANV";
 
             object[] para = new object[]
