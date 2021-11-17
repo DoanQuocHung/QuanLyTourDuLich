@@ -29,7 +29,7 @@ namespace DAL
                 string gioiTinh = item["Gioitinh_NV"].ToString();
                 int tinhTrang = (int) item["Tinh_Trang"];
 
-                NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt,gioiTinh,tinhTrang);
+                NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
 
                 nhanVien.Add(newNhanVien);
             }
@@ -210,7 +210,7 @@ namespace DAL
             string id;
             while (true)
             {
-                id = "NV0" + count;
+                id = "N" + count;
                 if (Exist(id) == 0)
                     break;
                 else count++;
