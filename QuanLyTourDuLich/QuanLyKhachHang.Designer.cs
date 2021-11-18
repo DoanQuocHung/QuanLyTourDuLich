@@ -33,7 +33,7 @@ namespace QuanLyTourDuLich
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Grid_Danhsachtour = new System.Windows.Forms.DataGridView();
+            this.Grid_Danhsachkhachhang = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -44,7 +44,7 @@ namespace QuanLyTourDuLich
             this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachkhachhang)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +72,7 @@ namespace QuanLyTourDuLich
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel2.Controls.Add(this.Grid_Danhsachtour);
+            this.panel2.Controls.Add(this.Grid_Danhsachkhachhang);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
@@ -83,16 +83,16 @@ namespace QuanLyTourDuLich
             this.panel2.Size = new System.Drawing.Size(1081, 701);
             this.panel2.TabIndex = 4;
             // 
-            // Grid_Danhsachtour
+            // Grid_Danhsachkhachhang
             // 
-            this.Grid_Danhsachtour.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Grid_Danhsachtour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Grid_Danhsachtour.Location = new System.Drawing.Point(11, 64);
-            this.Grid_Danhsachtour.Name = "Grid_Danhsachtour";
-            this.Grid_Danhsachtour.RowHeadersWidth = 51;
-            this.Grid_Danhsachtour.RowTemplate.Height = 29;
-            this.Grid_Danhsachtour.Size = new System.Drawing.Size(1053, 625);
-            this.Grid_Danhsachtour.TabIndex = 10;
+            this.Grid_Danhsachkhachhang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Grid_Danhsachkhachhang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grid_Danhsachkhachhang.Location = new System.Drawing.Point(11, 64);
+            this.Grid_Danhsachkhachhang.Name = "Grid_Danhsachkhachhang";
+            this.Grid_Danhsachkhachhang.RowHeadersWidth = 51;
+            this.Grid_Danhsachkhachhang.RowTemplate.Height = 29;
+            this.Grid_Danhsachkhachhang.Size = new System.Drawing.Size(1053, 625);
+            this.Grid_Danhsachkhachhang.TabIndex = 10;
             // 
             // button5
             // 
@@ -105,6 +105,7 @@ namespace QuanLyTourDuLich
             this.button5.TabIndex = 9;
             this.button5.Text = "      Reload";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // button3
             // 
@@ -117,6 +118,7 @@ namespace QuanLyTourDuLich
             this.button3.TabIndex = 7;
             this.button3.Text = "    Xóa";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // button2
             // 
@@ -129,6 +131,7 @@ namespace QuanLyTourDuLich
             this.button2.TabIndex = 6;
             this.button2.Text = "     Sửa";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // button1
             // 
@@ -141,6 +144,7 @@ namespace QuanLyTourDuLich
             this.button1.TabIndex = 5;
             this.button1.Text = "      Thêm";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label2
             // 
@@ -182,6 +186,7 @@ namespace QuanLyTourDuLich
             this.button6.TabIndex = 2;
             this.button6.Text = "       Tìm kiếm";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // QuanLyKhachHang
             // 
@@ -197,7 +202,7 @@ namespace QuanLyTourDuLich
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachkhachhang)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -209,7 +214,7 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView Grid_Danhsachtour;
+        private System.Windows.Forms.DataGridView Grid_Danhsachkhachhang;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;

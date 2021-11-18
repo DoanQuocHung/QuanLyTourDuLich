@@ -28,9 +28,6 @@ namespace DAL
                 string sdt = item["Sdt_NV"].ToString();
                 string gioiTinh = item["Gioitinh_NV"].ToString();
                 int tinhTrang = 0;
-                if ((bool)item["Tinh_Trang"])
-                    tinhTrang = 1;
-                else tinhTrang = 0;
 
                 NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
 

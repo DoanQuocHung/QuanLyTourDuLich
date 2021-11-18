@@ -30,9 +30,6 @@ namespace DAL
                 string quoctichKH = item["Quoctich"].ToString();
                 
                 int tinhtrang = 0;
-                if ((bool)item["Tinh_Trang"])
-                    tinhtrang = 1;
-                else tinhtrang = 0;
 
                 KhachDTO newKhachHang = new KhachDTO(maKH, hoTenKH, cmndKH, diachiKH, gioitinhKH, sdtKH, quoctichKH, tinhtrang);
 
@@ -173,7 +170,7 @@ namespace DAL
         public bool Insert(KhachDTO khachHang)
         {
             string query = "insert into KHACH " +
-                "values( @MAKH , @HOTEN , @CMND , @DIACHI , @GIOITINH , @SDT, @QUOCTICH, @TINHTRANG )";
+                "values( @MAKH , @HOTEN , @CMND , @DIACHI , @GIOITINH , @SDT , @QUOCTICH , @TINHTRANG )";
 
             object[] para = new object[]
             {
