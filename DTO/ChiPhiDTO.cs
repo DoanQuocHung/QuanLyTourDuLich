@@ -6,7 +6,8 @@ namespace DTO
 {
     public class ChiPhiDTO
     {
-        public ChiPhiDTO(string Id_LoaiChiPhi, string Id_Doan, string Gia)
+        public ChiPhiDTO() { }
+        public ChiPhiDTO(string Id_LoaiChiPhi, string Id_Doan, int Gia)
         {
             this.Id_LoaiChiPhi = Id_LoaiChiPhi;
             this.Id_Doan = Id_Doan;
@@ -15,6 +16,6 @@ namespace DTO
 
         public string Id_LoaiChiPhi { get; set; }
         public string Id_Doan { get; set; }
-        public string Gia { get; set; }
+        public int Gia { get; set; }
     }
 }
