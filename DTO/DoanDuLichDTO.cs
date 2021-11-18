@@ -6,7 +6,8 @@ namespace DTO
 {
     public class DoanDuLichDTO
     {
-        public DoanDuLichDTO(string Id_Doan, string Ten_Doan, string Id_Tour, string Ngaykhoihanh, string Ngayketthuc, string Doanhthu, string Noidung)
+        public DoanDuLichDTO() { }
+        public DoanDuLichDTO(string Id_Doan, string Ten_Doan, string Id_Tour, string Ngaykhoihanh, string Ngayketthuc, long Doanhthu, string Noidung)
         {
             this.Id_Doan = Id_Doan;
             this.Ten_Doan = Ten_Doan;
@@ -21,7 +22,7 @@ namespace DTO
         public string Id_Tour { get; set; }
         public string Ngaykhoihanh { get; set; }
         public string Ngayketthuc { get; set; }
-        public string Doanhthu { get; set; }
+        public long Doanhthu { get; set; }
         public string Noidung { get; set; }
     }
 }
