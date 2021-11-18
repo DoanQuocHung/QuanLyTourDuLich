@@ -181,7 +181,7 @@ namespace QuanLyTourDuLich
             this.button2.Size = new System.Drawing.Size(109, 43);
             this.button2.TabIndex = 1;
             this.button2.Text = "Hủy";
-            this.button2.UseVisualStyleBackColor = true; 
+            this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // button1
