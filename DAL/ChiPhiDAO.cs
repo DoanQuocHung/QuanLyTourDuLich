@@ -26,7 +26,7 @@ namespace DAL
 
             foreach (DataRow item in data.Rows)
             {
-                string maloai = item["Id_Loai"].ToString();
+                string maloai = item["Id_LoaiChiPhi"].ToString();
                 string madoan = item["Id_Doan"].ToString();
                 int gia = Int32.Parse(item["Gia"].ToString());
 
@@ -53,7 +53,7 @@ namespace DAL
 
             foreach (DataRow item in data.Rows)
             {
-                string maloai = item["Id_Loai"].ToString();
+                string maloai = item["Id_LoaiChiPh"].ToString();
                 string madoan = item["Id_Doan"].ToString();
                 int gia = Int32.Parse(item["Gia"].ToString());
 

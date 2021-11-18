@@ -10,17 +10,13 @@ namespace DAL
     {
         public DoanDuLichDAO() { }
 
-        public List<DoanDuLichDTO> ListAll(string id)
+        public List<DoanDuLichDTO> ListAll()
         {
             DataProvider dataProvider = new DataProvider();
 
             List<DoanDuLichDTO> doanDuLich = new List<DoanDuLichDTO>();
-            string query = "select * from DOANDULICH where Id_Doan = @MADOAN";
-            object[] para = new object[]
-            {
-               id
-            };
-            DataTable data = dataProvider.ExecuteQuery(query, para);
+            string query = "select * from DOANDULICH";
+            DataTable data = dataProvider.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)
             {
@@ -166,19 +162,45 @@ namespace DAL
             return false;
         }
 
-        public bool Delete(string maDoan, string maTour)
+        public bool Delete(string maDoan)
         {
-            string query = "delete from DOANDULICH where Id_Doan = @MADOAN AND Id_Tour = @MATOUR ";
+            string query = "delete from DOANDULICH where Id_Doan = @MADOAN ";
 
             object[] para = new object[]
             {
-                maDoan,
-                maTour
+                maDoan
             };
             DataProvider dataProvider = new DataProvider();
             if (dataProvider.ExecuteNonQuery(query, para) > 0)
                 return true;
             return false;
+        }
+        public int Count()
+        {
+            string query = "select count(*) from DOANDULICH";
+            DataProvider datapro = new DataProvider();
+            int count = (int)datapro.ExecuteScalar(query);
+            return count;
+        }
+        public int Exist(String id)
+        {
+            string query = "select count(*) from DOANDULICH where Id_Doan = '" + id + "'";
+            DataProvider datapro = new DataProvider();
+            int count = (int)datapro.ExecuteScalar(query);
+            return count;
+        }
+        public String MakeID()
+        {
+            String id = "";
+            int count = Count();
+            while (true)
+            {
+                id = "DO" + count;
+                if (Exist(id) == 0)
+                    break;
+                else count++;
+            }
+            return id;
         }
     }
 }

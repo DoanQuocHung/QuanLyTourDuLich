@@ -32,7 +32,7 @@ namespace QuanLyTourDuLich
             {
                 int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-                string cellValue = Convert.ToString(selectedRow.Cells["Id_Loai"].Value);
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_LoaiChiPhi"].Value);
                 string cellValue2 = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
                 QuanLyChiPhi_Sua ql_ctt_sua = new QuanLyChiPhi_Sua(cellValue, cellValue2);
                 ql_ctt_sua.ShowDialog();
@@ -45,7 +45,7 @@ namespace QuanLyTourDuLich
             {
                 int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-                string cellValue = Convert.ToString(selectedRow.Cells["Id_Loai"].Value);
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_LoaiChiPhi"].Value);
                 string cellValue2 = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
                 if (new ChiPhiBUS().Delete(cellValue, cellValue2))
                 {

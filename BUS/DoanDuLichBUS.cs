@@ -8,9 +8,9 @@ namespace BUS
 {
     public class DoanDuLichBUS
     {
-        public List<DoanDuLichDTO> List(string id)
+        public List<DoanDuLichDTO> List()
         {
-            return new DoanDuLichDAO().ListAll(id);
+            return new DoanDuLichDAO().ListAll();
         }
 
         public List<DoanDuLichDTO> ListSearch(string text)
@@ -32,9 +32,13 @@ namespace BUS
             return new DoanDuLichDAO().Insert(doanDuLich);
         }
 
-        public bool Delete(string maDoan, string maTour)
+        public bool Delete(string maDoan)
         {
-            return new DoanDuLichDAO().Delete(maDoan, maTour);
+            return new DoanDuLichDAO().Delete(maDoan);
+        }
+        public String MakeID()
+        {
+            return new DoanDuLichDAO().MakeID();
         }
     }
 }

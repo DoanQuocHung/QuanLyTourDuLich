@@ -175,6 +175,7 @@ namespace QuanLyTourDuLich
             this.button10.Text = "        Quản lý đoàn";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // panel4
             // 

@@ -73,6 +73,7 @@ namespace QuanLyTourDuLich
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(548, 471);
             this.panel1.TabIndex = 3;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label1
             // 
@@ -216,6 +217,7 @@ namespace QuanLyTourDuLich
             this.button1.TabIndex = 0;
             this.button1.Text = "      Sửa";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // QuanLyDoan_Sua
             // 
