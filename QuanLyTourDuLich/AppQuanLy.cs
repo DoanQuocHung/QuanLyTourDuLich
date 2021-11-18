@@ -142,5 +142,9 @@ namespace QuanLyTourDuLich
 
         }
 
+        private void button11_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new QuanLyChiPhi());
+        }
     }
 }
