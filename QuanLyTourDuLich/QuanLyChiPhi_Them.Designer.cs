@@ -53,7 +53,7 @@ namespace QuanLyTourDuLich
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(10, 12);
+            this.panel1.Location = new System.Drawing.Point(10, 7);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(548, 279);
             this.panel1.TabIndex = 2;
@@ -139,7 +139,7 @@ namespace QuanLyTourDuLich
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(570, 298);
+            this.ClientSize = new System.Drawing.Size(563, 292);
             this.Controls.Add(this.panel1);
             this.Name = "QuanLyChiPhi_Them";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
