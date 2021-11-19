@@ -24,7 +24,7 @@ namespace DAL
 
             foreach (DataRow item in data.Rows)
             {
-                string matour = item["Id_Tour"].ToString();
+                string matour = item["Id_Doan"].ToString();
                 string madiadiem = item["Id_Khach"].ToString();
 
 
