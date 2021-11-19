@@ -10,7 +10,7 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyChiTietDoan_Sua : Form
     {
-        public QuanLyChiTietDoan_Sua()
+        public QuanLyChiTietDoan_Sua(string id1,string id2)
         {
             InitializeComponent();
         }

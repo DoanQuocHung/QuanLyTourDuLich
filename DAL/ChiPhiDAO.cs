@@ -43,7 +43,7 @@ namespace DAL
             DataProvider datapro = new DataProvider();
 
             ChiPhiDTO chiphi = new ChiPhiDTO();
-            string query = "Select * from CHIPHI where Id_loai = @loai AND Id_Doan = @doan ";
+            string query = "Select * from CHIPHI where Id_loaiChiPhi = @loai AND Id_Doan = @doan ";
             object[] para = new object[]
             {
                loai,
@@ -53,7 +53,7 @@ namespace DAL
 
             foreach (DataRow item in data.Rows)
             {
-                string maloai = item["Id_LoaiChiPh"].ToString();
+                string maloai = item["Id_LoaiChiPhi"].ToString();
                 string madoan = item["Id_Doan"].ToString();
                 int gia = Int32.Parse(item["Gia"].ToString());
 
@@ -66,9 +66,9 @@ namespace DAL
         public bool Update(ChiPhiDTO tour,string loai)
         {
             string query = "update CHIPHI set " +
-                "Id_Loai = @loai , " +
+                "Id_LoaiChiPhi = @loai , " +
                 "Gia = @gia " +
-                "where Id_Loai = @oldloai AND Id_Doan = @doan";
+                "where Id_LoaiChiPhi = @oldloai AND Id_Doan = @doan";
 
             object[] para = new object[]
             {
@@ -103,7 +103,7 @@ namespace DAL
         public bool Delete(string loai, string doan)
         {
             string query = "delete from CHIPHI " +
-                "where Id_Loai = @loai AND Id_Doan = @doan";
+                "where Id_LoaiChiPhi = @loai AND Id_Doan = @doan";
 
             object[] para = new object[]
             {

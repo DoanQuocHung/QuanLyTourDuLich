@@ -142,7 +142,7 @@ namespace DAL
                 "Ngayketthuc = @NGAYKETTHUC , " +
                 "Doanhthu = @DOANHTHU , " +
                 "Noidung  = @NOIDUNG " +
-                "where Id_Doan = @oldMADOAN AND Id_Tour = @idtour ";
+                "where Id_Doan = @oldMADOAN";
 
             object[] para = new object[]
             {
@@ -153,8 +153,7 @@ namespace DAL
                 doanDuLich.Ngayketthuc,
                 doanDuLich.Doanhthu,
                 doanDuLich.Noidung,
-                doanDuLich.Id_Doan,
-                doanDuLich.Id_Tour
+                doanDuLich.Id_Doan
             };
             DataProvider dataProvider = new DataProvider();
             if (dataProvider.ExecuteNonQuery(query, para) > 0)

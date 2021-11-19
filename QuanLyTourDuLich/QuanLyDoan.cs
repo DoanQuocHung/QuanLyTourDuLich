@@ -68,7 +68,14 @@ namespace QuanLyTourDuLich
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            if (Grid_Danhsachdoan.RowCount != 0)
+            {
+                int selectedrowindex = Grid_Danhsachdoan.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_Danhsachdoan.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
+                QuanLyChiTietDoan ql_ctt = new QuanLyChiTietDoan(cellValue);
+                ql_ctt.ShowDialog();
+            }
         }
     }
 }
