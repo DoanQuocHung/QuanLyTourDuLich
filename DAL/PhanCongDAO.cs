@@ -9,18 +9,15 @@ namespace DAL
     {
         public PhanCongDAO() { }
 
-        public List<PhanCongDTO> ListAll(string id)
+        public List<PhanCongDTO> ListAll()
         {
 
             DataProvider dataProvider = new DataProvider();
 
             List<PhanCongDTO> phanCong = new List<PhanCongDTO>();
             string query = "select * from PHANCONG where Id_Doan = @MADOAN";
-            object[] para = new object[]
-            {
-               id
-            };
-            DataTable data = dataProvider.ExecuteQuery(query, para);
+
+            DataTable data = dataProvider.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)
             {

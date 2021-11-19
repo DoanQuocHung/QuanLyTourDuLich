@@ -7,9 +7,11 @@ namespace BUS
 {
     public class PhanCongBUS
     {
-        public List<PhanCongDTO> List(string id)
+        public PhanCongBUS() { }
+
+        public List<PhanCongDTO> List()
         {
-            return new PhanCongDAO().ListAll(id);
+            return new PhanCongDAO().ListAll();
         }
 
         public List<PhanCongDTO> ListSearch(string text)
@@ -34,6 +36,11 @@ namespace BUS
         public bool Delete(string maDoan, string maNhanVien)
         {
             return new PhanCongDAO().Delete(maDoan, maNhanVien);
+        }
+
+        public String MakeID()
+        {
+            return new PhanCongDAO().MakeID();
         }
     }
 }
