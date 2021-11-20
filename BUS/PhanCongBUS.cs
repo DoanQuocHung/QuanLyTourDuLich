@@ -37,10 +37,5 @@ namespace BUS
         {
             return new PhanCongDAO().Delete(maDoan, maNhanVien);
         }
-
-        public String MakeID()
-        {
-            return new PhanCongDAO().MakeID();
-        }
     }
 }
