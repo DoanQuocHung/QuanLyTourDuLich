@@ -29,6 +29,7 @@ namespace QuanLyTourDuLich
         private void button1_Click(object sender, EventArgs e)
         {
             new QuanLyTour_Them().ShowDialog();
+            BindGrid();
         }
 
         //Button Sửa 
@@ -38,6 +39,7 @@ namespace QuanLyTourDuLich
             DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
             string cellValue =Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
             new QuanLyTour_Sua(cellValue).ShowDialog();
+            BindGrid();
         }
 
         //Button Xóa 
@@ -49,6 +51,7 @@ namespace QuanLyTourDuLich
             if (new TourBUS().Delete(cellValue))
             {
                 MessageBox.Show("Xóa thành công");
+                BindGrid();
             }
         }
 
