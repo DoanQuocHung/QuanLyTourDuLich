@@ -15,7 +15,7 @@ namespace DAL
             DataProvider dataProvider = new DataProvider();
 
             List<PhanCongDTO> phanCong = new List<PhanCongDTO>();
-            string query = "select * from PHANCONG where Id_Doan = @MADOAN";
+            string query = "select * from PHANCONG";
 
             DataTable data = dataProvider.ExecuteQuery(query);
 
@@ -117,7 +117,7 @@ namespace DAL
         public bool Update(PhanCongDTO phanCong)
         {
             string query = "update PHANCONG set " +
-                "Id_NV = @MANHANVIEN , " +
+                "Id_Doan = @MANHANVIEN , " +
                 "Nhiemvu = @NHIEMVU " +
                 "where Id_Doan = @oldMADOAN AND Id_NV = @MANHANVIEN ";
 

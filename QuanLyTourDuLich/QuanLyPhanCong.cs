@@ -58,5 +58,10 @@ namespace QuanLyTourDuLich
             string search = textBox1.Text;
             Grid_Danhsachphancong.DataSource = new PhanCongBUS().ListSearch(search);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
