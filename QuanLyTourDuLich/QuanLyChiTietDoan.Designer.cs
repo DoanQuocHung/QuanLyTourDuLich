@@ -185,6 +185,7 @@ namespace QuanLyTourDuLich
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Name = "QuanLyChiTietDoan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chi Tiết Đoàn";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

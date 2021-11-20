@@ -69,7 +69,6 @@ namespace QuanLyTourDuLich
             // 
             this.textBox2.Location = new System.Drawing.Point(208, 120);
             this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(317, 27);
             this.textBox2.TabIndex = 7;
             // 
@@ -77,7 +76,6 @@ namespace QuanLyTourDuLich
             // 
             this.textBox1.Location = new System.Drawing.Point(208, 62);
             this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(317, 27);
             this.textBox1.TabIndex = 6;
             // 

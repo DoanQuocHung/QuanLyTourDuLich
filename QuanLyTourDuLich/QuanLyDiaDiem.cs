@@ -29,6 +29,7 @@ namespace QuanLyTourDuLich
         private void button1_Click(object sender, EventArgs e)
         {
             new QuanLyDiaDiem_Them().ShowDialog();
+            BindGrid();
         }
 
         //Button Sửa 
@@ -38,6 +39,7 @@ namespace QuanLyTourDuLich
             DataGridViewRow selectedRow = Grid_Danhsachdiadiem.Rows[selectedrowindex];
             string cellValue = Convert.ToString(selectedRow.Cells["Id_DiaDiem"].Value);
             new QuanLyDiaDiem_Sua(cellValue).ShowDialog();
+            BindGrid();
         }
 
         //Button Xóa 
@@ -49,6 +51,7 @@ namespace QuanLyTourDuLich
             if (new DiaDiemBUS().Delete(cellValue))
             {
                 MessageBox.Show("Xóa thành công");
+                BindGrid();
             }
         }
 

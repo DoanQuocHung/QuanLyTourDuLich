@@ -58,7 +58,6 @@ namespace QuanLyTourDuLich
             // 
             this.txtMaNV.Location = new System.Drawing.Point(203, 40);
             this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.ReadOnly = true;
             this.txtMaNV.Size = new System.Drawing.Size(317, 27);
             this.txtMaNV.TabIndex = 12;
             // 
@@ -68,15 +67,14 @@ namespace QuanLyTourDuLich
             this.label5.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(26, 39);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(150, 25);
+            this.label5.Size = new System.Drawing.Size(87, 25);
             this.label5.TabIndex = 10;
-            this.label5.Text = "ID Loại Chi Phí";
+            this.label5.Text = "ID Đoàn";
             // 
             // txtHoTenNV
             // 
             this.txtHoTenNV.Location = new System.Drawing.Point(203, 92);
             this.txtHoTenNV.Name = "txtHoTenNV";
-            this.txtHoTenNV.ReadOnly = true;
             this.txtHoTenNV.Size = new System.Drawing.Size(317, 27);
             this.txtHoTenNV.TabIndex = 6;
             // 
@@ -86,9 +84,9 @@ namespace QuanLyTourDuLich
             this.label1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(26, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 25);
+            this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 2;
-            this.label1.Text = "ID Đoàn";
+            this.label1.Text = "ID Khách";
             // 
             // button2
             // 

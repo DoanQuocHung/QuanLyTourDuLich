@@ -20,14 +20,14 @@ namespace QuanLyTourDuLich
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string maNV = txt_1.Text;
-            string hotenNV = txt_2.Text;
-            string email = txt_3.Text;
-            if (new NhanVienBUS().Insert(new PhanCongDTO(maNV, hotenNV, email)))
-            {
-                MessageBox.Show("Thêm thành công");
-                Hide();
-            }
+            //string maNV = txt_1.Text;
+            //string hotenNV = txt_2.Text;
+            //string email = txt_3.Text;
+            //if (new NhanVienBUS().Insert(new PhanCongDTO(maNV, hotenNV, email)))
+            //{
+            //    MessageBox.Show("Thêm thành công");
+            //    Hide();
+            //}
 
         }
 

@@ -29,23 +29,23 @@ namespace QuanLyTourDuLich
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = Grid_Danhsachphancong.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = Grid_Danhsachphancong.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
-            new QuanLyPhanCong_Sua(cellValue).ShowDialog();
-            BindGrid();
+            //int selectedrowindex = Grid_Danhsachphancong.SelectedCells[0].RowIndex;
+            //DataGridViewRow selectedRow = Grid_Danhsachphancong.Rows[selectedrowindex];
+            //string cellValue = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
+            //new QuanLyPhanCong_Sua(cellValue).ShowDialog();
+            //BindGrid();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = Grid_Danhsachphancong.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = Grid_Danhsachphancong.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
-            if (new PhanCongBUS().Delete(cellValue))
-            {
-                MessageBox.Show("Xóa thành công");
-                BindGrid();
-            }
+            //int selectedrowindex = Grid_Danhsachphancong.SelectedCells[0].RowIndex;
+            //DataGridViewRow selectedRow = Grid_Danhsachphancong.Rows[selectedrowindex];
+            //string cellValue = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
+            //if (new PhanCongBUS().Delete(cellValue))
+            //{
+            //    MessageBox.Show("Xóa thành công");
+            //    BindGrid();
+            //}
         }
 
         private void btnReload_Click(object sender, EventArgs e)

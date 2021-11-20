@@ -30,6 +30,7 @@ namespace QuanLyTourDuLich
         {
             QuanLyChiTietTour_Them ql_ctt_them = new QuanLyChiTietTour_Them();
             ql_ctt_them.ShowDialog();
+            BindGrid(id);
         }
 
         //Button Sửa
@@ -43,6 +44,7 @@ namespace QuanLyTourDuLich
                 string cellValue2 = Convert.ToString(selectedRow.Cells["Id_DiaDiem"].Value);
                 QuanLyChiTietTour_Sua ql_ctt_sua = new QuanLyChiTietTour_Sua(cellValue, cellValue2);
                 ql_ctt_sua.ShowDialog();
+                BindGrid(id);
             }
         }
 
@@ -67,6 +69,7 @@ namespace QuanLyTourDuLich
                 if (new ChiTietTourBUS().Delete(cellValue, cellValue2))
                 {
                     MessageBox.Show("Xóa thành công");
+                    BindGrid(id);
                 }
             }
         }

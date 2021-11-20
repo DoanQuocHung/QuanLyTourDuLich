@@ -91,6 +91,7 @@ namespace QuanLyTourDuLich
             // 
             this.txtMaNV.Location = new System.Drawing.Point(207, 41);
             this.txtMaNV.Name = "txtMaNV";
+            this.txtMaNV.ReadOnly = true;
             this.txtMaNV.Size = new System.Drawing.Size(317, 27);
             this.txtMaNV.TabIndex = 12;
             // 

@@ -24,6 +24,7 @@ namespace QuanLyTourDuLich
         private void button1_Click(object sender, EventArgs e)
         {
             new QuanLyDoan_Them().ShowDialog();
+            BindGrid();
         }
 
         //Button Sửa 
@@ -35,6 +36,7 @@ namespace QuanLyTourDuLich
                 DataGridViewRow selectedRow = Grid_Danhsachdoan.Rows[selectedrowindex];
                 string cellValue = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
                 new QuanLyDoan_Sua(cellValue).ShowDialog();
+                BindGrid();
             }
         }
 
@@ -49,6 +51,7 @@ namespace QuanLyTourDuLich
                 if (new DoanDuLichBUS().Delete(cellValue))
                 {
                     MessageBox.Show("Xóa thành công");
+                    BindGrid();
                 }
             }
         }
