@@ -17,7 +17,7 @@ namespace QuanLyTourDuLich
             InitializeComponent();
             BindGrid();
         }
-
+         
         //QUẢN LÝ TOUR ====================================================================================================================
         //Hàm lấy danh sách
         public void BindGrid()
