@@ -31,6 +31,9 @@ namespace QuanLyTourDuLich
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyKhachHang_Them));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txt_6 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txt_8 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_1 = new System.Windows.Forms.TextBox();
@@ -45,10 +48,8 @@ namespace QuanLyTourDuLich
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.txt_6 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txt_7 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +78,33 @@ namespace QuanLyTourDuLich
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(548, 486);
             this.panel1.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(31, 334);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(98, 25);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Quốc tịch";
+            // 
+            // txt_6
+            // 
+            this.txt_6.Location = new System.Drawing.Point(206, 283);
+            this.txt_6.Name = "txt_6";
+            this.txt_6.Size = new System.Drawing.Size(318, 27);
+            this.txt_6.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(31, 285);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(127, 25);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Số điện thoại";
             // 
             // txt_8
             // 
@@ -206,22 +234,15 @@ namespace QuanLyTourDuLich
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // txt_6
+            // comboBox1
             // 
-            this.txt_6.Location = new System.Drawing.Point(206, 283);
-            this.txt_6.Name = "txt_6";
-            this.txt_6.Size = new System.Drawing.Size(318, 27);
-            this.txt_6.TabIndex = 16;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(31, 285);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(127, 25);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Số điện thoại";
+            this.comboBox1.DisplayMember = "(none)";
+            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(116, 227);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(317, 33);
+            this.comboBox1.TabIndex = 18;
             // 
             // txt_7
             // 
@@ -229,16 +250,6 @@ namespace QuanLyTourDuLich
             this.txt_7.Name = "txt_7";
             this.txt_7.Size = new System.Drawing.Size(318, 27);
             this.txt_7.TabIndex = 18;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(31, 334);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 25);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Quốc tịch";
             // 
             // QuanLyKhachHang_Them
             // 
@@ -275,8 +286,9 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txt_6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt_7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txt_7;
     }
 }
