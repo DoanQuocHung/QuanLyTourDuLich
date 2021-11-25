@@ -6,13 +6,13 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BUS;
-using DAL;
+using DTO;
 
 namespace QuanLyTourDuLich
 {
     public partial class AppQuanLy : Form
     {
-
+        List<TourDTO> list;
         public AppQuanLy()
         {
             InitializeComponent();
@@ -23,7 +23,27 @@ namespace QuanLyTourDuLich
         //Hàm lấy danh sách
         public void BindGrid()
         {
-            Grid_Danhsachtour.DataSource = new TourBUS().List();
+            list = new TourBUS().List();
+            DataTable dt = new DataTable();
+
+            //Add columns to DataTable.
+            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("STT"), new DataColumn("Mã Tour"), new DataColumn("Tên Tour") , new DataColumn("Mô tả") , new DataColumn("Loại Tour") });
+
+            //Set AutoIncrement True for the First Column.
+            dt.Columns["STT"].AutoIncrement = true;
+
+            //Set the Starting or Seed value.
+            dt.Columns["STT"].AutoIncrementSeed = 1;
+
+            //Set the Increment value.
+            dt.Columns["STT"].AutoIncrementStep = 1;
+
+            foreach (TourDTO item in list)
+            {
+                string tenloai = new LoaiTourBUS().getName(item.Id_Loai);
+                dt.Rows.Add(null, item.Id_Tour, item.Ten_Tour,item.Dacdiem_Tour,tenloai);
+            }
+            Grid_Danhsachtour.DataSource = dt;
         }
 
         //Button thêm 
@@ -40,7 +60,7 @@ namespace QuanLyTourDuLich
             {
                 int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+                string cellValue = Convert.ToString(selectedRow.Cells["Mã Tour"].Value);
                 new QuanLyTour_Sua(cellValue).ShowDialog();
                 BindGrid();
             }
@@ -53,11 +73,14 @@ namespace QuanLyTourDuLich
             {
                 int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-                if (new TourBUS().Delete(cellValue))
+                string cellValue = Convert.ToString(selectedRow.Cells["Mã Tour"].Value);
+                if (cellValue != null)
                 {
-                    MessageBox.Show("Xóa thành công");
-                    BindGrid();
+                    if (new TourBUS().Delete(cellValue))
+                    {
+                        MessageBox.Show("Xóa thành công");
+                        BindGrid();
+                    }
                 }
             }
         }
@@ -69,9 +92,12 @@ namespace QuanLyTourDuLich
             {
                 int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-                QuanLyChiTietTour ql_ctt = new QuanLyChiTietTour(cellValue);
-                ql_ctt.ShowDialog();
+                string cellValue = Convert.ToString(selectedRow.Cells["Mã Tour"].Value);
+                if (cellValue != null)
+                {
+                    QuanLyChiTietTour ql_ctt = new QuanLyChiTietTour(cellValue);
+                    ql_ctt.ShowDialog();
+                }
             }
         }
 
