@@ -59,6 +59,7 @@ namespace QuanLyTourDuLich
             this.panel10 = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
             this.panelChildForm = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -339,18 +340,19 @@ namespace QuanLyTourDuLich
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Controls.Add(this.comboBox1);
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.button6);
             this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(573, 12);
+            this.panel3.Location = new System.Drawing.Point(397, 12);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(508, 59);
+            this.panel3.Size = new System.Drawing.Size(684, 59);
             this.panel3.TabIndex = 2;
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(17, 14);
+            this.textBox1.Location = new System.Drawing.Point(22, 13);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(302, 34);
             this.textBox1.TabIndex = 3;
@@ -361,7 +363,7 @@ namespace QuanLyTourDuLich
             this.button6.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(325, 8);
+            this.button6.Location = new System.Drawing.Point(500, 6);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(174, 45);
             this.button6.TabIndex = 2;
@@ -412,6 +414,13 @@ namespace QuanLyTourDuLich
             this.panelChildForm.Name = "panelChildForm";
             this.panelChildForm.Size = new System.Drawing.Size(1081, 787);
             this.panelChildForm.TabIndex = 4;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Location = new System.Drawing.Point(343, 13);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(151, 34);
+            this.comboBox1.TabIndex = 0;
             // 
             // AppQuanLy
             // 
@@ -476,5 +485,6 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panelChildForm;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
