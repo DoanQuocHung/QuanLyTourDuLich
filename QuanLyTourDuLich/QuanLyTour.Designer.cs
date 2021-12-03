@@ -43,6 +43,7 @@ namespace QuanLyTourDuLich
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).BeginInit();
@@ -174,12 +175,13 @@ namespace QuanLyTourDuLich
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Controls.Add(this.comboBox1);
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.button6);
             this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(573, 6);
+            this.panel3.Location = new System.Drawing.Point(399, 6);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(508, 59);
+            this.panel3.Size = new System.Drawing.Size(682, 59);
             this.panel3.TabIndex = 8;
             // 
             // textBox1
@@ -195,13 +197,20 @@ namespace QuanLyTourDuLich
             this.button6.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(325, 8);
+            this.button6.Location = new System.Drawing.Point(492, 7);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(174, 45);
             this.button6.TabIndex = 2;
             this.button6.Text = "       Tìm kiếm";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Location = new System.Drawing.Point(335, 14);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(151, 34);
+            this.comboBox1.TabIndex = 4;
             // 
             // QuanLyTour
             // 
@@ -239,5 +248,6 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

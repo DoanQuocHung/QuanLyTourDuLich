@@ -144,6 +144,12 @@ namespace QuanLyTourDuLich
             OpenChildForm(new QuanLyChiPhi());
         }
 
+        //Button chuyển trang Quản Lý Phân Công
+        private void button12_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new QuanLyPhanCong());
+        }
+
         //Button chuyển trang Quản Lý Địa điểm
         private void button13_Click(object sender, EventArgs e)
         {
