@@ -12,15 +12,9 @@ namespace QuanLyTourDuLich
     public partial class QuanLyChiTietTour_Sua : Form
     {
         List<DiaDiemDTO> listdd = new List<DiaDiemDTO>();
-        public QuanLyChiTietTour_Sua(string id,string diadiem)
+        public QuanLyChiTietTour_Sua(string id,string diadiem,string thutu)
         {
             InitializeComponent();
-            ChiTietTourDTO edit = new ChiTietTourDTO();
-            edit = new ChiTietTourBUS().get(id,diadiem);
-
-            /*IdTour_txt.Text = edit.Id_Tour;
-            textBox2.Text = edit.Id_DiaDiem;
-            textBox3.Text = edit.Thutu.ToString();*/
             listdd = new DiaDiemBUS().List();
             List<string> listname = new List<string>();
             foreach (DiaDiemDTO item in listdd)
@@ -28,20 +22,64 @@ namespace QuanLyTourDuLich
                 listname.Add(item.Ten_DiaDiem);
             }
             DiaDiem_cb.DataSource = listname;
-            IdTour_txt.Text = ID;
+            IdTour_txt.Text = id;
+            DiaDiem_cb.SelectedItem = diadiem;
+            ThuTu_num.Value = Int32.Parse(thutu);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*string matour = IdTour_txt.Text;
-            string madiadiem = textBox2.Text;
-            int thutu = Int32.Parse(textBox3.Text);
-
-            if (new ChiTietTourBUS().Update(new ChiTietTourDTO(matour, madiadiem, thutu)))
+            string matour = IdTour_txt.Text;
+            string diadiem = DiaDiem_cb.Text;
+            int thutu = Int32.Parse(ThuTu_num.Text);
+            if (diadiem.Equals(null))
             {
-               MessageBox.Show("Sửa thành công");
-                Hide();
-            }*/
+                MessageBox.Show("Vui lòng nhập hoặc chọn địa điểm");
+                return;
+            }
+            if (thutu == null || thutu <= 0)
+            {
+                MessageBox.Show("Vui lòng nhập thứ tự lớn 0");
+                return;
+            }
+            string madiadiem = "";
+            int count = 0;
+            foreach (DiaDiemDTO item in listdd)
+            {
+                if (item.Ten_DiaDiem.Equals(diadiem))
+                {
+                    madiadiem = item.Id_DiaDiem;
+                    count = 1;
+                }
+            }
+            if (count == 1)
+            {
+                if (new ChiTietTourBUS().Update(new ChiTietTourDTO(matour, madiadiem, thutu)))
+                {
+                    MessageBox.Show("Sửa thành công");
+                    Hide();
+                }
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Tạo địa điểm mới ?", "Tạo địa điểm", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    madiadiem = new DiaDiemBUS().MakeID();
+                    if (new DiaDiemBUS().Insert(new DiaDiemDTO(madiadiem, diadiem)))
+                    {
+                        if (new ChiTietTourBUS().Update(new ChiTietTourDTO(matour, madiadiem, thutu)))
+                        {
+                            MessageBox.Show("Tạo địa điểm và sửa chi tiết thành công");
+                            Hide();
+                        }
+                    }
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
+            }
         }
     }
 }

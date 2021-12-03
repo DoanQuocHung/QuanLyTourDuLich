@@ -55,7 +55,6 @@ namespace QuanLyTourDuLich
                     count = 1;
                 }
             }
-            DialogResult dialogResult = MessageBox.Show("Tạo địa điểm mới ?", "Tạo địa điểm", MessageBoxButtons.YesNo);
             if (count == 1)
             {
                 if (new ChiTietTourBUS().Insert(new ChiTietTourDTO(matour, madiadiem, thutu)))
@@ -66,6 +65,7 @@ namespace QuanLyTourDuLich
             }
             else
             {
+                DialogResult dialogResult = MessageBox.Show("Tạo địa điểm mới ?", "Tạo địa điểm", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     madiadiem = new DiaDiemBUS().MakeID();
