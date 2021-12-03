@@ -11,20 +11,29 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyChiTietTour_Sua : Form
     {
+        List<DiaDiemDTO> listdd = new List<DiaDiemDTO>();
         public QuanLyChiTietTour_Sua(string id,string diadiem)
         {
             InitializeComponent();
             ChiTietTourDTO edit = new ChiTietTourDTO();
             edit = new ChiTietTourBUS().get(id,diadiem);
 
-            textBox1.Text = edit.Id_Tour;
+            /*IdTour_txt.Text = edit.Id_Tour;
             textBox2.Text = edit.Id_DiaDiem;
-            textBox3.Text = edit.Thutu.ToString();
+            textBox3.Text = edit.Thutu.ToString();*/
+            listdd = new DiaDiemBUS().List();
+            List<string> listname = new List<string>();
+            foreach (DiaDiemDTO item in listdd)
+            {
+                listname.Add(item.Ten_DiaDiem);
+            }
+            DiaDiem_cb.DataSource = listname;
+            IdTour_txt.Text = ID;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string matour = textBox1.Text;
+            /*string matour = IdTour_txt.Text;
             string madiadiem = textBox2.Text;
             int thutu = Int32.Parse(textBox3.Text);
 
@@ -32,7 +41,7 @@ namespace QuanLyTourDuLich
             {
                MessageBox.Show("Sửa thành công");
                 Hide();
-            }
+            }*/
         }
     }
 }

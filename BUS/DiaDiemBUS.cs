@@ -19,7 +19,7 @@ namespace BUS
 
         public List<DiaDiemDTO> ListSearch(string text)
         {
-            return new DiaDiemDAO().List(text);
+            return new DiaDiemDAO().ListSearch(text);
         }
         public DiaDiemDTO getDiaDiem(string id)
         {

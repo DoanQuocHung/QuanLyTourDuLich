@@ -31,23 +31,24 @@ namespace QuanLyTourDuLich
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyChiTietTour_Sua));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.IdTour_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.DiaDiem_cb = new System.Windows.Forms.ComboBox();
+            this.ThuTu_num = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ThuTu_num)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.ThuTu_num);
+            this.panel1.Controls.Add(this.DiaDiem_cb);
+            this.panel1.Controls.Add(this.IdTour_txt);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -58,28 +59,13 @@ namespace QuanLyTourDuLich
             this.panel1.Size = new System.Drawing.Size(548, 309);
             this.panel1.TabIndex = 1;
             // 
-            // textBox3
+            // IdTour_txt
             // 
-            this.textBox3.Location = new System.Drawing.Point(208, 180);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(317, 27);
-            this.textBox3.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(208, 120);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(317, 27);
-            this.textBox2.TabIndex = 7;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(208, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(317, 27);
-            this.textBox1.TabIndex = 6;
+            this.IdTour_txt.Location = new System.Drawing.Point(208, 62);
+            this.IdTour_txt.Name = "IdTour_txt";
+            this.IdTour_txt.ReadOnly = true;
+            this.IdTour_txt.Size = new System.Drawing.Size(317, 27);
+            this.IdTour_txt.TabIndex = 6;
             // 
             // label3
             // 
@@ -97,9 +83,9 @@ namespace QuanLyTourDuLich
             this.label2.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(31, 119);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 25);
+            this.label2.Size = new System.Drawing.Size(93, 25);
             this.label2.TabIndex = 3;
-            this.label2.Text = "ID Địa Điểm";
+            this.label2.Text = "Địa điểm";
             // 
             // label1
             // 
@@ -120,6 +106,21 @@ namespace QuanLyTourDuLich
             this.button2.TabIndex = 1;
             this.button2.Text = "Hủy";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // DiaDiem_cb
+            // 
+            this.DiaDiem_cb.FormattingEnabled = true;
+            this.DiaDiem_cb.Location = new System.Drawing.Point(208, 116);
+            this.DiaDiem_cb.Name = "DiaDiem_cb";
+            this.DiaDiem_cb.Size = new System.Drawing.Size(317, 28);
+            this.DiaDiem_cb.TabIndex = 7;
+            // 
+            // ThuTu_num
+            // 
+            this.ThuTu_num.Location = new System.Drawing.Point(208, 178);
+            this.ThuTu_num.Name = "ThuTu_num";
+            this.ThuTu_num.Size = new System.Drawing.Size(317, 27);
+            this.ThuTu_num.TabIndex = 8;
             // 
             // button1
             // 
@@ -146,6 +147,7 @@ namespace QuanLyTourDuLich
             this.Text = "Sửa chi tiết Tour";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ThuTu_num)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -153,13 +155,13 @@ namespace QuanLyTourDuLich
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox IdTour_txt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.NumericUpDown ThuTu_num;
+        private System.Windows.Forms.ComboBox DiaDiem_cb;
         private System.Windows.Forms.Button button1;
     }
 }

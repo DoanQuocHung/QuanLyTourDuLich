@@ -27,21 +27,13 @@ namespace QuanLyTourDuLich
             DataTable dt = new DataTable();
 
             //Add columns to DataTable.
-            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("STT"), new DataColumn("Mã Tour"), new DataColumn("Tên Tour") , new DataColumn("Mô tả") , new DataColumn("Loại Tour") });
+            dt.Columns.AddRange(new DataColumn[4] {new DataColumn("Mã Tour"), new DataColumn("Tên Tour") , new DataColumn("Mô tả") , new DataColumn("Loại Tour") });
 
-            //Set AutoIncrement True for the First Column.
-            dt.Columns["STT"].AutoIncrement = true;
-
-            //Set the Starting or Seed value.
-            dt.Columns["STT"].AutoIncrementSeed = 1;
-
-            //Set the Increment value.
-            dt.Columns["STT"].AutoIncrementStep = 1;
 
             foreach (TourDTO item in list)
             {
                 string tenloai = new LoaiTourBUS().getName(item.Id_Loai);
-                dt.Rows.Add(null, item.Id_Tour, item.Ten_Tour,item.Dacdiem_Tour,tenloai);
+                dt.Rows.Add(item.Id_Tour, item.Ten_Tour,item.Dacdiem_Tour,tenloai);
             }
             Grid_Danhsachtour.DataSource = dt;
         }

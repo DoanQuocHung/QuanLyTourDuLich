@@ -100,7 +100,7 @@ namespace DAL
 
         public bool Delete(string idtour,string iddiadiem)
         {
-            string query = "delete from CHITIETTOUR where Id_Tour = @MATOUR AND Id_Diadiem = @MADIADIEM";
+            string query = "delete from CHITIETTOUR where Id_Tour = @MATOUR AND Id_Diadiem = @MADIADIEM ";
 
             object[] para = new object[]
             {
