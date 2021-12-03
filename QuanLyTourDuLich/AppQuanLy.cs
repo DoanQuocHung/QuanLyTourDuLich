@@ -12,42 +12,42 @@ namespace QuanLyTourDuLich
 {
     public partial class AppQuanLy : Form
     {
-        DataTable dt;
+        List<TourDTO> list;
         public AppQuanLy()
         {
             InitializeComponent();
             BindGrid();
         }
 
-        
         //QUẢN LÝ TOUR ====================================================================================================================
         //Hàm lấy danh sách
         public void BindGrid()
         {
-            List<TourDTO> list = new TourBUS().List();
-            dt = new DataTable();
+            list = new TourBUS().List();
+            DataTable dt = new DataTable();
 
-            //Tạo cấu trúc bảng
-            dt.Columns.AddRange(new DataColumn[4] {
-                new DataColumn("Mã Tour"),
-                new DataColumn("Tên Tour"),
-                new DataColumn("Mô tả"),
-                new DataColumn("Loại Tour") });
-            //Gán giá trị cho combobox tìm kiếm
-            string[] searchitems = { "Mã Tour", "Tên Tour", "Loại Tour" };
-            SearchBox_cb.DataSource = searchitems;
-            //Đưa giá trị vào datatable
+            //Add columns to DataTable.
+            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("STT"), new DataColumn("Mã Tour"), new DataColumn("Tên Tour") , new DataColumn("Mô tả") , new DataColumn("Loại Tour") });
+
+            //Set AutoIncrement True for the First Column.
+            dt.Columns["STT"].AutoIncrement = true;
+
+            //Set the Starting or Seed value.
+            dt.Columns["STT"].AutoIncrementSeed = 1;
+
+            //Set the Increment value.
+            dt.Columns["STT"].AutoIncrementStep = 1;
+
             foreach (TourDTO item in list)
             {
                 string tenloai = new LoaiTourBUS().getName(item.Id_Loai);
-                dt.Rows.Add(item.Id_Tour, item.Ten_Tour, item.Dacdiem_Tour, tenloai);
+                dt.Rows.Add(null, item.Id_Tour, item.Ten_Tour,item.Dacdiem_Tour,tenloai);
             }
-            //Đưa giá trị vào bảng
             Grid_Danhsachtour.DataSource = dt;
         }
 
-            //Button thêm 
-            private void button1_Click(object sender, EventArgs e)
+        //Button thêm 
+        private void button1_Click(object sender, EventArgs e)
         {
             new QuanLyTour_Them().ShowDialog();
             BindGrid();
@@ -97,7 +97,6 @@ namespace QuanLyTourDuLich
                 {
                     QuanLyChiTietTour ql_ctt = new QuanLyChiTietTour(cellValue);
                     ql_ctt.ShowDialog();
-                    BindGrid();
                 }
             }
         }
@@ -111,55 +110,8 @@ namespace QuanLyTourDuLich
         //Button tìm kiếm
         private void button6_Click(object sender, EventArgs e)
         {
-            string typesearch = SearchBox_cb.SelectedItem.ToString();
-            string searchkey = SearchTour_txt.Text;
-            DataTable searchtable = dt.Clone();
-            searchtable.Clear();
-            switch (typesearch)
-            {
-                case "Mã Tour":
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        if (item["Mã Tour"].ToString().Contains(searchkey))
-                        {
-                            searchtable.Rows.Add(
-                                item["Mã Tour"],
-                                item["Tên Tour"],
-                                item["Mô Tả"],
-                                item["Loại Tour"]);
-                        }
-                    }
-                        break;
-                case "Tên Tour":
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        if (item["Tên Tour"].ToString().Contains(searchkey))
-                        {
-                            searchtable.Rows.Add(
-                                item["Mã Tour"],
-                                item["Tên Tour"],
-                                item["Mô Tả"],
-                                item["Loại Tour"]);
-                        }
-                    }
-                    break;
-                case "Loại Tour":
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        if (item["Loại Tour"].ToString().Contains(searchkey))
-                        {
-                            searchtable.Rows.Add(
-                                item["Mã Tour"],
-                                item["Tên Tour"],
-                                item["Mô Tả"],
-                                item["Loại Tour"]);
-                        }
-                    }
-                    break;
-                default:
-                    break;
-            }
-            Grid_Danhsachtour.DataSource= searchtable;
+            string search = textBox1.Text;
+            Grid_Danhsachtour.DataSource = new TourBUS().ListSearch(search);
         }
 
 
@@ -223,6 +175,16 @@ namespace QuanLyTourDuLich
 
 
         //Other ===========================================================================================================================
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Grid_Danhsachtour_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         
     }
 }

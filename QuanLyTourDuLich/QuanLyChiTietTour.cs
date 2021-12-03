@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BUS;
-using DTO;
 
 namespace QuanLyTourDuLich
 {
@@ -23,26 +22,6 @@ namespace QuanLyTourDuLich
         //Hàm lấy danh sách
         public void BindGrid(string id)
         {
-            List<TourDTO> list = new TourBUS().List();
-            dt = new DataTable();
-
-            //Tạo cấu trúc bảng
-            dt.Columns.AddRange(new DataColumn[4] {
-                new DataColumn("Mã Tour"),
-                new DataColumn("Tên Tour"),
-                new DataColumn("Mô tả"),
-                new DataColumn("Loại Tour") });
-            //Gán giá trị cho combobox tìm kiếm
-            string[] searchitems = { "Mã Tour", "Tên Tour", "Loại Tour" };
-            SearchBox_cb.DataSource = searchitems;
-            //Đưa giá trị vào datatable
-            foreach (TourDTO item in list)
-            {
-                string tenloai = new LoaiTourBUS().getName(item.Id_Loai);
-                dt.Rows.Add(item.Id_Tour, item.Ten_Tour, item.Dacdiem_Tour, tenloai);
-            }
-            //Đưa giá trị vào bảng
-            Grid_Danhsachtour.DataSource = dt;
             dataGridView1.DataSource = new ChiTietTourBUS().List(id);
         }
 
