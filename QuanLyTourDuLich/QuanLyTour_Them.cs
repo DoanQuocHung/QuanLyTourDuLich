@@ -30,6 +30,11 @@ namespace QuanLyTourDuLich
             string tentour = textBox2.Text;
             string dacdiem = textBox3.Text;
             string tenloai = comboBox1.SelectedItem.ToString();
+            if(tentour.Equals(null)||dacdiem.Equals(null))
+            {
+                MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
+                return;
+            }
             string idloai = new LoaiTourBUS().getID(tenloai);
             if (new TourBUS().Insert(new TourDTO(matour, tentour, dacdiem, idloai)))
             {
@@ -37,6 +42,11 @@ namespace QuanLyTourDuLich
 
                 Hide();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
