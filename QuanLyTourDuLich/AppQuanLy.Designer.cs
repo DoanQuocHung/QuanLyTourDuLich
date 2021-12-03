@@ -46,20 +46,20 @@ namespace QuanLyTourDuLich
             this.button14 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Grid_Danhsachtour = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Reload_Btn = new System.Windows.Forms.Button();
+            this.ChiTietTour_Btn = new System.Windows.Forms.Button();
+            this.XoaTour_Btn = new System.Windows.Forms.Button();
+            this.SuaTour_Btn = new System.Windows.Forms.Button();
+            this.ThemTour_Btn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.SearchBox_cb = new System.Windows.Forms.ComboBox();
+            this.SearchTour_txt = new System.Windows.Forms.TextBox();
+            this.SearchTour_Btn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
             this.panelChildForm = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -239,11 +239,11 @@ namespace QuanLyTourDuLich
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel2.Controls.Add(this.Grid_Danhsachtour);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.Reload_Btn);
+            this.panel2.Controls.Add(this.ChiTietTour_Btn);
+            this.panel2.Controls.Add(this.XoaTour_Btn);
+            this.panel2.Controls.Add(this.SuaTour_Btn);
+            this.panel2.Controls.Add(this.ThemTour_Btn);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(11, 86);
             this.panel2.Name = "panel2";
@@ -260,72 +260,71 @@ namespace QuanLyTourDuLich
             this.Grid_Danhsachtour.RowTemplate.Height = 29;
             this.Grid_Danhsachtour.Size = new System.Drawing.Size(1053, 625);
             this.Grid_Danhsachtour.TabIndex = 10;
-            this.Grid_Danhsachtour.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_Danhsachtour_CellContentClick);
             // 
-            // button5
+            // Reload_Btn
             // 
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(945, 10);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(120, 45);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "      Reload";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.Reload_Btn.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Reload_Btn.Image = ((System.Drawing.Image)(resources.GetObject("Reload_Btn.Image")));
+            this.Reload_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Reload_Btn.Location = new System.Drawing.Point(945, 10);
+            this.Reload_Btn.Name = "Reload_Btn";
+            this.Reload_Btn.Size = new System.Drawing.Size(120, 45);
+            this.Reload_Btn.TabIndex = 9;
+            this.Reload_Btn.Text = "      Reload";
+            this.Reload_Btn.UseVisualStyleBackColor = true;
+            this.Reload_Btn.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button4
+            // ChiTietTour_Btn
             // 
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(807, 10);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(121, 45);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "      Chi tiết";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.ChiTietTour_Btn.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ChiTietTour_Btn.Image = ((System.Drawing.Image)(resources.GetObject("ChiTietTour_Btn.Image")));
+            this.ChiTietTour_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ChiTietTour_Btn.Location = new System.Drawing.Point(807, 10);
+            this.ChiTietTour_Btn.Name = "ChiTietTour_Btn";
+            this.ChiTietTour_Btn.Size = new System.Drawing.Size(121, 45);
+            this.ChiTietTour_Btn.TabIndex = 8;
+            this.ChiTietTour_Btn.Text = "      Chi tiết";
+            this.ChiTietTour_Btn.UseVisualStyleBackColor = true;
+            this.ChiTietTour_Btn.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button3
+            // XoaTour_Btn
             // 
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(672, 10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(117, 45);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "    Xóa";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.XoaTour_Btn.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.XoaTour_Btn.Image = ((System.Drawing.Image)(resources.GetObject("XoaTour_Btn.Image")));
+            this.XoaTour_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.XoaTour_Btn.Location = new System.Drawing.Point(672, 10);
+            this.XoaTour_Btn.Name = "XoaTour_Btn";
+            this.XoaTour_Btn.Size = new System.Drawing.Size(117, 45);
+            this.XoaTour_Btn.TabIndex = 7;
+            this.XoaTour_Btn.Text = "    Xóa";
+            this.XoaTour_Btn.UseVisualStyleBackColor = true;
+            this.XoaTour_Btn.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // SuaTour_Btn
             // 
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(536, 10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 45);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "     Sửa";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.SuaTour_Btn.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SuaTour_Btn.Image = ((System.Drawing.Image)(resources.GetObject("SuaTour_Btn.Image")));
+            this.SuaTour_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SuaTour_Btn.Location = new System.Drawing.Point(536, 10);
+            this.SuaTour_Btn.Name = "SuaTour_Btn";
+            this.SuaTour_Btn.Size = new System.Drawing.Size(117, 45);
+            this.SuaTour_Btn.TabIndex = 6;
+            this.SuaTour_Btn.Text = "     Sửa";
+            this.SuaTour_Btn.UseVisualStyleBackColor = true;
+            this.SuaTour_Btn.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // ThemTour_Btn
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(399, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 45);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "      Thêm";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ThemTour_Btn.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ThemTour_Btn.Image = ((System.Drawing.Image)(resources.GetObject("ThemTour_Btn.Image")));
+            this.ThemTour_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ThemTour_Btn.Location = new System.Drawing.Point(399, 10);
+            this.ThemTour_Btn.Name = "ThemTour_Btn";
+            this.ThemTour_Btn.Size = new System.Drawing.Size(117, 45);
+            this.ThemTour_Btn.TabIndex = 5;
+            this.ThemTour_Btn.Text = "      Thêm";
+            this.ThemTour_Btn.UseVisualStyleBackColor = true;
+            this.ThemTour_Btn.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -340,36 +339,43 @@ namespace QuanLyTourDuLich
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.button6);
+            this.panel3.Controls.Add(this.SearchBox_cb);
+            this.panel3.Controls.Add(this.SearchTour_txt);
+            this.panel3.Controls.Add(this.SearchTour_Btn);
             this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panel3.Location = new System.Drawing.Point(397, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(684, 59);
             this.panel3.TabIndex = 2;
             // 
-            // textBox1
+            // SearchBox_cb
             // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(22, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(302, 34);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.SearchBox_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SearchBox_cb.Location = new System.Drawing.Point(343, 13);
+            this.SearchBox_cb.Name = "SearchBox_cb";
+            this.SearchBox_cb.Size = new System.Drawing.Size(151, 34);
+            this.SearchBox_cb.TabIndex = 0;
             // 
-            // button6
+            // SearchTour_txt
             // 
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(500, 6);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(174, 45);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "       Tìm kiếm";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.SearchTour_txt.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SearchTour_txt.Location = new System.Drawing.Point(22, 13);
+            this.SearchTour_txt.Name = "SearchTour_txt";
+            this.SearchTour_txt.Size = new System.Drawing.Size(302, 34);
+            this.SearchTour_txt.TabIndex = 3;
+            // 
+            // SearchTour_Btn
+            // 
+            this.SearchTour_Btn.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SearchTour_Btn.Image = ((System.Drawing.Image)(resources.GetObject("SearchTour_Btn.Image")));
+            this.SearchTour_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SearchTour_Btn.Location = new System.Drawing.Point(500, 6);
+            this.SearchTour_Btn.Name = "SearchTour_Btn";
+            this.SearchTour_Btn.Size = new System.Drawing.Size(174, 45);
+            this.SearchTour_Btn.TabIndex = 2;
+            this.SearchTour_Btn.Text = "       Tìm kiếm";
+            this.SearchTour_Btn.UseVisualStyleBackColor = true;
+            this.SearchTour_Btn.Click += new System.EventHandler(this.button6_Click);
             // 
             // label1
             // 
@@ -415,13 +421,6 @@ namespace QuanLyTourDuLich
             this.panelChildForm.Size = new System.Drawing.Size(1081, 787);
             this.panelChildForm.TabIndex = 4;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.Location = new System.Drawing.Point(343, 13);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 34);
-            this.comboBox1.TabIndex = 0;
-            // 
             // AppQuanLy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -461,14 +460,14 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button Reload_Btn;
+        private System.Windows.Forms.Button ChiTietTour_Btn;
+        private System.Windows.Forms.Button XoaTour_Btn;
+        private System.Windows.Forms.Button SuaTour_Btn;
+        private System.Windows.Forms.Button ThemTour_Btn;
+        private System.Windows.Forms.Button SearchTour_Btn;
         private System.Windows.Forms.DataGridView Grid_Danhsachtour;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox SearchTour_txt;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
@@ -485,6 +484,6 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panelChildForm;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox SearchBox_cb;
     }
 }

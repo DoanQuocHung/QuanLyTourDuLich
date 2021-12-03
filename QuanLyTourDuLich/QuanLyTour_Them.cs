@@ -24,8 +24,23 @@ namespace QuanLyTourDuLich
             comboBox1.DataSource = tenloai;
             textBox1.Text = new TourBUS().MakeID();
         }
+        /*
+            try
+            {
+                
+            }
+            catch (DbEntityValidationException ex)
+            {
+                string errorMessages = string.Join("; ", ex.EntityValidationErrors.SelectMany(x => x.ValidationErrors).Select(x => x.PropertyName + ": " + x.ErrorMessage));
+                throw new DbEntityValidationException(errorMessages);
+            }
+         */
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
+             * if(comboBox1.SelectedItem.ToString().Equals("Đã đóng"))
+                int trangthai = 1
+             */
             string matour = textBox1.Text;
             string tentour = textBox2.Text;
             string dacdiem = textBox3.Text;
