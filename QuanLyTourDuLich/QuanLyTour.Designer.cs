@@ -41,9 +41,9 @@ namespace QuanLyTourDuLich
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SearchBox_cb = new System.Windows.Forms.ComboBox();
+            this.SearchTour_txt = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).BeginInit();
@@ -175,8 +175,8 @@ namespace QuanLyTourDuLich
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.SearchBox_cb);
+            this.panel3.Controls.Add(this.SearchTour_txt);
             this.panel3.Controls.Add(this.button6);
             this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panel3.Location = new System.Drawing.Point(399, 6);
@@ -184,13 +184,22 @@ namespace QuanLyTourDuLich
             this.panel3.Size = new System.Drawing.Size(682, 59);
             this.panel3.TabIndex = 8;
             // 
-            // textBox1
+            // SearchBox_cb
             // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(17, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(302, 34);
-            this.textBox1.TabIndex = 3;
+            this.SearchBox_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SearchBox_cb.Location = new System.Drawing.Point(335, 14);
+            this.SearchBox_cb.Name = "SearchBox_cb";
+            this.SearchBox_cb.Size = new System.Drawing.Size(151, 34);
+            this.SearchBox_cb.TabIndex = 4;
+            this.SearchBox_cb.SelectedIndexChanged += new System.EventHandler(this.SearchBox_cb_SelectedIndexChanged);
+            // 
+            // SearchTour_txt
+            // 
+            this.SearchTour_txt.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SearchTour_txt.Location = new System.Drawing.Point(17, 14);
+            this.SearchTour_txt.Name = "SearchTour_txt";
+            this.SearchTour_txt.Size = new System.Drawing.Size(302, 34);
+            this.SearchTour_txt.TabIndex = 3;
             // 
             // button6
             // 
@@ -204,13 +213,6 @@ namespace QuanLyTourDuLich
             this.button6.Text = "       Tìm kiếm";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Location = new System.Drawing.Point(335, 14);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 34);
-            this.comboBox1.TabIndex = 4;
             // 
             // QuanLyTour
             // 
@@ -246,8 +248,8 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox SearchTour_txt;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox SearchBox_cb;
     }
 }
