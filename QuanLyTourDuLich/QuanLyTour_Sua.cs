@@ -11,23 +11,23 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyTour_Sua : Form
     {
-        List<string> tenloai = new List<string>();
-        public QuanLyTour_Sua(string id)
+        public List<TourDTO> list { get; set; }
+        List<LoaiTourDTO> listloai;
+        public QuanLyTour_Sua(List<TourDTO> list, List<LoaiTourDTO> listloai,string id)
         {
             InitializeComponent();
-            List<LoaiTourDTO> listloai = new LoaiTourBUS().List();
-            foreach (LoaiTourDTO i in listloai)
-            {
-                tenloai.Add(i.Ten_Loai);
-            }
-            comboBox2.DataSource = tenloai;
-            TourDTO edit = new TourDTO();
-            edit = new TourBUS().ListSearch(id)[0];
+            this.list = list;
+            this.listloai = listloai;
 
-            textBox1.Text = edit.Id_Tour;
-            textBox2.Text = edit.Ten_Tour;
-            textBox3.Text = edit.Dacdiem_Tour;
-            comboBox2.SelectedItem = new LoaiTourBUS().getName(edit.Id_Loai);
+            foreach (LoaiTourDTO i in this.listloai)
+            {
+                comboBox2.Items.Add(i.Ten_Loai);
+            }
+            TourDTO item = list.Find(x=> x.Id_Tour.Equals(id));
+            textBox1.Text = id;
+            textBox2.Text = item.Ten_Tour;
+            textBox3.Text = item.Dacdiem_Tour;
+            comboBox2.SelectedItem = listloai.Find(x => x.Id_Loai.Equals(item.Id_Loai)).Ten_Loai;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -41,14 +41,19 @@ namespace QuanLyTourDuLich
             string tentour = textBox2.Text;
             string dacdiem = textBox3.Text;
             string tenloai = comboBox2.SelectedItem.ToString();
+            string idloai = listloai.Find(x => x.Ten_Loai.Equals(tenloai)).Id_Loai;
             if (matour.Equals(null) || tentour.Equals(null) || dacdiem.Equals(null))
             {
                 MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
                 return;
             }
-            if (new TourBUS().Update(new TourDTO(matour, tentour, dacdiem, new LoaiTourBUS().getID(tenloai))))
+            if (new TourBUS().Update(new TourDTO(matour, tentour, dacdiem, idloai,1)))
             {
                 MessageBox.Show("Sửa thành công");
+                list.Find(x => x.Id_Tour.Equals(matour)).Ten_Tour=tentour;
+                list.Find(x => x.Id_Tour.Equals(matour)).Dacdiem_Tour = dacdiem;
+                list.Find(x => x.Id_Tour.Equals(matour)).Id_Loai = idloai;
+                this.DialogResult = DialogResult.OK;
                 Hide();
             }
         }

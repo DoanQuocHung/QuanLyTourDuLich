@@ -11,17 +11,19 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyTour_Them : Form
     {
-        List<string> tenloai = new List<string>();
-        public QuanLyTour_Them()
+        public List<TourDTO> list { get; set; }
+        List<LoaiTourDTO> listloai;
+
+        public QuanLyTour_Them(List<TourDTO> list, List<LoaiTourDTO> listloai)
         {
             InitializeComponent();
-            
-            List<LoaiTourDTO> listloai = new LoaiTourBUS().List();
-            foreach (LoaiTourDTO i in listloai)
+            this.list = list;
+            this.listloai = listloai;
+
+            foreach (LoaiTourDTO i in this.listloai)
             {
-                tenloai.Add(i.Ten_Loai);
+                comboBox1.Items.Add(i.Ten_Loai);
             }
-            comboBox1.DataSource = tenloai;
             textBox1.Text = new TourBUS().MakeID();
         }
         private void button1_Click(object sender, EventArgs e)
@@ -36,17 +38,23 @@ namespace QuanLyTourDuLich
                 return;
             }
             string idloai = new LoaiTourBUS().getID(tenloai);
-            if (new TourBUS().Insert(new TourDTO(matour, tentour, dacdiem, idloai)))
+            if (new TourBUS().Insert(new TourDTO(matour, tentour, dacdiem, idloai,1)))
             {
                 MessageBox.Show("Thêm thành công");
-
+                this.list.Add(new TourDTO(matour, tentour, dacdiem, idloai,1));
+                this.DialogResult = DialogResult.OK;
                 Hide();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
+        }
+
+        private void QuanLyTour_Them_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

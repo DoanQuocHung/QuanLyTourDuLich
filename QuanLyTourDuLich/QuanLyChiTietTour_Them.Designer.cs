@@ -145,7 +145,6 @@ namespace QuanLyTourDuLich
             this.Name = "QuanLyChiTietTour_Them";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm chi tiết Tour";
-            this.Load += new System.EventHandler(this.QuanLyChiTietTour_Them_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThuTu_num)).EndInit();

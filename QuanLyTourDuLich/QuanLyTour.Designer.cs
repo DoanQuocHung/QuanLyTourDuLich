@@ -191,7 +191,6 @@ namespace QuanLyTourDuLich
             this.SearchBox_cb.Name = "SearchBox_cb";
             this.SearchBox_cb.Size = new System.Drawing.Size(151, 34);
             this.SearchBox_cb.TabIndex = 4;
-            this.SearchBox_cb.SelectedIndexChanged += new System.EventHandler(this.SearchBox_cb_SelectedIndexChanged);
             // 
             // SearchTour_txt
             // 
@@ -200,6 +199,7 @@ namespace QuanLyTourDuLich
             this.SearchTour_txt.Name = "SearchTour_txt";
             this.SearchTour_txt.Size = new System.Drawing.Size(302, 34);
             this.SearchTour_txt.TabIndex = 3;
+            this.SearchTour_txt.TextChanged += new System.EventHandler(this.SearchTour_txt_TextChanged);
             // 
             // button6
             // 
@@ -212,7 +212,6 @@ namespace QuanLyTourDuLich
             this.button6.TabIndex = 2;
             this.button6.Text = "       Tìm kiếm";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // QuanLyTour
             // 

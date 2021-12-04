@@ -15,18 +15,6 @@ namespace BUS
         {
             return new TourDAO().ListAll();
         }
-        public List<TourDTO> ListSearch(string text)
-        {
-           return new TourDAO().List(text);
-        }
-        public TourDTO getTour(string id)
-        {
-            return new TourDAO().getTour(id);
-        }
-        public string getName(string id)
-        {
-            return new LoaiTourDAO().getName(id);
-        }
         public bool Update(TourDTO tour)
         {
             return new TourDAO().Update(tour);

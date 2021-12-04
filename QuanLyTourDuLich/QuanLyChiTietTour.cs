@@ -13,43 +13,41 @@ namespace QuanLyTourDuLich
     {
         string id = "";
         List<ChiTietTourDTO> list;
-            List<DiaDiemDTO> listdd = new List<DiaDiemDTO>();
+        List<DiaDiemDTO> listdd;
         public QuanLyChiTietTour(String id)
         {
             InitializeComponent();
             this.id = id;
-            BindGrid(id);
+            list = new ChiTietTourBUS().List(id);
+            listdd = new DiaDiemBUS().List();
+            Grid_chitiettour.AutoGenerateColumns = false;
+            BindGrid(list);
         }
         //QUẢN LÝ CHI TIẾT TOUR ===========================================================================================================
         //Hàm lấy danh sách
-        public void BindGrid(string id)
+        public void BindGrid(List<ChiTietTourDTO> list)
         {
-            list = new ChiTietTourBUS().List(id);
-            listdd = new DiaDiemBUS().List();
-            DataTable dt2 = new DataTable();
-
-            //Add columns to DataTable.
-            dt2.Columns.AddRange(new DataColumn[3] { new DataColumn("Mã địa điểm"), new DataColumn("Tên địa điểm"), new DataColumn("Thứ tự đi") });
-
+            Grid_chitiettour.Rows.Clear();
+            Grid_chitiettour.Refresh();
             foreach (ChiTietTourDTO item in list)
             {
-                string tendiadiem = "";
-                foreach (DiaDiemDTO dd in listdd)
-                {
-                    if(item.Id_DiaDiem.Equals(dd.Id_DiaDiem))
-                        tendiadiem = dd.Ten_DiaDiem;
-                }
-                dt2.Rows.Add(item.Id_DiaDiem, tendiadiem, item.Thutu);
+                string tendiadiem = listdd.Find(x => x.Id_DiaDiem.Equals(item.Id_DiaDiem)).Ten_DiaDiem;
+                Grid_chitiettour.Rows.Add(item.Id_DiaDiem, tendiadiem, item.Thutu);
             }
-            Grid_chitiettour.DataSource = dt2;
         }
 
         //Button Thêm
         private void button1_Click(object sender, EventArgs e)
         {
-            QuanLyChiTietTour_Them ql_ctt_them = new QuanLyChiTietTour_Them(id);
-            ql_ctt_them.ShowDialog();
-            BindGrid(id);
+            using (var form = new QuanLyChiTietTour_Them(list, listdd,id))
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.list = form.list;
+                    BindGrid(list);
+                }
+            }
         }
 
         //Button Sửa
@@ -59,18 +57,22 @@ namespace QuanLyTourDuLich
             {
                 int selectedrowindex = Grid_chitiettour.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_chitiettour.Rows[selectedrowindex];
-                string cellValue = id;
-                string cellValue2 = Convert.ToString(selectedRow.Cells["Mã địa điểm"].Value);
-                string cellValue3 = Convert.ToString(selectedRow.Cells["Thứ tự đi"].Value);
-                QuanLyChiTietTour_Sua ql_ctt_sua = new QuanLyChiTietTour_Sua(cellValue, cellValue2, cellValue3);
-                ql_ctt_sua.ShowDialog();
-                BindGrid(id);
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_DiaDiem"].Value);
+                using (var form = new QuanLyChiTietTour_Sua(list, listdd, cellValue))
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        this.list = form.list;
+                        BindGrid(list);
+                    }
+                }
             }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            BindGrid(id);
+            BindGrid(list);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -80,11 +82,12 @@ namespace QuanLyTourDuLich
                 int selectedrowindex = Grid_chitiettour.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_chitiettour.Rows[selectedrowindex];
                 string cellValue = id;
-                string cellValue2 = Convert.ToString(selectedRow.Cells["Mã địa điểm"].Value);
+                string cellValue2 = Convert.ToString(selectedRow.Cells["Id_DiaDiem"].Value);
                 if(new ChiTietTourBUS().Delete(cellValue,cellValue2))
                 {
                     MessageBox.Show("Xóa chi tiết thành công");
-                    BindGrid(id);
+                    list.RemoveAll(x=>x.Id_DiaDiem.Equals(cellValue2));
+                    BindGrid(list) ;
                 }
             }
         }

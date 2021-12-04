@@ -65,7 +65,6 @@ namespace QuanLyTourDuLich
         private void button6_Click(object sender, EventArgs e)
         {
             string search = textBox1.Text;
-            Grid_Danhsachdiadiem.DataSource = new TourBUS().ListSearch(search);
         }
     }
 }

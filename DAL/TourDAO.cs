@@ -8,126 +8,43 @@ namespace DAL
 {
     public class TourDAO
     {
+        DataProvider datapro = new DataProvider();
         public TourDAO() { }
 
         public List<TourDTO> ListAll()
         {
-
-            DataProvider datapro = new DataProvider();
-            
             List<TourDTO> tours = new List<TourDTO>();
-            string query = "Select * from TOUR";
-
-            DataTable data = datapro.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
+            try
             {
-                string matour = item["Id_Tour"].ToString();
-                string tentour = item["Ten_Tour"].ToString();
-                string dacdiem = item["Dacdiem_Tour"].ToString();
-                string maloai = item["Id_Loai"].ToString();
+                string query = "Select * from TOUR";
 
-                TourDTO newTour = new TourDTO(matour, tentour, dacdiem, maloai);
+                DataTable data = datapro.ExecuteQuery(query);
 
-                tours.Add(newTour);
+                foreach (DataRow item in data.Rows)
+                {
+                    string matour = item["Id_Tour"].ToString();
+                    string tentour = item["Ten_Tour"].ToString();
+                    string dacdiem = item["Dacdiem_Tour"].ToString();
+                    string maloai = item["Id_Loai"].ToString();
+                    int trangthai = Int32.Parse(item["TrangThaiTour"].ToString());
+
+                    TourDTO newTour = new TourDTO(matour, tentour, dacdiem, maloai, trangthai);
+
+                    tours.Add(newTour);
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine("Lỗi DB tại ListAll "+e);
             }
             return tours;
-        }
-        public List<TourDTO> List(string search)
-        {
-
-            DataProvider datapro = new DataProvider();
-
-            List<TourDTO> tours = new List<TourDTO>();
-            string query = "Select * from TOUR where Id_Tour LIKE '%" + search + "%'";
-            DataTable data = datapro.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
-            {
-                string matour = item["Id_Tour"].ToString();
-                string tentour = item["Ten_Tour"].ToString();
-                string dacdiem = item["Dacdiem_Tour"].ToString();
-                string maloai = item["Id_Loai"].ToString();
-
-                TourDTO newTour = new TourDTO(matour, tentour, dacdiem, maloai);
-
-                tours.Add(newTour);
-            }
-            return tours;
-        }
-        public List<TourDTO> ListSearch(string search)
-        {
-
-            DataProvider datapro = new DataProvider();
-
-            List<TourDTO> tours = new List<TourDTO>();
-            string query = "Select * from TOUR where Id_Tour = "+search;
-            DataTable data = datapro.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
-            {
-                string matour = item["Id_Tour"].ToString();
-                string tentour = item["Ten_Tour"].ToString();
-                string dacdiem = item["Dacdiem_Tour"].ToString();
-                string maloai = item["Id_Loai"].ToString();
-
-                TourDTO newTour = new TourDTO(matour, tentour, dacdiem, maloai);
-
-                tours.Add(newTour);
-            }
-            return tours;
-        }
-        public TourDTO getTour(string search)
-        {
-
-            DataProvider datapro = new DataProvider();
-
-            List<TourDTO> tours = new List<TourDTO>();
-            string query = "Select * from TOUR where Id_Tour = "+search;
-            DataTable data = datapro.ExecuteQuery(query);
-            TourDTO newTour = new TourDTO();
-            foreach (DataRow item in data.Rows)
-            {
-                string matour = item["Id_Tour"].ToString();
-                string tentour = item["Ten_Tour"].ToString();
-                string dacdiem = item["Dacdiem_Tour"].ToString();
-                string maloai = item["Id_Loai"].ToString();
-
-                newTour = new TourDTO(matour, tentour, dacdiem, maloai);
-
-            }
-            return newTour;
-        }
-        public TourDTO get(string id)
-        {
-
-            DataProvider datapro = new DataProvider();
-
-            TourDTO newTour = new TourDTO();
-            string query = "Select * from TOUR where Id_Tour = @id";
-            object[] para = new object[]
-            {
-               id
-            };
-            DataTable data = datapro.ExecuteQuery(query,para);
-
-            foreach (DataRow item in data.Rows)
-            {
-                string matour = item["Id_Tour"].ToString();
-                string tentour = item["Ten_Tour"].ToString();
-                string dacdiem = item["Dacdiem_Tour"].ToString();
-                string maloai = item["Id_Loai"].ToString();
-
-                newTour = new TourDTO(matour, tentour, dacdiem, maloai);
-            }
-            return newTour;
         }
         public bool Update(TourDTO tour)
         {
             string query = "update TOUR set " +
                 "Ten_Tour = @TENTOUR , " +
                 "Dacdiem_Tour = @DACDIEM , " +
-                "Id_Loai = @MALOAI " +
+                "Id_Loai = @MALOAI ," +
+                 " TrangThaiTour = @trangthai " +
                 "where Id_Tour = @oldMATOUR";
 
             object[] para = new object[]
@@ -135,6 +52,7 @@ namespace DAL
                 tour.Ten_Tour,
                 tour.Dacdiem_Tour,
                 tour.Id_Loai,
+                tour.TrangThai,
                 tour.Id_Tour
             };
             DataProvider datapro = new DataProvider();
@@ -146,14 +64,15 @@ namespace DAL
         public bool Insert(TourDTO tour)
         {
             string query = "insert into TOUR " +
-                "values( @MATOUR , @TENTOUR , @DACDIEM , @MALOAI )";
+                "values( @MATOUR , @TENTOUR , @DACDIEM , @MALOAI , @TRANGTHAI)";
 
             object[] para = new object[]
             {
                 tour.Id_Tour,
                 tour.Ten_Tour,
                 tour.Dacdiem_Tour,
-                tour.Id_Loai
+                tour.Id_Loai,
+                tour.TrangThai
             };
             DataProvider datapro = new DataProvider();
             if (datapro.ExecuteNonQuery(query, para) > 0)

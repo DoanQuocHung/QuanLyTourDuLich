@@ -38,6 +38,9 @@ namespace QuanLyTourDuLich
             this.Grid_chitiettour = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.Id_DiaDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_DiaDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThuTu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_chitiettour)).BeginInit();
             this.SuspendLayout();
@@ -112,6 +115,10 @@ namespace QuanLyTourDuLich
             // 
             this.Grid_chitiettour.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid_chitiettour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grid_chitiettour.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id_DiaDiem,
+            this.Ten_DiaDiem,
+            this.ThuTu});
             this.Grid_chitiettour.Location = new System.Drawing.Point(11, 73);
             this.Grid_chitiettour.Name = "Grid_chitiettour";
             this.Grid_chitiettour.RowHeadersWidth = 51;
@@ -138,6 +145,27 @@ namespace QuanLyTourDuLich
             this.label1.Size = new System.Drawing.Size(450, 38);
             this.label1.TabIndex = 11;
             this.label1.Text = "Trang Quản Lý Chi Tiết Tour";
+            // 
+            // Id_DiaDiem
+            // 
+            this.Id_DiaDiem.HeaderText = "Mã địa điểm";
+            this.Id_DiaDiem.MinimumWidth = 6;
+            this.Id_DiaDiem.Name = "Id_DiaDiem";
+            this.Id_DiaDiem.ReadOnly = true;
+            // 
+            // Ten_DiaDiem
+            // 
+            this.Ten_DiaDiem.HeaderText = "Tên địa điểm";
+            this.Ten_DiaDiem.MinimumWidth = 6;
+            this.Ten_DiaDiem.Name = "Ten_DiaDiem";
+            this.Ten_DiaDiem.ReadOnly = true;
+            // 
+            // ThuTu
+            // 
+            this.ThuTu.HeaderText = "Thứ Tự";
+            this.ThuTu.MinimumWidth = 6;
+            this.ThuTu.Name = "ThuTu";
+            this.ThuTu.ReadOnly = true;
             // 
             // QuanLyChiTietTour
             // 
@@ -168,5 +196,8 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_DiaDiem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_DiaDiem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThuTu;
     }
 }

@@ -59,6 +59,10 @@ namespace QuanLyTourDuLich
             this.panel10 = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
             this.panelChildForm = new System.Windows.Forms.Panel();
+            this.Id_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoaiTour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -254,6 +258,11 @@ namespace QuanLyTourDuLich
             // 
             this.Grid_Danhsachtour.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid_Danhsachtour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grid_Danhsachtour.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id_Tour,
+            this.Ten_Tour,
+            this.MoTa,
+            this.LoaiTour});
             this.Grid_Danhsachtour.Location = new System.Drawing.Point(11, 64);
             this.Grid_Danhsachtour.Name = "Grid_Danhsachtour";
             this.Grid_Danhsachtour.RowHeadersWidth = 51;
@@ -409,6 +418,36 @@ namespace QuanLyTourDuLich
             this.panelChildForm.Size = new System.Drawing.Size(1081, 787);
             this.panelChildForm.TabIndex = 4;
             // 
+            // Id_Tour
+            // 
+            this.Id_Tour.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Id_Tour.HeaderText = "Mã Tour";
+            this.Id_Tour.MinimumWidth = 6;
+            this.Id_Tour.Name = "Id_Tour";
+            this.Id_Tour.ReadOnly = true;
+            this.Id_Tour.Width = 167;
+            // 
+            // Ten_Tour
+            // 
+            this.Ten_Tour.HeaderText = "Tên Tour";
+            this.Ten_Tour.MinimumWidth = 6;
+            this.Ten_Tour.Name = "Ten_Tour";
+            this.Ten_Tour.ReadOnly = true;
+            // 
+            // MoTa
+            // 
+            this.MoTa.HeaderText = "Mô Tả";
+            this.MoTa.MinimumWidth = 6;
+            this.MoTa.Name = "MoTa";
+            this.MoTa.ReadOnly = true;
+            // 
+            // LoaiTour
+            // 
+            this.LoaiTour.HeaderText = "Loại Tour";
+            this.LoaiTour.MinimumWidth = 6;
+            this.LoaiTour.Name = "LoaiTour";
+            this.LoaiTour.ReadOnly = true;
+            // 
             // AppQuanLy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -472,5 +511,9 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panelChildForm;
         private System.Windows.Forms.ComboBox SearchBox_cb;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Tour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_Tour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MoTa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiTour;
     }
 }
