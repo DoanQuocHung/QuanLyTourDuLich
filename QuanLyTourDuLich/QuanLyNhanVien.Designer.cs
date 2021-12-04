@@ -31,32 +31,62 @@ namespace QuanLyTourDuLich
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyNhanVien));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.SearchBox_cb = new System.Windows.Forms.ComboBox();
+            this.SearchTour_txt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.Grid_Danhsachnhanvien = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachnhanvien)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(7, 7);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1081, 787);
             this.panel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Controls.Add(this.SearchBox_cb);
+            this.panel3.Controls.Add(this.SearchTour_txt);
+            this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.panel3.Location = new System.Drawing.Point(536, 15);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(546, 59);
+            this.panel3.TabIndex = 11;
+            // 
+            // SearchBox_cb
+            // 
+            this.SearchBox_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SearchBox_cb.Location = new System.Drawing.Point(330, 13);
+            this.SearchBox_cb.Name = "SearchBox_cb";
+            this.SearchBox_cb.Size = new System.Drawing.Size(199, 34);
+            this.SearchBox_cb.TabIndex = 0;
+            // 
+            // SearchTour_txt
+            // 
+            this.SearchTour_txt.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SearchTour_txt.Location = new System.Drawing.Point(22, 13);
+            this.SearchTour_txt.Name = "SearchTour_txt";
+            this.SearchTour_txt.Size = new System.Drawing.Size(302, 34);
+            this.SearchTour_txt.TabIndex = 3;
+            this.SearchTour_txt.TextChanged += new System.EventHandler(this.SearchTour_txt_TextChanged);
             // 
             // label1
             // 
@@ -72,6 +102,8 @@ namespace QuanLyTourDuLich
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel2.Controls.Add(this.radioButton2);
+            this.panel2.Controls.Add(this.radioButton1);
             this.panel2.Controls.Add(this.Grid_Danhsachnhanvien);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button3);
@@ -82,6 +114,29 @@ namespace QuanLyTourDuLich
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1081, 701);
             this.panel2.TabIndex = 10;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(364, 16);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(138, 24);
+            this.radioButton2.TabIndex = 12;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Chưa phân công";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(235, 16);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(123, 24);
+            this.radioButton1.TabIndex = 11;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Đã phân công";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // Grid_Danhsachnhanvien
             // 
@@ -156,37 +211,6 @@ namespace QuanLyTourDuLich
             this.label2.TabIndex = 4;
             this.label2.Text = "Danh sách Nhân viên";
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.button6);
-            this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(573, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(508, 59);
-            this.panel3.TabIndex = 11;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(17, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(302, 34);
-            this.textBox1.TabIndex = 3;
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(325, 8);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(174, 45);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "       Tìm kiếm";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
             // QuanLyNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -199,11 +223,11 @@ namespace QuanLyTourDuLich
             this.Text = "QuanLyNhanVien";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachnhanvien)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -220,7 +244,9 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ComboBox SearchBox_cb;
+        private System.Windows.Forms.TextBox SearchTour_txt;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }

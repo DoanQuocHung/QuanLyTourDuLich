@@ -55,7 +55,6 @@ namespace QuanLyTourDuLich
             this.panel3 = new System.Windows.Forms.Panel();
             this.SearchBox_cb = new System.Windows.Forms.ComboBox();
             this.SearchTour_txt = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
@@ -343,11 +342,10 @@ namespace QuanLyTourDuLich
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel3.Controls.Add(this.SearchBox_cb);
             this.panel3.Controls.Add(this.SearchTour_txt);
-            this.panel3.Controls.Add(this.button6);
             this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(397, 12);
+            this.panel3.Location = new System.Drawing.Point(574, 12);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(684, 59);
+            this.panel3.Size = new System.Drawing.Size(507, 59);
             this.panel3.TabIndex = 2;
             // 
             // SearchBox_cb
@@ -366,19 +364,6 @@ namespace QuanLyTourDuLich
             this.SearchTour_txt.Size = new System.Drawing.Size(302, 34);
             this.SearchTour_txt.TabIndex = 3;
             this.SearchTour_txt.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(500, 6);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(174, 45);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "       Tìm kiếm";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label1
             // 
@@ -468,7 +453,6 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView Grid_Danhsachtour;
         private System.Windows.Forms.TextBox SearchTour_txt;
         private System.Windows.Forms.Panel panel9;

@@ -17,16 +17,27 @@ namespace QuanLyTourDuLich
             InitializeComponent();
 
             txtMaNV.Text = new NhanVienBUS().MakeID();
+            Nam.Checked = true;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             string maNV = txtMaNV.Text;
-            string hotenNV = txtHoTenNV.Text;
-            string email = txtEmail.Text;
-            string sdt = txtSDT.Text;
-            string gioiTinh = txtGioiTinh.Text;
-            if (new NhanVienBUS().Insert(new NhanVienDTO(maNV, hotenNV, email, sdt, gioiTinh, 1)))
+            string hotenNV = HoTen_txt.Text;
+            string email = Email_txt.Text;
+            string sdt = SDT_txt.Text;
+            string gioitinh = "";
+            if (Nam.Checked)
+                gioitinh = "Nam";
+            else
+                gioitinh = "Nữ";
+            if(hotenNV.Equals(null)|email.Equals(null)|sdt.Equals(null))
+            {
+                MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
+                return;
+
+            }
+            if (new NhanVienBUS().Insert(new NhanVienDTO(maNV, hotenNV, email, sdt, gioitinh, 0)))
             {
                 MessageBox.Show("Thêm thành công");
                 Hide();
@@ -36,13 +47,15 @@ namespace QuanLyTourDuLich
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            txtHoTenNV.Text = "";
-            txtEmail.Text = "";
-            txtSDT.Text = "";
-            txtGioiTinh.Text = "";
+            Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
         }
