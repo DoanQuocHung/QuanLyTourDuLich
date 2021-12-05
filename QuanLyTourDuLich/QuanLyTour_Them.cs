@@ -38,10 +38,10 @@ namespace QuanLyTourDuLich
                 return;
             }
             string idloai = new LoaiTourBUS().getID(tenloai);
-            if (new TourBUS().Insert(new TourDTO(matour, tentour, dacdiem, idloai,1)))
+            if (new TourBUS().Insert(new TourDTO(matour, tentour, dacdiem, idloai)))
             {
                 MessageBox.Show("Thêm thành công");
-                this.list.Add(new TourDTO(matour, tentour, dacdiem, idloai,1));
+                this.list.Add(new TourDTO(matour, tentour, dacdiem, idloai));
                 this.DialogResult = DialogResult.OK;
                 Hide();
             }
