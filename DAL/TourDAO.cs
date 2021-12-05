@@ -26,9 +26,7 @@ namespace DAL
                     string tentour = item["Ten_Tour"].ToString();
                     string dacdiem = item["Dacdiem_Tour"].ToString();
                     string maloai = item["Id_Loai"].ToString();
-                    int trangthai = Int32.Parse(item["TrangThaiTour"].ToString());
-
-                    TourDTO newTour = new TourDTO(matour, tentour, dacdiem, maloai, trangthai);
+                    TourDTO newTour = new TourDTO(matour, tentour, dacdiem, maloai);
 
                     tours.Add(newTour);
                 }
@@ -43,8 +41,7 @@ namespace DAL
             string query = "update TOUR set " +
                 "Ten_Tour = @TENTOUR , " +
                 "Dacdiem_Tour = @DACDIEM , " +
-                "Id_Loai = @MALOAI ," +
-                 " TrangThaiTour = @trangthai " +
+                "Id_Loai = @MALOAI " +
                 "where Id_Tour = @oldMATOUR";
 
             object[] para = new object[]
@@ -52,7 +49,6 @@ namespace DAL
                 tour.Ten_Tour,
                 tour.Dacdiem_Tour,
                 tour.Id_Loai,
-                tour.TrangThai,
                 tour.Id_Tour
             };
             DataProvider datapro = new DataProvider();
@@ -64,15 +60,14 @@ namespace DAL
         public bool Insert(TourDTO tour)
         {
             string query = "insert into TOUR " +
-                "values( @MATOUR , @TENTOUR , @DACDIEM , @MALOAI , @TRANGTHAI)";
+                "values( @MATOUR , @TENTOUR , @DACDIEM , @MALOAI )";
 
             object[] para = new object[]
             {
                 tour.Id_Tour,
                 tour.Ten_Tour,
                 tour.Dacdiem_Tour,
-                tour.Id_Loai,
-                tour.TrangThai
+                tour.Id_Loai
             };
             DataProvider datapro = new DataProvider();
             if (datapro.ExecuteNonQuery(query, para) > 0)

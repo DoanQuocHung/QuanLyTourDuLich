@@ -33,11 +33,8 @@ namespace QuanLyTourDuLich
             Grid_Danhsachtour.Refresh();
             foreach (TourDTO item in list)
             {
-                if (item.TrangThai == 1)
-                {
                     string tenloai = listloai.Find(x => x.Id_Loai.Equals(item.Id_Loai)).Ten_Loai;
                     Grid_Danhsachtour.Rows.Add(item.Id_Tour, item.Ten_Tour, item.Dacdiem_Tour, tenloai);
-                }
             }
         }
 
@@ -81,10 +78,12 @@ namespace QuanLyTourDuLich
             int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
             string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-         
-                MessageBox.Show("Ẩn thành công");
-                list.Find(x => x.Id_Tour.Equals(cellValue)).TrangThai=0;
+            if (new TourBUS().Delete(cellValue))
+            {
+                MessageBox.Show("Xóa thành công");
+                list.RemoveAll(x => x.Id_Tour.Equals(cellValue));
                 BindGrid(list);
+            }
         }
 
         //Button Chi tiết 
