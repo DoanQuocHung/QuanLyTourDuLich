@@ -19,7 +19,6 @@ namespace QuanLyTourDuLich
             InitializeComponent();
             list = new TourBUS().List();
             listloai = new LoaiTourBUS().List();
-
             Grid_Danhsachtour.AutoGenerateColumns = false;
             List<string> listtype = new List<string> { "Mã Tour", "Tên Tour", "Loại Tour" };
             SearchBox_cb.DataSource = listtype;
@@ -30,6 +29,8 @@ namespace QuanLyTourDuLich
         //Hàm lấy danh sách
         public void BindGrid(List<TourDTO> list)
         {
+            Grid_Danhsachtour.Rows.Clear();
+            Grid_Danhsachtour.Refresh();
             foreach (TourDTO item in list)
             {
                 string tenloai = listloai.Find(x => x.Id_Loai.Equals(item.Id_Loai)).Ten_Loai;
@@ -40,18 +41,35 @@ namespace QuanLyTourDuLich
         //Button thêm 
         private void button1_Click(object sender, EventArgs e)
         {
-            new QuanLyTour_Them(list, listloai).ShowDialog();
-            BindGrid(list);
+            using (var form = new QuanLyTour_Them(list, listloai))
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.list = form.list;
+                    BindGrid(list);
+                }
+            }
         }
 
         //Button Sửa 
         private void button2_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Mã Tour"].Value);
-            //new QuanLyTour_Sua(cellValue).ShowDialog();
-            //BindGrid();
+            if (Grid_Danhsachtour.RowCount != 0)
+            {
+                int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+                using (var form = new QuanLyTour_Sua(list, listloai, cellValue))
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        this.list = form.list;
+                        BindGrid(list);
+                    }
+                }
+            }
         }
 
         //Button Xóa 
@@ -75,7 +93,7 @@ namespace QuanLyTourDuLich
             {
                 int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-                string cellValue = Convert.ToString(selectedRow.Cells["Mã Tour"].Value);
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
                 if (cellValue != null)
                 {
                     QuanLyChiTietTour ql_ctt = new QuanLyChiTietTour(cellValue);
@@ -120,7 +138,24 @@ namespace QuanLyTourDuLich
 
         private void SearchTour_txt_TextChanged(object sender, EventArgs e)
         {
-
+            string typesearch = SearchBox_cb.SelectedItem.ToString();
+            string searchkey = SearchTour_txt.Text;
+            List<TourDTO> listsearch = new List<TourDTO>();
+            switch (typesearch)
+            {
+                case "Mã Tour":
+                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
+                    break;
+                case "Tên Tour":
+                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
+                    break;
+                case "Loại Tour":
+                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
+                    break;
+                default:
+                    break;
+            }
+            BindGrid(listsearch);
         }
     }
 }

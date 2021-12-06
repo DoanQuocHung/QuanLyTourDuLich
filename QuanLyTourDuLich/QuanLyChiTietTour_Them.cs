@@ -23,6 +23,7 @@ namespace QuanLyTourDuLich
             {
                 DiaDiem_cb.Items.Add(item.Ten_DiaDiem);
             }
+            DiaDiem_cb.SelectedItem = listdd[0].Ten_DiaDiem;
             IdTour_txt.Text = id;
         }
 

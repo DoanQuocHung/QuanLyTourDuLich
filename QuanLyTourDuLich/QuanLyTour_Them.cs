@@ -24,6 +24,7 @@ namespace QuanLyTourDuLich
             {
                 comboBox1.Items.Add(i.Ten_Loai);
             }
+            comboBox1.SelectedItem = listloai[0].Ten_Loai;
             textBox1.Text = new TourBUS().MakeID();
         }
         private void button1_Click(object sender, EventArgs e)
@@ -53,6 +54,11 @@ namespace QuanLyTourDuLich
         }
 
         private void QuanLyTour_Them_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
