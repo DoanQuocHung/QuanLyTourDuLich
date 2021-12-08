@@ -17,10 +17,10 @@ namespace QuanLyTourDuLich
         public AppQuanLy()
         {
             InitializeComponent();
-            list = new TourBUS().List();
-            listloai = new LoaiTourBUS().List();
+            this.list = new TourBUS().List();
+            this.listloai = new LoaiTourBUS().List();
             Grid_Danhsachtour.AutoGenerateColumns = false;
-            List<string> listtype = new List<string> {"Mã Tour","Tên Tour","Loại Tour"};
+            List<string> listtype = new List<string> {"Mã Tour","Tên Tour"};
             SearchBox_cb.DataSource = listtype;
             BindGrid(list);
         }
@@ -177,18 +177,15 @@ namespace QuanLyTourDuLich
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string typesearch = SearchBox_cb.SelectedItem.ToString();
-            string searchkey = SearchTour_txt.Text;
+            string searchkey = new Tool().RemoveUnicodeBus(SearchTour_txt.Text).ToLower();
             List<TourDTO> listsearch = new List<TourDTO>();
             switch (typesearch)
             {
                 case "Mã Tour":
-                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
+                    listsearch = list.FindAll(x => new Tool().RemoveUnicodeBus(x.Id_Tour).ToLower().Contains(searchkey));
                     break;
                 case "Tên Tour":
-                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
-                    break;
-                case "Loại Tour":
-                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
+                    listsearch = list.FindAll(x => new Tool().RemoveUnicodeBus(x.Ten_Tour).ToLower().Contains(searchkey));
                     break;
                 default:
                     break;
