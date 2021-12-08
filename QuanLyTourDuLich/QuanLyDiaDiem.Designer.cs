@@ -55,7 +55,7 @@ namespace QuanLyTourDuLich
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(7, 7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1081, 787);
+            this.panel1.Size = new System.Drawing.Size(1088, 845);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -78,20 +78,20 @@ namespace QuanLyTourDuLich
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(2, 83);
+            this.panel2.Location = new System.Drawing.Point(0, 80);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1081, 697);
+            this.panel2.Size = new System.Drawing.Size(1080, 756);
             this.panel2.TabIndex = 10;
             // 
             // Grid_Danhsachdiadiem
             // 
             this.Grid_Danhsachdiadiem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid_Danhsachdiadiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Grid_Danhsachdiadiem.Location = new System.Drawing.Point(11, 72);
+            this.Grid_Danhsachdiadiem.Location = new System.Drawing.Point(11, 64);
             this.Grid_Danhsachdiadiem.Name = "Grid_Danhsachdiadiem";
             this.Grid_Danhsachdiadiem.RowHeadersWidth = 51;
             this.Grid_Danhsachdiadiem.RowTemplate.Height = 29;
-            this.Grid_Danhsachdiadiem.Size = new System.Drawing.Size(1053, 625);
+            this.Grid_Danhsachdiadiem.Size = new System.Drawing.Size(1057, 682);
             this.Grid_Danhsachdiadiem.TabIndex = 10;
             // 
             // button5
@@ -193,7 +193,7 @@ namespace QuanLyTourDuLich
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1096, 799);
+            this.ClientSize = new System.Drawing.Size(1100, 855);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "QuanLyDiaDiem";

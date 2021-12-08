@@ -37,16 +37,16 @@ namespace QuanLyTourDuLich
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Grid_Danhsachtour = new System.Windows.Forms.DataGridView();
+            this.Id_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoaiTour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.Id_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoaiTour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -60,7 +60,7 @@ namespace QuanLyTourDuLich
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(7, 7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1081, 787);
+            this.panel1.Size = new System.Drawing.Size(1088, 845);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -114,7 +114,7 @@ namespace QuanLyTourDuLich
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(0, 80);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1081, 701);
+            this.panel2.Size = new System.Drawing.Size(1080, 756);
             this.panel2.TabIndex = 7;
             // 
             // Grid_Danhsachtour
@@ -130,8 +130,36 @@ namespace QuanLyTourDuLich
             this.Grid_Danhsachtour.Name = "Grid_Danhsachtour";
             this.Grid_Danhsachtour.RowHeadersWidth = 51;
             this.Grid_Danhsachtour.RowTemplate.Height = 29;
-            this.Grid_Danhsachtour.Size = new System.Drawing.Size(1053, 625);
+            this.Grid_Danhsachtour.Size = new System.Drawing.Size(1057, 682);
             this.Grid_Danhsachtour.TabIndex = 10;
+            // 
+            // Id_Tour
+            // 
+            this.Id_Tour.HeaderText = "Mã Tour";
+            this.Id_Tour.MinimumWidth = 6;
+            this.Id_Tour.Name = "Id_Tour";
+            this.Id_Tour.ReadOnly = true;
+            // 
+            // Ten_Tour
+            // 
+            this.Ten_Tour.HeaderText = "Tên Tour";
+            this.Ten_Tour.MinimumWidth = 6;
+            this.Ten_Tour.Name = "Ten_Tour";
+            this.Ten_Tour.ReadOnly = true;
+            // 
+            // MoTa
+            // 
+            this.MoTa.HeaderText = "Mô tả";
+            this.MoTa.MinimumWidth = 6;
+            this.MoTa.Name = "MoTa";
+            this.MoTa.ReadOnly = true;
+            // 
+            // LoaiTour
+            // 
+            this.LoaiTour.HeaderText = "Loại Tour";
+            this.LoaiTour.MinimumWidth = 6;
+            this.LoaiTour.Name = "LoaiTour";
+            this.LoaiTour.ReadOnly = true;
             // 
             // button5
             // 
@@ -208,40 +236,12 @@ namespace QuanLyTourDuLich
             this.label2.TabIndex = 4;
             this.label2.Text = "Danh sách Tour";
             // 
-            // Id_Tour
-            // 
-            this.Id_Tour.HeaderText = "Mã Tour";
-            this.Id_Tour.MinimumWidth = 6;
-            this.Id_Tour.Name = "Id_Tour";
-            this.Id_Tour.ReadOnly = true;
-            // 
-            // Ten_Tour
-            // 
-            this.Ten_Tour.HeaderText = "Tên Tour";
-            this.Ten_Tour.MinimumWidth = 6;
-            this.Ten_Tour.Name = "Ten_Tour";
-            this.Ten_Tour.ReadOnly = true;
-            // 
-            // MoTa
-            // 
-            this.MoTa.HeaderText = "Mô tả";
-            this.MoTa.MinimumWidth = 6;
-            this.MoTa.Name = "MoTa";
-            this.MoTa.ReadOnly = true;
-            // 
-            // LoaiTour
-            // 
-            this.LoaiTour.HeaderText = "Loại Tour";
-            this.LoaiTour.MinimumWidth = 6;
-            this.LoaiTour.Name = "LoaiTour";
-            this.LoaiTour.ReadOnly = true;
-            // 
             // QuanLyTour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1100, 806);
+            this.ClientSize = new System.Drawing.Size(1100, 855);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "QuanLyTour";
