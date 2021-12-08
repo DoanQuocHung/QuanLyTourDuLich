@@ -31,6 +31,9 @@ namespace QuanLyTourDuLich
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyTour));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.SearchBox_cb = new System.Windows.Forms.ComboBox();
+            this.SearchTour_txt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Grid_Danhsachtour = new System.Windows.Forms.DataGridView();
@@ -40,25 +43,53 @@ namespace QuanLyTourDuLich
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.SearchBox_cb = new System.Windows.Forms.ComboBox();
-            this.SearchTour_txt = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.Id_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoaiTour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(7, 7);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1081, 787);
             this.panel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Controls.Add(this.SearchBox_cb);
+            this.panel3.Controls.Add(this.SearchTour_txt);
+            this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.panel3.Location = new System.Drawing.Point(574, 5);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(507, 59);
+            this.panel3.TabIndex = 8;
+            // 
+            // SearchBox_cb
+            // 
+            this.SearchBox_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SearchBox_cb.Location = new System.Drawing.Point(343, 13);
+            this.SearchBox_cb.Name = "SearchBox_cb";
+            this.SearchBox_cb.Size = new System.Drawing.Size(151, 34);
+            this.SearchBox_cb.TabIndex = 0;
+            // 
+            // SearchTour_txt
+            // 
+            this.SearchTour_txt.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SearchTour_txt.Location = new System.Drawing.Point(22, 13);
+            this.SearchTour_txt.Name = "SearchTour_txt";
+            this.SearchTour_txt.Size = new System.Drawing.Size(302, 34);
+            this.SearchTour_txt.TabIndex = 3;
+            this.SearchTour_txt.TextChanged += new System.EventHandler(this.SearchTour_txt_TextChanged);
             // 
             // label1
             // 
@@ -90,6 +121,11 @@ namespace QuanLyTourDuLich
             // 
             this.Grid_Danhsachtour.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid_Danhsachtour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grid_Danhsachtour.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id_Tour,
+            this.Ten_Tour,
+            this.MoTa,
+            this.LoaiTour});
             this.Grid_Danhsachtour.Location = new System.Drawing.Point(11, 64);
             this.Grid_Danhsachtour.Name = "Grid_Danhsachtour";
             this.Grid_Danhsachtour.RowHeadersWidth = 51;
@@ -172,46 +208,33 @@ namespace QuanLyTourDuLich
             this.label2.TabIndex = 4;
             this.label2.Text = "Danh sách Tour";
             // 
-            // panel3
+            // Id_Tour
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel3.Controls.Add(this.SearchBox_cb);
-            this.panel3.Controls.Add(this.SearchTour_txt);
-            this.panel3.Controls.Add(this.button6);
-            this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(399, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(682, 59);
-            this.panel3.TabIndex = 8;
+            this.Id_Tour.HeaderText = "Mã Tour";
+            this.Id_Tour.MinimumWidth = 6;
+            this.Id_Tour.Name = "Id_Tour";
+            this.Id_Tour.ReadOnly = true;
             // 
-            // SearchBox_cb
+            // Ten_Tour
             // 
-            this.SearchBox_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SearchBox_cb.Location = new System.Drawing.Point(335, 14);
-            this.SearchBox_cb.Name = "SearchBox_cb";
-            this.SearchBox_cb.Size = new System.Drawing.Size(151, 34);
-            this.SearchBox_cb.TabIndex = 4;
+            this.Ten_Tour.HeaderText = "Tên Tour";
+            this.Ten_Tour.MinimumWidth = 6;
+            this.Ten_Tour.Name = "Ten_Tour";
+            this.Ten_Tour.ReadOnly = true;
             // 
-            // SearchTour_txt
+            // MoTa
             // 
-            this.SearchTour_txt.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SearchTour_txt.Location = new System.Drawing.Point(17, 14);
-            this.SearchTour_txt.Name = "SearchTour_txt";
-            this.SearchTour_txt.Size = new System.Drawing.Size(302, 34);
-            this.SearchTour_txt.TabIndex = 3;
-            this.SearchTour_txt.TextChanged += new System.EventHandler(this.SearchTour_txt_TextChanged);
+            this.MoTa.HeaderText = "Mô tả";
+            this.MoTa.MinimumWidth = 6;
+            this.MoTa.Name = "MoTa";
+            this.MoTa.ReadOnly = true;
             // 
-            // button6
+            // LoaiTour
             // 
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(492, 7);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(174, 45);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "       Tìm kiếm";
-            this.button6.UseVisualStyleBackColor = true;
+            this.LoaiTour.HeaderText = "Loại Tour";
+            this.LoaiTour.MinimumWidth = 6;
+            this.LoaiTour.Name = "LoaiTour";
+            this.LoaiTour.ReadOnly = true;
             // 
             // QuanLyTour
             // 
@@ -225,11 +248,11 @@ namespace QuanLyTourDuLich
             this.Text = "QuanLyTour";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -247,8 +270,11 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox SearchTour_txt;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ComboBox SearchBox_cb;
+        private System.Windows.Forms.TextBox SearchTour_txt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Tour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_Tour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MoTa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiTour;
     }
 }

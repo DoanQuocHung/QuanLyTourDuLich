@@ -81,6 +81,7 @@ namespace QuanLyTourDuLich
             // 
             // DiaDiem_cb
             // 
+            this.DiaDiem_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DiaDiem_cb.FormattingEnabled = true;
             this.DiaDiem_cb.Location = new System.Drawing.Point(208, 116);
             this.DiaDiem_cb.Name = "DiaDiem_cb";

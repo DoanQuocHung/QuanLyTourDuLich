@@ -65,6 +65,7 @@ namespace QuanLyTourDuLich
             // comboBox2
             // 
             this.comboBox2.DisplayMember = "(none)";
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(208, 238);
