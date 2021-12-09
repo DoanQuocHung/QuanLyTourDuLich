@@ -8,128 +8,105 @@ namespace DAL
 {
     public class NhanVienDAO
     {
+        DataProvider dataProvider = new DataProvider();
         public NhanVienDAO() { }
 
         public List<NhanVienDTO> ListAll()
         {
 
-            DataProvider dataProvider = new DataProvider();
+            List<NhanVienDTO> nhanVien = new List<NhanVienDTO>();
+            try
+            {
+                string query = "Select * from NHANVIEN";
+
+                DataTable data = dataProvider.ExecuteQuery(query);
+
+                foreach (DataRow item in data.Rows)
+                {
+                    string maNhanVien = item["Id_NV"].ToString();
+                    string hoTenNhanVien = item["Hoten_NV"].ToString();
+                    string email = item["Email_NV"].ToString();
+                    string sdt = item["Sdt_NV"].ToString();
+                    string gioiTinh = item["Gioitinh_NV"].ToString();
+                    int tinhTrang = 1;
+
+                    NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
+
+                    nhanVien.Add(newNhanVien);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Lỗi DB tại ListAll " + e);
+            }
+
+            return nhanVien;
+        }
+
+        public List<NhanVienDTO> ListAllDuocPhanCong()
+        {
 
             List<NhanVienDTO> nhanVien = new List<NhanVienDTO>();
-            string query = "Select * from NHANVIEN";
-
-            DataTable data = dataProvider.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
+            try
             {
-                string maNhanVien = item["Id_NV"].ToString();
-                string hoTenNhanVien = item["Hoten_NV"].ToString();
-                string email = item["Email_NV"].ToString();
-                string sdt = item["Sdt_NV"].ToString();
-                string gioiTinh = item["Gioitinh_NV"].ToString();
-                int tinhTrang = 0;
+                string query = "Select NHANVIEN.Id_NV, Hoten_NV, Email_NV, Sdt_NV, Gioitinh_NV, Tinh_Trang from NHANVIEN, PHANCONG where NHANVIEN.Id_NV = PHANCONG.Id_NV and Tinh_Trang = 1";
 
-                NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
+                DataTable data = dataProvider.ExecuteQuery(query);
 
-                nhanVien.Add(newNhanVien);
+                foreach (DataRow item in data.Rows)
+                {
+                    string maNhanVien = item["Id_NV"].ToString();
+                    string hoTenNhanVien = item["Hoten_NV"].ToString();
+                    string email = item["Email_NV"].ToString();
+                    string sdt = item["Sdt_NV"].ToString();
+                    string gioiTinh = item["Gioitinh_NV"].ToString();
+                    int tinhTrang = 1;
+
+                    NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
+
+                    nhanVien.Add(newNhanVien);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("Lỗi DB tại ListAll " + e);
+            }
+
             return nhanVien;
         }
-        public List<NhanVienDTO> List(string search)
-        {
 
-            DataProvider dataProvider = new DataProvider();
+        public List<NhanVienDTO> ListAllChuaPhanCong()
+        {
 
             List<NhanVienDTO> nhanVien = new List<NhanVienDTO>();
-            string query = "Select * from NHANVIEN where Id_NV LIKE '%" + search + "%'";
-            DataTable data = dataProvider.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
+            try
             {
-                string maNhanVien = item["Id_NV"].ToString();
-                string hoTenNhanVien = item["Hoten_NV"].ToString();
-                string email = item["Email_NV"].ToString();
-                string sdt = item["Sdt_NV"].ToString();
-                string gioiTinh = item["Gioitinh_NV"].ToString();
-                int tinhTrang = (int)item["Tinh_Trang"];
+                string query = "Select NHANVIEN.Id_NV, Hoten_NV, Email_NV, Sdt_NV, Gioitinh_NV, Tinh_Trang from NHANVIEN where Tinh_Trang = 1 and Id_NV not in (select Id_NV from PHANCONG where NHANVIEN.Id_NV = PHANCONG.Id_NV)";
 
-                NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
+                DataTable data = dataProvider.ExecuteQuery(query);
 
-                nhanVien.Add(newNhanVien);
+                foreach (DataRow item in data.Rows)
+                {
+                    string maNhanVien = item["Id_NV"].ToString();
+                    string hoTenNhanVien = item["Hoten_NV"].ToString();
+                    string email = item["Email_NV"].ToString();
+                    string sdt = item["Sdt_NV"].ToString();
+                    string gioiTinh = item["Gioitinh_NV"].ToString();
+                    int tinhTrang = 1;
+
+                    NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
+
+                    nhanVien.Add(newNhanVien);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("Lỗi DB tại ListAll " + e);
+            }
+
             return nhanVien;
         }
-        public List<NhanVienDTO> ListSearch(string search)
-        {
-            DataProvider dataProvider = new DataProvider();
 
-            List<NhanVienDTO> nhanVien = new List<NhanVienDTO>();
-            string query = "Select * from NHANVIEN where Id_NV = " + search;
-            DataTable data = dataProvider.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
-            {
-                string maNhanVien = item["Id_NV"].ToString();
-                string hoTenNhanVien = item["Hoten_NV"].ToString();
-                string email = item["Email_NV"].ToString();
-                string sdt = item["Sdt_NV"].ToString();
-                string gioiTinh = item["Gioitinh_NV"].ToString();
-                int tinhTrang = (int)item["Tinh_Trang"];
-
-                NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
-
-                nhanVien.Add(newNhanVien);
-            }
-            return nhanVien;
-        }
-        public NhanVienDTO getNhanVien(string search)
-        {
-
-            DataProvider dataProvider = new DataProvider();
-
-            string query = "Select * from NHANVIEN where Id_NV = " + search;
-            DataTable data = dataProvider.ExecuteQuery(query);
-            NhanVienDTO nhanVien = new NhanVienDTO();
-            foreach (DataRow item in data.Rows)
-            {
-                string maNhanVien = item["Id_NV"].ToString();
-                string hoTenNhanVien = item["Hoten_NV"].ToString();
-                string email = item["Email_NV"].ToString();
-                string sdt = item["Sdt_NV"].ToString();
-                string gioiTinh = item["Gioitinh_NV"].ToString();
-                int tinhTrang = (int)item["Tinh_Trang"];
-
-                nhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
-
-            }
-            return nhanVien;
-        }
-        public NhanVienDTO get(string id)
-        {
-
-            DataProvider dataProvider = new DataProvider();
-
-            NhanVienDTO nhanVien = new NhanVienDTO();
-            string query = "Select * from NHANVIEN where Id_NV = @id";
-            object[] para = new object[]
-            {
-               id
-            };
-            DataTable data = dataProvider.ExecuteQuery(query, para);
-
-            foreach (DataRow item in data.Rows)
-            {
-                string maNhanVien = item["Id_NV"].ToString();
-                string hoTenNhanVien = item["Hoten_NV"].ToString();
-                string email = item["Email_NV"].ToString();
-                string sdt = item["Sdt_NV"].ToString();
-                string gioiTinh = item["Gioitinh_NV"].ToString();
-                int tinhTrang = (int)item["Tinh_Trang"];
-
-                nhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
-            }
-                return nhanVien;
-        }
         public bool Update(NhanVienDTO nhanVien)
         {
             string query = "update NHANVIEN set " +
@@ -159,7 +136,6 @@ namespace DAL
         {
             string query = "insert into NHANVIEN " +
                 "values( @MANV , @HOTEN , @EMAIL , @SDT , @GIOITINH , @TINHTRANG )";
-
             object[] para = new object[]
             {
                 nhanVien.Id_NV,
@@ -167,7 +143,7 @@ namespace DAL
                 nhanVien.Email_NV,
                 nhanVien.Sdt_NV,
                 nhanVien.Gioitinh_NV,
-                nhanVien.Tinh_Trang             
+                nhanVien.Tinh_Trang
             };
             DataProvider dataProvider = new DataProvider();
             if (dataProvider.ExecuteNonQuery(query, para) > 0)
@@ -177,16 +153,24 @@ namespace DAL
 
         public bool Delete(string id)
         {
-            string query = "delete from NHANVIEN " +
-                "where Id_NV = @MANV";
-
+            string queryTimMaNhanVienTrongBangPhanCong = "select * from NHANVIEN , PHANCONG " +
+                "where NHANVIEN.Id_NV = @MANV and PHANCONG.Id_NV = NHANVIEN.Id_NV ";
             object[] para = new object[]
             {
                 id
             };
+
+            string query = "delete from NHANVIEN where Id_NV = @MANV";
             DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
+            if (dataProvider.ExecuteNonQuery(queryTimMaNhanVienTrongBangPhanCong, para) > 0)
+            {
+                return false;
+            }
+            else
+            {
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
             return false;
         }
         public int Count()
@@ -196,20 +180,20 @@ namespace DAL
             int count = (int)dataProvider.ExecuteScalar(query);
             return count;
         }
-        public int Exist(String id)
+        public int Exist(string id)
         {
             string query = "select count(*) from NHANVIEN where Id_NV = '" + id + "'";
             DataProvider dataProvider = new DataProvider();
             int count = (int)dataProvider.ExecuteScalar(query);
             return count;
         }
-        public String MakeID()
+        public string MakeID()
         {
             int count = Count();
             string id;
             while (true)
             {
-                id = "N" + count;
+                id = "NV0" + count;
                 if (Exist(id) == 0)
                     break;
                 else count++;

@@ -11,183 +11,210 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyNhanVien : Form
     {
-        DataTable dt;
+        List<NhanVienDTO> listNhanVien;
+        List<NhanVienDTO> listNhanVienDuocPhanCong, listNhanVienChuaPhanCong;
         public QuanLyNhanVien()
         {
+
             InitializeComponent();
-            BindGrid();
-            radioButton1.Checked = true;
+            listNhanVien = new NhanVienBUS().List();
+            listNhanVienDuocPhanCong = new NhanVienBUS().ListDuocPhanCong();
+            listNhanVienChuaPhanCong = new NhanVienBUS().ListChuaPhanCong();
+            Grid_Danhsachnhanvien.AutoGenerateColumns = false;
+            List<string> listtype = new List<string> { "Mã NV", "Họ Tên", "Email", "SĐT" };
+            cbSearchBox.DataSource = listtype;
+            BindGrid(listNhanVien);
+            rbTatCa.Checked = true;
         }
 
-        public void BindGrid()
+        //lấy danh sách tất cả nhân viên
+        public void BindGrid(List<NhanVienDTO> list)
         {
-            List<NhanVienDTO> list = new NhanVienBUS().List();
-            dt = new DataTable();
-
-            //Tạo cấu trúc bảng
-            dt.Columns.AddRange(new DataColumn[6] {
-                new DataColumn("Mã nhân viên"),
-                new DataColumn("Họ tên"),
-                new DataColumn("Email"),
-                new DataColumn("SDT"),
-                new DataColumn("Giới tính"),
-                new DataColumn("Tình Trạng")});
-            //Gán giá trị cho combobox tìm kiếm
-            List<string> searchitems = new List<string> { "Mã nhân viên", "Tên", "Email","SDT" };
-            SearchBox_cb.DataSource = searchitems;
-            //Đưa giá trị vào datatable
+            Grid_Danhsachnhanvien.Rows.Clear();
+            Grid_Danhsachnhanvien.Refresh();
             foreach (NhanVienDTO item in list)
             {
-                dt.Rows.Add(item.Id_NV, item.Hoten_NV, item.Email_NV, item.Sdt_NV,item.Gioitinh_NV,item.Tinh_Trang);
+                Grid_Danhsachnhanvien.Rows.Add(item.Id_NV, item.Hoten_NV, item.Email_NV, item.Sdt_NV, item.Gioitinh_NV, item.Tinh_Trang);
             }
-            //Đưa giá trị vào bảng
-            Grid_Danhsachnhanvien.DataSource = dt;
+
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            new QuanLyNhanVien_Them().ShowDialog();
-            BindGrid();
+            using (var form = new QuanLyNhanVien_Them(listNhanVien))
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.listNhanVien = form.listNhanVien;
+                    BindGrid(listNhanVien);
+                }
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = Grid_Danhsachnhanvien.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = Grid_Danhsachnhanvien.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Mã nhân viên"].Value);
-            new QuanLyNhanVien_Sua(cellValue).ShowDialog();
-            BindGrid();
+            if (Grid_Danhsachnhanvien.RowCount != 0)
+            {
+                int selectedrowindex = Grid_Danhsachnhanvien.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_Danhsachnhanvien.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_NV"].Value);
+                using (var form = new QuanLyNhanVien_Sua(listNhanVien, cellValue))
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        this.listNhanVien = form.listNhanVien;
+                        BindGrid(listNhanVien);
+                    }
+                }
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            List<NhanVienDTO> duocPhanCong = new List<NhanVienDTO>();
             int selectedrowindex = Grid_Danhsachnhanvien.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = Grid_Danhsachnhanvien.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Mã nhân viên"].Value);
+            string cellValue = Convert.ToString(selectedRow.Cells["Id_NV"].Value);
+            duocPhanCong = listNhanVienDuocPhanCong.FindAll(x => x.Id_NV.Contains(cellValue));
             if (new NhanVienBUS().Delete(cellValue))
             {
                 MessageBox.Show("Xóa thành công");
-                BindGrid();
+                listNhanVien.RemoveAll(x => x.Id_NV.Equals(cellValue));
+                BindGrid(listNhanVien);
             }
         }
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-            BindGrid();
+            BindGrid(listNhanVien);
         }
 
-        private void SearchTour_txt_TextChanged(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            string typesearch = SearchBox_cb.SelectedItem.ToString();
-            string searchkey = SearchTour_txt.Text;
-            DataTable searchtable = dt.Clone();
-            searchtable.Clear();
+            string typesearch = cbSearchBox.SelectedItem.ToString();
+            string searchkey = txtSearch.Text;
+            List<NhanVienDTO> listsearch = new List<NhanVienDTO>();
             switch (typesearch)
             {
-                case "Mã nhân viên":
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        if (item["Mã nhân viên"].ToString().Contains(searchkey))
-                        {
-                            searchtable.Rows.Add(
-                                item["Mã nhân viên"],
-                                item["Họ tên"],
-                                item["Email"],
-                                item["SDT"],
-                                item["Giới tính"],
-                                item["Tình Trạng"]);
-                        }
-                    }
+                case "Mã NV":
+                    listsearch = listNhanVien.FindAll(x => x.Id_NV.Contains(searchkey));
                     break;
-                case "Tên":
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        if (item["Họ tên"].ToString().Contains(searchkey))
-                        {
-                            searchtable.Rows.Add(
-                                item["Mã nhân viên"],
-                                item["Họ tên"],
-                                item["Email"],
-                                item["SDT"],
-                                item["Giới tính"],
-                                item["Tình Trạng"]);
-                        }
-                    }
+                case "Họ Tên":
+                    listsearch = listNhanVien.FindAll(x => x.Hoten_NV.Contains(searchkey));
                     break;
                 case "Email":
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        if (item["Email"].ToString().Contains(searchkey))
-                        {
-                            searchtable.Rows.Add(
-                                item["Mã nhân viên"],
-                                item["Họ tên"],
-                                item["Email"],
-                                item["SDT"],
-                                item["Giới tính"],
-                                item["Tình Trạng"]);
-                        }
-                    }
+                    listsearch = listNhanVien.FindAll(x => x.Email_NV.Contains(searchkey));
                     break;
-                case "SDT":
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        if (item["SDT"].ToString().Contains(searchkey))
-                        {
-                            searchtable.Rows.Add(
-                                item["Mã nhân viên"],
-                                item["Họ tên"],
-                                item["Email"],
-                                item["SDT"],
-                                item["Giới tính"],
-                                item["Tình Trạng"]);
-                        }
-                    }
+                case "SĐT":
+                    listsearch = listNhanVien.FindAll(x => x.Sdt_NV.Contains(searchkey));
                     break;
                 default:
                     break;
             }
-            Grid_Danhsachnhanvien.DataSource = searchtable;
+            BindGrid(listsearch);
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void rbTatCa_CheckedChanged(object sender, EventArgs e)
         {
-            string typesearch = SearchBox_cb.SelectedItem.ToString();
-            string searchkey = SearchTour_txt.Text;
-            DataTable searchtable = dt.Clone();
-            searchtable.Clear();
-            if (radioButton1.Checked)
+            string typesearch = cbSearchBox.SelectedItem.ToString();
+            string searchkey = txtSearch.Text;
+            List<NhanVienDTO> listsearch = new List<NhanVienDTO>();
+
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
             {
-                foreach (DataRow item in dt.Rows)
+                if (rb.Checked)
                 {
-                    if (item["Tình Trạng"].ToString().Equals("đã Phân công"))
+                    switch (typesearch)
                     {
-                        searchtable.Rows.Add(
-                            item["Mã nhân viên"],
-                            item["Họ tên"],
-                            item["Email"],
-                            item["SDT"],
-                            item["Giới tính"],
-                            item["Tình Trạng"]);
+                        case "Mã NV":
+                            listsearch = listNhanVien.FindAll(x => x.Id_NV.Contains(searchkey));
+                            break;
+                        case "Họ Tên":
+                            listsearch = listNhanVien.FindAll(x => x.Hoten_NV.Contains(searchkey));
+                            break;
+                        case "Email":
+                            listsearch = listNhanVien.FindAll(x => x.Email_NV.Contains(searchkey));
+                            break;
+                        case "SĐT":
+                            listsearch = listNhanVien.FindAll(x => x.Sdt_NV.Contains(searchkey));
+                            break;
+                        default:
+                            break;
                     }
                 }
             }
-            else
-            {
-                foreach (DataRow item in dt.Rows)
-                {
-                    if (item["Tình Trạng"].ToString().Equals("chưa Phân công"))
-                    {
-                        searchtable.Rows.Add(
-                            item["Mã nhân viên"],
-                            item["Họ tên"],
-                            item["Email"],
-                            item["SDT"],
-                            item["Giới tính"],
-                            item["Tình Trạng"]);
-                    }
-                }
-            }
+            BindGrid(listsearch);
         }
+
+        private void rbDaPhanCong_CheckedChanged(object sender, EventArgs e)
+        {
+            string typesearch = cbSearchBox.SelectedItem.ToString();
+            string searchkey = txtSearch.Text;
+            List<NhanVienDTO> listsearch = new List<NhanVienDTO>();
+
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    switch (typesearch)
+                    {
+                        case "Mã NV":
+                            listsearch = listNhanVienDuocPhanCong.FindAll(x => x.Id_NV.Contains(searchkey));
+                            break;
+                        case "Họ Tên":
+                            listsearch = listNhanVienDuocPhanCong.FindAll(x => x.Hoten_NV.Contains(searchkey));
+                            break;
+                        case "Email":
+                            listsearch = listNhanVienDuocPhanCong.FindAll(x => x.Email_NV.Contains(searchkey));
+                            break;
+                        case "SĐT":
+                            listsearch = listNhanVienDuocPhanCong.FindAll(x => x.Sdt_NV.Contains(searchkey));
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            BindGrid(listsearch);
+        }
+
+        private void rbChuaPhanCong_CheckedChanged(object sender, EventArgs e)
+        {
+            string typesearch = cbSearchBox.SelectedItem.ToString();
+            string searchkey = txtSearch.Text;
+            List<NhanVienDTO> listsearch = new List<NhanVienDTO>();
+            
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    switch (typesearch)
+                    {
+                        case "Mã NV":
+                            listsearch = listNhanVienChuaPhanCong.FindAll(x => x.Id_NV.Contains(searchkey));
+                            break;
+                        case "Họ Tên":
+                            listsearch = listNhanVienChuaPhanCong.FindAll(x => x.Hoten_NV.Contains(searchkey));
+                            break;
+                        case "Email":
+                            listsearch = listNhanVienChuaPhanCong.FindAll(x => x.Email_NV.Contains(searchkey));
+                            break;
+                        case "SĐT":
+                            listsearch = listNhanVienChuaPhanCong.FindAll(x => x.Sdt_NV.Contains(searchkey));
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            BindGrid(listsearch);
+        }
+
+       
     }
 }

@@ -12,34 +12,37 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyNhanVien_Them : Form
     {
-        public QuanLyNhanVien_Them()
+        public List<NhanVienDTO> listNhanVien { get; set; }
+        public QuanLyNhanVien_Them(List<NhanVienDTO> list)
         {
             InitializeComponent();
-
+            this.listNhanVien = list;
             txtMaNV.Text = new NhanVienBUS().MakeID();
-            Nam.Checked = true;
+            rbNam.Checked = true;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             string maNV = txtMaNV.Text;
-            string hotenNV = HoTen_txt.Text;
-            string email = Email_txt.Text;
-            string sdt = SDT_txt.Text;
-            string gioitinh = "";
-            if (Nam.Checked)
-                gioitinh = "Nam";
+            string hotenNV = txtHoTen.Text;
+            string email = txtEmail.Text;
+            string sdt = txtSDT.Text;
+            string gioiTinh;
+            if (rbNam.Checked)
+                gioiTinh = "Nam";
             else
-                gioitinh = "Nữ";
-            if(hotenNV.Equals(null)|email.Equals(null)|sdt.Equals(null))
+                gioiTinh = "Nữ";
+            if (hotenNV.Equals(null) | email.Equals(null) | sdt.Equals(null))
             {
                 MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
                 return;
 
             }
-            if (new NhanVienBUS().Insert(new NhanVienDTO(maNV, hotenNV, email, sdt, gioitinh, 0)))
+            if (new NhanVienBUS().Insert(new NhanVienDTO(maNV, hotenNV, email, sdt, gioiTinh, 1)))
             {
                 MessageBox.Show("Thêm thành công");
+                this.listNhanVien.Add(new NhanVienDTO(maNV, hotenNV, email, sdt, gioiTinh, 1));
+                this.DialogResult = DialogResult.OK;
                 Hide();
             }
 
@@ -47,17 +50,7 @@ namespace QuanLyTourDuLich
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
     }
 }

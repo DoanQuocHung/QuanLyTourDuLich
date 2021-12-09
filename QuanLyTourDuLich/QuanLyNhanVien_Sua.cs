@@ -12,49 +12,65 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyNhanVien_Sua : Form
     {
-        public QuanLyNhanVien_Sua(String id)
+        public List<NhanVienDTO> listNhanVien { get; set; }
+        List<PhanCongDTO> listNhanVienDuocPhanCong;
+        public QuanLyNhanVien_Sua(List<NhanVienDTO> list, string id)
         {
             InitializeComponent();
-            NhanVienDTO edit = new NhanVienDTO();
-            edit = new NhanVienBUS().ListSearch(id)[0];
+            this.listNhanVien = list;
+
+            NhanVienDTO item = list.Find(x => x.Id_NV.Equals(id));
             txtMaNV.Text = id;
-            txtHoTenNV.Text = edit.Hoten_NV;
-            txtEmail.Text = edit.Email_NV;
-            txtSDT.Text = edit.Sdt_NV;
-            if (edit.Gioitinh_NV.Equals("Nam"))
+            txtHoTen.Text = item.Hoten_NV;
+            txtSDT.Text = item.Sdt_NV;
+            txtEmail.Text = item.Email_NV;
+            if (item.Gioitinh_NV.Equals("Nam"))
             {
-                Nam.Checked = true;
+                rbNam.Checked = true;
             }
             else
             {
-                Nu.Checked = true;
+                rbNu.Checked = true;
             }
+
         }
 
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-           /* string maNV = txtMaNV.Text;
-            string hotenNV = txtHoTenNV.Text;
+            string maNV = txtMaNV.Text;
+            string hotenNV = txtHoTen.Text;
             string email = txtEmail.Text;
             string sdt = txtSDT.Text;
-            string gioiTinh = txtGioiTinh.Text;
+            bool isChecked = rbNam.Checked;
+            string gioiTinh;
+            if (isChecked)
+                gioiTinh = rbNam.Text;
+            else
+                gioiTinh = rbNu.Text;
             int tinhTrang = 1;
+            if (maNV.Equals(null) || hotenNV.Equals(null) || email.Equals(null) || sdt.Equals(null))
+            {
+                MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
+                return;
+            }
+
             if (new NhanVienBUS().Update(new NhanVienDTO(maNV, hotenNV, email, sdt, gioiTinh, tinhTrang)))
             {
                 MessageBox.Show("Sửa thành công");
+                listNhanVien.Find(x => x.Id_NV.Equals(maNV)).Hoten_NV = hotenNV;
+                listNhanVien.Find(x => x.Id_NV.Equals(maNV)).Email_NV = email;
+                listNhanVien.Find(x => x.Id_NV.Equals(maNV)).Sdt_NV = sdt;
+                listNhanVien.Find(x => x.Id_NV.Equals(maNV)).Email_NV = email;
+                listNhanVien.Find(x => x.Id_NV.Equals(maNV)).Gioitinh_NV = gioiTinh;
+                this.DialogResult = DialogResult.OK;
                 Hide();
-            }*/
+            }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

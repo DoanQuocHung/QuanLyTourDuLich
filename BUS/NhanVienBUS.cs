@@ -14,15 +14,17 @@ namespace BUS
         {
             return new NhanVienDAO().ListAll();
         }
-        public List<NhanVienDTO> ListSearch(string text)
+
+        public List<NhanVienDTO> ListDuocPhanCong()
         {
-            return new NhanVienDAO().List(text);
+            return new NhanVienDAO().ListAllDuocPhanCong();
         }
-        public NhanVienDTO getNhanVien(string id)
+
+        public List<NhanVienDTO> ListChuaPhanCong()
         {
-            return new NhanVienDAO().getNhanVien(id);
+            return new NhanVienDAO().ListAllChuaPhanCong();
         }
-        
+
         public bool Update(NhanVienDTO nhanVien)
         {
             return new NhanVienDAO().Update(nhanVien);
@@ -36,7 +38,7 @@ namespace BUS
         {
             return new NhanVienDAO().Delete(manv);
         }
-        public String MakeID()
+        public string MakeID()
         {
             return new NhanVienDAO().MakeID();
         }
