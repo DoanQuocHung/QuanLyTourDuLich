@@ -12,19 +12,27 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyKhachHang_Sua : Form
     {
-        public QuanLyKhachHang_Sua(String id)
+        public List<KhachDTO> list { get; set; }
+
+        public QuanLyKhachHang_Sua(List<KhachDTO> list, String id)
         {
             InitializeComponent();
-            KhachDTO edit = new KhachDTO();
-            edit = new KhachHangBUS().ListSearch(id)[0];
+            this.list = list;
+            KhachDTO item = this.list.Find(x => x.Id_Khach.Equals(id));
             txt_1.Text = id;
-            txt_2.Text = edit.Hoten_Khach;
-            txt_3.Text = edit.Cmnd_Khach;
-            txt_4.Text = edit.Diachi_Khach;
-            txt_5.Text = edit.Gioitinh_Khach;
-            txt_6.Text = edit.Sdt_Khach;
-            txt_7.Text = edit.Quoctich;
-            txt_8.Text = edit.Tinh_Trang.ToString();
+            txt_2.Text = item.Hoten_Khach;
+            txt_3.Text = item.Cmnd_Khach;
+            txt_4.Text = item.Diachi_Khach;
+            if (item.Gioitinh_Khach.Equals("Nam"))
+            {
+                rbNam.Checked = true;
+            }
+            else
+            {
+                rbNu.Checked = true;
+            }
+            txt_6.Text = item.Sdt_Khach;
+            txt_7.Text = item.Quoctich;            
         }
 
 
@@ -34,26 +42,31 @@ namespace QuanLyTourDuLich
             string hoten = txt_2.Text;
             string cmnd = txt_3.Text;
             string diachi = txt_4.Text;
-            string gioiTinh = txt_5.Text;
+            string gioiTinh = "";
+            if (rbNam.Checked)
+                gioiTinh = "Nam";
+            if (rbNu.Checked)
+                gioiTinh = "Nữ";
             string sdt = txt_6.Text;
             string quoctich = txt_7.Text;
+            
+            if (hoten.Equals("") || cmnd.Equals("") || diachi.Equals("") || gioiTinh.Equals("") || sdt.Equals("") || quoctich.Equals(""))
+            {
+                MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
+                return;
+            }
+
             if (new KhachHangBUS().Update(new KhachDTO(maKH, hoten, cmnd, diachi, gioiTinh, sdt, quoctich, 1)))
             {
                 MessageBox.Show("Sửa thành công");
+                this.DialogResult = DialogResult.OK;
                 Hide();
             }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            txt_1.Text = "";
-            txt_2.Text = "";
-            txt_3.Text = "";
-            txt_4.Text = "";
-            txt_5.Text = "";
-            txt_6.Text = "";
-            txt_7.Text = "";
-            txt_8.Text = "";
+            this.Close();
         }
     }
 }

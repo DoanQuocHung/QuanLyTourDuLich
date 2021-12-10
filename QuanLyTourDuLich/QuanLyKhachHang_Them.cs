@@ -12,9 +12,12 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyKhachHang_Them : Form
     {
-        public QuanLyKhachHang_Them()
+        public List<KhachDTO> list { get; set; }
+
+        public QuanLyKhachHang_Them(List<KhachDTO> list)
         {
             InitializeComponent();
+            this.list = list;
             txt_1.Text = new KhachHangBUS().MakeID();
         }
         private void btnThem_Click(object sender, EventArgs e)
@@ -23,13 +26,24 @@ namespace QuanLyTourDuLich
             string hoten = txt_2.Text;
             string cmnd = txt_3.Text;
             string diachi = txt_4.Text;
-            string gioiTinh = txt_5.Text;
+            string gioiTinh = "";
+            if (rbNam.Checked)
+                gioiTinh = "Nam";
+            if (rbNu.Checked) 
+                gioiTinh = "Nữ";
             string sdt = txt_6.Text;
             string quoctich = txt_7.Text;
-            
+
+            if (hoten.Equals("") || cmnd.Equals("") || diachi.Equals("") || gioiTinh.Equals("") || sdt.Equals("") || quoctich.Equals(""))
+            {
+                MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
+                return;
+            }
+
             if (new KhachHangBUS().Insert(new KhachDTO(maKH, hoten, cmnd, diachi, gioiTinh, sdt, quoctich, 1)))
             {
                 MessageBox.Show("Thêm thành công");
+                this.DialogResult = DialogResult.OK;
                 Hide();
             }
 
@@ -37,19 +51,8 @@ namespace QuanLyTourDuLich
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            txt_1.Text = "";
-            txt_2.Text = "";
-            txt_3.Text = "";
-            txt_4.Text = "";
-            txt_5.Text = "";
-            txt_6.Text = "";
-            txt_7.Text = "";
-            txt_8.Text = "";
+            this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
