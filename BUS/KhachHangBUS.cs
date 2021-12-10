@@ -14,15 +14,7 @@ namespace BUS
         {
             return new KhachHangDAO().ListAll();
         }
-        public List<KhachDTO> ListSearch(string text)
-        {
-            return new KhachHangDAO().List(text);
-        }
-        public KhachDTO getKhachHang(string id)
-        {
-            return new KhachHangDAO().getKhachHang(id);
-        }
-
+        
         public bool Update(KhachDTO khachHang)
         {
             return new KhachHangDAO().Update(khachHang);
