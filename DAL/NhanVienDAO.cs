@@ -51,20 +51,22 @@ namespace DAL
             {
                 string query = "Select NHANVIEN.Id_NV, Hoten_NV, Email_NV, Sdt_NV, Gioitinh_NV, Tinh_Trang from NHANVIEN, PHANCONG where NHANVIEN.Id_NV = PHANCONG.Id_NV and Tinh_Trang = 1";
 
-                DataTable data = dataProvider.ExecuteQuery(query);
-
-                foreach (DataRow item in data.Rows)
+                using (DataTable data = dataProvider.ExecuteQuery(query))
                 {
-                    string maNhanVien = item["Id_NV"].ToString();
-                    string hoTenNhanVien = item["Hoten_NV"].ToString();
-                    string email = item["Email_NV"].ToString();
-                    string sdt = item["Sdt_NV"].ToString();
-                    string gioiTinh = item["Gioitinh_NV"].ToString();
-                    int tinhTrang = 1;
 
-                    NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
+                    foreach (DataRow item in data.Rows)
+                    {
+                        string maNhanVien = item["Id_NV"].ToString();
+                        string hoTenNhanVien = item["Hoten_NV"].ToString();
+                        string email = item["Email_NV"].ToString();
+                        string sdt = item["Sdt_NV"].ToString();
+                        string gioiTinh = item["Gioitinh_NV"].ToString();
+                        int tinhTrang = 1;
 
-                    nhanVien.Add(newNhanVien);
+                        NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
+
+                        nhanVien.Add(newNhanVien);
+                    }
                 }
             }
             catch (Exception e)

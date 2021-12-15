@@ -6,7 +6,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WebForm.Models;
-
+using BUS;
+using DTO;
 namespace WebForm.Controllers
 {
     public class HomeController : Controller
@@ -20,7 +21,10 @@ namespace WebForm.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            TourBUS tour = new TourBUS();
+            List<TourDTO> list = new List<TourDTO>();
+            list = tour.List();
+            return View(list);
         }
 
         public IActionResult Privacy()

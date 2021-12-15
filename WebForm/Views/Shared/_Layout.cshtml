@@ -1,4 +1,6 @@
 ﻿<!DOCTYPE html>
+@using BUS;
+@using DTO;
 <html lang="en">
 
 <head>
@@ -19,6 +21,11 @@
 <body id="page-top">
 
     @RenderBody()
+    @{
+        TourBUS tour = new TourBUS();
+        List<TourDTO> list = new List<TourDTO>();
+        list = tour.List();
+    }
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -173,13 +180,14 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Danh sách Tour</h1>
 
-                    
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <!-- Button thêm -->
                             <button href="#" class="btn btn-success">
                                 Thêm
+
                             </button>
 
                             <!-- Button sửa -->
@@ -204,30 +212,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bradley Greer</td>
-                                            <td>Software Engineer</td>
-                                            <td>London</td>
-                                            <td>41</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dai Rios</td>
-                                            <td>Personnel Lead</td>
-                                            <td>Edinburgh</td>
-                                            <td>35</td>
-                                        </tr>
+                                        @foreach (TourDTO item in list)
+                                        {
+                                            <tr>
+                                                <td>@item.Id_Tour</td>
+                                                <td>@item.Ten_Tour</td>
+                                                <td>@item.Dacdiem_Tour</td>
+                                                <td>@item.Id_Loai</td>
+                                                <td>
+                                                    <asp:CheckBox id="checkbox1" runat="server"
+                                                                  AutoPostBack="True"
+                                                                  Text="Include 8.6% sales tax"
+                                                                  TextAlign="Right"
+                                                                  OnCheckedChanged="Check_Clicked" />
+                                                </td>
+                                            </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div>
@@ -238,24 +238,24 @@
                 <!-- /.container-fluid -->
 
             </div>
-        <!-- End of Content Wrapper -->
+            <!-- End of Content Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+        </div>
+        <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/sb-admin-2.min.js"></script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="js/sb-admin-2.min.js"></script>
+        <script src="vendor/chart.js/Chart.min.js"></script>
+        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

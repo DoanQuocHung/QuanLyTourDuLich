@@ -15,7 +15,6 @@ namespace QuanLyTourDuLich
         List<NhanVienDTO> listNhanVienDuocPhanCong, listNhanVienChuaPhanCong;
         public QuanLyNhanVien()
         {
-
             InitializeComponent();
             listNhanVien = new NhanVienBUS().List();
             listNhanVienDuocPhanCong = new NhanVienBUS().ListDuocPhanCong();
@@ -34,7 +33,10 @@ namespace QuanLyTourDuLich
             Grid_Danhsachnhanvien.Refresh();
             foreach (NhanVienDTO item in list)
             {
-                Grid_Danhsachnhanvien.Rows.Add(item.Id_NV, item.Hoten_NV, item.Email_NV, item.Sdt_NV, item.Gioitinh_NV, item.Tinh_Trang);
+                String tinhtrangnv = "";
+                if (item.Tinh_Trang == 1) tinhtrangnv = "Còn hoạt động";
+                else tinhtrangnv = "Không hoạt động";
+                Grid_Danhsachnhanvien.Rows.Add(item.Id_NV, item.Hoten_NV, item.Email_NV, item.Sdt_NV, item.Gioitinh_NV, tinhtrangnv);
             }
 
         }
