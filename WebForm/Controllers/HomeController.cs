@@ -21,10 +21,7 @@ namespace WebForm.Controllers
 
         public IActionResult Index()
         {
-            TourBUS tour = new TourBUS();
-            List<TourDTO> list = new List<TourDTO>();
-            list = tour.List();
-            return View(list);
+            return View();
         }
 
         public IActionResult Privacy()
