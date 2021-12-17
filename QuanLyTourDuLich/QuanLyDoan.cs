@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -72,11 +73,19 @@ namespace QuanLyTourDuLich
             DataGridViewRow selectedRow = Grid_Danhsachdoan.Rows[selectedrowindex];
             string cellValue = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
 
-            if (new DoanDuLichBUS().Delete(cellValue))
+            try
             {
-                MessageBox.Show("Xóa thành công");
-                list.RemoveAll(x => x.Id_Doan.Equals(cellValue));
-                BindGrid(list);
+                if (new DoanDuLichBUS().Delete(cellValue))
+                {
+                    MessageBox.Show("Xóa thành công");
+                    list.RemoveAll(x => x.Id_Doan.Equals(cellValue));
+                    BindGrid(list);
+                }
+            }
+            catch (SqlException e1) when (e1.Number == 547)
+            {
+
+                MessageBox.Show("Đoàn này không được xóa vì đã có khách hàng");
             }
         }
 
