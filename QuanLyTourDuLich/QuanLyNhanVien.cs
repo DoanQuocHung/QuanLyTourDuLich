@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -80,11 +81,19 @@ namespace QuanLyTourDuLich
             DataGridViewRow selectedRow = Grid_Danhsachnhanvien.Rows[selectedrowindex];
             string cellValue = Convert.ToString(selectedRow.Cells["Id_NV"].Value);
             duocPhanCong = listNhanVienDuocPhanCong.FindAll(x => x.Id_NV.Contains(cellValue));
-            if (new NhanVienBUS().Delete(cellValue))
+            try
             {
-                MessageBox.Show("Xóa thành công");
-                listNhanVien.RemoveAll(x => x.Id_NV.Equals(cellValue));
-                BindGrid(listNhanVien);
+                if (new NhanVienBUS().Delete(cellValue))
+                {
+                    MessageBox.Show("Xóa thành công");
+                    listNhanVien.RemoveAll(x => x.Id_NV.Equals(cellValue));
+                    BindGrid(listNhanVien);
+                }
+            }
+            catch (SqlException e1) when (e1.Number == 547)
+            {
+
+                MessageBox.Show("Nhân viên này không được xóa vì đã được phân công");
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -78,11 +79,19 @@ namespace QuanLyTourDuLich
             int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
             string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            if (new TourBUS().Delete(cellValue))
+            try
             {
-                MessageBox.Show("Xóa thành công");
-                list.RemoveAll(x => x.Id_Tour.Equals(cellValue));
-                BindGrid(list);
+                if (new TourBUS().Delete(cellValue))
+                {
+                    MessageBox.Show("Xóa thành công");
+                    list.RemoveAll(x => x.Id_Tour.Equals(cellValue));
+                    BindGrid(list);
+                }
+            }
+            catch (SqlException e1) when (e1.Number == 547)
+            {
+
+                MessageBox.Show("Tour này không được xóa vì đã có đoàn tham gia");
             }
         }
 
