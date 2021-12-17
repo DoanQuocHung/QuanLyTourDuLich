@@ -8,91 +8,46 @@ namespace DAL
 {
     public class DoanDuLichDAO
     {
+        DataProvider dataProvider = new DataProvider();
         public DoanDuLichDAO() { }
 
         public List<DoanDuLichDTO> ListAll()
         {
-            DataProvider dataProvider = new DataProvider();
-
             List<DoanDuLichDTO> doanDuLich = new List<DoanDuLichDTO>();
-            string query = "select * from DOANDULICH";
-            DataTable data = dataProvider.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
+            try
             {
-                string maDoan = item["Id_Doan"].ToString();
-                string tenDoan = item["Ten_Doan"].ToString();
-                string maTour = item["Id_Tour"].ToString();
-                string ngayKhoiHanh = item["Ngaykhoihanh"].ToString();
-                string ngayKetThuc = item["Ngayketthuc"].ToString();
-                long doanhThu = (long)item["Doanhthu"];
-                string noiDung = item["Noidung"].ToString();
+                string query = "select * from DOANDULICH";
+                DataTable data = dataProvider.ExecuteQuery(query);
 
-                DoanDuLichDTO newdoanDuLich = new DoanDuLichDTO(maDoan, tenDoan, maTour, ngayKhoiHanh, ngayKetThuc, doanhThu, noiDung);
+                foreach (DataRow item in data.Rows)
+                {
+                    string maDoan = item["Id_Doan"].ToString();
+                    string tenDoan = item["Ten_Doan"].ToString();
+                    string maTour = item["Id_Tour"].ToString();
+                    string ngayKhoiHanh = item["Ngaykhoihanh"].ToString();
+                    string ngayKetThuc = item["Ngayketthuc"].ToString();
+                    long doanhThu = (long)item["Doanhthu"];
+                    string noiDung = item["Noidung"].ToString();
 
-                doanDuLich.Add(newdoanDuLich);
+                    DoanDuLichDTO newdoanDuLich = new DoanDuLichDTO(maDoan, tenDoan, maTour, ngayKhoiHanh, ngayKetThuc, doanhThu, noiDung);
+
+                    doanDuLich.Add(newdoanDuLich);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("Lỗi DB tại ListAll " + e);
+            }
+
             return doanDuLich;
         }
-        public DoanDuLichDTO get(string idDoan, string idTour)
-        {
 
-            DataProvider dataProvider = new DataProvider();
-
-            DoanDuLichDTO newdoanDuLich = new DoanDuLichDTO();
-            string query = "select * from DOANDULICH where Id_Doan = @MADOAN AND Id_Tour = @MATOUR ";
-            object[] para = new object[]
-            {
-               idDoan,
-               idTour
-            };
-            DataTable data = dataProvider.ExecuteQuery(query, para);
-
-            foreach (DataRow item in data.Rows)
-            {
-                string maDoan = item["Id_Doan"].ToString();
-                string tenDoan = item["Ten_Doan"].ToString();
-                string maTour = item["Id_Tour"].ToString();
-                string ngayKhoiHanh = item["Ngaykhoihanh"].ToString();
-                string ngayKetThuc = item["Ngayketthuc"].ToString();
-                long doanhThu = (long)item["Doanhthu"];
-                string noiDung = item["Noidung"].ToString();
-
-                newdoanDuLich = new DoanDuLichDTO(maDoan, tenDoan, maTour, ngayKhoiHanh, ngayKetThuc, doanhThu, noiDung);
-
-            }
-            return newdoanDuLich;
-        }
-
-        public List<DoanDuLichDTO> List(string search)
-        {
-            DataProvider dataProvider = new DataProvider();
-
-            List<DoanDuLichDTO> doanDuLich = new List<DoanDuLichDTO>();
-            string query = "select * from DOANDULICH where Id_Doan LIKE '%" + search + "%'";
-            DataTable data = dataProvider.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
-            {
-                string maDoan = item["Id_Doan"].ToString();
-                string tenDoan = item["Ten_Doan"].ToString();
-                string maTour = item["Id_Tour"].ToString();
-                string ngayKhoiHanh = item["Ngaykhoihanh"].ToString();
-                string ngayKetThuc = item["Ngayketthuc"].ToString();
-                long doanhThu = (long)item["Doanhthu"];
-                string noiDung = item["Noidung"].ToString();
-
-                DoanDuLichDTO newdoanDuLich = new DoanDuLichDTO(maDoan, tenDoan, maTour, ngayKhoiHanh, ngayKetThuc, doanhThu, noiDung);
-                doanDuLich.Add(newdoanDuLich);
-            }
-            return doanDuLich;
-        }
         public List<DoanDuLichDTO> ListSearch(string search)
         {
             DataProvider dataProvider = new DataProvider();
 
             List<DoanDuLichDTO> doanDuLich = new List<DoanDuLichDTO>();
-            string query = "select * from DOANDULICH where Id_Doan = " + search;
+            string query = "select * from DOANDULICH where Ten_Doan = " + search;
             DataTable data = dataProvider.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)
@@ -164,12 +119,14 @@ namespace DAL
         public bool Delete(string maDoan)
         {
             string query = "delete from DOANDULICH where Id_Doan = @MADOAN ";
-
+            string query2 = "delete from CHITIETDOAN where Id_Doan = @MADOAN";
+            
             object[] para = new object[]
             {
                 maDoan
             };
             DataProvider dataProvider = new DataProvider();
+            dataProvider.ExecuteNonQuery(query2, para);
             if (dataProvider.ExecuteNonQuery(query, para) > 0)
                 return true;
             return false;
@@ -181,20 +138,20 @@ namespace DAL
             int count = (int)datapro.ExecuteScalar(query);
             return count;
         }
-        public int Exist(String id)
+        public int Exist(string id)
         {
             string query = "select count(*) from DOANDULICH where Id_Doan = '" + id + "'";
             DataProvider datapro = new DataProvider();
             int count = (int)datapro.ExecuteScalar(query);
             return count;
         }
-        public String MakeID()
+        public string MakeID()
         {
-            String id = "";
+            string id;
             int count = Count();
             while (true)
             {
-                id = "DO" + count;
+                id = "DOAN" + count;
                 if (Exist(id) == 0)
                     break;
                 else count++;
