@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using BUS;
 using DTO;
@@ -59,6 +55,13 @@ namespace QuanLyTourDuLich
             if (new KhachHangBUS().Update(new KhachDTO(maKH, hoten, cmnd, diachi, gioiTinh, sdt, quoctich, 1)))
             {
                 MessageBox.Show("Sửa thành công");
+                list.Find(x => x.Id_Khach.Equals(maKH)).Hoten_Khach = hoten;
+                list.Find(x => x.Id_Khach.Equals(maKH)).Cmnd_Khach = cmnd;
+                list.Find(x => x.Id_Khach.Equals(maKH)).Diachi_Khach = diachi;
+                list.Find(x => x.Id_Khach.Equals(maKH)).Gioitinh_Khach = gioiTinh;
+                list.Find(x => x.Id_Khach.Equals(maKH)).Sdt_Khach = sdt;
+                list.Find(x => x.Id_Khach.Equals(maKH)).Quoctich = quoctich;
+
                 this.DialogResult = DialogResult.OK;
                 Hide();
             }

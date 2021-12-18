@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
+using System.Diagnostics;
 using DTO;
+
 namespace DAL
 {
     public class PhanCongDAO
@@ -17,84 +18,55 @@ namespace DAL
             List<PhanCongDTO> phanCong = new List<PhanCongDTO>();
             string query = "select * from PHANCONG";
 
-            DataTable data = dataProvider.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
+            try
             {
-                string maDoan = item["Id_Doan"].ToString();
-                string maNhanVien = item["Id_NV"].ToString();
-                string nhiemVu = item["Nhiemvu"].ToString();
+                DataTable data = dataProvider.ExecuteQuery(query);
 
-                PhanCongDTO newPhanCong = new PhanCongDTO(maDoan, maNhanVien, nhiemVu);
+                foreach (DataRow item in data.Rows)
+                {
+                    string maDoan = item["Id_Doan"].ToString();
+                    string maNhanVien = item["Id_NV"].ToString();
+                    string nhiemVu = item["Nhiemvu"].ToString();
 
-                phanCong.Add(newPhanCong);
+                    PhanCongDTO newPhanCong = new PhanCongDTO(maDoan, maNhanVien, nhiemVu);
+
+                    phanCong.Add(newPhanCong);
+                }
+            }
+            catch (Exception ex)
+            {
+                //Hiển thị lỗi trong Immediate Window
+                Debug.WriteLine(ex.Message);
             }
             return phanCong;
         }
-        public PhanCongDTO get(string idDoan, string idNhanVien)
+        public bool Update(PhanCongDTO phanCong, string oldId_Doan, string oldId_NV)
         {
+            string query = "update PHANCONG set " +
+                "Id_Doan = @MADOAN , " +
+                "Id_NV = @MANHANVIEN , " +
+                "Nhiemvu = @NHIEMVU " +
+                "where Id_Doan = @oldMADOAN AND Id_NV = @oldMANHANVIEN ";
 
-            DataProvider dataProvider = new DataProvider();
-
-            PhanCongDTO newPhanCong = new PhanCongDTO();
-            string query = "select * from PHANCONG where Id_Doan = @MADOAN AND Id_NV = @MANHANVIEN ";
             object[] para = new object[]
             {
-               idDoan,
-               idNhanVien
+                phanCong.Id_Doan,
+                phanCong.Id_NV,
+                phanCong.Nhiemvu,
+                oldId_Doan,
+                oldId_NV
             };
-            DataTable data = dataProvider.ExecuteQuery(query, para);
-
-            foreach (DataRow item in data.Rows)
+            try
             {
-                string maDoan = item["Id_Doan"].ToString();
-                string maNhanVien = item["Id_NV"].ToString();
-                string nhiemVu = item["Nhiemvu"].ToString();
-
-                newPhanCong = new PhanCongDTO(maDoan, maNhanVien, nhiemVu);
+                DataProvider dataProvider = new DataProvider();
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
             }
-            return newPhanCong;
-        }
-
-        public List<PhanCongDTO> List(string search)
-        {
-            DataProvider dataProvider = new DataProvider();
-
-            List<PhanCongDTO> phanCong = new List<PhanCongDTO>();
-            string query = "select * from PHANCONG where Id_Doan LIKE '%" + search + "%'";
-            DataTable data = dataProvider.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
+            catch (Exception ex)
             {
-                string maDoan = item["Id_Doan"].ToString();
-                string maNhanVien = item["Id_NV"].ToString();
-                string nhiemVu = item["Nhiemvu"].ToString();
-
-                PhanCongDTO newPhanCong = new PhanCongDTO(maDoan, maNhanVien, nhiemVu);
-
-                phanCong.Add(newPhanCong);
+                Debug.WriteLine(ex.Message);
             }
-            return phanCong;
-        }
-        public List<PhanCongDTO> ListSearch(string search)
-        {
-            DataProvider dataProvider = new DataProvider();
-
-            List<PhanCongDTO> phanCong = new List<PhanCongDTO>();
-            string query = "select * from PHANCONG where Id_Doan = " + search;
-            DataTable data = dataProvider.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
-            {
-                string maDoan = item["Id_Doan"].ToString();
-                string maNhanVien = item["Id_NV"].ToString();
-                string nhiemVu = item["Nhiemvu"].ToString();
-
-                PhanCongDTO newPhanCong = new PhanCongDTO(maDoan, maNhanVien, nhiemVu);
-
-                phanCong.Add(newPhanCong);
-            }
-            return phanCong;
+            return false;
         }
 
         public bool Insert(PhanCongDTO phanCong)
@@ -108,31 +80,20 @@ namespace DAL
                 phanCong.Id_NV,
                 phanCong.Nhiemvu
             };
-            DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
-            return false;
-        }
-
-        public bool Update(PhanCongDTO phanCong)
-        {
-            string query = "update PHANCONG set " +
-                "Id_Doan = @MANHANVIEN , " +
-                "Nhiemvu = @NHIEMVU " +
-                "where Id_Doan = @oldMADOAN AND Id_NV = @MANHANVIEN ";
-
-            object[] para = new object[]
+            try
             {
-                phanCong.Id_NV,
-                phanCong.Nhiemvu,
-                phanCong.Id_Doan,
-                phanCong.Id_NV
-            };
-            DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
+                DataProvider dataProvider = new DataProvider();
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
             return false;
         }
+
+
 
         public bool Delete(string maDoan, string maNhanVien)
         {
@@ -143,9 +104,16 @@ namespace DAL
                 maDoan,
                 maNhanVien
             };
-            DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
+            try
+            {
+                DataProvider dataProvider = new DataProvider();
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
             return false;
         }
     }
