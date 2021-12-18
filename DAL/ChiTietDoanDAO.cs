@@ -14,8 +14,8 @@ namespace DAL
 
             DataProvider datapro = new DataProvider();
 
-            List<ChiTietDoanDTO> tours = new List<ChiTietDoanDTO>();
-            string query = "Select * from CHITIETDOAN where Id_Doan = @id";
+            List<ChiTietDoanDTO> chitietdoans = new List<ChiTietDoanDTO>();
+            string query = "Select * from CHITIETDOAN where Id_Doan = @id ";
             object[] para = new object[]
             {
                id
@@ -24,51 +24,50 @@ namespace DAL
 
             foreach (DataRow item in data.Rows)
             {
-                string matour = item["Id_Doan"].ToString();
-                string madiadiem = item["Id_Khach"].ToString();
+                string madoan = item["Id_Doan"].ToString();
+                string makhach = item["Id_Khach"].ToString();
 
+                ChiTietDoanDTO newChitietdoan = new ChiTietDoanDTO(madoan, makhach);
 
-                ChiTietDoanDTO newTour = new ChiTietDoanDTO(matour, madiadiem);
-
-                tours.Add(newTour);
+                chitietdoans.Add(newChitietdoan);
             }
-            return tours;
+            return chitietdoans;
         }
-        public ChiTietDoanDTO get(string id, string diadiem)
+        public ChiTietDoanDTO get(string iddoan, string idkhach)
         {
 
             DataProvider datapro = new DataProvider();
 
-            ChiTietDoanDTO newTour = new ChiTietDoanDTO();
-            string query = "Select * from CHITIETDOAN where Id_Doan = @id " +
-                "AND Id_Khach = @diadiem ";
+            ChiTietDoanDTO newChitietdoan = new ChiTietDoanDTO();
+            string query = "Select * from CHITIETDOAN where Id_Doan = @iddoan " +
+                " AND Id_Khach = @idkhach ";
             object[] para = new object[]
             {
-               id,
-               diadiem
+               iddoan,
+               idkhach
             };
             DataTable data = datapro.ExecuteQuery(query, para);
 
             foreach (DataRow item in data.Rows)
             {
-                string matour = item["Id_Tour"].ToString();
-                string madiadiem = item["Id_Khach"].ToString();
+                string madoan = item["Id_Doan"].ToString();
+                string makhach = item["Id_Khach"].ToString();
 
+                newChitietdoan = new ChiTietDoanDTO(madoan, makhach);
 
-                newTour = new ChiTietDoanDTO(matour, madiadiem);
             }
-            return newTour;
+            return newChitietdoan;
         }
 
-        public bool Insert(ChiTietDoanDTO tour)
+        public bool Insert(ChiTietDoanDTO doan)
         {
             string query = "insert into CHITIETDOAN " +
-                "values( @MATOUR , @MADIADIEM )";
+                "values( @MADOAN , @MAKHACH )";
 
             object[] para = new object[]
             {
-                tour.Id_Doan,
-                tour.Id_Khach
+                doan.Id_Doan,
+                doan.Id_Khach
             };
             DataProvider datapro = new DataProvider();
             if (datapro.ExecuteNonQuery(query, para) > 0)
@@ -76,15 +75,15 @@ namespace DAL
             return false;
         }
 
-        public bool Delete(string idtour, string iddiadiem)
+        public bool Delete(string iddoan, string idkhach)
         {
             string query = "delete from CHITIETDOAN " +
-                "where Id_Doan = @MATOUR AND Id_Khach = @MADIADIEM";
+                "where Id_Doan = @MADOAN AND Id_Khach = @MAKHACH ";
 
             object[] para = new object[]
             {
-                idtour,
-                iddiadiem,
+                iddoan,
+                idkhach,
             };
             DataProvider datapro = new DataProvider();
             if (datapro.ExecuteNonQuery(query, para) > 0)

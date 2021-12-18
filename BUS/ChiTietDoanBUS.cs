@@ -11,9 +11,9 @@ namespace BUS
         {
             return new ChiTietDoanDAO().ListAll(id);
         }
-        public ChiTietDoanDTO get(string id, string diadiem)
+        public ChiTietDoanDTO get(string id, string idkhach)
         {
-            return new ChiTietDoanDAO().get(id, diadiem);
+            return new ChiTietDoanDAO().get(id, idkhach);
         }
         public bool Insert(ChiTietDoanDTO chitiet)
         {

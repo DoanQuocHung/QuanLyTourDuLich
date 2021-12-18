@@ -93,6 +93,7 @@ namespace QuanLyTourDuLich
             // 
             // cbTenTour
             // 
+            this.cbTenTour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTenTour.FormattingEnabled = true;
             this.cbTenTour.Location = new System.Drawing.Point(259, 188);
             this.cbTenTour.Name = "cbTenTour";
