@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using DAL;
 using DTO;
+
 namespace BUS
 {
     public class PhanCongBUS
@@ -14,18 +14,9 @@ namespace BUS
             return new PhanCongDAO().ListAll();
         }
 
-        public List<PhanCongDTO> ListSearch(string text)
+        public bool Update(PhanCongDTO phanCong, string oldId_Doan, string oldId_NV)
         {
-            return new PhanCongDAO().List(text);
-        }
-
-        public PhanCongDTO get(string maDoan, string maNhanVien)
-        {
-            return new PhanCongDAO().get(maDoan, maNhanVien);
-        }
-        public bool Update(PhanCongDTO phanCong)
-        {
-            return new PhanCongDAO().Update(phanCong);
+            return new PhanCongDAO().Update(phanCong, oldId_Doan, oldId_NV);
         }
 
         public bool Insert(PhanCongDTO phanCong)
