@@ -133,6 +133,9 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Danh sách Tour</h4>
+                                    <button type="button" class="btn btn-success" onclick="ThemTour()">
+                                        Thêm
+                                    </button>
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
@@ -150,8 +153,8 @@
                                                     <td> Herman Beck </td>
                                                     <td> $ 77.99 </td>
                                                     <td> May 15, 2015 </td>
-                                                    <td> 
-                                                        <button type="button" class="btn btn-warning">Sửa</button> 
+                                                    <td>
+                                                        <button type="button" class="btn btn-warning">Sửa</button>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -217,6 +220,41 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Form thêm -->
+
+            <dialog id="them-tour" style="display:none">
+                <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                    <h4>Thêm Tour</h4>
+                    <form class="pt-3">
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="ID Tour">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Tên Tour">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Đặc Điểm">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control form-control-lg" id="exampleFormControlSelect2">
+                                <option>ID Loại</option>
+                                <option>Loại 1</option>
+                                <option>Loại 2</option>
+                            </select>
+                        </div>
+                        <div class="mt-3">
+                            <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
+                                Thêm
+                            </a>
+                            <a class="btn btn-block btn-warning btn-lg font-weight-medium auth-form-btn">
+                                Hủy
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </dialog>
+
         </div>
     </div>
     <script src="vendors/js/vendor.bundle.base.js"></script>
@@ -228,5 +266,14 @@
     <script src="vendors/progressbar.js/progressbar.min.js"></script>
     <script src="vendors/chart.js/Chart.min.js"></script>
     <script src="js/dashboard.js"></script>
+    <script>
+        function ThemTour() {
+            document.getElementById("them-tour").style.display = 'block';
+        }
+        function SuamTour() {
+
+        }
+
+    </script>
 </body>
 </html>
