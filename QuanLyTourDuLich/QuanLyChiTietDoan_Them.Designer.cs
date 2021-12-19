@@ -31,93 +31,157 @@ namespace QuanLyTourDuLich
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyChiTietDoan_Them));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtMaNV = new System.Windows.Forms.TextBox();
+            this.cbHoTen = new System.Windows.Forms.ComboBox();
+            this.txtMaDoan = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtHoTenNV = new System.Windows.Forms.TextBox();
+            this.txtCMND = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMaKhach = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Controls.Add(this.txtMaNV);
+            this.panel1.Controls.Add(this.cbHoTen);
+            this.panel1.Controls.Add(this.txtMaDoan);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtHoTenNV);
+            this.panel1.Controls.Add(this.txtCMND);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.txtMaKhach);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(7, 7);
+            this.panel1.Controls.Add(this.btnHuy);
+            this.panel1.Controls.Add(this.btnThem);
+            this.panel1.Location = new System.Drawing.Point(9, 9);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(544, 218);
+            this.panel1.Size = new System.Drawing.Size(679, 380);
             this.panel1.TabIndex = 3;
             // 
-            // txtMaNV
+            // cbHoTen
             // 
-            this.txtMaNV.Location = new System.Drawing.Point(203, 40);
-            this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Size = new System.Drawing.Size(317, 27);
-            this.txtMaNV.TabIndex = 12;
+            this.cbHoTen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbHoTen.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbHoTen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbHoTen.FormattingEnabled = true;
+            this.cbHoTen.Location = new System.Drawing.Point(254, 183);
+            this.cbHoTen.Name = "cbHoTen";
+            this.cbHoTen.Size = new System.Drawing.Size(395, 33);
+            this.cbHoTen.TabIndex = 13;
+            this.cbHoTen.DropDownClosed += new System.EventHandler(this.cbMaKhach_DropDownClosed);
+            // 
+            // txtMaDoan
+            // 
+            this.txtMaDoan.Location = new System.Drawing.Point(254, 50);
+            this.txtMaDoan.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaDoan.Name = "txtMaDoan";
+            this.txtMaDoan.ReadOnly = true;
+            this.txtMaDoan.Size = new System.Drawing.Size(395, 31);
+            this.txtMaDoan.TabIndex = 12;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(26, 39);
+            this.label5.Location = new System.Drawing.Point(32, 49);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 25);
+            this.label5.Size = new System.Drawing.Size(104, 29);
             this.label5.TabIndex = 10;
             this.label5.Text = "ID Đoàn";
             // 
-            // txtHoTenNV
+            // txtCMND
             // 
-            this.txtHoTenNV.Location = new System.Drawing.Point(203, 92);
-            this.txtHoTenNV.Name = "txtHoTenNV";
-            this.txtHoTenNV.Size = new System.Drawing.Size(317, 27);
-            this.txtHoTenNV.TabIndex = 6;
+            this.txtCMND.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtCMND.Location = new System.Drawing.Point(254, 248);
+            this.txtCMND.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCMND.Name = "txtCMND";
+            this.txtCMND.ReadOnly = true;
+            this.txtCMND.Size = new System.Drawing.Size(395, 31);
+            this.txtCMND.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(32, 247);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 29);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "CMND";
+            // 
+            // txtMaKhach
+            // 
+            this.txtMaKhach.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtMaKhach.Location = new System.Drawing.Point(254, 114);
+            this.txtMaKhach.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaKhach.Name = "txtMaKhach";
+            this.txtMaKhach.ReadOnly = true;
+            this.txtMaKhach.Size = new System.Drawing.Size(395, 31);
+            this.txtMaKhach.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(32, 183);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 29);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Họ Tên";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(26, 91);
+            this.label1.Location = new System.Drawing.Point(32, 114);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 25);
+            this.label1.Size = new System.Drawing.Size(116, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "ID Khách";
             // 
-            // button2
+            // btnHuy
             // 
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(411, 151);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 43);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Hủy";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHuy.Location = new System.Drawing.Point(513, 302);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(136, 54);
+            this.btnHuy.TabIndex = 1;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
-            // button1
+            // btnThem
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(277, 151);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 43);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "      Thêm";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.Location = new System.Drawing.Point(345, 302);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(136, 54);
+            this.btnThem.TabIndex = 0;
+            this.btnThem.Text = "      Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // QuanLyChiTietDoan_Them
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(556, 232);
+            this.ClientSize = new System.Drawing.Size(692, 391);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "QuanLyChiTietDoan_Them";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm Chi Tiết Đoàn";
@@ -130,11 +194,15 @@ namespace QuanLyTourDuLich
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtMaNV;
+        private System.Windows.Forms.TextBox txtMaDoan;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtHoTenNV;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.TextBox txtMaKhach;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbHoTen;
+        private System.Windows.Forms.TextBox txtCMND;
+        private System.Windows.Forms.Label label3;
     }
 }

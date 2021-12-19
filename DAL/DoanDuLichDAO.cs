@@ -120,7 +120,7 @@ namespace DAL
         {
             string query = "delete from DOANDULICH where Id_Doan = @MADOAN ";
             string query2 = "delete from CHITIETDOAN where Id_Doan = @MADOAN";
-            
+
             object[] para = new object[]
             {
                 maDoan
