@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BUS", "BUS\BUS.csproj", "{4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{655CDA03-1626-4FD7-B875-9F1595FDFB82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForm", "WebForm\WebForm.csproj", "{AF0FA7B5-9E84-4F0C-87DC-36BB096F397D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebForm", "WebForm\WebForm.csproj", "{AF0FA7B5-9E84-4F0C-87DC-36BB096F397D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

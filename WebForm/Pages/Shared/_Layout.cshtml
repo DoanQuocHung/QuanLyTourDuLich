@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    @using BUS;
+    @using DTO;
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,6 +13,14 @@
     <link rel="shortcut icon" href="images/favicon.png" />
 </head>
 <body>
+    @{ 
+        List<TourDTO> list = new List<TourDTO>();
+        List<LoaiTourDTO> listloai = new List<LoaiTourDTO>();
+        TourBUS bus = new TourBUS();
+        LoaiTourBUS busloai = new LoaiTourBUS();
+        list = bus.List();
+        listloai = busloai.List();
+    }
     @RenderBody()
     <div class="container-scroller">
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -133,91 +143,41 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Danh sách Tour</h4>
-                                    <button type="button" class="btn btn-success" onclick="ThemTour()">
-                                        Thêm
-                                    </button>
+                                    <form class="form-inline">
+                                        <button type="button" class="btn btn-primary mb-2" onclick="ThemTour()">
+                                            Thêm
+                                        </button>
+                                        <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" id="inlineFormInputName2" placeholder="Tên Tour">
+                                    </form>
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th> User </th>
-                                                    <th> First name </th>
-                                                    <th> Amount </th>
-                                                    <th> Deadline </th>
+                                                    <th>Mã Tour</th>
+                                                    <th> Tên Tour </th>
+                                                    <th> Mô Tả </th>
+                                                    <th> Loại Tour </th>
                                                     <th> Thao tác </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td> T01 </td>
-                                                    <td> Herman Beck </td>
-                                                    <td> $ 77.99 </td>
-                                                    <td> May 15, 2015 </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning">Sửa</button>
-                                                        <button type="button" class="btn btn-danger">Xóa</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> T02 </td>
-                                                    <td> Herman Beck </td>
-                                                    <td> $ 77.99 </td>
-                                                    <td> May 15, 2015 </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning">Sửa</button>
-                                                        <button type="button" class="btn btn-danger">Xóa</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> T03 </td>
-                                                    <td> Herman Beck </td>
-                                                    <td> $ 77.99 </td>
-                                                    <td> May 15, 2015 </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning">Sửa</button>
-                                                        <button type="button" class="btn btn-danger">Xóa</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> T04 </td>
-                                                    <td> Herman Beck </td>
-                                                    <td> $ 77.99 </td>
-                                                    <td> May 15, 2015 </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning">Sửa</button>
-                                                        <button type="button" class="btn btn-danger">Xóa</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> T05 </td>
-                                                    <td> Herman Beck </td>
-                                                    <td> $ 77.99 </td>
-                                                    <td> May 15, 2015 </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning">Sửa</button>
-                                                        <button type="button" class="btn btn-danger">Xóa</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> T06 </td>
-                                                    <td> Herman Beck </td>
-                                                    <td> $ 77.99 </td>
-                                                    <td> May 15, 2015 </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning">Sửa</button>
-                                                        <button type="button" class="btn btn-danger">Xóa</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> T07 </td>
-                                                    <td> Herman Beck </td>
-                                                    <td> $ 77.99 </td>
-                                                    <td> May 15, 2015 </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning">Sửa</button>
-                                                        <button type="button" class="btn btn-danger">Xóa</button>
-                                                    </td>
-                                                </tr>
+                                                @{
+
+                                                    foreach (TourDTO item in list)
+                                                    {
+                                                        string tenloai = listloai.Find(x => x.Id_Loai.Equals(item.Id_Loai)).Ten_Loai;
+                                                        <tr>
+                                                            <td>@item.Id_Tour</td>
+                                                            <td>@item.Ten_Tour</td>
+                                                            <td>@item.Dacdiem_Tour</td>
+                                                            <td>@tenloai</td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-warning">Sửa</button>
+                                                                <button type="button" class="btn btn-danger">Xóa</button>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
                                             </tbody>
                                         </table>
                                     </div>

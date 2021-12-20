@@ -5,7 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using BUS;
+using DTO;
 namespace WebForm.Pages
 {
     public class IndexModel : PageModel
@@ -19,7 +20,7 @@ namespace WebForm.Pages
 
         public void OnGet()
         {
-
+            
         }
     }
 }
