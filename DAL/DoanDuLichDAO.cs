@@ -18,7 +18,7 @@ namespace DAL
             {
                 string query = "select * from DOANDULICH";
                 DataTable data = dataProvider.ExecuteQuery(query);
-
+                Console.WriteLine(data.Rows);
                 foreach (DataRow item in data.Rows)
                 {
                     string maDoan = item["Id_Doan"].ToString();
@@ -97,7 +97,7 @@ namespace DAL
                 "Ngayketthuc = @NGAYKETTHUC , " +
                 "Doanhthu = @DOANHTHU , " +
                 "Noidung  = @NOIDUNG " +
-                "where Id_Doan = @oldMADOAN";
+                "where Id_Doan = @oldMADOAN ";
 
             object[] para = new object[]
             {
@@ -119,7 +119,7 @@ namespace DAL
         public bool Delete(string maDoan)
         {
             string query = "delete from DOANDULICH where Id_Doan = @MADOAN ";
-            string query2 = "delete from CHITIETDOAN where Id_Doan = @MADOAN";
+            string query2 = "delete from CHITIETDOAN where Id_Doan = @MADOAN ";
 
             object[] para = new object[]
             {

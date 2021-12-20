@@ -117,6 +117,8 @@ namespace QuanLyTourDuLich
                 }
                 
             }
+            list = new DoanDuLichBUS().List();
+            BindGrid(list);
         }
     }
 }

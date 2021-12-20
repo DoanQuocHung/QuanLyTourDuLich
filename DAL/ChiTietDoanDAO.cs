@@ -12,7 +12,7 @@ namespace DAL
         public List<ChiTietDoanDTO> ListAll(string id)
         {
 
-            DataProvider datapro = new DataProvider();
+            DataProvider dataProvider = new DataProvider();
 
             List<ChiTietDoanDTO> chitietdoans = new List<ChiTietDoanDTO>();
             string query = "Select * from CHITIETDOAN where Id_Doan = @id ";
@@ -20,7 +20,7 @@ namespace DAL
             {
                id
             };
-            DataTable data = datapro.ExecuteQuery(query, para);
+            DataTable data = dataProvider.ExecuteQuery(query, para);
 
             foreach (DataRow item in data.Rows)
             {
@@ -36,7 +36,7 @@ namespace DAL
         public ChiTietDoanDTO get(string iddoan, string idkhach)
         {
 
-            DataProvider datapro = new DataProvider();
+            DataProvider dataProvider = new DataProvider();
 
             ChiTietDoanDTO newChitietdoan = new ChiTietDoanDTO();
             string query = "Select * from CHITIETDOAN where Id_Doan = @iddoan " +
@@ -46,7 +46,7 @@ namespace DAL
                iddoan,
                idkhach
             };
-            DataTable data = datapro.ExecuteQuery(query, para);
+            DataTable data = dataProvider.ExecuteQuery(query, para);
 
             foreach (DataRow item in data.Rows)
             {
@@ -63,14 +63,21 @@ namespace DAL
         {
             string query = "insert into CHITIETDOAN " +
                 "values( @MADOAN , @MAKHACH )";
+            string query2 = "UPDATE DOANDULICH SET Doanhthu = Doanhthu + GIA.Gia FROM DOANDULICH INNER JOIN GIA ON(DOANDULICH.Id_Tour = GIA.Id_Tour) WHERE DOANDULICH.Id_Doan = @MADOAN ";
 
             object[] para = new object[]
             {
                 doan.Id_Doan,
                 doan.Id_Khach
             };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
+
+            object[] para2 = new object[]
+           {
+                doan.Id_Doan
+           };
+
+            DataProvider dataProvider = new DataProvider();
+            if (dataProvider.ExecuteNonQuery(query, para) > 0 && dataProvider.ExecuteNonQuery(query2, para2) > 0)
                 return true;
             return false;
         }
@@ -79,14 +86,21 @@ namespace DAL
         {
             string query = "delete from CHITIETDOAN " +
                 "where Id_Doan = @MADOAN AND Id_Khach = @MAKHACH ";
+            string query2 = "UPDATE DOANDULICH SET Doanhthu = Doanhthu - GIA.Gia FROM DOANDULICH INNER JOIN GIA ON(DOANDULICH.Id_Tour = GIA.Id_Tour) WHERE DOANDULICH.Id_Doan = @MADOAN ";
 
             object[] para = new object[]
             {
                 iddoan,
                 idkhach,
             };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
+
+            object[] para2 = new object[]
+           {
+                iddoan
+           };
+
+            DataProvider dataProvider = new DataProvider();
+            if (dataProvider.ExecuteNonQuery(query, para) > 0 && dataProvider.ExecuteNonQuery(query2, para2) > 0)
                 return true;
             return false;
         }
