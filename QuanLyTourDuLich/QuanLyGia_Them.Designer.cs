@@ -138,9 +138,24 @@ namespace QuanLyTourDuLich
             // numGia
             // 
             this.numGia.Location = new System.Drawing.Point(207, 150);
+            this.numGia.Maximum = new decimal(new int[] {
+            276447232,
+            23283,
+            0,
+            0});
+            this.numGia.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numGia.Name = "numGia";
             this.numGia.Size = new System.Drawing.Size(225, 27);
             this.numGia.TabIndex = 23;
+            this.numGia.Value = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             // 
             // txtNgayKetThuc
             // 

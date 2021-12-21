@@ -35,22 +35,27 @@ namespace QuanLyTourDuLich
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.GiaView = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.SearchBox_cb = new System.Windows.Forms.ComboBox();
-            this.SearchTour_txt = new System.Windows.Forms.TextBox();
             this.Id_Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Thoigianbatdau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Thoigianketthuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblTo = new System.Windows.Forms.Label();
+            this.numsearch = new System.Windows.Forms.NumericUpDown();
+            this.timepickup = new System.Windows.Forms.DateTimePicker();
+            this.timepickdown = new System.Windows.Forms.DateTimePicker();
+            this.SearchBox_cb = new System.Windows.Forms.ComboBox();
+            this.SearchGia_txt = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GiaView)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numsearch)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -116,8 +121,44 @@ namespace QuanLyTourDuLich
             this.GiaView.RowHeadersWidth = 51;
             this.GiaView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.GiaView.RowTemplate.Height = 29;
+            this.GiaView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GiaView.Size = new System.Drawing.Size(1057, 682);
             this.GiaView.TabIndex = 0;
+            // 
+            // Id_Gia
+            // 
+            this.Id_Gia.HeaderText = "Mã Giá";
+            this.Id_Gia.MinimumWidth = 6;
+            this.Id_Gia.Name = "Id_Gia";
+            this.Id_Gia.ReadOnly = true;
+            // 
+            // Id_Tour
+            // 
+            this.Id_Tour.HeaderText = "Mã Tour";
+            this.Id_Tour.MinimumWidth = 6;
+            this.Id_Tour.Name = "Id_Tour";
+            this.Id_Tour.ReadOnly = true;
+            // 
+            // Gia
+            // 
+            this.Gia.HeaderText = "Giá (VNĐ)";
+            this.Gia.MinimumWidth = 6;
+            this.Gia.Name = "Gia";
+            this.Gia.ReadOnly = true;
+            // 
+            // Thoigianbatdau
+            // 
+            this.Thoigianbatdau.HeaderText = "Thời gian bắt đầu";
+            this.Thoigianbatdau.MinimumWidth = 6;
+            this.Thoigianbatdau.Name = "Thoigianbatdau";
+            this.Thoigianbatdau.ReadOnly = true;
+            // 
+            // Thoigianketthuc
+            // 
+            this.Thoigianketthuc.HeaderText = "Thời gian kết thúc";
+            this.Thoigianketthuc.MinimumWidth = 6;
+            this.Thoigianketthuc.Name = "Thoigianketthuc";
+            this.Thoigianketthuc.ReadOnly = true;
             // 
             // button2
             // 
@@ -171,65 +212,73 @@ namespace QuanLyTourDuLich
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Controls.Add(this.lblTo);
+            this.panel3.Controls.Add(this.numsearch);
+            this.panel3.Controls.Add(this.timepickup);
+            this.panel3.Controls.Add(this.timepickdown);
             this.panel3.Controls.Add(this.SearchBox_cb);
-            this.panel3.Controls.Add(this.SearchTour_txt);
+            this.panel3.Controls.Add(this.SearchGia_txt);
             this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(573, 5);
+            this.panel3.Location = new System.Drawing.Point(322, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(507, 59);
+            this.panel3.Size = new System.Drawing.Size(758, 59);
             this.panel3.TabIndex = 15;
+            // 
+            // lblTo
+            // 
+            this.lblTo.AutoSize = true;
+            this.lblTo.Location = new System.Drawing.Point(282, 19);
+            this.lblTo.Name = "lblTo";
+            this.lblTo.Size = new System.Drawing.Size(38, 27);
+            this.lblTo.TabIndex = 7;
+            this.lblTo.Text = "tới";
+            this.lblTo.Visible = false;
+            // 
+            // numsearch
+            // 
+            this.numsearch.Location = new System.Drawing.Point(315, 13);
+            this.numsearch.Name = "numsearch";
+            this.numsearch.Size = new System.Drawing.Size(260, 34);
+            this.numsearch.TabIndex = 6;
+            this.numsearch.Visible = false;
+            // 
+            // timepickup
+            // 
+            this.timepickup.CustomFormat = "dd/MM/YYYY";
+            this.timepickup.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.timepickup.Location = new System.Drawing.Point(326, 13);
+            this.timepickup.Name = "timepickup";
+            this.timepickup.Size = new System.Drawing.Size(250, 34);
+            this.timepickup.TabIndex = 5;
+            this.timepickup.Visible = false;
+            // 
+            // timepickdown
+            // 
+            this.timepickdown.CustomFormat = "dd/MM/YYYY";
+            this.timepickdown.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.timepickdown.Location = new System.Drawing.Point(18, 13);
+            this.timepickdown.Name = "timepickdown";
+            this.timepickdown.Size = new System.Drawing.Size(250, 34);
+            this.timepickdown.TabIndex = 4;
+            this.timepickdown.Visible = false;
             // 
             // SearchBox_cb
             // 
             this.SearchBox_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SearchBox_cb.Location = new System.Drawing.Point(343, 13);
+            this.SearchBox_cb.Location = new System.Drawing.Point(595, 13);
             this.SearchBox_cb.Name = "SearchBox_cb";
             this.SearchBox_cb.Size = new System.Drawing.Size(151, 34);
             this.SearchBox_cb.TabIndex = 0;
+            this.SearchBox_cb.SelectedIndexChanged += new System.EventHandler(this.SearchBox_cb_SelectedIndexChanged);
             // 
-            // SearchTour_txt
+            // SearchGia_txt
             // 
-            this.SearchTour_txt.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SearchTour_txt.Location = new System.Drawing.Point(22, 13);
-            this.SearchTour_txt.Name = "SearchTour_txt";
-            this.SearchTour_txt.Size = new System.Drawing.Size(302, 34);
-            this.SearchTour_txt.TabIndex = 3;
-            this.SearchTour_txt.TextChanged += new System.EventHandler(this.SearchTour_txt_TextChanged);
-            // 
-            // Id_Gia
-            // 
-            this.Id_Gia.HeaderText = "Mã Giá";
-            this.Id_Gia.MinimumWidth = 6;
-            this.Id_Gia.Name = "Id_Gia";
-            this.Id_Gia.ReadOnly = true;
-            // 
-            // Id_Tour
-            // 
-            this.Id_Tour.HeaderText = "Mã Tour";
-            this.Id_Tour.MinimumWidth = 6;
-            this.Id_Tour.Name = "Id_Tour";
-            this.Id_Tour.ReadOnly = true;
-            // 
-            // Gia
-            // 
-            this.Gia.HeaderText = "Giá (VNĐ)";
-            this.Gia.MinimumWidth = 6;
-            this.Gia.Name = "Gia";
-            this.Gia.ReadOnly = true;
-            // 
-            // Thoigianbatdau
-            // 
-            this.Thoigianbatdau.HeaderText = "Thời gian bắt đầu";
-            this.Thoigianbatdau.MinimumWidth = 6;
-            this.Thoigianbatdau.Name = "Thoigianbatdau";
-            this.Thoigianbatdau.ReadOnly = true;
-            // 
-            // Thoigianketthuc
-            // 
-            this.Thoigianketthuc.HeaderText = "Thời gian kết thúc";
-            this.Thoigianketthuc.MinimumWidth = 6;
-            this.Thoigianketthuc.Name = "Thoigianketthuc";
-            this.Thoigianketthuc.ReadOnly = true;
+            this.SearchGia_txt.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SearchGia_txt.Location = new System.Drawing.Point(274, 13);
+            this.SearchGia_txt.Name = "SearchGia_txt";
+            this.SearchGia_txt.Size = new System.Drawing.Size(302, 34);
+            this.SearchGia_txt.TabIndex = 3;
+            this.SearchGia_txt.TextChanged += new System.EventHandler(this.SearchTour_txt_TextChanged);
             // 
             // QuanLyGia
             // 
@@ -248,6 +297,7 @@ namespace QuanLyTourDuLich
             ((System.ComponentModel.ISupportInitialize)(this.GiaView)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numsearch)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -265,11 +315,15 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox SearchBox_cb;
-        private System.Windows.Forms.TextBox SearchTour_txt;
+        private System.Windows.Forms.TextBox SearchGia_txt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Gia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Tour;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thoigianbatdau;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thoigianketthuc;
+        private System.Windows.Forms.Label lblTo;
+        private System.Windows.Forms.NumericUpDown numsearch;
+        private System.Windows.Forms.DateTimePicker timepickup;
+        private System.Windows.Forms.DateTimePicker timepickdown;
     }
 }

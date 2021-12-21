@@ -15,6 +15,7 @@ namespace QuanLyTourDuLich
         public QuanLyGia_Them(List<GiaDTO> list, List<TourDTO> listtour)
         {
             InitializeComponent();
+            this.list = list;
             txtGia.Text = new GiaBUS().MakeID();
             foreach (TourDTO item in listtour)
             {
@@ -35,18 +36,36 @@ namespace QuanLyTourDuLich
             string magia = txtGia.Text;
             string matour = txtTour.Text;
             string gia = numGia.Text;
+            int giatour = Int32.Parse(gia);
             string ngaybatdau = txtNgayKhoiHanh.Text;
             string ngayketthuc = txtNgayKetThuc.Text;
+            DateTime dt = DateTime.ParseExact(ngaybatdau, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime dt1 = DateTime.ParseExact(ngayketthuc, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            int result = DateTime.Compare(dt, dt1);
+            if (result > 0)
+            {
+                MessageBox.Show("Thời gian kết thúc không được sớm hơn thời gian khởi hành");
+                return;
+            }
+            else if (result == 0)
+            {
+                MessageBox.Show("Thời gian khởi hành không được trùng với thời gian kết thúc");
+                return;
+            }
             if (matour.Equals(null) || matour.Equals(""))
             {
                 MessageBox.Show("Vui lòng Chọn tour trong bảng");
                 return;
             }
-            string idloai = new LoaiTourBUS().getID(tenloai);
-            if (new TourBUS().Insert(new TourDTO(matour, tentour, dacdiem, idloai)))
+            if (giatour < 100000)
+            {
+                MessageBox.Show("Vui lòng nhập giá lớn hơn 100000 VNĐ ");
+                return;
+            }
+            if (new GiaBUS().Insert(new GiaDTO(magia,matour,gia,ngaybatdau,ngayketthuc)))
             {
                 MessageBox.Show("Thêm thành công");
-                this.list.Add(new TourDTO(matour, tentour, dacdiem, idloai));
+                this.list.Add(new GiaDTO(magia, matour, gia, ngaybatdau, ngayketthuc));
                 this.DialogResult = DialogResult.OK;
                 Hide();
             }
@@ -54,7 +73,7 @@ namespace QuanLyTourDuLich
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
