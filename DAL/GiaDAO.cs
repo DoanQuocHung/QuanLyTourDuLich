@@ -60,37 +60,104 @@ namespace DAL
                 return true;
             return false;
         }
-        /*public bool Delete(string idgia)
+        public bool Delete(string idgia)
         {
-            bool result = false;
-            string query = "update GIA set " +
-              "Id_Gia = @idgia , " +
-              "Id_Tour = @idtour , " +
-              "Gia = @gia " +
-              "Thoigianbatdau = @begin " +
-              "Thoigianketthuc = @end " +
-              "where Id_Gia = @idgia";
-
-            object[] para = new object[]
+            try
             {
-                gia.Id_Gia,
-                gia.Id_Tour,
-                gia.Gia,
-                gia.Thoigianbatdau,
-                gia.Thoigianketthuc,
-                gia.Id_Gia
-            };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
-            return false;
-            return result;
-        }*/
-        public bool Insert()
-        {
-            bool result = false;
+                string query = "DELETE FROM GIA WHERE Id_Gia = @idgia ";
 
-            return result;
+                object[] para = new object[]
+                {
+                idgia
+                };
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            return false;
+        }
+
+        public bool DeleteBaseTour(string idtour)
+        {
+            try
+            {
+                string query = "DELETE FROM GIA WHERE Id_Tour = @idtour ";
+
+                object[] para = new object[]
+                {
+                    idtour
+                };
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            return false;
+        }
+        public bool Insert(GiaDTO gia)
+        {
+            try
+            {
+                string query = "INSERT INTO GIA values( @magia " +
+                    ", @matour " +
+                    ", @gia " +
+                    ", @thoigianbatdau " +
+                    ", @thoigianketthuc ) ";
+
+                object[] para = new object[]
+                {
+                    gia.Id_Gia,
+                    gia.Id_Tour,
+                    gia.Gia,
+                    gia.Thoigianbatdau,
+                    gia.Thoigianketthuc
+                };
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            return false;
+        }
+        public int Count()
+        {
+            string query = "select count(*) from GIA";
+            DataProvider datapro = new DataProvider();
+            int count = (int)datapro.ExecuteScalar(query);
+            return count;
+        }
+        public int Exist(String id)
+        {
+            string query = "select count(*) from GIA where Id_Gia = '" + id + "'";
+            DataProvider datapro = new DataProvider();
+            int count = (int)datapro.ExecuteScalar(query);
+            return count;
+        }
+        public String MakeID()
+        {
+            String id = "";
+            int count = Count();
+            while (true)
+            {
+                id = "GIA" + count;
+                if (Exist(id) == 0)
+                    break;
+                else count++;
+            }
+            return id;
         }
     }
 }

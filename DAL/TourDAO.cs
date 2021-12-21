@@ -77,16 +77,24 @@ namespace DAL
 
         public bool Delete(string id)
         {
-            string query = "delete from TOUR where Id_Tour = @MATOUR";
-            string query2 = "delete from CHITIETTOUR where Id_Tour = @MATOUR";
-            object[] para = new object[]
+            try
             {
+                string query = "delete from TOUR where Id_Tour = @MATOUR";
+                string query2 = "delete from CHITIETTOUR where Id_Tour = @MATOUR";
+                object[] para = new object[]
+                {
                 id
-            };
-            DataProvider datapro = new DataProvider();
-            datapro.ExecuteNonQuery(query2, para);
+                };
+                DataProvider datapro = new DataProvider();
+                datapro.ExecuteNonQuery(query2, para);
                 if (datapro.ExecuteNonQuery(query, para) > 0)
                     return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
             return false;
         }
         public int Count()

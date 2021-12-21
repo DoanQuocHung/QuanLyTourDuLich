@@ -118,17 +118,25 @@ namespace DAL
 
         public bool Delete(string maDoan)
         {
-            string query = "delete from DOANDULICH where Id_Doan = @MADOAN ";
-            string query2 = "delete from CHITIETDOAN where Id_Doan = @MADOAN ";
-
-            object[] para = new object[]
+            try
             {
+                string query = "delete from DOANDULICH where Id_Doan = @MADOAN ";
+                string query2 = "delete from CHITIETDOAN where Id_Doan = @MADOAN ";
+
+                object[] para = new object[]
+                {
                 maDoan
-            };
-            DataProvider dataProvider = new DataProvider();
-            dataProvider.ExecuteNonQuery(query2, para);
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
+                };
+                DataProvider dataProvider = new DataProvider();
+                dataProvider.ExecuteNonQuery(query2, para);
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
             return false;
         }
         public int Count()

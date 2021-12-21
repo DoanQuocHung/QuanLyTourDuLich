@@ -78,11 +78,20 @@ namespace QuanLyTourDuLich
             int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
             string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            if (new TourBUS().Delete(cellValue))
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn muốn xóa không ? \n"
+                                                    +"Các dòng liên quan với tour này tại các bảng khác cũng sẽ bi xóa"
+                                                    , "Xóa tour", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Xóa thành công");
-                list.RemoveAll(x => x.Id_Tour.Equals(cellValue));
-                BindGrid(list);
+                if (new GiaBUS().DeleteBaseTour(cellValue))
+                {
+                    if (new TourBUS().Delete(cellValue))
+                    {
+                        MessageBox.Show("Xóa thành công");
+                        list.RemoveAll(x => x.Id_Tour.Equals(cellValue));
+                        BindGrid(list);
+                    }
+                }
             }
         }
 

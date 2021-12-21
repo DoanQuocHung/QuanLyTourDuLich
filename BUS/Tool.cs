@@ -6,12 +6,11 @@ namespace BUS
 {
     public class Tool
     {
-        public Tool()
+        public Tool() { }
+
+        public string RemoveUnicodeBus(string txt)
         {
-        }
-        public string RemoveUnicodeBus(string chuoi)
-        {
-            return new RemoveUnicode().RemoveUnicodeTool(chuoi);
+            return new RemoveUnicode().RemoveUnicodeTool(txt);
         }
     }
 }
