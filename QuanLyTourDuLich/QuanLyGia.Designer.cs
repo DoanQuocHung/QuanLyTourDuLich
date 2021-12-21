@@ -45,8 +45,9 @@ namespace QuanLyTourDuLich
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.numdown = new System.Windows.Forms.NumericUpDown();
             this.lblTo = new System.Windows.Forms.Label();
-            this.numsearch = new System.Windows.Forms.NumericUpDown();
+            this.numup = new System.Windows.Forms.NumericUpDown();
             this.timepickup = new System.Windows.Forms.DateTimePicker();
             this.timepickdown = new System.Windows.Forms.DateTimePicker();
             this.SearchBox_cb = new System.Windows.Forms.ComboBox();
@@ -55,7 +56,8 @@ namespace QuanLyTourDuLich
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GiaView)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numsearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numdown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numup)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -212,8 +214,9 @@ namespace QuanLyTourDuLich
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Controls.Add(this.numdown);
             this.panel3.Controls.Add(this.lblTo);
-            this.panel3.Controls.Add(this.numsearch);
+            this.panel3.Controls.Add(this.numup);
             this.panel3.Controls.Add(this.timepickup);
             this.panel3.Controls.Add(this.timepickdown);
             this.panel3.Controls.Add(this.SearchBox_cb);
@@ -224,43 +227,73 @@ namespace QuanLyTourDuLich
             this.panel3.Size = new System.Drawing.Size(758, 59);
             this.panel3.TabIndex = 15;
             // 
+            // numdown
+            // 
+            this.numdown.Location = new System.Drawing.Point(18, 13);
+            this.numdown.Maximum = new decimal(new int[] {
+            1410065408,
+            2,
+            0,
+            0});
+            this.numdown.Name = "numdown";
+            this.numdown.Size = new System.Drawing.Size(250, 34);
+            this.numdown.TabIndex = 8;
+            this.numdown.Visible = false;
+            this.numdown.ValueChanged += new System.EventHandler(this.numsearch_ValueChanged);
+            // 
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(282, 19);
+            this.lblTo.Location = new System.Drawing.Point(274, 19);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(38, 27);
             this.lblTo.TabIndex = 7;
             this.lblTo.Text = "tới";
             this.lblTo.Visible = false;
             // 
-            // numsearch
+            // numup
             // 
-            this.numsearch.Location = new System.Drawing.Point(315, 13);
-            this.numsearch.Name = "numsearch";
-            this.numsearch.Size = new System.Drawing.Size(260, 34);
-            this.numsearch.TabIndex = 6;
-            this.numsearch.Visible = false;
+            this.numup.Location = new System.Drawing.Point(326, 13);
+            this.numup.Maximum = new decimal(new int[] {
+            1410065408,
+            2,
+            0,
+            0});
+            this.numup.Name = "numup";
+            this.numup.Size = new System.Drawing.Size(249, 34);
+            this.numup.TabIndex = 6;
+            this.numup.Value = new decimal(new int[] {
+            1410065408,
+            2,
+            0,
+            0});
+            this.numup.Visible = false;
+            this.numup.ValueChanged += new System.EventHandler(this.numsearch_ValueChanged);
             // 
             // timepickup
             // 
-            this.timepickup.CustomFormat = "dd/MM/YYYY";
+            this.timepickup.Checked = false;
+            this.timepickup.CustomFormat = "dd/MM/yyyy";
             this.timepickup.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.timepickup.Location = new System.Drawing.Point(326, 13);
             this.timepickup.Name = "timepickup";
             this.timepickup.Size = new System.Drawing.Size(250, 34);
             this.timepickup.TabIndex = 5;
+            this.timepickup.Value = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.timepickup.Visible = false;
+            this.timepickup.ValueChanged += new System.EventHandler(this.timepickup_ValueChanged);
             // 
             // timepickdown
             // 
-            this.timepickdown.CustomFormat = "dd/MM/YYYY";
+            this.timepickdown.CustomFormat = "dd/MM/yyyy";
             this.timepickdown.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.timepickdown.Location = new System.Drawing.Point(18, 13);
             this.timepickdown.Name = "timepickdown";
             this.timepickdown.Size = new System.Drawing.Size(250, 34);
             this.timepickdown.TabIndex = 4;
+            this.timepickdown.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.timepickdown.Visible = false;
+            this.timepickdown.ValueChanged += new System.EventHandler(this.timepickup_ValueChanged);
             // 
             // SearchBox_cb
             // 
@@ -297,7 +330,8 @@ namespace QuanLyTourDuLich
             ((System.ComponentModel.ISupportInitialize)(this.GiaView)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numsearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numdown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numup)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -322,8 +356,9 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.DataGridViewTextBoxColumn Thoigianbatdau;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thoigianketthuc;
         private System.Windows.Forms.Label lblTo;
-        private System.Windows.Forms.NumericUpDown numsearch;
+        private System.Windows.Forms.NumericUpDown numup;
         private System.Windows.Forms.DateTimePicker timepickup;
         private System.Windows.Forms.DateTimePicker timepickdown;
+        private System.Windows.Forms.NumericUpDown numdown;
     }
 }
