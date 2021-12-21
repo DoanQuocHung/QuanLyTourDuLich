@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using DTO;
 using System.Data;
+using System.Windows.Forms;
+
 namespace DAL
 {
     public class GiaDAO
@@ -39,16 +41,14 @@ namespace DAL
         public bool Update(GiaDTO gia)
         {
             string query = "update GIA set " +
-               "Id_Gia = @idgia , " +
                "Id_Tour = @idtour , " +
-               "Gia = @gia " +
-               "Thoigianbatdau = @begin " +
-               "Thoigianketthuc = @end " +
-               "where Id_Gia = @idgia";
-
+               "Gia = @gia ," +
+               " Thoigianbatdau =  @begin , " +
+               "Thoigianketthuc =  @end " +
+               "where Id_Gia = @idgia ";
+            
             object[] para = new object[]
             {
-                gia.Id_Gia,
                 gia.Id_Tour,
                 gia.Gia,
                 gia.Thoigianbatdau,
@@ -68,7 +68,7 @@ namespace DAL
 
                 object[] para = new object[]
                 {
-                idgia
+                    idgia
                 };
                 DataProvider datapro = new DataProvider();
                 if (datapro.ExecuteNonQuery(query, para) > 0)
@@ -76,7 +76,6 @@ namespace DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
                 return false;
             }
             return false;

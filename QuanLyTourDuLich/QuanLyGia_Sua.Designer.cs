@@ -30,6 +30,12 @@ namespace QuanLyTourDuLich
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TourView = new System.Windows.Forms.DataGridView();
+            this.Id_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dacdiem_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTour = new System.Windows.Forms.TextBox();
+            this.btnSua = new System.Windows.Forms.Button();
             this.numGia = new System.Windows.Forms.NumericUpDown();
             this.txtNgayKetThuc = new System.Windows.Forms.DateTimePicker();
             this.txtNgayKhoiHanh = new System.Windows.Forms.DateTimePicker();
@@ -37,18 +43,12 @@ namespace QuanLyTourDuLich
             this.Gia_lbl = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtGia = new System.Windows.Forms.TextBox();
             this.btnHuy = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.TourView = new System.Windows.Forms.DataGridView();
-            this.Id_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dacdiem_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numGia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TourView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGia)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,7 +58,7 @@ namespace QuanLyTourDuLich
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.TourView);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtTour);
             this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.numGia);
             this.panel1.Controls.Add(this.txtNgayKetThuc);
@@ -75,12 +75,85 @@ namespace QuanLyTourDuLich
             this.panel1.Size = new System.Drawing.Size(996, 656);
             this.panel1.TabIndex = 4;
             // 
+            // TourView
+            // 
+            this.TourView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TourView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TourView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id_Tour,
+            this.Ten_Tour,
+            this.Dacdiem_Tour});
+            this.TourView.Location = new System.Drawing.Point(34, 208);
+            this.TourView.Name = "TourView";
+            this.TourView.RowHeadersWidth = 51;
+            this.TourView.RowTemplate.Height = 29;
+            this.TourView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.TourView.Size = new System.Drawing.Size(930, 424);
+            this.TourView.TabIndex = 27;
+            this.TourView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TourView_CellContentClick);
+            // 
+            // Id_Tour
+            // 
+            this.Id_Tour.HeaderText = "Mã Tour";
+            this.Id_Tour.MinimumWidth = 6;
+            this.Id_Tour.Name = "Id_Tour";
+            // 
+            // Ten_Tour
+            // 
+            this.Ten_Tour.HeaderText = "Tên Tour";
+            this.Ten_Tour.MinimumWidth = 6;
+            this.Ten_Tour.Name = "Ten_Tour";
+            this.Ten_Tour.ReadOnly = true;
+            // 
+            // Dacdiem_Tour
+            // 
+            this.Dacdiem_Tour.HeaderText = "Mô tả";
+            this.Dacdiem_Tour.MinimumWidth = 6;
+            this.Dacdiem_Tour.Name = "Dacdiem_Tour";
+            this.Dacdiem_Tour.ReadOnly = true;
+            // 
+            // txtTour
+            // 
+            this.txtTour.Location = new System.Drawing.Point(207, 95);
+            this.txtTour.Name = "txtTour";
+            this.txtTour.ReadOnly = true;
+            this.txtTour.Size = new System.Drawing.Size(225, 27);
+            this.txtTour.TabIndex = 26;
+            // 
+            // btnSua
+            // 
+            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSua.Image = global::QuanLyTourDuLich.Properties.Resources.update;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(740, 134);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(109, 43);
+            this.btnSua.TabIndex = 25;
+            this.btnSua.Text = "    Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
             // numGia
             // 
             this.numGia.Location = new System.Drawing.Point(207, 150);
+            this.numGia.Maximum = new decimal(new int[] {
+            276447232,
+            23283,
+            0,
+            0});
+            this.numGia.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numGia.Name = "numGia";
             this.numGia.Size = new System.Drawing.Size(225, 27);
             this.numGia.TabIndex = 23;
+            this.numGia.Value = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             // 
             // txtNgayKetThuc
             // 
@@ -142,6 +215,16 @@ namespace QuanLyTourDuLich
             this.label12.TabIndex = 15;
             this.label12.Text = "Giá";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(34, 95);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(81, 25);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "ID Tour";
+            // 
             // txtGia
             // 
             this.txtGia.Location = new System.Drawing.Point(207, 41);
@@ -159,71 +242,7 @@ namespace QuanLyTourDuLich
             this.btnHuy.TabIndex = 1;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
-            // 
-            // btnSua
-            // 
-            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSua.Image = global::QuanLyTourDuLich.Properties.Resources.update;
-            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(740, 134);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(109, 43);
-            this.btnSua.TabIndex = 25;
-            this.btnSua.Text = "    Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(34, 95);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 25);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "ID Tour";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(207, 95);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(225, 27);
-            this.textBox1.TabIndex = 26;
-            // 
-            // TourView
-            // 
-            this.TourView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.TourView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TourView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id_Tour,
-            this.Ten_Tour,
-            this.Dacdiem_Tour});
-            this.TourView.Location = new System.Drawing.Point(34, 208);
-            this.TourView.Name = "TourView";
-            this.TourView.RowHeadersWidth = 51;
-            this.TourView.RowTemplate.Height = 29;
-            this.TourView.Size = new System.Drawing.Size(930, 424);
-            this.TourView.TabIndex = 27;
-            // 
-            // Id_Tour
-            // 
-            this.Id_Tour.HeaderText = "Mã Tour";
-            this.Id_Tour.MinimumWidth = 6;
-            this.Id_Tour.Name = "Id_Tour";
-            // 
-            // Ten_Tour
-            // 
-            this.Ten_Tour.HeaderText = "Tên Tour";
-            this.Ten_Tour.MinimumWidth = 6;
-            this.Ten_Tour.Name = "Ten_Tour";
-            this.Ten_Tour.ReadOnly = true;
-            // 
-            // Dacdiem_Tour
-            // 
-            this.Dacdiem_Tour.HeaderText = "Mô tả";
-            this.Dacdiem_Tour.MinimumWidth = 6;
-            this.Dacdiem_Tour.Name = "Dacdiem_Tour";
-            this.Dacdiem_Tour.ReadOnly = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // QuanLyGia_Sua
             // 
@@ -235,8 +254,8 @@ namespace QuanLyTourDuLich
             this.Text = "QuanLyGia_Sua";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numGia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TourView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numGia)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -244,7 +263,6 @@ namespace QuanLyTourDuLich
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.NumericUpDown numGia;
         private System.Windows.Forms.DateTimePicker txtNgayKetThuc;
         private System.Windows.Forms.DateTimePicker txtNgayKhoiHanh;
         private System.Windows.Forms.Label label10;
@@ -254,11 +272,12 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.TextBox txtGia;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTour;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView TourView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Tour;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_Tour;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dacdiem_Tour;
+        public System.Windows.Forms.NumericUpDown numGia;
     }
 }
