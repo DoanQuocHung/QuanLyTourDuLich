@@ -34,14 +34,16 @@ namespace QuanLyTourDuLich
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Grid_Danhsachdiadiem = new System.Windows.Forms.DataGridView();
+            this.Id_Diadiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_Diadiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.SearchBox_cb = new System.Windows.Forms.ComboBox();
+            this.SearchDiadiem_txt = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachdiadiem)).BeginInit();
@@ -50,9 +52,9 @@ namespace QuanLyTourDuLich
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(7, 7);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1088, 845);
@@ -87,12 +89,29 @@ namespace QuanLyTourDuLich
             // 
             this.Grid_Danhsachdiadiem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid_Danhsachdiadiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grid_Danhsachdiadiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id_Diadiem,
+            this.Ten_Diadiem});
             this.Grid_Danhsachdiadiem.Location = new System.Drawing.Point(11, 64);
             this.Grid_Danhsachdiadiem.Name = "Grid_Danhsachdiadiem";
             this.Grid_Danhsachdiadiem.RowHeadersWidth = 51;
             this.Grid_Danhsachdiadiem.RowTemplate.Height = 29;
             this.Grid_Danhsachdiadiem.Size = new System.Drawing.Size(1057, 682);
             this.Grid_Danhsachdiadiem.TabIndex = 10;
+            // 
+            // Id_Diadiem
+            // 
+            this.Id_Diadiem.HeaderText = "Mã Địa Điểm";
+            this.Id_Diadiem.MinimumWidth = 6;
+            this.Id_Diadiem.Name = "Id_Diadiem";
+            this.Id_Diadiem.ReadOnly = true;
+            // 
+            // Ten_Diadiem
+            // 
+            this.Ten_Diadiem.HeaderText = "Tên Địa Điểm";
+            this.Ten_Diadiem.MinimumWidth = 6;
+            this.Ten_Diadiem.Name = "Ten_Diadiem";
+            this.Ten_Diadiem.ReadOnly = true;
             // 
             // button5
             // 
@@ -159,34 +178,30 @@ namespace QuanLyTourDuLich
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.button6);
+            this.panel3.Controls.Add(this.SearchBox_cb);
+            this.panel3.Controls.Add(this.SearchDiadiem_txt);
             this.panel3.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel3.Location = new System.Drawing.Point(575, 5);
+            this.panel3.Location = new System.Drawing.Point(573, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(508, 59);
+            this.panel3.Size = new System.Drawing.Size(507, 59);
             this.panel3.TabIndex = 11;
             // 
-            // textBox1
+            // SearchBox_cb
             // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(17, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(302, 34);
-            this.textBox1.TabIndex = 3;
+            this.SearchBox_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SearchBox_cb.Location = new System.Drawing.Point(343, 13);
+            this.SearchBox_cb.Name = "SearchBox_cb";
+            this.SearchBox_cb.Size = new System.Drawing.Size(151, 34);
+            this.SearchBox_cb.TabIndex = 0;
             // 
-            // button6
+            // SearchDiadiem_txt
             // 
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(325, 8);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(174, 45);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "       Tìm kiếm";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.SearchDiadiem_txt.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SearchDiadiem_txt.Location = new System.Drawing.Point(22, 13);
+            this.SearchDiadiem_txt.Name = "SearchDiadiem_txt";
+            this.SearchDiadiem_txt.Size = new System.Drawing.Size(302, 34);
+            this.SearchDiadiem_txt.TabIndex = 3;
+            this.SearchDiadiem_txt.TextChanged += new System.EventHandler(this.SearchDiadiem_txt_TextChanged);
             // 
             // QuanLyDiaDiem
             // 
@@ -220,8 +235,10 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Diadiem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_Diadiem;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ComboBox SearchBox_cb;
+        private System.Windows.Forms.TextBox SearchDiadiem_txt;
     }
 }
