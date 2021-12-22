@@ -112,9 +112,11 @@ namespace QuanLyTourDuLich
                 int selectedrowindex = Grid_Danhsachdoan.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_Danhsachdoan.Rows[selectedrowindex];
                 string cellValue = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
+                string cellValueNgayKhoiHanh = Convert.ToString(selectedRow.Cells["NgayKhoiHanh"].Value);
+                string cellValueNgayKetThuc = Convert.ToString(selectedRow.Cells["NgayKetThuc"].Value);
                 if (cellValue != null)
                 {
-                    QuanLyChiTietDoan ql_ctd = new QuanLyChiTietDoan(cellValue);
+                    QuanLyChiTietDoan ql_ctd = new QuanLyChiTietDoan(cellValue, cellValueNgayKhoiHanh, cellValueNgayKetThuc);
                     ql_ctd.ShowDialog();
                 }
                 

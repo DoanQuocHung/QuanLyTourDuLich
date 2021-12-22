@@ -103,6 +103,7 @@ namespace QuanLyTourDuLich
             this.cbTenTour.Name = "cbTenTour";
             this.cbTenTour.Size = new System.Drawing.Size(395, 33);
             this.cbTenTour.TabIndex = 21;
+            this.cbTenTour.DropDownClosed += new System.EventHandler(this.cbTenTour_DropDownClosed);
             // 
             // label1
             // 

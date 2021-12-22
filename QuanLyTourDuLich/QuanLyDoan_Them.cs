@@ -25,6 +25,7 @@ namespace QuanLyTourDuLich
             }
             cbTenTour.SelectedItem = listTenTour[0].Ten_Tour;
             txtMaDoan.Text = new DoanDuLichBUS().MakeID();
+            txtTenDoan.Text = listTenTour[0].Ten_Tour;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -71,6 +72,15 @@ namespace QuanLyTourDuLich
         private void btnHuy_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void cbTenTour_DropDownClosed(object sender, EventArgs e)
+        {
+            if (cbTenTour.ValueMember != null)
+            {
+                string strTenTour = cbTenTour.SelectedItem.ToString();
+                txtTenDoan.Text = strTenTour;
+            }
         }
     }
 }

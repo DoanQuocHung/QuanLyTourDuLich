@@ -15,13 +15,13 @@ namespace BUS
         {
             return new ChiTietDoanDAO().get(id, idkhach);
         }
-        public bool Insert(ChiTietDoanDTO chitiet)
+        public bool Insert(ChiTietDoanDTO chitiet, string ngaykhoihanh, string ngayketthuc)
         {
-            return new ChiTietDoanDAO().Insert(chitiet);
+            return new ChiTietDoanDAO().Insert(chitiet, ngaykhoihanh,ngayketthuc);
         }
-        public bool Delete(string idtour, string iddiadiem)
+        public bool Delete(string iddoan, string idkhach, string ngaykhoihanh, string ngayketthuc)
         {
-            return new ChiTietDoanDAO().Delete(idtour, iddiadiem);
+            return new ChiTietDoanDAO().Delete(iddoan, idkhach, ngaykhoihanh, ngayketthuc);
         }
     }
 }

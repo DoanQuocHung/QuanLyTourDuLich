@@ -16,7 +16,8 @@ namespace QuanLyTourDuLich
         
         public List<ChiTietDoanDTO> list { get; set; }
         List<KhachDTO> listkhach = new List<KhachDTO>();
-        public QuanLyChiTietDoan_Them(List<ChiTietDoanDTO> list, List<KhachDTO> listkhach, string id)
+        string ngaykhoihanhDoan, ngayketthucDoan;
+        public QuanLyChiTietDoan_Them(List<ChiTietDoanDTO> list, List<KhachDTO> listkhach, string id, string ngaykhoihanh, string ngayketthuc)
         {
             InitializeComponent();
             this.list = list;
@@ -30,6 +31,8 @@ namespace QuanLyTourDuLich
             txtMaKhach.Text = listkhach[0].Id_Khach;
             txtCMND.Text = listkhach[0].Cmnd_Khach;
             txtMaDoan.Text = id;
+            ngaykhoihanhDoan = ngaykhoihanh;
+            ngayketthucDoan = ngayketthuc;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -43,7 +46,7 @@ namespace QuanLyTourDuLich
             }
             try
             {
-                if (new ChiTietDoanBUS().Insert(new ChiTietDoanDTO(madoan, makhach)))
+                if (new ChiTietDoanBUS().Insert(new ChiTietDoanDTO(madoan, makhach), ngaykhoihanhDoan, ngayketthucDoan))
                 {
                     MessageBox.Show("Thêm thành công");
                     this.list.Add(new ChiTietDoanDTO(madoan, makhach));
