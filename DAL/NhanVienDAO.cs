@@ -17,7 +17,7 @@ namespace DAL
             List<NhanVienDTO> nhanVien = new List<NhanVienDTO>();
             try
             {
-                string query = "Select * from NHANVIEN";
+                string query = "Select * from NHANVIEN where Tinh_Trang = 1";
 
                 DataTable data = dataProvider.ExecuteQuery(query);
 
@@ -83,22 +83,24 @@ namespace DAL
             List<NhanVienDTO> nhanVien = new List<NhanVienDTO>();
             try
             {
-                string query = "Select NHANVIEN.Id_NV, Hoten_NV, Email_NV, Sdt_NV, Gioitinh_NV, Tinh_Trang from NHANVIEN where Tinh_Trang = 1 and Id_NV not in (select Id_NV from PHANCONG where NHANVIEN.Id_NV = PHANCONG.Id_NV)";
+                string query = "Select NHANVIEN.Id_NV, Hoten_NV, Email_NV, Sdt_NV, Gioitinh_NV, Tinh_Trang from NHANVIEN where not exists (select NHANVIEN.Id_NV from PHANCONG where NHANVIEN.Id_NV = PHANCONG.Id_NV ) and Tinh_Trang = 1 ";
 
-                DataTable data = dataProvider.ExecuteQuery(query);
-
-                foreach (DataRow item in data.Rows)
+                using (DataTable data = dataProvider.ExecuteQuery(query))
                 {
-                    string maNhanVien = item["Id_NV"].ToString();
-                    string hoTenNhanVien = item["Hoten_NV"].ToString();
-                    string email = item["Email_NV"].ToString();
-                    string sdt = item["Sdt_NV"].ToString();
-                    string gioiTinh = item["Gioitinh_NV"].ToString();
-                    int tinhTrang = 1;
 
-                    NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
+                    foreach (DataRow item in data.Rows)
+                    {
+                        string maNhanVien = item["Id_NV"].ToString();
+                        string hoTenNhanVien = item["Hoten_NV"].ToString();
+                        string email = item["Email_NV"].ToString();
+                        string sdt = item["Sdt_NV"].ToString();
+                        string gioiTinh = item["Gioitinh_NV"].ToString();
+                        int tinhTrang = 1;
 
-                    nhanVien.Add(newNhanVien);
+                        NhanVienDTO newNhanVien = new NhanVienDTO(maNhanVien, hoTenNhanVien, email, sdt, gioiTinh, tinhTrang);
+
+                        nhanVien.Add(newNhanVien);
+                    }
                 }
             }
             catch (Exception e)
@@ -162,7 +164,7 @@ namespace DAL
                 id
             };
 
-            string query = "delete from NHANVIEN where Id_NV = @MANV";
+            string query = "update NHANVIEN set Tinh_Trang = 0 where Id_NV = @MANV";
             DataProvider dataProvider = new DataProvider();
             if (dataProvider.ExecuteNonQuery(queryTimMaNhanVienTrongBangPhanCong, para) > 0)
             {

@@ -13,7 +13,6 @@ namespace QuanLyTourDuLich
     public partial class QuanLyNhanVien_Sua : Form
     {
         public List<NhanVienDTO> listNhanVien { get; set; }
-        List<PhanCongDTO> listNhanVienDuocPhanCong;
         public QuanLyNhanVien_Sua(List<NhanVienDTO> list, string id)
         {
             InitializeComponent();
@@ -34,7 +33,6 @@ namespace QuanLyTourDuLich
             }
 
         }
-
 
         private void btnSua_Click(object sender, EventArgs e)
         {
@@ -73,19 +71,5 @@ namespace QuanLyTourDuLich
             Close();
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
