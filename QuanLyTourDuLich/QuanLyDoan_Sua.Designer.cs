@@ -78,6 +78,8 @@ namespace QuanLyTourDuLich
             // 
             // txtNgayKetThuc
             // 
+            this.txtNgayKetThuc.CustomFormat = "dd/MM/yyyy";
+            this.txtNgayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.txtNgayKetThuc.Location = new System.Drawing.Point(259, 316);
             this.txtNgayKetThuc.Name = "txtNgayKetThuc";
             this.txtNgayKetThuc.Size = new System.Drawing.Size(395, 31);
@@ -85,6 +87,8 @@ namespace QuanLyTourDuLich
             // 
             // txtNgayKhoiHanh
             // 
+            this.txtNgayKhoiHanh.CustomFormat = "dd/MM/yyyy";
+            this.txtNgayKhoiHanh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.txtNgayKhoiHanh.Location = new System.Drawing.Point(259, 252);
             this.txtNgayKhoiHanh.Name = "txtNgayKhoiHanh";
             this.txtNgayKhoiHanh.Size = new System.Drawing.Size(395, 31);

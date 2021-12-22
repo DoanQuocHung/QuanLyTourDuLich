@@ -66,7 +66,6 @@ namespace QuanLyTourDuLich
             }
         }
 
-        //Button Xóa 
         private void btnXoa_Click(object sender, EventArgs e)
         {
             int selectedrowindex = Grid_Danhsachdoan.SelectedCells[0].RowIndex;
@@ -80,6 +79,9 @@ namespace QuanLyTourDuLich
                     MessageBox.Show("Xóa thành công");
                     list.RemoveAll(x => x.Id_Doan.Equals(cellValue));
                     BindGrid(list);
+                } else
+                {
+                    MessageBox.Show("Đoàn này không được xóa vì đã có khách hàng");
                 }
             }
             catch (SqlException e1) when (e1.Number == 547)

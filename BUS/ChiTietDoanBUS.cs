@@ -18,7 +18,6 @@ namespace BUS
         public bool Insert(ChiTietDoanDTO chitiet)
         {
             return new ChiTietDoanDAO().Insert(chitiet);
-            //Hung
         }
         public bool Delete(string idtour, string iddiadiem)
         {

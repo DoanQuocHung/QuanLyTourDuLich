@@ -33,26 +33,23 @@ namespace QuanLyTourDuLich
             string tendoan = txtTenDoan.Text;
             string tentour = cbTenTour.SelectedItem.ToString();
             string idtour = listTenTour.Find(x => x.Ten_Tour.Equals(tentour)).Id_Tour;
-            string ngaykhoihanh = txtNgayKhoiHanh.Value.ToString("dd/MM/yyyy");
-            string ngayketthuc = txtNgayKetThuc.Value.ToString("dd/MM/yyyy");
+            string ngaykhoihanh = txtNgayKhoiHanh.Text;
+            string ngayketthuc = txtNgayKetThuc.Text;
             long doanhthu = 0;
             string noidung = txtNoiDung.Text;
-            if (tendoan.Equals(null) || tentour.Equals(null))
+            if (txtTenDoan.Text.Equals("") || tentour.Equals("") || txtNgayKhoiHanh.Text.Equals("") || txtNgayKetThuc.Text.Equals(""))
             {
                 MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
                 return;
             }
-            if (txtNgayKhoiHanh.Value.ToString("dd/MM/yyyy").Equals(null) || txtNgayKetThuc.Value.ToString("dd/MM/yyyy").Equals(null))
-            {
-                MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
-                return;
-            }
-            DateTime ngkhoihanh = txtNgayKhoiHanh.Value;
-            DateTime ngketthuc = txtNgayKetThuc.Value;
+            
             DateTime today = DateTime.Today;
-            int resultCompareNgayKhoiHanh = DateTime.Compare(ngkhoihanh, today);
-            int resultCompareNgayKetThuc = DateTime.Compare(ngketthuc, today);
-            if ((resultCompareNgayKhoiHanh < 0) || (resultCompareNgayKetThuc < 0))
+            DateTime dtNgKhoiHanh = DateTime.ParseExact(ngaykhoihanh, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime dtNgKetThuc = DateTime.ParseExact(ngayketthuc, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            int resultCompareNgayKhoiHanh = DateTime.Compare(dtNgKhoiHanh, today);
+            int resultCompareNgayKetThuc = DateTime.Compare(dtNgKetThuc, today);
+            int resultCompareNgayKhoiHanhAndNgayKetThuc = DateTime.Compare(dtNgKhoiHanh, dtNgKetThuc);
+            if ((resultCompareNgayKhoiHanh < 0) || (resultCompareNgayKetThuc < 0) || (resultCompareNgayKhoiHanhAndNgayKetThuc > 0))
             {
                 MessageBox.Show("Vui lòng nhập lại thông tin ngày khởi hành hoặc ngày kết thúc");
                 return;

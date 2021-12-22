@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using DTO;
 using BUS;
+using System.Data.SqlClient;
+
 namespace QuanLyTourDuLich
 {
     public partial class QuanLyChiTietDoan_Them : Form
@@ -39,12 +41,20 @@ namespace QuanLyTourDuLich
                 MessageBox.Show("Vui lòng nhập họ tên khách");
                 return;
             }
-            if (new ChiTietDoanBUS().Insert(new ChiTietDoanDTO(madoan, makhach)))
+            try
             {
-                MessageBox.Show("Thêm thành công");
-                this.list.Add(new ChiTietDoanDTO(madoan, makhach));
-                this.DialogResult = DialogResult.OK;
-                Hide();
+                if (new ChiTietDoanBUS().Insert(new ChiTietDoanDTO(madoan, makhach)))
+                {
+                    MessageBox.Show("Thêm thành công");
+                    this.list.Add(new ChiTietDoanDTO(madoan, makhach));
+                    this.DialogResult = DialogResult.OK;
+                    Hide();
+                }
+            }
+            catch (SqlException e1) when (e1.Number == 2627)
+            {
+
+                MessageBox.Show("Không thể thêm khách hàng này vì đoàn này đã có khách hàng này");
             }
         }
 
