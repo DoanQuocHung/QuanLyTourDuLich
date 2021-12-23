@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using BUS;
@@ -29,7 +30,13 @@ namespace QuanLyTourDuLich
             foreach (DoanDuLichDTO item in list)
             {
                 string tentour = listTenTour.Find(x => x.Id_Tour.Equals(item.Id_Tour)).Ten_Tour;
-                Grid_Danhsachdoan.Rows.Add(item.Id_Doan, item.Ten_Doan, tentour, item.Ngaykhoihanh, item.Ngayketthuc, item.Doanhthu, item.Noidung);
+                Grid_Danhsachdoan.Rows.Add(item.Id_Doan, 
+                    item.Ten_Doan, 
+                    tentour, 
+                    item.Ngaykhoihanh, 
+                    item.Ngayketthuc, 
+                    item.Doanhthu.ToString("#,#")+" VNĐ", 
+                    item.Noidung);
             }
         }
         
