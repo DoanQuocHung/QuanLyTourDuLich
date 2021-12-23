@@ -63,54 +63,74 @@ namespace DAL
         }
         public bool Update(ChiPhiDTO tour,string loai)
         {
-            string query = "update CHIPHI set " +
-                "Id_LoaiChiPhi = @loai , " +
-                "Gia = @gia " +
-                "where Id_LoaiChiPhi = @oldloai AND Id_Doan = @doan";
-
-            object[] para = new object[]
+            try
             {
+                string query = "update CHIPHI set " +
+                    "Id_LoaiChiPhi = @loai , " +
+                    "Gia = @gia " +
+                    "where Id_LoaiChiPhi = @oldloai AND Id_Doan = @doan";
+
+                object[] para = new object[]
+                {
                 tour.Id_LoaiChiPhi,
                 tour.Gia,
                 loai,
                 tour.Id_Doan
-            };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+                };
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception E)
+            {
+                return false;
+            }
             return false;
         }
 
         public bool Insert(ChiPhiDTO tour)
         {
-            string query = "insert into CHIPHI " +
-                "values( @maloai , @madoan , @gia )";
-
-            object[] para = new object[]
+            try
             {
+                string query = "insert into CHIPHI " +
+                    "values( @maloai , @madoan , @gia )";
+
+                object[] para = new object[]
+                {
                 tour.Id_LoaiChiPhi,
                 tour.Id_Doan,
                 tour.Gia
-            };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+                };
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }catch(Exception e)
+            {
+                return false;
+            }
             return false;
         }
 
         public bool Delete(string loai, string doan)
         {
-            string query = "delete from CHIPHI " +
-                "where Id_LoaiChiPhi = @loai AND Id_Doan = @doan";
-
-            object[] para = new object[]
+            try
             {
+                string query = "delete from CHIPHI " +
+                    "where Id_LoaiChiPhi = @loai AND Id_Doan = @doan";
+
+                object[] para = new object[]
+                {
                 loai,
                 doan,
-            };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+                };
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             return false;
         }
     }

@@ -26,9 +26,9 @@ namespace BUS
             return new ChiPhiDAO().Insert(chitiet);
             //Hung
         }
-        public bool Delete(string idtour, string iddiadiem)
+        public bool Delete(string loai, string doan)
         {
-            return new ChiPhiDAO().Delete(idtour, iddiadiem);
+            return new ChiPhiDAO().Delete(loai, doan);
         }
     }
 }

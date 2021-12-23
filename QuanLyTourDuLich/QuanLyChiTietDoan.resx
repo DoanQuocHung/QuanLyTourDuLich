@@ -61,7 +61,7 @@
   <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAIAAAADnC86AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAEG5JREFUWEddVnlYVFeWr7/mj/4mmU6MEpWl9r0oQEFNNCbpTjpfQidqtp4sCILI
+        DgAACw4BQL7hQQAAEG5JREFUWEddVnlYVFeWr7/mj/4mmU6MEpWl9r0oQEFNNCbpTjpfQidqtp4sCILI
         JrsiiMpWVFFFUSziFgE1yZdo0kl6MukYTTR2VIILglDsewG1vlev3lLbq6o35+FMer6u71Dce+ve8zvn
         3N8553J8o3fQm934NY33Jx1xtRm/1oxf15NXW4hf2v3fm4J/76B+PoX9bPJe0QWutOA/nqB+qHdfPRH4
         XoNd1xL/0AeuaF1XTvquNfmvH8cvt2JXmskbzdSPJvLyCe+VTlAFCqmf9NSNNucVk/eayXtZQ97sJid7
@@ -161,7 +161,7 @@
   <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAIAAAADnC86AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAADzRJREFUWEd1WAlwVGdyfoAYCQGSkYQkhAQSGN8Om5TLu5VNXLtbm0rVJlXZeLMu
+        DAAACwwBP0AiyAAADzRJREFUWEd1WAlwVGdyfoAYCQGSkYQkhAQSGN8Om5TLu5VNXLtbm0rVJlXZeLMu
         Vxmb2+iW5tLolrANDtjG5jCHbiFppBmd6D4QrDHmlAXGNgKBjbF1X3O/mXd2vn8glUqyHpqpmaeZ93X3
         3/3118NNyrSgkE8hVSByyOQQiJdIlSTV6yani+we/F1dIHGWfDPkc5HNSU4feSWSJZVEgQSv6vXIHpEk
         QfL5BElQVImIJ7KJNOeVvEQCKXj2EYlEMhGpzDigevzv2cc9CrlE8gl4g5v6yONQbG6yKeQk2U6eObLP
@@ -229,10 +229,13 @@
         Z4taVf8L8YserUNphuQAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="ChiPhi.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Ten_LoaiChiPhi.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="Gia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Id_ChiPhi.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="btnXoa.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

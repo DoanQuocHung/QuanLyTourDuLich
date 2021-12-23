@@ -16,16 +16,14 @@ namespace BUS
         {
             return new ChiTietTourDAO().get(id,diadiem);
         }
-        public bool Update(ChiTietTourDTO chitiet)
+        public bool Update(ChiTietTourDTO chitiet, string id)
         {
-            return new ChiTietTourDAO().Update(chitiet);
-            //
+            return new ChiTietTourDAO().Update(chitiet, id);
         }
 
         public bool Insert(ChiTietTourDTO chitiet)
         {
             return new ChiTietTourDAO().Insert(chitiet);
-            //Hung
         }
         public bool Delete(string idtour,string iddiadiem)
         {

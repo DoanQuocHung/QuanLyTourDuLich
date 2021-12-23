@@ -28,7 +28,9 @@ namespace QuanLyTourDuLich
             listchiphi = new ChiPhiBUS().List(id);
             listloaichiphi = new LoaiChiPhiBUS().List();
             dataGridView_CT_Doan.AutoGenerateColumns = false;
+            Grid_ChiPhi.AutoGenerateColumns = false;
             BindGrid(list);
+            BindGrid2(listchiphi);
         }
         public void BindGrid(List<ChiTietDoanDTO> list)
         {
@@ -43,15 +45,14 @@ namespace QuanLyTourDuLich
         }
         public void BindGrid2(List<ChiPhiDTO> list)
         {
-            dataGridView_CT_Doan.Rows.Clear();
-            dataGridView_CT_Doan.Refresh();
+            Grid_ChiPhi.Rows.Clear();
+            Grid_ChiPhi.Refresh();
             foreach (ChiPhiDTO item in list)
             {
-                string cmndkhach = listkhach.Find(x => x.Id_Khach.Equals(item.Id_Khach)).Cmnd_Khach;
-                dataGridView_CT_Doan.Rows.Add(item.Id_Khach, tenkhach, cmndkhach);
+                string tenchiphi =  listloaichiphi.Find(x => x.Id_LoaiChiPhi.Equals(item.Id_LoaiChiPhi)).Ten_LoaiChiPhi;
+                Grid_ChiPhi.Rows.Add(tenchiphi,item.Gia,item.Id_LoaiChiPhi);
             }
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             using (var form = new QuanLyChiTietDoan_Them(list, listkhach, id, ngaykhoihanh, ngayketthuc))
@@ -64,7 +65,6 @@ namespace QuanLyTourDuLich
                 }
             }
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (dataGridView_CT_Doan.RowCount != 0)
@@ -84,22 +84,56 @@ namespace QuanLyTourDuLich
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
+            using (var form = new QuanLyChiPhi_Them(listchiphi, listloaichiphi,id))
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.listchiphi = form.list;
+                    BindGrid2(listchiphi);
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (Grid_ChiPhi.RowCount != 0)
+            {
+                int selectedrowindex = Grid_ChiPhi.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_ChiPhi.Rows[selectedrowindex];
+                string cellValue2 = Convert.ToString(selectedRow.Cells["Id_ChiPhi"].Value);
+                if (new ChiPhiBUS().Delete(cellValue2,id))
+                {
+                    MessageBox.Show("Xóa chi tiết thành công");
+                    listchiphi.RemoveAll(x => x.Id_LoaiChiPhi.Equals(cellValue2));
+                    BindGrid2(listchiphi);
+                }
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            if (Grid_ChiPhi.RowCount != 0)
+            {
+                int selectedrowindex = Grid_ChiPhi.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_ChiPhi.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_ChiPhi"].Value);
+                using (var form = new QuanLyChiPhi_Sua(listchiphi, listloaichiphi, id, cellValue))
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        this.listchiphi = form.list;
+                        BindGrid2(listchiphi);
+                    }
+                }
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             BindGrid(list);
+            BindGrid2(listchiphi);
         }
 
     }

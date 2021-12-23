@@ -21,14 +21,14 @@ namespace DAL
             {
                id
             };
-            DataTable data = datapro.ExecuteQuery(query,para);
+            DataTable data = datapro.ExecuteQuery(query, para);
 
             foreach (DataRow item in data.Rows)
             {
                 string matour = item["Id_Tour"].ToString();
                 string madiadiem = item["Id_DiaDiem"].ToString();
                 int thutu = Int32.Parse(item["Thutu"].ToString());
-                
+
 
                 ChiTietTourDTO newTour = new ChiTietTourDTO(matour, madiadiem, thutu);
 
@@ -36,7 +36,7 @@ namespace DAL
             }
             return tours;
         }
-        public ChiTietTourDTO get(string id,string diadiem)
+        public ChiTietTourDTO get(string id, string diadiem)
         {
 
             DataProvider datapro = new DataProvider();
@@ -61,21 +61,31 @@ namespace DAL
             }
             return newTour;
         }
-        public bool Update(ChiTietTourDTO tour)
+        public bool Update(ChiTietTourDTO tour, string id)
         {
+            string queryDiaDiem = "select * from CHITIETTOUR where Id_Tour = @oldMATOUR and Id_DiaDiem = @MADD ";
             string query = "update CHITIETTOUR set " +
                 "Id_DiaDiem = @DIADIEM , " +
                 "Thutu = @thutu " +
-                "where Id_Tour = @oldMATOUR AND Id_DiaDiem = @madd";
+                "where Id_Tour = @oldMATOUR and Id_DiaDiem = @madd";
+
+            object[] paraDiaDiem = new object[]
+           {
+                  tour.Id_Tour,
+                  tour.Id_DiaDiem
+           };
 
             object[] para = new object[]
             {
                 tour.Id_DiaDiem,
                 tour.Thutu,
                 tour.Id_Tour,
-                tour.Id_DiaDiem
+                id
             };
             DataProvider datapro = new DataProvider();
+            DataTable data = datapro.ExecuteQuery(queryDiaDiem, paraDiaDiem);
+            if (data.Rows.Count > 0)
+                return false;
             if (datapro.ExecuteNonQuery(query, para) > 0)
                 return true;
             return false;
@@ -83,8 +93,15 @@ namespace DAL
 
         public bool Insert(ChiTietTourDTO tour)
         {
+            string queryThuTu = "select * from CHITIETTOUR where Id_Tour = @MATOUR and Thutu = @THUTU ";
             string query = "insert into CHITIETTOUR " +
                 "values( @MATOUR , @MADIADIEM , @THUTU )";
+
+            object[] paraThuTu = new object[]
+            {
+                tour.Id_Tour,
+                tour.Thutu
+            };
 
             object[] para = new object[]
             {
@@ -93,12 +110,15 @@ namespace DAL
                 tour.Thutu
             };
             DataProvider datapro = new DataProvider();
+            DataTable data = datapro.ExecuteQuery(queryThuTu, paraThuTu);
+            if (data.Rows.Count > 0)
+                return false;
             if (datapro.ExecuteNonQuery(query, para) > 0)
                 return true;
             return false;
         }
 
-        public bool Delete(string idtour,string iddiadiem)
+        public bool Delete(string idtour, string iddiadiem)
         {
             string query = "delete from CHITIETTOUR where Id_Tour = @MATOUR AND Id_Diadiem = @MADIADIEM ";
 

@@ -11,28 +11,51 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyChiPhi_Sua : Form
     {
-        public QuanLyChiPhi_Sua(string loai, string doan)
+        public List<ChiPhiDTO> list { set; get; }
+        List<LoaiChiPhiDTO> listloai;
+        string id,idchiphi;
+        public QuanLyChiPhi_Sua(List<ChiPhiDTO> list, List<LoaiChiPhiDTO> listloai, string iddoan,string idchiphi)
         {
             InitializeComponent();
-            ChiPhiDTO edit = new ChiPhiDTO();
-            edit = new ChiPhiBUS().get(loai, doan);
-
-            txtMaNV.Text = edit.Id_LoaiChiPhi;
-            txtHoTenNV.Text = edit.Id_Doan;
-            txtEmail.Text = Convert.ToString(edit.Gia);
+            this.list = list;
+            this.listloai = listloai;
+            this.id = iddoan;
+            this.idchiphi = idchiphi;
+            foreach (LoaiChiPhiDTO item in listloai)
+            {
+                cb_loaichiphi.Items.Add(item.Ten_LoaiChiPhi);
+            }
+            cb_loaichiphi.SelectedItem = listloai.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Ten_LoaiChiPhi;
+            numGia.Value = list.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Gia;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            string maloai = txtMaNV.Text;
-            string madoan = txtHoTenNV.Text;
-            int gia = Int32.Parse(txtEmail.Text);
-
-            if (new ChiPhiBUS().Update(new ChiPhiDTO(maloai, madoan, gia),madoan))
+            string loai = listloai.Find(x => x.Ten_LoaiChiPhi.Equals(cb_loaichiphi.SelectedItem.ToString())).Id_LoaiChiPhi;
+            string gia = numGia.Text;
+            long value = long.Parse(gia);
+            if (value < 10000)
+            {
+                MessageBox.Show("Vui lòng nhập giá lớn hơn 10000");
+                return;
+            }
+            if (new ChiPhiBUS().Update(new ChiPhiDTO(loai, id, value),idchiphi))
             {
                 MessageBox.Show("Sửa thành công");
+                list.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Gia = value;
+                list.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Id_LoaiChiPhi = loai;
+                this.DialogResult = DialogResult.OK;
                 Hide();
             }
+            else
+            {
+                MessageBox.Show("Chi phí đã tồn tại");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
