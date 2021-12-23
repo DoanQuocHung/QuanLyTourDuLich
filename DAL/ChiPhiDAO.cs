@@ -9,20 +9,18 @@ namespace DAL
     {
         public ChiPhiDAO() { }
 
-        public List<ChiPhiDTO> ListAll()
+        public List<ChiPhiDTO> ListAll(string id)
         {
 
             DataProvider datapro = new DataProvider();
 
             List<ChiPhiDTO> list = new List<ChiPhiDTO>();
-            string query = "Select * from CHIPHI";
-            /*
+            string query = "Select * from CHIPHI where Id_Doan = @madoan";
             object[] para = new object[]
             {
                id
-            };
-            */
-            DataTable data = datapro.ExecuteQuery(query);
+            }; 
+            DataTable data = datapro.ExecuteQuery(query,para);
 
             foreach (DataRow item in data.Rows)
             {
