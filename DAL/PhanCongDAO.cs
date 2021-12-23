@@ -116,5 +116,37 @@ namespace DAL
             }
             return false;
         }
+
+        //Kiểm tra phân công có trùng thời gian không trước khi insert
+        public string KiemTraTG(string maDoan, string maNhanVien)
+        {
+            string query = "select * from DOANDULICH,PHANCONG " +
+                "where DOANDULICH.Id_Doan=PHANCONG.Id_Doan and " +
+                "Id_NV = '" + maNhanVien + "' and " +
+                "((Ngaykhoihanh >= (select Ngaykhoihanh from DOANDULICH where Id_Doan = '" + maDoan + "' ) and " +
+                "Ngaykhoihanh <= (select Ngayketthuc from DOANDULICH where Id_Doan = '" + maDoan + "' )) or " +
+                "(Ngayketthuc >= (select Ngaykhoihanh from DOANDULICH where Id_Doan = '" + maDoan + "' ) and " +
+                "Ngayketthuc <= (select Ngayketthuc from DOANDULICH where Id_Doan = '" + maDoan + "' ))); ";
+
+            string listD = "";
+
+            try
+            {
+                DataProvider dataProvider = new DataProvider();
+                DataTable dataTable = dataProvider.ExecuteQuery(query);
+                if (dataTable.Rows.Count > 0)
+                {
+                    foreach (DataRow item in dataTable.Rows)
+                    {
+                        string maDoanL = item["Id_Doan"].ToString();
+                        listD += maDoanL + ", ";
+                    }
+                }
+                listD = listD.Remove(listD.Length - 2);
+            }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            return listD;
+            
+        }
     }
 }

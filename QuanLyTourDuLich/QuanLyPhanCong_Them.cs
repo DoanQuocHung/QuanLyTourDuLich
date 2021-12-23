@@ -36,6 +36,12 @@ namespace QuanLyTourDuLich
                 return;
             }
 
+            if (new PhanCongBUS().KiemTraTG(maDoan, maNV) != "")
+            {
+                MessageBox.Show("Nhân viên " + maNV + " đã được phân công trong Đoàn " + new PhanCongBUS().KiemTraTG(maDoan, maNV) + " trùng thời gian với đoàn " + maDoan + ".\nVui là chọn Đoàn hoặc Nhân viên khác.");
+                return;
+            }    
+                
             if (nhiemVu.Equals("") || maDoan.Equals("") || nhiemVu.Equals(""))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");

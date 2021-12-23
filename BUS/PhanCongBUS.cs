@@ -24,9 +24,14 @@ namespace BUS
             return new PhanCongDAO().Insert(phanCong);
         }
 
-        public bool Delete(string maDoan, string maNhanVien)
+        public bool Delete(string Id_Doan, string Id_NV)
         {
-            return new PhanCongDAO().Delete(maDoan, maNhanVien);
+            return new PhanCongDAO().Delete(Id_Doan, Id_NV);
+        }
+
+        public string KiemTraTG(string Id_Doan, string Id_NV)
+        {
+            return new PhanCongDAO().KiemTraTG(Id_Doan, Id_NV);
         }
     }
 }
