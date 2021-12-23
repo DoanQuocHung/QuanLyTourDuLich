@@ -64,7 +64,6 @@ namespace DAL
         public bool Update(ChiTietTourDTO tour, string id)
         {
             string queryDiaDiem = "select * from CHITIETTOUR where Id_Tour = @oldMATOUR and Id_DiaDiem = @MADD ";
-            //UPDATE CHITIETTOUR SET Id_DiaDiem = 'VT001', Thutu = 10 where Id_Tour= 'ATDN001' and Id_DiaDiem = 'DN001'
             string query = "update CHITIETTOUR set " +
                 "Id_DiaDiem = @DIADIEM , " +
                 "Thutu = @thutu " +
