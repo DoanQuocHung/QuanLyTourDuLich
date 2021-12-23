@@ -34,7 +34,7 @@ namespace QuanLyTourDuLich
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Grid_ChiPhi = new System.Windows.Forms.DataGridView();
             this.ChiPhi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@ namespace QuanLyTourDuLich
             this.btnReload = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grid_ChiPhi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CT_Doan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@ namespace QuanLyTourDuLich
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.Grid_ChiPhi);
             this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.btnThem);
             this.panel2.Controls.Add(this.dataGridView_CT_Doan);
@@ -104,19 +104,19 @@ namespace QuanLyTourDuLich
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // dataGridView1
+            // Grid_ChiPhi
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Grid_ChiPhi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Grid_ChiPhi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grid_ChiPhi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ChiPhi,
             this.Gia});
-            this.dataGridView1.Location = new System.Drawing.Point(672, 73);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(496, 485);
-            this.dataGridView1.TabIndex = 15;
+            this.Grid_ChiPhi.Location = new System.Drawing.Point(672, 73);
+            this.Grid_ChiPhi.Name = "Grid_ChiPhi";
+            this.Grid_ChiPhi.RowHeadersWidth = 51;
+            this.Grid_ChiPhi.RowTemplate.Height = 29;
+            this.Grid_ChiPhi.Size = new System.Drawing.Size(496, 485);
+            this.Grid_ChiPhi.TabIndex = 15;
             // 
             // ChiPhi
             // 
@@ -241,7 +241,7 @@ namespace QuanLyTourDuLich
             this.Text = "Chi Tiết Đoàn";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grid_ChiPhi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CT_Doan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -261,7 +261,7 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.DataGridViewTextBoxColumn Cmnd_Khach;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView Grid_ChiPhi;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChiPhi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
         private System.Windows.Forms.Button button3;

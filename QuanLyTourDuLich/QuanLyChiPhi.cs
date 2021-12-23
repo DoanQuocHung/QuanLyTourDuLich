@@ -14,9 +14,8 @@ namespace QuanLyTourDuLich
         public QuanLyChiPhi()
         {
             InitializeComponent();
-            BindGrid();
         }
-        public void BindGrid()
+       /* public void BindGrid()
         {
             Grid_Danhsachtour.DataSource = new ChiPhiBUS().List();
         }
@@ -62,6 +61,6 @@ namespace QuanLyTourDuLich
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
-        }
+        }*/
     }
 }
