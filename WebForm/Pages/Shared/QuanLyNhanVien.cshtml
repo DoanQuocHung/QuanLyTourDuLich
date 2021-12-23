@@ -8,12 +8,9 @@
 @using BUS;
 @using DTO;
 @{
-    List<TourDTO> list = new List<TourDTO>();
-    List<LoaiTourDTO> listloai = new List<LoaiTourDTO>();
-    TourBUS bus = new TourBUS();
-    LoaiTourBUS busloai = new LoaiTourBUS();
-    list = bus.List();
-    listloai = busloai.List();
+    List<NhanVienDTO> list_nv = new List<NhanVienDTO>();
+    NhanVienBUS bus_nv = new NhanVienBUS();
+    list_nv = bus_nv.List();
 }
 
 <div class="main-panel">
@@ -22,9 +19,9 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Danh sách Tour</h4>
+                        <h4 class="card-title">Danh sách Sinh Viên</h4>
                         <form class="form-inline">
-                            <button type="button" class="btn btn-primary mb-2" onclick="ThemTour()">
+                            <button type="button" class="btn btn-primary mb-2" onclick="ThemNhanVien()">
                                 Thêm
                             </button>
                             <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" id="inlineFormInputName2" placeholder="Tên Tour">
@@ -44,7 +41,6 @@
                                     @{
                                         foreach (TourDTO item in list)
                                         {
-                                            string tenloai = listloai.Find(x => x.Id_Loai.Equals(item.Id_Loai)).Ten_Loai;
                                             <tr>
                                                 <td>@item.Id_Tour</td>
                                                 <td>@item.Ten_Tour</td>
