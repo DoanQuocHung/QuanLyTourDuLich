@@ -489,6 +489,22 @@ namespace QuanLyTourDuLich
             this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button11.UseVisualStyleBackColor = true;
             // 
+<<<<<<< HEAD
+=======
+            // button15
+            // 
+            this.button15.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
+            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button15.Location = new System.Drawing.Point(775, 10);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(145, 45);
+            this.button15.TabIndex = 11;
+            this.button15.Text = "       Thống kê";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+>>>>>>> 7471b3ebdc48c7c96aa12233b83a17e3cd6995c6
             // AppQuanLy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
