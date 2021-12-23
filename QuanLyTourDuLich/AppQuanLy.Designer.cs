@@ -487,7 +487,6 @@ namespace QuanLyTourDuLich
             this.button15.TabIndex = 11;
             this.button15.Text = "       Thống kê";
             this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // AppQuanLy
             // 
