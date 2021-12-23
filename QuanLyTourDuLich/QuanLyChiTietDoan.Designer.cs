@@ -32,11 +32,13 @@ namespace QuanLyTourDuLich
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyChiTietDoan));
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Grid_ChiPhi = new System.Windows.Forms.DataGridView();
-            this.ChiPhi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_LoaiChiPhi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_ChiPhi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dataGridView_CT_Doan = new System.Windows.Forms.DataGridView();
@@ -45,7 +47,6 @@ namespace QuanLyTourDuLich
             this.Cmnd_Khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btnReload = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_ChiPhi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CT_Doan)).BeginInit();
@@ -78,6 +79,19 @@ namespace QuanLyTourDuLich
             this.panel2.Size = new System.Drawing.Size(1193, 571);
             this.panel2.TabIndex = 13;
             // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(927, 12);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(117, 45);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "     Sửa";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -109,8 +123,9 @@ namespace QuanLyTourDuLich
             this.Grid_ChiPhi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid_ChiPhi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid_ChiPhi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ChiPhi,
-            this.Gia});
+            this.Ten_LoaiChiPhi,
+            this.Gia,
+            this.Id_ChiPhi});
             this.Grid_ChiPhi.Location = new System.Drawing.Point(672, 73);
             this.Grid_ChiPhi.Name = "Grid_ChiPhi";
             this.Grid_ChiPhi.RowHeadersWidth = 51;
@@ -118,12 +133,12 @@ namespace QuanLyTourDuLich
             this.Grid_ChiPhi.Size = new System.Drawing.Size(496, 485);
             this.Grid_ChiPhi.TabIndex = 15;
             // 
-            // ChiPhi
+            // Ten_LoaiChiPhi
             // 
-            this.ChiPhi.HeaderText = "Loại Chi Phí";
-            this.ChiPhi.MinimumWidth = 6;
-            this.ChiPhi.Name = "ChiPhi";
-            this.ChiPhi.ReadOnly = true;
+            this.Ten_LoaiChiPhi.HeaderText = "Loại Chi Phí";
+            this.Ten_LoaiChiPhi.MinimumWidth = 6;
+            this.Ten_LoaiChiPhi.Name = "Ten_LoaiChiPhi";
+            this.Ten_LoaiChiPhi.ReadOnly = true;
             // 
             // Gia
             // 
@@ -131,6 +146,14 @@ namespace QuanLyTourDuLich
             this.Gia.MinimumWidth = 6;
             this.Gia.Name = "Gia";
             this.Gia.ReadOnly = true;
+            // 
+            // Id_ChiPhi
+            // 
+            this.Id_ChiPhi.HeaderText = "Mã Chi Phí";
+            this.Id_ChiPhi.MinimumWidth = 6;
+            this.Id_ChiPhi.Name = "Id_ChiPhi";
+            this.Id_ChiPhi.ReadOnly = true;
+            this.Id_ChiPhi.Visible = false;
             // 
             // btnXoa
             // 
@@ -214,19 +237,6 @@ namespace QuanLyTourDuLich
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(927, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(117, 45);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "     Sửa";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // QuanLyChiTietDoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -262,8 +272,9 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView Grid_ChiPhi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ChiPhi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ten_LoaiChiPhi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_ChiPhi;
     }
 }

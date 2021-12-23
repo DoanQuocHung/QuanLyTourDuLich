@@ -83,18 +83,24 @@ namespace DAL
 
         public bool Insert(ChiPhiDTO tour)
         {
-            string query = "insert into CHIPHI " +
-                "values( @maloai , @madoan , @gia )";
-
-            object[] para = new object[]
+            try
             {
+                string query = "insert into CHIPHI " +
+                    "values( @maloai , @madoan , @gia )";
+
+                object[] para = new object[]
+                {
                 tour.Id_LoaiChiPhi,
                 tour.Id_Doan,
                 tour.Gia
-            };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+                };
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }catch(Exception e)
+            {
+                return false;
+            }
             return false;
         }
 

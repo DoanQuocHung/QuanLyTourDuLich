@@ -11,25 +11,48 @@ namespace QuanLyTourDuLich
 {
     public partial class QuanLyChiPhi_Them : Form
     {
-        public QuanLyChiPhi_Them()
+        public List<ChiPhiDTO> list { set; get; }
+        List<LoaiChiPhiDTO> listloai;
+        string id;
+        public QuanLyChiPhi_Them(List<ChiPhiDTO> list, List<LoaiChiPhiDTO> listloai,string iddoan)
         {
             InitializeComponent();
+            this.list = list;
+            this.listloai = listloai;
+            this.id = iddoan;
+            foreach (LoaiChiPhiDTO item in listloai)
+            {
+                cb_loaichiphi.Items.Add(item.Ten_LoaiChiPhi);
+            }
+            cb_loaichiphi.SelectedItem = listloai[0].Ten_LoaiChiPhi;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*string maloai = "CP001";
-            string madoan = "DOAN01032021";
-            int thutu = 10000;*/
-            string maloai = txtMaNV.Text;
-            string madoan = txtHoTenNV.Text;
-            int thutu = Int32.Parse(txtEmail.Text);
-
-            if (new ChiPhiBUS().Insert(new ChiPhiDTO(maloai, madoan, thutu)))
+            string loai =  listloai.Find(x => x.Ten_LoaiChiPhi.Equals(cb_loaichiphi.SelectedItem.ToString())).Id_LoaiChiPhi;
+            string gia = numGia.Text;
+            long value = long.Parse(gia);
+            if(value < 10000)
+            {
+                MessageBox.Show("Vui lòng nhập giá lớn hơn 10000");
+                return;
+            }
+            if (new ChiPhiBUS().Insert(new ChiPhiDTO(loai, id, value)))
             {
                 MessageBox.Show("Thêm thành công");
+                list.Add(new ChiPhiDTO(loai, id, value));
+                this.DialogResult = DialogResult.OK;
                 Hide();
             }
+            else
+            {
+                MessageBox.Show("Chi phí đã tồn tại");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
