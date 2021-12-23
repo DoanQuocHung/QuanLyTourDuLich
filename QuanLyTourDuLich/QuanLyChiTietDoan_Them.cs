@@ -56,8 +56,8 @@ namespace QuanLyTourDuLich
             }
             catch (SqlException e1) when (e1.Number == 2627)
             {
-
                 MessageBox.Show("Không thể thêm khách hàng này vì đoàn này đã có khách hàng này");
+                Close();
             }
         }
 
