@@ -15,7 +15,7 @@ namespace DAL
         //Hùng
         public string connectionString = @"Data Source=DESKTOP-48AE0SM\SQLEXPRESS;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         //Doanh
-        public string connectionString = @"Data Source=DESKTOP-TB623K0\DOANHTT;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
+        //public string connectionString = @"Data Source=DESKTOP-TB623K0\DOANHTT;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         //Nguyen
         //public string connectionString = @"Data Source=LAPTOP-CEDHB3NK\NGUYEN;Initial Catalog=QUANLYTOURDULICH; USER ID=SA; PASSWORD=nguyen";
 
