@@ -132,7 +132,7 @@ namespace QuanLyTourDuLich
             string typesearch = cbSearchBox.SelectedItem.ToString();
             string searchkey = txtSearch.Text;
             List<NhanVienDTO> listsearch = new List<NhanVienDTO>();
-
+            listNhanVien = new NhanVienBUS().List();
             RadioButton rb = sender as RadioButton;
             if (rb != null)
             {
@@ -165,7 +165,7 @@ namespace QuanLyTourDuLich
             string typesearch = cbSearchBox.SelectedItem.ToString();
             string searchkey = txtSearch.Text;
             List<NhanVienDTO> listsearch = new List<NhanVienDTO>();
-
+            listNhanVienDuocPhanCong = new NhanVienBUS().ListDuocPhanCong();
             RadioButton rb = sender as RadioButton;
             if (rb != null)
             {
@@ -198,7 +198,7 @@ namespace QuanLyTourDuLich
             string typesearch = cbSearchBox.SelectedItem.ToString();
             string searchkey = txtSearch.Text;
             List<NhanVienDTO> listsearch = new List<NhanVienDTO>();
-            
+            listNhanVienChuaPhanCong = new NhanVienBUS().ListChuaPhanCong();
             RadioButton rb = sender as RadioButton;
             if (rb != null)
             {
@@ -226,6 +226,5 @@ namespace QuanLyTourDuLich
             BindGrid(listsearch);
         }
 
-       
     }
 }

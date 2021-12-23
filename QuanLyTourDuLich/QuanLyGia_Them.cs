@@ -36,7 +36,7 @@ namespace QuanLyTourDuLich
             string magia = txtGia.Text;
             string matour = txtTour.Text;
             string gia = numGia.Text;
-            int giatour = Int32.Parse(gia);
+            long giatour = long.Parse(gia);
             string ngaybatdau = txtNgayKhoiHanh.Text;
             string ngayketthuc = txtNgayKetThuc.Text;
             DateTime dt = DateTime.ParseExact(ngaybatdau, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
@@ -74,6 +74,11 @@ namespace QuanLyTourDuLich
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void numGia_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

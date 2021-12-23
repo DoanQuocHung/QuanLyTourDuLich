@@ -156,6 +156,7 @@ namespace QuanLyTourDuLich
             0,
             0,
             0});
+            this.numGia.ValueChanged += new System.EventHandler(this.numGia_ValueChanged);
             // 
             // txtNgayKetThuc
             // 

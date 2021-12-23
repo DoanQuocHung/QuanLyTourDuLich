@@ -29,12 +29,8 @@ namespace QuanLyTourDuLich
             DoanDuLichDTO item = list.Find(x => x.Id_Doan.Equals(id));
             txtMaDoan.Text = id;
             txtTenDoan.Text = item.Ten_Doan;
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-GB"); //dd/MM/yyyy
-            DateTime dateNgayKhoiHanh = DateTime.Parse(item.Ngaykhoihanh);
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-GB"); //dd/MM/yyyy
-            DateTime dateNgayKetThuc = DateTime.Parse(item.Ngayketthuc);
-            txtNgayKhoiHanh.Value = dateNgayKhoiHanh;
-            txtNgayKetThuc.Value = dateNgayKetThuc;
+            txtNgayKhoiHanh.Value = DateTime.ParseExact(item.Ngaykhoihanh, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            txtNgayKetThuc.Value = DateTime.ParseExact(item.Ngayketthuc, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             txtDoanhThu.Text = item.Doanhthu.ToString();
             cbTenTour.SelectedItem = listTenTour.Find(x => x.Id_Tour.Equals(item.Id_Tour)).Ten_Tour;
             txtNoiDung.Text = item.Noidung;
@@ -46,27 +42,27 @@ namespace QuanLyTourDuLich
             string tendoan = txtTenDoan.Text;
             string tentour = cbTenTour.SelectedItem.ToString();
             string idtour = listTenTour.Find(x => x.Ten_Tour.Equals(tentour)).Id_Tour;
-            string ngaykhoihanh = txtNgayKhoiHanh.Value.ToString("dd/MM/yyyy");
-            string ngayketthuc = txtNgayKetThuc.Value.ToString("dd/MM/yyyy");
+            string ngaykhoihanh = txtNgayKhoiHanh.Text;
+            string ngayketthuc = txtNgayKetThuc.Text;
             string noidung = txtNoiDung.Text;
             long doanhthu = (long)Convert.ToDouble(txtDoanhThu.Text);
-            if (tendoan.Equals(null) || tentour.Equals(null))
+            if (tendoan.Equals("") || tentour.Equals(""))
             {
                 MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
                 return;
             }
-            if (txtNgayKhoiHanh.Value.ToString("dd/MM/yyyy").Equals(null) || txtNgayKetThuc.Value.ToString("dd/MM/yyyy").Equals(null))
+            if (txtNgayKhoiHanh.Value.ToString("dd/MM/yyyy").Equals("") || txtNgayKetThuc.Value.ToString("dd/MM/yyyy").Equals(""))
             {
                 MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
                 return;
             }
-            DateTime ngkhoihanh = txtNgayKhoiHanh.Value;
-            DateTime ngketthuc = txtNgayKetThuc.Value;
+            DateTime dtNgKhoiHanh = DateTime.ParseExact(ngaykhoihanh, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime dtNgKetThuc = DateTime.ParseExact(ngayketthuc, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             DateTime today = DateTime.Today;
-            int resultCompareTodayAndNgayKhoiHanh = DateTime.Compare(ngkhoihanh, today);
-            int resultCompareTodayAndNgayKetThuc = DateTime.Compare(ngketthuc, today);
-            int resultCompareNgayKhoiHanhAndNgayKetThuc = DateTime.Compare(ngketthuc, ngkhoihanh);
-            if ((resultCompareTodayAndNgayKhoiHanh < 0) || (resultCompareTodayAndNgayKetThuc < 0) || (resultCompareNgayKhoiHanhAndNgayKetThuc < 0))
+            int resultCompareTodayAndNgayKhoiHanh = DateTime.Compare(dtNgKhoiHanh, today);
+            int resultCompareTodayAndNgayKetThuc = DateTime.Compare(dtNgKetThuc, today);
+            int resultCompareNgayKhoiHanhAndNgayKetThuc = DateTime.Compare(dtNgKhoiHanh, dtNgKetThuc);
+            if ((resultCompareTodayAndNgayKhoiHanh < 0) || (resultCompareTodayAndNgayKetThuc < 0) || (resultCompareNgayKhoiHanhAndNgayKetThuc > 0))
             {
                 MessageBox.Show("Vui lòng nhập lại thông tin ngày khởi hành hoặc ngày kết thúc");
                 return;

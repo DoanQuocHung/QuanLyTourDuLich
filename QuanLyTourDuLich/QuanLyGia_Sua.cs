@@ -43,7 +43,7 @@ namespace QuanLyTourDuLich
             string magia = txtGia.Text;
             string matour = txtTour.Text;
             string gia = numGia.Text;
-            int giatour = Int32.Parse(gia);
+            long giatour = long.Parse(gia);
             string ngaybatdau = txtNgayKhoiHanh.Text;
             string ngayketthuc = txtNgayKetThuc.Text;
             DateTime dt = DateTime.ParseExact(ngaybatdau, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
@@ -72,7 +72,6 @@ namespace QuanLyTourDuLich
             if (new GiaBUS().Update(new GiaDTO(magia, matour, gia, ngaybatdau, ngayketthuc)))
             {
                 MessageBox.Show("Sửa thành công");
-                this.list.Add(new GiaDTO(magia, matour, gia, ngaybatdau, ngayketthuc));
                 list.Find(x => x.Id_Gia.Equals(magia)).Id_Tour = matour;
                 list.Find(x => x.Id_Gia.Equals(magia)).Gia = gia;
                 list.Find(x => x.Id_Gia.Equals(magia)).Thoigianbatdau = ngaybatdau;

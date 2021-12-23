@@ -45,10 +45,7 @@ namespace QuanLyTourDuLich
                 case "Mã Giá":
                     listsearch = list.FindAll(x => x.Id_Gia.Contains(searchkey));
                     break;
-                case "Tên Tour":
-                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
-                    break;
-                case "Loại Tour":
+                case "Mã Tour":
                     listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
                     break;
                 default:
@@ -114,29 +111,80 @@ namespace QuanLyTourDuLich
         private void SearchBox_cb_SelectedIndexChanged(object sender, EventArgs e)
         {
             string typesearch = SearchBox_cb.SelectedItem.ToString();
+            numup.Text = 100000000000000.ToString();
+            numdown.Text = 0.ToString();
+            SearchGia_txt.Text = "";
+            timepickdown.Value = timepickdown.MinDate;
+            timepickup.Value = timepickup.MaxDate;
             switch (typesearch)
             {
                 case "Giá":
-                    numsearch.Visible = true;
+                    numup.Visible = true;
+                    numdown.Visible = true;
                     SearchGia_txt.Visible = false;
-                    lblTo.Visible = false;
+                    lblTo.Visible = true;
                     timepickdown.Visible = false;
                     timepickup.Visible = false;
                     break;
                 case "Ngày":
-                    numsearch.Visible = false;
+                    numup.Visible = false;
+                    numdown.Visible = false;
                     SearchGia_txt.Visible = false;
                     lblTo.Visible = true;
                     timepickdown.Visible = true;
                     timepickup.Visible = true;
                     break;
                 default:
-                    numsearch.Visible = false;
+                    numup.Visible = false;
+                    numdown.Visible = false;
                     SearchGia_txt.Visible = true;
                     lblTo.Visible = false;
                     timepickdown.Visible = false;
                     timepickup.Visible = false;
                     break;
+            }
+        }
+
+        private void timepickup_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime dt1 = timepickup.Value;
+            DateTime dt2 = timepickdown.Value;
+            List<GiaDTO> listsearch = new List<GiaDTO>();
+            foreach (GiaDTO item in list)
+            {
+                DateTime d1 = DateTime.ParseExact(item.Thoigianbatdau, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime d2 = DateTime.ParseExact(item.Thoigianketthuc, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                int result1 = DateTime.Compare(d1, dt2);
+                int result2 = DateTime.Compare(d2, dt1);
+                if (result1 >= 0 && result2 <= 0)
+                {
+                    listsearch.Add(item);
+                }
+            }
+            BindGrid(listsearch);
+
+        }
+
+        private void numsearch_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                long up = long.Parse(numup.Text);
+                long down = long.Parse(numdown.Text);
+                List<GiaDTO> listsearch = new List<GiaDTO>();
+                foreach (GiaDTO item in list)
+                {
+                    long result = long.Parse(item.Gia);
+                    if (result >= down && result <= up)
+                    {
+                        listsearch.Add(item);
+                    }
+                }
+                BindGrid(listsearch);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
     }

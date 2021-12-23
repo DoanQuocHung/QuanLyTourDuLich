@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using DTO;
 using BUS;
+using System.Data.SqlClient;
+
 namespace QuanLyTourDuLich
 {
     public partial class QuanLyChiTietDoan_Them : Form
@@ -14,7 +16,8 @@ namespace QuanLyTourDuLich
         
         public List<ChiTietDoanDTO> list { get; set; }
         List<KhachDTO> listkhach = new List<KhachDTO>();
-        public QuanLyChiTietDoan_Them(List<ChiTietDoanDTO> list, List<KhachDTO> listkhach, string id)
+        string ngaykhoihanhDoan, ngayketthucDoan;
+        public QuanLyChiTietDoan_Them(List<ChiTietDoanDTO> list, List<KhachDTO> listkhach, string id, string ngaykhoihanh, string ngayketthuc)
         {
             InitializeComponent();
             this.list = list;
@@ -28,6 +31,8 @@ namespace QuanLyTourDuLich
             txtMaKhach.Text = listkhach[0].Id_Khach;
             txtCMND.Text = listkhach[0].Cmnd_Khach;
             txtMaDoan.Text = id;
+            ngaykhoihanhDoan = ngaykhoihanh;
+            ngayketthucDoan = ngayketthuc;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -39,12 +44,20 @@ namespace QuanLyTourDuLich
                 MessageBox.Show("Vui lòng nhập họ tên khách");
                 return;
             }
-            if (new ChiTietDoanBUS().Insert(new ChiTietDoanDTO(madoan, makhach)))
+            try
             {
-                MessageBox.Show("Thêm thành công");
-                this.list.Add(new ChiTietDoanDTO(madoan, makhach));
-                this.DialogResult = DialogResult.OK;
-                Hide();
+                if (new ChiTietDoanBUS().Insert(new ChiTietDoanDTO(madoan, makhach), ngaykhoihanhDoan, ngayketthucDoan))
+                {
+                    MessageBox.Show("Thêm thành công");
+                    this.list.Add(new ChiTietDoanDTO(madoan, makhach));
+                    this.DialogResult = DialogResult.OK;
+                    Hide();
+                }
+            }
+            catch (SqlException e1) when (e1.Number == 2627)
+            {
+
+                MessageBox.Show("Không thể thêm khách hàng này vì đoàn này đã có khách hàng này");
             }
         }
 

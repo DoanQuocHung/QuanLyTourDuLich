@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using DTO;
 using BUS;
+using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
 
 namespace QuanLyTourDuLich
 {
@@ -32,12 +34,25 @@ namespace QuanLyTourDuLich
                 gioiTinh = "Nam";
             else
                 gioiTinh = "Nữ";
-            if (hotenNV.Equals(null) | email.Equals(null) | sdt.Equals(null))
+            if (hotenNV.Equals("") | email.Equals("") | sdt.Equals(""))
             {
                 MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
                 return;
 
             }
+
+            if (sdt.Length < 10)
+            {
+                MessageBox.Show("Vui lòng nhập lại số điện thoại");
+                return;
+            }
+
+            if (IsValidEmail(email) == false)
+            {
+                MessageBox.Show("Vui lòng nhập lại email");
+                return;
+            }
+
             if (new NhanVienBUS().Insert(new NhanVienDTO(maNV, hotenNV, email, sdt, gioiTinh, 1)))
             {
                 MessageBox.Show("Thêm thành công");
@@ -51,6 +66,11 @@ namespace QuanLyTourDuLich
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public bool IsValidEmail(string source)
+        {
+            return new EmailAddressAttribute().IsValid(source);
         }
     }
 }

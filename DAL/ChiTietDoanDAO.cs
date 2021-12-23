@@ -59,12 +59,12 @@ namespace DAL
             return newChitietdoan;
         }
 
-        public bool Insert(ChiTietDoanDTO doan)
+        public bool Insert(ChiTietDoanDTO doan, string ngaykhoihanh, string ngayketthuc)
         {
             string query = "insert into CHITIETDOAN " +
                 "values( @MADOAN , @MAKHACH )";
-            string query2 = "UPDATE DOANDULICH SET Doanhthu = Doanhthu + GIA.Gia FROM DOANDULICH INNER JOIN GIA ON(DOANDULICH.Id_Tour = GIA.Id_Tour) WHERE DOANDULICH.Id_Doan = @MADOAN ";
-
+            string query2 = "UPDATE DOANDULICH SET Doanhthu = Doanhthu + GIA.Gia FROM DOANDULICH INNER JOIN GIA ON(DOANDULICH.Id_Tour = GIA.Id_Tour) WHERE DOANDULICH.Id_Doan = @MADOAN and convert(date,GIA.Thoigianbatdau,103) <= convert(date, @NGAYBATDAU ,103) and convert(date,GIA.Thoigianketthuc,103) >= convert(date, @NGAYKETTHUC ,103)";
+            
             object[] para = new object[]
             {
                 doan.Id_Doan,
@@ -73,7 +73,9 @@ namespace DAL
 
             object[] para2 = new object[]
            {
-                doan.Id_Doan
+                doan.Id_Doan,
+                ngaykhoihanh,
+                ngayketthuc
            };
 
             DataProvider dataProvider = new DataProvider();
@@ -82,11 +84,11 @@ namespace DAL
             return false;
         }
 
-        public bool Delete(string iddoan, string idkhach)
+        public bool Delete(string iddoan, string idkhach, string ngaykhoihanh, string ngayketthuc)
         {
             string query = "delete from CHITIETDOAN " +
                 "where Id_Doan = @MADOAN AND Id_Khach = @MAKHACH ";
-            string query2 = "UPDATE DOANDULICH SET Doanhthu = Doanhthu - GIA.Gia FROM DOANDULICH INNER JOIN GIA ON(DOANDULICH.Id_Tour = GIA.Id_Tour) WHERE DOANDULICH.Id_Doan = @MADOAN ";
+            string query2 = "UPDATE DOANDULICH SET Doanhthu = Doanhthu - GIA.Gia FROM DOANDULICH INNER JOIN GIA ON(DOANDULICH.Id_Tour = GIA.Id_Tour) WHERE DOANDULICH.Id_Doan = @MADOAN and convert(date,GIA.Thoigianbatdau,103) <= convert(date, @NGAYBATDAU ,103) and convert(date,GIA.Thoigianketthuc,103) >= convert(date, @NGAYKETTHUC ,103)";
 
             object[] para = new object[]
             {
@@ -96,7 +98,9 @@ namespace DAL
 
             object[] para2 = new object[]
            {
-                iddoan
+                iddoan,
+                ngaykhoihanh,
+                ngayketthuc
            };
 
             DataProvider dataProvider = new DataProvider();

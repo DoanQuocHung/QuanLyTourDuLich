@@ -156,15 +156,20 @@ namespace QuanLyTourDuLich
                     listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
                     break;
                 case "Tên Tour":
-                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
+                    listsearch = list.FindAll(x => x.Ten_Tour.Contains(searchkey));
                     break;
                 case "Loại Tour":
-                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
+                    listsearch = list.FindAll(x => x.Id_Loai.Contains(searchkey));
                     break;
                 default:
                     break;
             }
             BindGrid(listsearch);
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
