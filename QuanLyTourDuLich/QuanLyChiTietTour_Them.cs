@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -38,17 +39,30 @@ namespace QuanLyTourDuLich
                 MessageBox.Show("Vui lòng chọn địa điểm");
                 return;
             }
-            if (thutu==null || thutu <= 0)
+            if (thutu.Equals("") || thutu <= 0)
             {
                 MessageBox.Show("Vui lòng nhập thứ tự lớn 0");
                 return;
             }
-            if (new ChiTietTourBUS().Insert(new ChiTietTourDTO(matour, iddiadiem, thutu)))
+            try
             {
-                MessageBox.Show("Thêm thành công");
-                this.list.Add(new ChiTietTourDTO(matour, iddiadiem, thutu));
-                this.DialogResult = DialogResult.OK;
-                Hide();
+                if (new ChiTietTourBUS().Insert(new ChiTietTourDTO(matour, iddiadiem, thutu)))
+                {
+                    MessageBox.Show("Thêm thành công");
+                    this.list.Add(new ChiTietTourDTO(matour, iddiadiem, thutu));
+                    this.DialogResult = DialogResult.OK;
+                    Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Không thể thêm địa điểm này vì tour này đã có thứ tự này");
+                    return;
+                }
+            }
+            catch (SqlException e1) when (e1.Number == 2627)
+            {
+                MessageBox.Show("Không thể thêm địa điểm này vì tour này đã có địa điểm này");
+                return;
             }
         }
 

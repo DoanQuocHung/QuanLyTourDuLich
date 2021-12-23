@@ -19,13 +19,11 @@ namespace BUS
         public bool Update(ChiTietTourDTO chitiet)
         {
             return new ChiTietTourDAO().Update(chitiet);
-            //
         }
 
         public bool Insert(ChiTietTourDTO chitiet)
         {
             return new ChiTietTourDAO().Insert(chitiet);
-            //Hung
         }
         public bool Delete(string idtour,string iddiadiem)
         {
