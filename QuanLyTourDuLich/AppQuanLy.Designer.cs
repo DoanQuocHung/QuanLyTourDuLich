@@ -47,6 +47,7 @@ namespace QuanLyTourDuLich
             this.panel9 = new System.Windows.Forms.Panel();
             this.button12 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button15 = new System.Windows.Forms.Button();
             this.Grid_Danhsachtour = new System.Windows.Forms.DataGridView();
             this.Id_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +66,6 @@ namespace QuanLyTourDuLich
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.button11 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -283,10 +283,22 @@ namespace QuanLyTourDuLich
             this.panel2.Size = new System.Drawing.Size(1070, 756);
             this.panel2.TabIndex = 1;
             // 
+            // button15
+            // 
+            this.button15.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
+            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button15.Location = new System.Drawing.Point(775, 10);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(145, 45);
+            this.button15.TabIndex = 11;
+            this.button15.Text = "       Thống kê";
+            this.button15.UseVisualStyleBackColor = true;
+            // 
             // Grid_Danhsachtour
             // 
             this.Grid_Danhsachtour.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Grid_Danhsachtour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grid_Danhsachtour.ColumnHeadersHeight = 29;
             this.Grid_Danhsachtour.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_Tour,
             this.Ten_Tour,
@@ -296,6 +308,7 @@ namespace QuanLyTourDuLich
             this.Grid_Danhsachtour.Name = "Grid_Danhsachtour";
             this.Grid_Danhsachtour.RowHeadersWidth = 51;
             this.Grid_Danhsachtour.RowTemplate.Height = 29;
+            this.Grid_Danhsachtour.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid_Danhsachtour.Size = new System.Drawing.Size(1046, 682);
             this.Grid_Danhsachtour.TabIndex = 10;
             this.Grid_Danhsachtour.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_Danhsachtour_CellContentClick);
@@ -475,18 +488,6 @@ namespace QuanLyTourDuLich
             this.button11.Text = "        Thống kê";
             this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button15
-            // 
-            this.button15.Font = new System.Drawing.Font("Times New Roman", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
-            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.Location = new System.Drawing.Point(775, 10);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(145, 45);
-            this.button15.TabIndex = 11;
-            this.button15.Text = "       Thống kê";
-            this.button15.UseVisualStyleBackColor = true;
             // 
             // AppQuanLy
             // 

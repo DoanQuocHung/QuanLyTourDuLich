@@ -57,7 +57,7 @@ namespace QuanLyTourDuLich
         {
             if (Grid_Danhsachtour.RowCount != 0)
             {
-                int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+                int selectedrowindex = Grid_Danhsachtour.SelectedRows[0].Index;
                 DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
                 string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
                 using (var form = new QuanLyTour_Sua(list, listloai, cellValue))
@@ -75,23 +75,16 @@ namespace QuanLyTourDuLich
         //Button Xóa 
         private void button3_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn muốn xóa không ? \n"
-                                                    +"Các dòng liên quan với tour này tại các bảng khác cũng sẽ bi xóa"
-                                                    , "Xóa tour", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (Grid_Danhsachtour.RowCount != 0)
             {
-                if (new GiaBUS().DeleteBaseTour(cellValue))
+                int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+                if (new TourBUS().Delete(cellValue))
                 {
-                    if (new TourBUS().Delete(cellValue))
-                    {
-                        MessageBox.Show("Xóa thành công");
-                        list.RemoveAll(x => x.Id_Tour.Equals(cellValue));
-                        BindGrid(list);
-                    }
+                    MessageBox.Show("Xóa thành công");
+                    list.RemoveAll(x => x.Id_Tour.Equals(cellValue));
+                    BindGrid(list);
                 }
             }
         }
@@ -182,12 +175,12 @@ namespace QuanLyTourDuLich
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string typesearch = SearchBox_cb.SelectedItem.ToString();
-            string searchkey = new Tool().RemoveUnicodeBus(SearchTour_txt.Text).ToLower();
+            string searchkey = new Tool().RemoveUnicodeBus(SearchTour_txt.Text.ToLower());
             List<TourDTO> listsearch = new List<TourDTO>();
             switch (typesearch)
             {
                 case "Mã Tour":
-                    listsearch = list.FindAll(x => new Tool().RemoveUnicodeBus(x.Id_Tour.ToLower()).Contains(searchkey));
+                    listsearch = list.FindAll(x => x.Id_Tour.ToLower().Contains(searchkey));
                     break;
                 case "Tên Tour":
                     listsearch = list.FindAll(x => new Tool().RemoveUnicodeBus(x.Ten_Tour.ToLower()).Contains(searchkey));

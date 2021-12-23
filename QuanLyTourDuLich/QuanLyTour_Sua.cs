@@ -47,7 +47,7 @@ namespace QuanLyTourDuLich
                 MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
                 return;
             }
-            if (new TourBUS().Update(new TourDTO(matour, tentour, dacdiem, idloai)))
+            if (new TourBUS().Update(new TourDTO(matour, tentour, dacdiem, idloai,1)))
             {
                 MessageBox.Show("Sửa thành công");
                 list.Find(x => x.Id_Tour.Equals(matour)).Ten_Tour=tentour;

@@ -16,7 +16,7 @@ namespace DAL
             List<TourDTO> tours = new List<TourDTO>();
             try
             {
-                string query = "Select * from TOUR";
+                string query = "Select * from TOUR where Tinh_Trang = 1";
 
                 DataTable data = datapro.ExecuteQuery(query);
 
@@ -26,7 +26,8 @@ namespace DAL
                     string tentour = item["Ten_Tour"].ToString();
                     string dacdiem = item["Dacdiem_Tour"].ToString();
                     string maloai = item["Id_Loai"].ToString();
-                    TourDTO newTour = new TourDTO(matour, tentour, dacdiem, maloai);
+                    string tinhtrang = item["Tinh_Trang"].ToString();
+                    TourDTO newTour = new TourDTO(matour, tentour, dacdiem, maloai,Int32.Parse(tinhtrang));
 
                     tours.Add(newTour);
                 }
@@ -59,15 +60,16 @@ namespace DAL
 
         public bool Insert(TourDTO tour)
         {
-            string query = "insert into TOUR " +
-                "values( @MATOUR , @TENTOUR , @DACDIEM , @MALOAI )";
+            string query = "insert into TOUR (Id_Tour , Ten_Tour , Dacdiem_Tour , Id_Loai , Tinh_Trang ) " +
+                "values( @MATOUR , @TENTOUR , @DACDIEM , @MALOAI , @tinhtrang )";
 
             object[] para = new object[]
             {
                 tour.Id_Tour,
                 tour.Ten_Tour,
                 tour.Dacdiem_Tour,
-                tour.Id_Loai
+                tour.Id_Loai,
+                tour.Tinh_Trang
             };
             DataProvider datapro = new DataProvider();
             if (datapro.ExecuteNonQuery(query, para) > 0)
@@ -77,24 +79,18 @@ namespace DAL
 
         public bool Delete(string id)
         {
-            try
+            string query = "update TOUR set " +
+                "Tinh_Trang = @tinhtrang " +
+                "where Id_Tour = @oldMATOUR ";
+
+            object[] para = new object[]
             {
-                string query = "delete from TOUR where Id_Tour = @MATOUR";
-                string query2 = "delete from CHITIETTOUR where Id_Tour = @MATOUR";
-                object[] para = new object[]
-                {
+                0,
                 id
-                };
-                DataProvider datapro = new DataProvider();
-                datapro.ExecuteNonQuery(query2, para);
-                if (datapro.ExecuteNonQuery(query, para) > 0)
-                    return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return false;
-            }
+            };
+            DataProvider datapro = new DataProvider();
+            if (datapro.ExecuteNonQuery(query, para) > 0)
+                return true;
             return false;
         }
         public int Count()

@@ -75,9 +75,19 @@ namespace QuanLyTourDuLich
             // ThuTu_num
             // 
             this.ThuTu_num.Location = new System.Drawing.Point(208, 178);
+            this.ThuTu_num.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.ThuTu_num.Name = "ThuTu_num";
             this.ThuTu_num.Size = new System.Drawing.Size(317, 27);
             this.ThuTu_num.TabIndex = 8;
+            this.ThuTu_num.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // DiaDiem_cb
             // 

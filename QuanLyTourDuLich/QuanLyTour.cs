@@ -21,7 +21,7 @@ namespace QuanLyTourDuLich
             list = new TourBUS().List();
             listloai = new LoaiTourBUS().List();
             Grid_Danhsachtour.AutoGenerateColumns = false;
-            List<string> listtype = new List<string> { "Mã Tour", "Tên Tour", "Loại Tour" };
+            List<string> listtype = new List<string> { "Mã Tour", "Tên Tour"};
             SearchBox_cb.DataSource = listtype;
             BindGrid(list);
         }
@@ -76,22 +76,17 @@ namespace QuanLyTourDuLich
         //Button Xóa 
         private void button3_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            try
+            if (Grid_Danhsachtour.RowCount != 0)
             {
+                int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
                 if (new TourBUS().Delete(cellValue))
                 {
                     MessageBox.Show("Xóa thành công");
                     list.RemoveAll(x => x.Id_Tour.Equals(cellValue));
                     BindGrid(list);
                 }
-            }
-            catch (SqlException e1) when (e1.Number == 547)
-            {
-
-                MessageBox.Show("Tour này không được xóa vì đã có đoàn tham gia");
             }
         }
 
@@ -148,18 +143,15 @@ namespace QuanLyTourDuLich
         private void SearchTour_txt_TextChanged(object sender, EventArgs e)
         {
             string typesearch = SearchBox_cb.SelectedItem.ToString();
-            string searchkey = SearchTour_txt.Text;
+            string searchkey = new Tool().RemoveUnicodeBus(SearchTour_txt.Text.ToLower());
             List<TourDTO> listsearch = new List<TourDTO>();
             switch (typesearch)
             {
                 case "Mã Tour":
-                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
+                    listsearch = list.FindAll(x => x.Id_Tour.ToLower().Contains(searchkey));
                     break;
                 case "Tên Tour":
-                    listsearch = list.FindAll(x => x.Ten_Tour.Contains(searchkey));
-                    break;
-                case "Loại Tour":
-                    listsearch = list.FindAll(x => x.Id_Loai.Contains(searchkey));
+                    listsearch = list.FindAll(x => new Tool().RemoveUnicodeBus(x.Ten_Tour.ToLower()).Contains(searchkey));
                     break;
                 default:
                     break;
