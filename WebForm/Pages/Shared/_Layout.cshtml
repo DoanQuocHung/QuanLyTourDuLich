@@ -1,5 +1,160 @@
-﻿<body>
-    @RenderBody()
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @using BUS;
+    @using DTO;
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Website Quản Lý Tour</title>
 
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/vendors/typicons.font/font/typicons.css")" media="screen" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/vendors/css/vendor.bundle.base.css")" media="screen" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/vertical-layout-light/style.css")" media="screen" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/images/favicon.png")" media="screen" />
+</head>
+<body>
+    @{
+        List<TourDTO> list = new List<TourDTO>();
+        List<LoaiTourDTO> listloai = new List<LoaiTourDTO>();
+        TourBUS bus = new TourBUS();
+        LoaiTourBUS busloai = new LoaiTourBUS();
+        list = bus.List();
+        listloai = busloai.List();
+    }
+    <div class="container-scroller">
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo" href="index.html"><img src="~/images/logo.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="~/images/logo-mini.svg" alt="logo" /></a>
+                <button class="navbar-toggler navbar-toggler align-self-center d-none d-lg-flex" type="button" data-toggle="minimize">
+                    <span class="typcn typcn-th-menu"></span>
+                </button>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <ul class="navbar-nav mr-lg-2">
+                    <li class="nav-item  d-none d-lg-flex">
+                        <a class="nav-link" >
+                            Calendar
+                        </a>
+                    </li>
+                    <li class="nav-item  d-none d-lg-flex">
+                        <a class="nav-link active" href="#">
+                            Statistic
+                        </a>
+                    </li>
+                    <li class="nav-item  d-none d-lg-flex">
+                        <a class="nav-link" href="#">
+                            Employee
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid page-body-wrapper">
+
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <div class="d-flex sidebar-profile">
+                            <div class="sidebar-profile-image">
+                                <img src="images/faces/face29.png" alt="image">
+                                <span class="sidebar-status-indicator"></span>
+                            </div>
+                            <div class="sidebar-profile-name">
+                                <p class="sidebar-name">
+                                    Website Quản Lý Tour
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Shared/QuanLyTour">
+                            <i class="typcn typcn-document-text menu-icon"></i>
+                            <span class="menu-title">Quản Lý Tour</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                    </li>
+                    <hr />
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Shared/QuanLyNhanVien">
+                            <i class="typcn typcn-globe-outline menu-icon"></i>
+                            <span class="menu-title">Quản Lý Nhân Viên</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                    </li>
+                    <hr />
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Shared/QuanLyKhachHang">
+                            <i class="typcn typcn-document-text menu-icon"></i>
+                            <span class="menu-title">Quản Lý Khách Hàng</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                    </li>
+                    <hr />
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Shared/QuanLyDoan">
+                            <i class="typcn typcn-globe-outline menu-icon"></i>
+                            <span class="menu-title">Quản Lý Đoàn</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                    </li>
+                    <hr />
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Shared/QuanLyPhanCong">
+                            <i class="typcn typcn-globe-outline menu-icon"></i>
+                            <span class="menu-title">Quản Lý Phân Công</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                    </li>
+                    <hr />
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Shared/QuanLyDiaDiem">
+                            <i class="typcn typcn-document-text menu-icon"></i>
+                            <span class="menu-title">Quản Lý Địa Điểm</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                    </li>
+                    <hr />
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Shared/QuanLyGia">
+                            <i class="typcn typcn-globe-outline menu-icon"></i>
+                            <span class="menu-title">Quản Lý Giá</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Phần dùng riêng-->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @RenderBody()
+                </div>
+            </div>
+
+            
+
+        </div>
+    </div>
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <script src="vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        function ThemTour() {
+            document.getElementById("them-tour").style.display = 'block';
+        }
+        function SuamTour() {
+
+        }
+
+    </script>
 </body>
-
+</html>

@@ -7,9 +7,9 @@ namespace BUS
 {
     public class ChiPhiBUS
     {
-        public List<ChiPhiDTO> List()
+        public List<ChiPhiDTO> List(string id)
         {
-            return new ChiPhiDAO().ListAll();
+            return new ChiPhiDAO().ListAll(id);
         }
         public ChiPhiDTO get(string id, string diadiem)
         {

@@ -33,7 +33,7 @@ namespace QuanLyTourDuLich
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Grid_Danhsachtour = new System.Windows.Forms.DataGridView();
+            this.Grid_Danhsachchiphi = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -42,9 +42,12 @@ namespace QuanLyTourDuLich
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
+            this.Id_Doan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_Loaichiphi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachchiphi)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +75,7 @@ namespace QuanLyTourDuLich
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel2.Controls.Add(this.Grid_Danhsachtour);
+            this.panel2.Controls.Add(this.Grid_Danhsachchiphi);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
@@ -84,16 +87,20 @@ namespace QuanLyTourDuLich
             this.panel2.TabIndex = 7;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // Grid_Danhsachtour
+            // Grid_Danhsachchiphi
             // 
-            this.Grid_Danhsachtour.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Grid_Danhsachtour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Grid_Danhsachtour.Location = new System.Drawing.Point(11, 64);
-            this.Grid_Danhsachtour.Name = "Grid_Danhsachtour";
-            this.Grid_Danhsachtour.RowHeadersWidth = 51;
-            this.Grid_Danhsachtour.RowTemplate.Height = 29;
-            this.Grid_Danhsachtour.Size = new System.Drawing.Size(1057, 682);
-            this.Grid_Danhsachtour.TabIndex = 10;
+            this.Grid_Danhsachchiphi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Grid_Danhsachchiphi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Grid_Danhsachchiphi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id_Doan,
+            this.Id_Loaichiphi,
+            this.Gia});
+            this.Grid_Danhsachchiphi.Location = new System.Drawing.Point(11, 64);
+            this.Grid_Danhsachchiphi.Name = "Grid_Danhsachchiphi";
+            this.Grid_Danhsachchiphi.RowHeadersWidth = 51;
+            this.Grid_Danhsachchiphi.RowTemplate.Height = 29;
+            this.Grid_Danhsachchiphi.Size = new System.Drawing.Size(1057, 682);
+            this.Grid_Danhsachchiphi.TabIndex = 10;
             // 
             // button5
             // 
@@ -188,6 +195,27 @@ namespace QuanLyTourDuLich
             this.button6.Text = "       Tìm kiếm";
             this.button6.UseVisualStyleBackColor = true;
             // 
+            // Id_Doan
+            // 
+            this.Id_Doan.HeaderText = "Mã Đoàn";
+            this.Id_Doan.MinimumWidth = 6;
+            this.Id_Doan.Name = "Id_Doan";
+            this.Id_Doan.ReadOnly = true;
+            // 
+            // Id_Loaichiphi
+            // 
+            this.Id_Loaichiphi.HeaderText = "Loại Chi Phí";
+            this.Id_Loaichiphi.MinimumWidth = 6;
+            this.Id_Loaichiphi.Name = "Id_Loaichiphi";
+            this.Id_Loaichiphi.ReadOnly = true;
+            // 
+            // Gia
+            // 
+            this.Gia.HeaderText = "Gía(VNĐ)";
+            this.Gia.MinimumWidth = 6;
+            this.Gia.Name = "Gia";
+            this.Gia.ReadOnly = true;
+            // 
             // QuanLyChiPhi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -203,7 +231,7 @@ namespace QuanLyTourDuLich
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachtour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachchiphi)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -215,7 +243,7 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView Grid_Danhsachtour;
+        private System.Windows.Forms.DataGridView Grid_Danhsachchiphi;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -224,5 +252,8 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Doan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Loaichiphi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
     }
 }
