@@ -61,13 +61,27 @@ namespace QuanLyTourDuLich
                 int selectedrowindex = Grid_Danhsachdoan.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_Danhsachdoan.Rows[selectedrowindex];
                 string cellValue = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
-                using (var form = new QuanLyDoan_Sua(list, listTenTour, cellValue))
+                string dt1 = Convert.ToString(selectedRow.Cells["NgayKhoiHanh"].Value);
+                string dt2 = Convert.ToString(selectedRow.Cells["NgayKetThuc"].Value);
+                Tool tool = new Tool();
+                if (tool.comparetoday(dt1) < 0 && tool.comparetoday(dt2) > 0)
                 {
-                    var result = form.ShowDialog();
-                    if (result == DialogResult.OK)
+                    MessageBox.Show("Đoàn này đang hoạt động");
+                }
+                else if (tool.comparetoday(dt2) < 0)
+                {
+                    MessageBox.Show("Đoàn này đã ngưng hoạt động");
+                }
+                else
+                {
+                    using (var form = new QuanLyDoan_Sua(list, listTenTour, cellValue))
                     {
-                        this.list = form.list;
-                        BindGrid(list);
+                        var result = form.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            this.list = form.list;
+                            BindGrid(list);
+                        }
                     }
                 }
             }
