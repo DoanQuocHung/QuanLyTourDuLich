@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -53,6 +54,18 @@ namespace QuanLyTourDuLich
                 return;
             }
 
+            if (sdt.Length < 10)
+            {
+                MessageBox.Show("Vui lòng nhập lại số điện thoại");
+                return;
+            }
+
+            if (IsValidEmail(email) == false)
+            {
+                MessageBox.Show("Vui lòng nhập lại email");
+                return;
+            }
+
             if (new NhanVienBUS().Update(new NhanVienDTO(maNV, hotenNV, email, sdt, gioiTinh, tinhTrang)))
             {
                 MessageBox.Show("Sửa thành công");
@@ -71,5 +84,9 @@ namespace QuanLyTourDuLich
             Close();
         }
 
+        public bool IsValidEmail(string source)
+        {
+            return new EmailAddressAttribute().IsValid(source);
+        }
     }
 }
