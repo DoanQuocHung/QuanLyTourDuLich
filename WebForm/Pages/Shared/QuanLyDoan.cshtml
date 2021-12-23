@@ -8,12 +8,9 @@
 @using BUS;
 @using DTO;
 @{
-    List<TourDTO> list = new List<TourDTO>();
-    List<LoaiTourDTO> listloai = new List<LoaiTourDTO>();
-    TourBUS bus = new TourBUS();
-    LoaiTourBUS busloai = new LoaiTourBUS();
-    list = bus.List();
-    listloai = busloai.List();
+    List<DoanDuLichDTO> list_d = new List<DoanDuLichDTO>();
+    DoanDuLichBUS bus_d = new DoanDuLichBUS();
+    list_d = bus_d.List();
 }
 
 <div class="main-panel">
@@ -22,34 +19,39 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Danh sách Tour</h4>
+                        <h4 class="card-title">Danh sách Đoàn Du Lịch</h4>
                         <form class="form-inline">
-                            <button type="button" class="btn btn-primary mb-2" onclick="ThemTour()">
+                            <button type="button" class="btn btn-primary mb-2" onclick="ThemDoan()">
                                 Thêm
                             </button>
-                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" id="inlineFormInputName2" placeholder="Tên Tour">
+                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" id="inlineFormInputName2" placeholder="...">
                         </form>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th>Mã Đoàn</th>
+                                        <th>Tên Đoàn</th>
                                         <th>Mã Tour</th>
-                                        <th>Tên Tour</th>
-                                        <th>Mô Tả</th>
-                                        <th>Loại Tour</th>
+                                        <th>Ngày khởi hành</th>
+                                        <th>Ngày kết thúc</th>
+                                        <th>Doanh thu</th>
+                                        <th>Nội Dung</th>
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @{
-                                        foreach (TourDTO item in list)
+                                        foreach (DoanDuLichDTO item in list_d)
                                         {
-                                            string tenloai = listloai.Find(x => x.Id_Loai.Equals(item.Id_Loai)).Ten_Loai;
                                             <tr>
+                                                <td>@item.Id_Doan</td>
+                                                <td>@item.Ten_Doan</td>
                                                 <td>@item.Id_Tour</td>
-                                                <td>@item.Ten_Tour</td>
-                                                <td>@item.Dacdiem_Tour</td>
-                                                <td>@tenloai</td>
+                                                <td>@item.Ngaykhoihanh</td>
+                                                <td>@item.Ngayketthuc</td>
+                                                <td>@item.Doanhthu</td>
+                                                <td>@item.Noidung</td>
                                                 <td>
                                                     <button type="button" class="btn btn-warning">Sửa</button>
                                                     <button type="button" class="btn btn-danger">Xóa</button>

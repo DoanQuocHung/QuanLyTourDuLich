@@ -24,28 +24,30 @@
                             <button type="button" class="btn btn-primary mb-2" onclick="ThemNhanVien()">
                                 Thêm
                             </button>
-                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" id="inlineFormInputName2" placeholder="Tên Tour">
+                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" id="inlineFormInputName2" placeholder="...">
                         </form>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Mã Tour</th>
-                                        <th>Tên Tour</th>
-                                        <th>Mô Tả</th>
-                                        <th>Loại Tour</th>
+                                        <th>Mã Nhân Viên</th>
+                                        <th>Họ tên</th>
+                                        <th>Email</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Giới tính</th>
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @{
-                                        foreach (TourDTO item in list)
+                                        foreach (NhanVienDTO item in list_nv)
                                         {
                                             <tr>
-                                                <td>@item.Id_Tour</td>
-                                                <td>@item.Ten_Tour</td>
-                                                <td>@item.Dacdiem_Tour</td>
-                                                <td>@tenloai</td>
+                                                <td>@item.Id_NV</td>
+                                                <td>@item.Hoten_NV</td>
+                                                <td>@item.Email_NV</td>
+                                                <td>@item.Sdt_NV</td>
+                                                <td>@item.Gioitinh_NV</td>
                                                 <td>
                                                     <button type="button" class="btn btn-warning">Sửa</button>
                                                     <button type="button" class="btn btn-danger">Xóa</button>
