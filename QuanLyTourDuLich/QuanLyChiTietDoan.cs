@@ -23,12 +23,16 @@ namespace QuanLyTourDuLich
             this.id = id;
             this.ngaykhoihanh = ngaykhoihanh;
             this.ngayketthuc = ngayketthuc;
+
             list = new ChiTietDoanBUS().List(id);
             listkhach = new KhachHangBUS().List();
+
             listchiphi = new ChiPhiBUS().List(id);
             listloaichiphi = new LoaiChiPhiBUS().List();
+
             dataGridView_CT_Doan.AutoGenerateColumns = false;
             Grid_ChiPhi.AutoGenerateColumns = false;
+
             BindGrid(list);
             BindGrid2(listchiphi);
         }
