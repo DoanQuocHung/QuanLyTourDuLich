@@ -20,7 +20,7 @@ namespace QuanLyTourDuLich
             this.list = new TourBUS().List();
             this.listloai = new LoaiTourBUS().List();
             Grid_Danhsachtour.AutoGenerateColumns = false;
-            List<string> listtype = new List<string> {"Mã Tour","Tên Tour"};
+            List<string> listtype = new List<string> { "Mã Tour", "Tên Tour" };
             SearchBox_cb.DataSource = listtype;
             BindGrid(list);
         }
@@ -33,8 +33,8 @@ namespace QuanLyTourDuLich
             Grid_Danhsachtour.Refresh();
             foreach (TourDTO item in list)
             {
-                    string tenloai = listloai.Find(x => x.Id_Loai.Equals(item.Id_Loai)).Ten_Loai;
-                    Grid_Danhsachtour.Rows.Add(item.Id_Tour, item.Ten_Tour, item.Dacdiem_Tour, tenloai);
+                string tenloai = listloai.Find(x => x.Id_Loai.Equals(item.Id_Loai)).Ten_Loai;
+                Grid_Danhsachtour.Rows.Add(item.Id_Tour, item.Ten_Tour, item.Dacdiem_Tour, tenloai);
             }
         }
 
@@ -78,9 +78,9 @@ namespace QuanLyTourDuLich
             int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
             string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-            
+
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn muốn xóa không ? \n"
-                                                    +"Các dòng liên quan với tour này tại các bảng khác cũng sẽ bi xóa"
+                                                    + "Các dòng liên quan với tour này tại các bảng khác cũng sẽ bi xóa"
                                                     , "Xóa tour", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -110,6 +110,13 @@ namespace QuanLyTourDuLich
                     ql_ctt.ShowDialog();
                 }
             }
+        }
+
+        //Button Thống kê
+        private void button15_Click(object sender, EventArgs e)
+        {
+            ThongKe tk = new ThongKe();
+            tk.ShowDialog();
         }
 
         //Button Reload 

@@ -95,6 +95,13 @@ namespace QuanLyTourDuLich
             }
         }
 
+        //Button Thống kê
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ThongKe tk = new ThongKe();
+            tk.ShowDialog();
+        }
+
         //Button Chi tiết 
         private void button4_Click(object sender, EventArgs e)
         {
