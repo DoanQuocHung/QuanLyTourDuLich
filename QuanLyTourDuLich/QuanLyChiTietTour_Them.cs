@@ -33,15 +33,21 @@ namespace QuanLyTourDuLich
             string matour = IdTour_txt.Text;
             string diadiem = DiaDiem_cb.Text;
             string iddiadiem = listdd.Find(x=>x.Ten_DiaDiem.Equals(diadiem)).Id_DiaDiem;
-            int thutu = Int32.Parse(ThuTu_num.Text);
+            
             if(diadiem.Equals(null))
             {
                 MessageBox.Show("Vui lòng chọn địa điểm");
                 return;
             }
-            if (thutu.Equals("") || thutu <= 0)
+            if (ThuTu_num.Text.Equals(""))
             {
-                MessageBox.Show("Vui lòng nhập thứ tự lớn 0");
+                MessageBox.Show("Vui lòng nhập thứ tự");
+                return;
+            }
+            int thutu = Int32.Parse(ThuTu_num.Text);
+            if (thutu < 0)
+            {
+                MessageBox.Show("Vui lòng nhập thứ tự lớn hơn 0");
                 return;
             }
             try

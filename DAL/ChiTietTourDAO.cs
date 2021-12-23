@@ -61,36 +61,34 @@ namespace DAL
             }
             return newTour;
         }
-        public bool Update(ChiTietTourDTO tour)
+        public bool Update(ChiTietTourDTO tour, string id)
         {
-            //string queryDiaDiem = "select * from CHITIETTOUR where Id_Tour = @MATOUR and Id_DiaDiem = @DIADIEM ";
+            string queryDiaDiem = "select * from CHITIETTOUR where Id_Tour = @oldMATOUR and Id_DiaDiem = @MADD ";
+            //UPDATE CHITIETTOUR SET Id_DiaDiem = 'VT001', Thutu = 10 where Id_Tour= 'ATDN001' and Id_DiaDiem = 'DN001'
             string query = "update CHITIETTOUR set " +
                 "Id_DiaDiem = @DIADIEM , " +
                 "Thutu = @thutu " +
-                "where Id_Tour = @oldMATOUR AND Id_DiaDiem = @madd";
+                "where Id_Tour = @oldMATOUR and Id_DiaDiem = @madd";
 
-            // object[] paraDiaDiem = new object[]
-            //{
-            //     tour.Id_Tour,
-            //     tour.Id_DiaDiem
-            //};
+            object[] paraDiaDiem = new object[]
+           {
+                  tour.Id_Tour,
+                  tour.Id_DiaDiem
+           };
 
             object[] para = new object[]
             {
                 tour.Id_DiaDiem,
                 tour.Thutu,
                 tour.Id_Tour,
-                tour.Id_DiaDiem
+                id
             };
             DataProvider datapro = new DataProvider();
-            //DataTable data = datapro.ExecuteQuery(queryDiaDiem, paraDiaDiem);
-            //if (data.Rows.Count > 0)
-            //    return false;
-
+            DataTable data = datapro.ExecuteQuery(queryDiaDiem, paraDiaDiem);
+            if (data.Rows.Count > 0)
+                return false;
             if (datapro.ExecuteNonQuery(query, para) > 0)
                 return true;
-
-
             return false;
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -28,7 +29,7 @@ namespace QuanLyTourDuLich
             ChiTietTourDTO edit = list.Find(x => x.Id_DiaDiem.Equals(id));
             IdTour_txt.Text = edit.Id_Tour;
             DiaDiem_cb.SelectedItem = listdd.Find(x => x.Id_DiaDiem.Equals(id)).Ten_DiaDiem;
-            ThuTu_num.Value = edit.Thutu;
+            txtThuTu.Text = edit.Thutu.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,29 +37,22 @@ namespace QuanLyTourDuLich
             string matour = IdTour_txt.Text;
             string diadiem = DiaDiem_cb.Text;
             string madiadiem = listdd.Find(x => x.Ten_DiaDiem.Equals(diadiem)).Id_DiaDiem;
-            int thutu = Int32.Parse(ThuTu_num.Text);
-            if (diadiem.Equals(null))
-            {
-                MessageBox.Show("Vui lòng nhập hoặc chọn địa điểm");
-                return;
-            }
-            if (thutu == null || thutu <= 0)
-            {
-                MessageBox.Show("Vui lòng nhập thứ tự lớn 0");
-                return;
-            }
-
-            if (new ChiTietTourBUS().Update(new ChiTietTourDTO(matour, madiadiem, thutu)))
+            int thutu = int.Parse(txtThuTu.Text);
+            if (new ChiTietTourBUS().Update(new ChiTietTourDTO(matour, madiadiem, thutu), id))
             {
                 MessageBox.Show("Sửa thành công");
                 list.Find(x => x.Id_DiaDiem.Equals(id)).Id_DiaDiem = madiadiem;
-                list.Find(x => x.Id_DiaDiem.Equals(id)).Thutu = thutu;
                 this.DialogResult = DialogResult.OK;
                 Hide();
             }
+            else
+            {
+                MessageBox.Show("abcKhông thể sửa thành địa điểm này vì tour này đã có địa điểm này");
+                return;
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonHuy_Click(object sender, EventArgs e)
         {
             Close();
         }
