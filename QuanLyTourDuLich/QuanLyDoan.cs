@@ -36,7 +36,8 @@ namespace QuanLyTourDuLich
                     item.Ngaykhoihanh, 
                     item.Ngayketthuc, 
                     item.Doanhthu.ToString("#,#")+" VNĐ", 
-                    item.Noidung);
+                    item.Noidung,
+                    item.Id_Tour);
             }
         }
         
@@ -135,11 +136,11 @@ namespace QuanLyTourDuLich
                 string cellValue = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
                 string cellValueNgayKhoiHanh = Convert.ToString(selectedRow.Cells["NgayKhoiHanh"].Value);
                 string cellValueNgayKetThuc = Convert.ToString(selectedRow.Cells["NgayKetThuc"].Value);
-                if (cellValue != null)
-                {
-                    QuanLyChiTietDoan ql_ctd = new QuanLyChiTietDoan(cellValue, cellValueNgayKhoiHanh, cellValueNgayKetThuc);
-                    ql_ctd.ShowDialog();
-                }
+                    if (cellValue != null)
+                    {
+                        QuanLyChiTietDoan ql_ctd = new QuanLyChiTietDoan(cellValue, cellValueNgayKhoiHanh, cellValueNgayKetThuc);
+                        ql_ctd.ShowDialog();
+                    }
                 
             }
             list = new DoanDuLichBUS().List();

@@ -29,13 +29,20 @@ namespace QuanLyTourDuLich
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyDoan));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyDoan));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Grid_Danhsachdoan = new System.Windows.Forms.DataGridView();
+            this.Id_Doan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_Doan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayKhoiHanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DoanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnChiTiet = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -45,13 +52,7 @@ namespace QuanLyTourDuLich
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.Id_Doan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_Doan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayKhoiHanh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DoanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachdoan)).BeginInit();
@@ -105,13 +106,60 @@ namespace QuanLyTourDuLich
             this.NgayKhoiHanh,
             this.NgayKetThuc,
             this.DoanhThu,
-            this.NoiDung});
+            this.NoiDung,
+            this.Id_Tour});
             this.Grid_Danhsachdoan.Location = new System.Drawing.Point(11, 64);
             this.Grid_Danhsachdoan.Name = "Grid_Danhsachdoan";
             this.Grid_Danhsachdoan.RowHeadersWidth = 51;
             this.Grid_Danhsachdoan.RowTemplate.Height = 29;
             this.Grid_Danhsachdoan.Size = new System.Drawing.Size(1057, 682);
             this.Grid_Danhsachdoan.TabIndex = 10;
+            // 
+            // Id_Doan
+            // 
+            dataGridViewCellStyle1.NullValue = "0";
+            this.Id_Doan.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Id_Doan.HeaderText = "Mã Đoàn";
+            this.Id_Doan.MinimumWidth = 8;
+            this.Id_Doan.Name = "Id_Doan";
+            // 
+            // Ten_Doan
+            // 
+            this.Ten_Doan.HeaderText = "Tên Đoàn";
+            this.Ten_Doan.MinimumWidth = 8;
+            this.Ten_Doan.Name = "Ten_Doan";
+            // 
+            // Ten_Tour
+            // 
+            this.Ten_Tour.HeaderText = "Tên Tour";
+            this.Ten_Tour.MinimumWidth = 8;
+            this.Ten_Tour.Name = "Ten_Tour";
+            // 
+            // NgayKhoiHanh
+            // 
+            this.NgayKhoiHanh.HeaderText = "Ngày khởi hành";
+            this.NgayKhoiHanh.MinimumWidth = 8;
+            this.NgayKhoiHanh.Name = "NgayKhoiHanh";
+            // 
+            // NgayKetThuc
+            // 
+            this.NgayKetThuc.HeaderText = "Ngày kết thúc";
+            this.NgayKetThuc.MinimumWidth = 8;
+            this.NgayKetThuc.Name = "NgayKetThuc";
+            // 
+            // DoanhThu
+            // 
+            dataGridViewCellStyle2.NullValue = null;
+            this.DoanhThu.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DoanhThu.HeaderText = "Doanh Thu";
+            this.DoanhThu.MinimumWidth = 8;
+            this.DoanhThu.Name = "DoanhThu";
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.HeaderText = "Nội dung";
+            this.NoiDung.MinimumWidth = 8;
+            this.NoiDung.Name = "NoiDung";
             // 
             // btnReload
             // 
@@ -220,51 +268,13 @@ namespace QuanLyTourDuLich
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // Id_Doan
+            // Id_Tour
             // 
-            dataGridViewCellStyle1.NullValue = "0";
-            this.Id_Doan.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Id_Doan.HeaderText = "Mã Đoàn";
-            this.Id_Doan.MinimumWidth = 8;
-            this.Id_Doan.Name = "Id_Doan";
-            // 
-            // Ten_Doan
-            // 
-            this.Ten_Doan.HeaderText = "Tên Đoàn";
-            this.Ten_Doan.MinimumWidth = 8;
-            this.Ten_Doan.Name = "Ten_Doan";
-            // 
-            // Ten_Tour
-            // 
-            this.Ten_Tour.HeaderText = "Tên Tour";
-            this.Ten_Tour.MinimumWidth = 8;
-            this.Ten_Tour.Name = "Ten_Tour";
-            // 
-            // NgayKhoiHanh
-            // 
-            this.NgayKhoiHanh.HeaderText = "Ngày khởi hành";
-            this.NgayKhoiHanh.MinimumWidth = 8;
-            this.NgayKhoiHanh.Name = "NgayKhoiHanh";
-            // 
-            // NgayKetThuc
-            // 
-            this.NgayKetThuc.HeaderText = "Ngày kết thúc";
-            this.NgayKetThuc.MinimumWidth = 8;
-            this.NgayKetThuc.Name = "NgayKetThuc";
-            // 
-            // DoanhThu
-            // 
-            dataGridViewCellStyle2.NullValue = null;
-            this.DoanhThu.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DoanhThu.HeaderText = "Doanh Thu";
-            this.DoanhThu.MinimumWidth = 8;
-            this.DoanhThu.Name = "DoanhThu";
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.HeaderText = "Nội dung";
-            this.NoiDung.MinimumWidth = 8;
-            this.NoiDung.Name = "NoiDung";
+            this.Id_Tour.HeaderText = "Id_Tour";
+            this.Id_Tour.MinimumWidth = 6;
+            this.Id_Tour.Name = "Id_Tour";
+            this.Id_Tour.ReadOnly = true;
+            this.Id_Tour.Visible = false;
             // 
             // QuanLyDoan
             // 
@@ -310,5 +320,6 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKetThuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn DoanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Tour;
     }
 }

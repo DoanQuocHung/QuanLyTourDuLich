@@ -14,6 +14,7 @@ namespace QuanLyTourDuLich
         public List<ChiPhiDTO> list { set; get; }
         List<LoaiChiPhiDTO> listloai;
         string id,idchiphi;
+        long phi;
         public QuanLyChiPhi_Sua(List<ChiPhiDTO> list, List<LoaiChiPhiDTO> listloai, string iddoan,string idchiphi)
         {
             InitializeComponent();
@@ -21,12 +22,13 @@ namespace QuanLyTourDuLich
             this.listloai = listloai;
             this.id = iddoan;
             this.idchiphi = idchiphi;
+            this.phi = list.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Gia;
             foreach (LoaiChiPhiDTO item in listloai)
             {
                 cb_loaichiphi.Items.Add(item.Ten_LoaiChiPhi);
             }
             cb_loaichiphi.SelectedItem = listloai.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Ten_LoaiChiPhi;
-            numGia.Value = list.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Gia;
+            numGia.Value = phi;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -39,9 +41,11 @@ namespace QuanLyTourDuLich
                 MessageBox.Show("Vui lòng nhập giá lớn hơn 10000");
                 return;
             }
+            long value2 = phi - value;
             if (new ChiPhiBUS().Update(new ChiPhiDTO(loai, id, value),idchiphi))
             {
                 MessageBox.Show("Sửa thành công");
+                new DoanDuLichBUS().UpdateDoanhThu(id,value2);
                 list.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Gia = value;
                 list.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Id_LoaiChiPhi = loai;
                 this.DialogResult = DialogResult.OK;

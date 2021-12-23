@@ -147,6 +147,24 @@ namespace DAL
                 return true;
             return false;
         }
+        public bool UpdateDoanhThu(string id, long value)
+        {
+
+            string query = "update DOANDULICH set " +
+                "Doanhthu = Doanhthu - @value " +
+                "where Id_Doan = @oldMADOAN ";
+
+            object[] para = new object[]
+            {
+
+               value,
+               id
+            };
+            DataProvider dataProvider = new DataProvider();
+            if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                return true;
+            return false;
+        }
 
         public bool Delete(string maDoan)
         {

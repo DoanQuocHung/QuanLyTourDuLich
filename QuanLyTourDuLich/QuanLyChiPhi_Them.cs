@@ -41,6 +41,7 @@ namespace QuanLyTourDuLich
             {
                 MessageBox.Show("Thêm thành công");
                 list.Add(new ChiPhiDTO(loai, id, value));
+                new DoanDuLichBUS().UpdateDoanhThu(id,value);
                 this.DialogResult = DialogResult.OK;
                 Hide();
             }

@@ -13,6 +13,7 @@ namespace QuanLyTourDuLich
     {
         string id;
         string ngaykhoihanh, ngayketthuc;
+        GiaDTO giatour;
         List<ChiTietDoanDTO> list;
         List<KhachDTO> listkhach;
         List<ChiPhiDTO> listchiphi;
@@ -23,6 +24,7 @@ namespace QuanLyTourDuLich
             this.id = id;
             this.ngaykhoihanh = ngaykhoihanh;
             this.ngayketthuc = ngayketthuc;
+            this.giatour = giatour;
 
             list = new ChiTietDoanBUS().List(id);
             listkhach = new KhachHangBUS().List();
@@ -106,9 +108,11 @@ namespace QuanLyTourDuLich
                 int selectedrowindex = Grid_ChiPhi.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_ChiPhi.Rows[selectedrowindex];
                 string cellValue2 = Convert.ToString(selectedRow.Cells["Id_ChiPhi"].Value);
+                long cellValue3 = long.Parse(Convert.ToString(selectedRow.Cells["Gia"].Value));
                 if (new ChiPhiBUS().Delete(cellValue2,id))
                 {
                     MessageBox.Show("Xóa chi tiết thành công");
+                    new DoanDuLichBUS().UpdateDoanhThu(cellValue2,-cellValue3);
                     listchiphi.RemoveAll(x => x.Id_LoaiChiPhi.Equals(cellValue2));
                     BindGrid2(listchiphi);
                 }
