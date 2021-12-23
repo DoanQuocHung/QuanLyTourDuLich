@@ -97,6 +97,14 @@ namespace QuanLyTourDuLich
             }
         }
 
+        //Button Thống kê
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ThongKe tk = new ThongKe();
+            tk.ShowDialog();
+
+        }
+
         private void btnReload_Click(object sender, EventArgs e)
         {
             BindGrid(listNhanVien);
