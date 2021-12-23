@@ -41,7 +41,39 @@ namespace DAL
 
             return doanDuLich;
         }
+        public List<DoanDuLichDTO> ListBaseTour(string id)
+        {
+            List<DoanDuLichDTO> doanDuLich = new List<DoanDuLichDTO>();
+            try
+            {
+                string query = "select * from DOANDULICH where Id_Tour = @matour";
+                object[] para = new object[]
+            {
+               id
+            };
+                DataTable data = dataProvider.ExecuteQuery(query,para);
+                foreach (DataRow item in data.Rows)
+                {
+                    string maDoan = item["Id_Doan"].ToString();
+                    string tenDoan = item["Ten_Doan"].ToString();
+                    string maTour = item["Id_Tour"].ToString();
+                    string ngayKhoiHanh = item["Ngaykhoihanh"].ToString();
+                    string ngayKetThuc = item["Ngayketthuc"].ToString();
+                    long doanhThu = (long)item["Doanhthu"];
+                    string noiDung = item["Noidung"].ToString();
 
+                    DoanDuLichDTO newdoanDuLich = new DoanDuLichDTO(maDoan, tenDoan, maTour, ngayKhoiHanh, ngayKetThuc, doanhThu, noiDung);
+
+                    doanDuLich.Add(newdoanDuLich);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Lỗi DB tại ListAll " + e);
+            }
+
+            return doanDuLich;
+        }
         public List<DoanDuLichDTO> ListSearch(string search)
         {
             DataProvider dataProvider = new DataProvider();

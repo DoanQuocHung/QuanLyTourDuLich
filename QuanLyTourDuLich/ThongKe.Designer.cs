@@ -80,9 +80,7 @@ namespace QuanLyTourDuLich
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(999, 652);
             this.panel1.TabIndex = 5;
-            // 
-<<<<<<< HEAD
-=======
+
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(208, 358);
@@ -131,7 +129,6 @@ namespace QuanLyTourDuLich
             this.textBox1.Size = new System.Drawing.Size(240, 27);
             this.textBox1.TabIndex = 32;
             // 
->>>>>>> 7471b3ebdc48c7c96aa12233b83a17e3cd6995c6
             // label3
             // 
             this.label3.AutoSize = true;
