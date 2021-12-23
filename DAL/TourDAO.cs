@@ -16,7 +16,7 @@ namespace DAL
             List<TourDTO> tours = new List<TourDTO>();
             try
             {
-                string query = "Select * from TOUR where Tinh_Trang = 1";
+                string query = "Select * from TOUR";
 
                 DataTable data = datapro.ExecuteQuery(query);
 

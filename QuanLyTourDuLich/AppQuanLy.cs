@@ -33,8 +33,11 @@ namespace QuanLyTourDuLich
             Grid_Danhsachtour.Refresh();
             foreach (TourDTO item in list)
             {
-                string tenloai = listloai.Find(x => x.Id_Loai.Equals(item.Id_Loai)).Ten_Loai;
-                Grid_Danhsachtour.Rows.Add(item.Id_Tour, item.Ten_Tour, item.Dacdiem_Tour, tenloai);
+                if (item.Tinh_Trang == 1)
+                {
+                    string tenloai = listloai.Find(x => x.Id_Loai.Equals(item.Id_Loai)).Ten_Loai;
+                    Grid_Danhsachtour.Rows.Add(item.Id_Tour, item.Ten_Tour, item.Dacdiem_Tour, tenloai);
+                }
             }
         }
 
@@ -75,18 +78,7 @@ namespace QuanLyTourDuLich
         //Button Xóa 
         private void button3_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             if (Grid_Danhsachtour.RowCount != 0)
-=======
-            int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
-            string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
-
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn muốn xóa không ? \n"
-                                                    + "Các dòng liên quan với tour này tại các bảng khác cũng sẽ bi xóa"
-                                                    , "Xóa tour", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
->>>>>>> 7471b3ebdc48c7c96aa12233b83a17e3cd6995c6
             {
                 int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];

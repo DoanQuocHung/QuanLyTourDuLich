@@ -224,31 +224,31 @@ namespace QuanLyTourDuLich
             // 
             dataGridViewCellStyle1.NullValue = "0";
             this.Id_Doan.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Id_Doan.HeaderText = "Id_Doan";
+            this.Id_Doan.HeaderText = "Mã Đoàn";
             this.Id_Doan.MinimumWidth = 8;
             this.Id_Doan.Name = "Id_Doan";
             // 
             // Ten_Doan
             // 
-            this.Ten_Doan.HeaderText = "Ten_Doan";
+            this.Ten_Doan.HeaderText = "Tên Đoàn";
             this.Ten_Doan.MinimumWidth = 8;
             this.Ten_Doan.Name = "Ten_Doan";
             // 
             // Ten_Tour
             // 
-            this.Ten_Tour.HeaderText = "Ten_Tour";
+            this.Ten_Tour.HeaderText = "Tên Tour";
             this.Ten_Tour.MinimumWidth = 8;
             this.Ten_Tour.Name = "Ten_Tour";
             // 
             // NgayKhoiHanh
             // 
-            this.NgayKhoiHanh.HeaderText = "NgayKhoiHanh";
+            this.NgayKhoiHanh.HeaderText = "Ngày khởi hành";
             this.NgayKhoiHanh.MinimumWidth = 8;
             this.NgayKhoiHanh.Name = "NgayKhoiHanh";
             // 
             // NgayKetThuc
             // 
-            this.NgayKetThuc.HeaderText = "NgayKetThuc";
+            this.NgayKetThuc.HeaderText = "Ngày kết thúc";
             this.NgayKetThuc.MinimumWidth = 8;
             this.NgayKetThuc.Name = "NgayKetThuc";
             // 
@@ -256,13 +256,13 @@ namespace QuanLyTourDuLich
             // 
             dataGridViewCellStyle2.NullValue = null;
             this.DoanhThu.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DoanhThu.HeaderText = "DoanhThu";
+            this.DoanhThu.HeaderText = "Doanh Thu";
             this.DoanhThu.MinimumWidth = 8;
             this.DoanhThu.Name = "DoanhThu";
             // 
             // NoiDung
             // 
-            this.NoiDung.HeaderText = "NoiDung";
+            this.NoiDung.HeaderText = "Nội dung";
             this.NoiDung.MinimumWidth = 8;
             this.NoiDung.Name = "NoiDung";
             // 

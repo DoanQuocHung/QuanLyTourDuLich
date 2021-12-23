@@ -12,7 +12,10 @@ namespace BUS
         {
             return new DoanDuLichDAO().ListAll();
         }
-
+        public List<DoanDuLichDTO> ListBaseTour(string id)
+        {
+            return new DoanDuLichDAO().ListBaseTour(id);
+        }
         public bool Update(DoanDuLichDTO doanDuLich)
         {
             return new DoanDuLichDAO().Update(doanDuLich);
