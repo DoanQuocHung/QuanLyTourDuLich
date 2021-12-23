@@ -29,7 +29,7 @@ namespace QuanLyTourDuLich
             ChiTietTourDTO edit = list.Find(x => x.Id_DiaDiem.Equals(id));
             IdTour_txt.Text = edit.Id_Tour;
             DiaDiem_cb.SelectedItem = listdd.Find(x => x.Id_DiaDiem.Equals(id)).Ten_DiaDiem;
-            ThuTu_num.Text = edit.Thutu.ToString();
+            txtThuTu.Text = edit.Thutu.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace QuanLyTourDuLich
             string matour = IdTour_txt.Text;
             string diadiem = DiaDiem_cb.Text;
             string madiadiem = listdd.Find(x => x.Ten_DiaDiem.Equals(diadiem)).Id_DiaDiem;
-            int thutu = int.Parse(ThuTu_num.Text);
+            int thutu = int.Parse(txtThuTu.Text);
             if (new ChiTietTourBUS().Update(new ChiTietTourDTO(matour, madiadiem, thutu), id))
             {
                 MessageBox.Show("Sửa thành công");
@@ -47,7 +47,7 @@ namespace QuanLyTourDuLich
             }
             else
             {
-                MessageBox.Show("abcKhông thể sửa thành địa điểm này vì tour này đã có địa điểm này");
+                MessageBox.Show("Không thể sửa thành địa điểm này vì tour này đã có địa điểm này");
                 return;
             }
         }
