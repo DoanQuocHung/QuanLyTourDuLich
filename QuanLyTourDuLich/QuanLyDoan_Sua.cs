@@ -51,20 +51,25 @@ namespace QuanLyTourDuLich
                 MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
                 return;
             }
-            if (txtNgayKhoiHanh.Value.ToString("dd/MM/yyyy").Equals("") || txtNgayKetThuc.Value.ToString("dd/MM/yyyy").Equals(""))
+            Tool tool = new Tool();
+            if (tool.comparetoday(ngaykhoihanh) < 0)
             {
-                MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
+                MessageBox.Show("Ngày khởi hành không được sớm hơn ngày hiện tại ");
                 return;
             }
-            DateTime dtNgKhoiHanh = DateTime.ParseExact(ngaykhoihanh, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-            DateTime dtNgKetThuc = DateTime.ParseExact(ngayketthuc, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-            DateTime today = DateTime.Today;
-            int resultCompareTodayAndNgayKhoiHanh = DateTime.Compare(dtNgKhoiHanh, today);
-            int resultCompareTodayAndNgayKetThuc = DateTime.Compare(dtNgKetThuc, today);
-            int resultCompareNgayKhoiHanhAndNgayKetThuc = DateTime.Compare(dtNgKhoiHanh, dtNgKetThuc);
-            if ((resultCompareTodayAndNgayKhoiHanh < 0) || (resultCompareTodayAndNgayKetThuc < 0) || (resultCompareNgayKhoiHanhAndNgayKetThuc > 0))
+            if (tool.comparetoday(ngayketthuc) < 0)
             {
-                MessageBox.Show("Vui lòng nhập lại thông tin ngày khởi hành hoặc ngày kết thúc");
+                MessageBox.Show("Ngày kết thúc không được sớm hơn ngày hiện tại ");
+                return;
+            }
+            if (tool.comparetoday(ngaykhoihanh) < 0)
+            {
+                MessageBox.Show("Ngày khởi hành không được sớm hơn ngày hiện tại ");
+                return;
+            }
+            if (tool.comparedate(ngaykhoihanh, ngayketthuc) > 0)
+            {
+                MessageBox.Show("Ngày khởi hành không được trễ hơn ngày kết thúc chuyến đi ");
                 return;
             }
             if (new DoanDuLichBUS().Update(new DoanDuLichDTO(madoan, tendoan, idtour, ngaykhoihanh, ngayketthuc, doanhthu, noidung)))
