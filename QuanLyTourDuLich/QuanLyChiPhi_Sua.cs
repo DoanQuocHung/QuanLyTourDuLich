@@ -42,8 +42,8 @@ namespace QuanLyTourDuLich
             if (new ChiPhiBUS().Update(new ChiPhiDTO(loai, id, value),idchiphi))
             {
                 MessageBox.Show("Sửa thành công");
+                list.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Gia = value;
                 list.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Id_LoaiChiPhi = loai;
-                list.Find(x => x.Id_LoaiChiPhi.Equals(idchiphi)).Gia =  value;
                 this.DialogResult = DialogResult.OK;
                 Hide();
             }
