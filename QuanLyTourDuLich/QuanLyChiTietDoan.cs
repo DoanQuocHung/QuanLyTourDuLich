@@ -15,6 +15,8 @@ namespace QuanLyTourDuLich
         string ngaykhoihanh, ngayketthuc;
         List<ChiTietDoanDTO> list;
         List<KhachDTO> listkhach;
+        List<ChiPhiDTO> listchiphi;
+        List<LoaiChiPhiDTO> listloaichiphi;
         public QuanLyChiTietDoan(string id, string ngaykhoihanh, string ngayketthuc)
         {
             InitializeComponent();
@@ -23,6 +25,8 @@ namespace QuanLyTourDuLich
             this.ngayketthuc = ngayketthuc;
             list = new ChiTietDoanBUS().List(id);
             listkhach = new KhachHangBUS().List();
+            listchiphi = new ChiPhiBUS().List(id);
+            listloaichiphi = new LoaiChiPhiBUS().List();
             dataGridView_CT_Doan.AutoGenerateColumns = false;
             BindGrid(list);
         }
@@ -37,7 +41,17 @@ namespace QuanLyTourDuLich
                 dataGridView_CT_Doan.Rows.Add(item.Id_Khach, tenkhach, cmndkhach);
             }
         }
-        
+        public void BindGrid2(List<ChiPhiDTO> list)
+        {
+            dataGridView_CT_Doan.Rows.Clear();
+            dataGridView_CT_Doan.Refresh();
+            foreach (ChiPhiDTO item in list)
+            {
+                string cmndkhach = listkhach.Find(x => x.Id_Khach.Equals(item.Id_Khach)).Cmnd_Khach;
+                dataGridView_CT_Doan.Rows.Add(item.Id_Khach, tenkhach, cmndkhach);
+            }
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             using (var form = new QuanLyChiTietDoan_Them(list, listkhach, id, ngaykhoihanh, ngayketthuc))
@@ -66,6 +80,21 @@ namespace QuanLyTourDuLich
                     BindGrid(list);
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void button5_Click(object sender, EventArgs e)
