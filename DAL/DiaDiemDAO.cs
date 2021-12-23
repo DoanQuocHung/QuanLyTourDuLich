@@ -148,7 +148,7 @@ namespace DAL
 
         public bool Delete(string id)
         {
-            string query = "delete from DIADIEM where Id_DiaDiem = @MADIADIEM";
+            string query = "delete from DIADIEM where Id_DiaDiem = @MADIADIEM ";
             //string query2 = "delete from CHITIETDIADIEM where Id_DiaDiem = @MADIADIEM";
             object[] para = new object[]
             {
