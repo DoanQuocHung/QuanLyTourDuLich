@@ -38,7 +38,7 @@ namespace BUS
         {
             return new DoanDuLichDAO().MakeID();
         }
-        public GiaDTO getGiaTour(string ngaykhoihanh, string idtour)
+        public string getGiaTour(string ngaykhoihanh, string idtour)
         {
             List<GiaDTO> gia = new GiaBUS().List().FindAll(x => x.Id_Tour.Equals(idtour));
             Tool tool = new Tool();
@@ -46,10 +46,10 @@ namespace BUS
             foreach (GiaDTO item in gia)
             {
                 if (tool.comparedate(ngaykhoihanh, item.Thoigianbatdau) >= 0){
-                    return item;
+                    return item.Gia;
                 }
             }
-            return null;
+            return "";
         }
     }
 }

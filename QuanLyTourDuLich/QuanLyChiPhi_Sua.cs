@@ -41,7 +41,7 @@ namespace QuanLyTourDuLich
                 MessageBox.Show("Vui lòng nhập giá lớn hơn 10000");
                 return;
             }
-            long value2 = phi - value;
+            long value2 = value - phi;
             if (new ChiPhiBUS().Update(new ChiPhiDTO(loai, id, value),idchiphi))
             {
                 MessageBox.Show("Sửa thành công");

@@ -12,19 +12,22 @@ namespace QuanLyTourDuLich
     public partial class QuanLyChiTietDoan : Form
     {
         string id;
-        string ngaykhoihanh, ngayketthuc;
-        GiaDTO giatour;
+
+        string idgia;
+
         List<ChiTietDoanDTO> list;
+
         List<KhachDTO> listkhach;
+
         List<ChiPhiDTO> listchiphi;
+
         List<LoaiChiPhiDTO> listloaichiphi;
-        public QuanLyChiTietDoan(string id, string ngaykhoihanh, string ngayketthuc)
+
+        public QuanLyChiTietDoan(string id, string idgia)
         {
             InitializeComponent();
             this.id = id;
-            this.ngaykhoihanh = ngaykhoihanh;
-            this.ngayketthuc = ngayketthuc;
-            this.giatour = giatour;
+            this.idgia = idgia;
 
             list = new ChiTietDoanBUS().List(id);
             listkhach = new KhachHangBUS().List();
@@ -61,7 +64,7 @@ namespace QuanLyTourDuLich
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            using (var form = new QuanLyChiTietDoan_Them(list, listkhach, id, ngaykhoihanh, ngayketthuc))
+            using (var form = new QuanLyChiTietDoan_Them(list, listkhach, id, idgia))
             {
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
@@ -79,9 +82,10 @@ namespace QuanLyTourDuLich
                 DataGridViewRow selectedRow = dataGridView_CT_Doan.Rows[selectedrowindex];
                 string cellValue = id;
                 string cellValue2 = Convert.ToString(selectedRow.Cells["Id_Khach"].Value);
-                if (new ChiTietDoanBUS().Delete(cellValue, cellValue2, ngaykhoihanh, ngayketthuc))
+                if (new ChiTietDoanBUS().Delete(cellValue, cellValue2))
                 {
                     MessageBox.Show("Xóa chi tiết thành công");
+                    new DoanDuLichBUS().UpdateDoanhThu(id,long.Parse(idgia));
                     list.RemoveAll(x => x.Id_Khach.Equals(cellValue2));
                     BindGrid(list);
                 }
