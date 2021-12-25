@@ -111,8 +111,7 @@ namespace QuanLyTourDuLich
         //Button Thống kê
         private void button15_Click(object sender, EventArgs e)
         {
-            ThongKe tk = new ThongKe();
-            tk.ShowDialog();
+           
 
         }
 

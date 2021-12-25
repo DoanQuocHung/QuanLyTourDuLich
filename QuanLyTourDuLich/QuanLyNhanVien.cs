@@ -193,6 +193,21 @@ namespace QuanLyTourDuLich
             BindGrid(listsearch);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (Grid_Danhsachnhanvien.RowCount != 0)
+            {
+                int selectedrowindex = Grid_Danhsachnhanvien.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_Danhsachnhanvien.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_NV"].Value);
+                if (cellValue != null)
+                {
+                    ThongKeNhanVien ql_ctt = new ThongKeNhanVien(cellValue);
+                    ql_ctt.ShowDialog();
+                }
+            }
+        }
+
         private void rbChuaPhanCong_CheckedChanged(object sender, EventArgs e)
         {
             string typesearch = cbSearchBox.SelectedItem.ToString();

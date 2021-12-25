@@ -97,6 +97,33 @@ namespace DAL
             }
             return doanDuLich;
         }
+        public DoanDuLichDTO getID(string search)
+        {
+            DataProvider dataProvider = new DataProvider();
+
+            string query = "select * from DOANDULICH where Id_Doan = @madoan";
+
+            object[] para = new object[]
+            {
+
+               search
+            };
+            DataTable data = dataProvider.ExecuteQuery(query,para);
+
+            foreach (DataRow item in data.Rows)
+            {
+                string maDoan = item["Id_Doan"].ToString();
+                string tenDoan = item["Ten_Doan"].ToString();
+                string maTour = item["Id_Tour"].ToString();
+                string ngayKhoiHanh = item["Ngaykhoihanh"].ToString();
+                string ngayKetThuc = item["Ngayketthuc"].ToString();
+                long doanhThu = (long)item["Doanhthu"];
+                string noiDung = item["Noidung"].ToString();
+
+                return new DoanDuLichDTO(maDoan, tenDoan, maTour, ngayKhoiHanh, ngayKetThuc, doanhThu, noiDung);
+            }
+            return null;
+        }
 
         public bool Insert(DoanDuLichDTO doanDuLich)
         {

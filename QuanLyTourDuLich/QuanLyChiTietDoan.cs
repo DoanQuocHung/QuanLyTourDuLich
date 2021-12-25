@@ -13,7 +13,7 @@ namespace QuanLyTourDuLich
     {
         string id;
 
-        string idgia;
+        string gia;
 
         List<ChiTietDoanDTO> list;
 
@@ -23,11 +23,11 @@ namespace QuanLyTourDuLich
 
         List<LoaiChiPhiDTO> listloaichiphi;
 
-        public QuanLyChiTietDoan(string id, string idgia)
+        public QuanLyChiTietDoan(string id, string gia)
         {
             InitializeComponent();
             this.id = id;
-            this.idgia = idgia;
+            this.gia = gia;
 
             list = new ChiTietDoanBUS().List(id);
             listkhach = new KhachHangBUS().List();
@@ -64,7 +64,7 @@ namespace QuanLyTourDuLich
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            using (var form = new QuanLyChiTietDoan_Them(list, listkhach, id, idgia))
+            using (var form = new QuanLyChiTietDoan_Them(list, listkhach, id, gia))
             {
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
@@ -85,7 +85,7 @@ namespace QuanLyTourDuLich
                 if (new ChiTietDoanBUS().Delete(cellValue, cellValue2))
                 {
                     MessageBox.Show("Xóa chi tiết thành công");
-                    new DoanDuLichBUS().UpdateDoanhThu(id,long.Parse(idgia));
+                    new DoanDuLichBUS().UpdateDoanhThu(id,long.Parse(gia));
                     list.RemoveAll(x => x.Id_Khach.Equals(cellValue2));
                     BindGrid(list);
                 }
