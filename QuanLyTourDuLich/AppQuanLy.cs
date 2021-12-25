@@ -111,7 +111,17 @@ namespace QuanLyTourDuLich
         //Button Thống kê
         private void button15_Click(object sender, EventArgs e)
         {
-           
+            if (Grid_Danhsachtour.RowCount != 0)
+            {
+                int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+                if (cellValue != null)
+                {
+                    ThongKe ql_ctt = new ThongKe(cellValue);
+                    ql_ctt.ShowDialog();
+                }
+            }
 
         }
 

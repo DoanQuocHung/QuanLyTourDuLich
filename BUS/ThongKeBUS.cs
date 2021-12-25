@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 using DAL;
 using DTO;
 namespace BUS
@@ -18,8 +19,14 @@ namespace BUS
                 if (tool.comparedate(i.Ngaykhoihanh,dt1)>=0 && tool.comparedate(i.Ngayketthuc,dt2)<=0)
                 {
                     List<ChiPhiDTO> chiphi = new ChiPhiBUS().List(i.Id_Doan);
-                    long khachsan = chiphi.Find(x => x.Id_LoaiChiPhi.Equals("CP002")).Gia;
-                    tong = tong + khachsan;
+                        ChiPhiDTO cpcon = new ChiPhiDTO();
+                    if (chiphi.FindAll(x => x.Id_LoaiChiPhi.Equals("CP002")).Count > 0)
+                    {
+                        long khachsan = 0;
+                        khachsan = chiphi.Find(x => x.Id_LoaiChiPhi.Equals("CP002")).Gia;
+
+                        tong = tong + khachsan;
+                    }
                 }
             }
             return tong;
@@ -33,8 +40,14 @@ namespace BUS
                 if (tool.comparedate(i.Ngaykhoihanh, dt1) >= 0 && tool.comparedate(i.Ngayketthuc, dt2) <= 0)
                 {
                     List<ChiPhiDTO> chiphi = new ChiPhiBUS().List(i.Id_Doan);
-                    long khachsan = chiphi.Find(x => x.Id_LoaiChiPhi.Equals("CP001")).Gia;
-                    tong = tong + khachsan;
+                    ChiPhiDTO cpcon = new ChiPhiDTO();
+                    if (chiphi.FindAll(x => x.Id_LoaiChiPhi.Equals("CP001")).Count > 0)
+                    {
+                        long khachsan = 0;
+                        khachsan = chiphi.Find(x => x.Id_LoaiChiPhi.Equals("CP001")).Gia;
+
+                        tong = tong + khachsan;
+                    }
                 }
             }
             return tong;
@@ -49,8 +62,14 @@ namespace BUS
                 if (tool.comparedate(i.Ngaykhoihanh, dt1) >= 0 && tool.comparedate(i.Ngayketthuc, dt2) <= 0)
                 {
                     List<ChiPhiDTO> chiphi = new ChiPhiBUS().List(i.Id_Doan);
-                    long khachsan = chiphi.Find(x => x.Id_LoaiChiPhi.Equals("CP003")).Gia;
-                    tong = tong + khachsan;
+                    ChiPhiDTO cpcon = new ChiPhiDTO();
+                    if (chiphi.FindAll(x => x.Id_LoaiChiPhi.Equals("CP003")).Count > 0)
+                    {
+                        long khachsan = 0;
+                        khachsan = chiphi.Find(x => x.Id_LoaiChiPhi.Equals("CP003")).Gia;
+
+                        tong = tong + khachsan;
+                    }
                 }
             }
             return tong;

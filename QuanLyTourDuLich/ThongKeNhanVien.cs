@@ -23,6 +23,8 @@ namespace QuanLyTourDuLich
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
+            Grid_Thongke.Rows.Clear();
+            Grid_Thongke.Refresh();
             string dt1 = txtNgayKhoiHanh.Text;
             string dt2 = txtNgayKetThuc.Text;
             List<DoanDuLichDTO> doan = new ThongKeNhanVienBUS().list(list, dt1, dt2);
