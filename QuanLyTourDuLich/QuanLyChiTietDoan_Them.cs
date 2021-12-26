@@ -16,8 +16,8 @@ namespace QuanLyTourDuLich
         
         public List<ChiTietDoanDTO> list { get; set; }
         List<KhachDTO> listkhach = new List<KhachDTO>();
-        string ngaykhoihanhDoan, ngayketthucDoan;
-        public QuanLyChiTietDoan_Them(List<ChiTietDoanDTO> list, List<KhachDTO> listkhach, string id, string ngaykhoihanh, string ngayketthuc)
+        string gia;
+        public QuanLyChiTietDoan_Them(List<ChiTietDoanDTO> list, List<KhachDTO> listkhach, string id, string gia)
         {
             InitializeComponent();
             this.list = list;
@@ -31,8 +31,7 @@ namespace QuanLyTourDuLich
             txtMaKhach.Text = listkhach[0].Id_Khach;
             txtCMND.Text = listkhach[0].Cmnd_Khach;
             txtMaDoan.Text = id;
-            ngaykhoihanhDoan = ngaykhoihanh;
-            ngayketthucDoan = ngayketthuc;
+            this.gia = gia;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -46,9 +45,10 @@ namespace QuanLyTourDuLich
             }
             try
             {
-                if (new ChiTietDoanBUS().Insert(new ChiTietDoanDTO(madoan, makhach), ngaykhoihanhDoan, ngayketthucDoan))
+                if (new ChiTietDoanBUS().Insert(new ChiTietDoanDTO(madoan, makhach)))
                 {
                     MessageBox.Show("Thêm thành công");
+                    new DoanDuLichBUS().UpdateDoanhThu(madoan, -long.Parse(gia));
                     this.list.Add(new ChiTietDoanDTO(madoan, makhach));
                     this.DialogResult = DialogResult.OK;
                     Hide();
@@ -56,8 +56,8 @@ namespace QuanLyTourDuLich
             }
             catch (SqlException e1) when (e1.Number == 2627)
             {
-
                 MessageBox.Show("Không thể thêm khách hàng này vì đoàn này đã có khách hàng này");
+                Close();
             }
         }
 

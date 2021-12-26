@@ -116,32 +116,6 @@ namespace QuanLyTourDuLich
         }
 
         //Other ===========================================================================================================================
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            string typesearch = SearchBox_cb.SelectedItem.ToString();
-            string searchkey = SearchTour_txt.Text;
-            List<TourDTO> listsearch = new List<TourDTO>();
-            switch (typesearch)
-            {
-                case "Mã Tour":
-                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
-                    break;
-                case "Tên Tour":
-                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
-                    break;
-                case "Loại Tour":
-                    listsearch = list.FindAll(x => x.Id_Tour.Contains(searchkey));
-                    break;
-                default:
-                    break;
-            }
-            BindGrid(listsearch);
-        }
-
-        private void Grid_Danhsachtour_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void SearchTour_txt_TextChanged(object sender, EventArgs e)
         {
@@ -162,9 +136,19 @@ namespace QuanLyTourDuLich
             BindGrid(listsearch);
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
-
+            if (Grid_Danhsachtour.RowCount != 0)
+            {
+                int selectedrowindex = Grid_Danhsachtour.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = Grid_Danhsachtour.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
+                if (cellValue != null)
+                {
+                    ThongKe ql_ctt = new ThongKe(cellValue);
+                    ql_ctt.ShowDialog();
+                }
+            }
         }
     }
 }

@@ -20,6 +20,10 @@ namespace BUS
         {
             return new DoanDuLichDAO().Update(doanDuLich);
         }
+        public bool UpdateDoanhThu(string id,long value)
+        {
+            return new DoanDuLichDAO().UpdateDoanhThu(id, value);
+        }
 
         public bool Insert(DoanDuLichDTO doanDuLich)
         {
@@ -33,6 +37,19 @@ namespace BUS
         public string MakeID()
         {
             return new DoanDuLichDAO().MakeID();
+        }
+        public string getGiaTour(string ngaykhoihanh, string idtour)
+        {
+            List<GiaDTO> gia = new GiaBUS().List().FindAll(x => x.Id_Tour.Equals(idtour));
+            Tool tool = new Tool();
+
+            foreach (GiaDTO item in gia)
+            {
+                if (tool.comparedate(ngaykhoihanh, item.Thoigianbatdau) >= 0){
+                    return item.Gia;
+                }
+            }
+            return "";
         }
     }
 }

@@ -36,6 +36,7 @@ namespace QuanLyTourDuLich
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.rbTatCa = new System.Windows.Forms.RadioButton();
             this.rbChuaPhanCong = new System.Windows.Forms.RadioButton();
             this.rbDaPhanCong = new System.Windows.Forms.RadioButton();
@@ -51,7 +52,6 @@ namespace QuanLyTourDuLich
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -124,6 +124,19 @@ namespace QuanLyTourDuLich
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1080, 756);
             this.panel2.TabIndex = 10;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(820, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 45);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "      Thống kê";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // rbTatCa
             // 
@@ -276,18 +289,6 @@ namespace QuanLyTourDuLich
             this.label2.Size = new System.Drawing.Size(218, 27);
             this.label2.TabIndex = 4;
             this.label2.Text = "Danh sách Nhân viên";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(820, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 45);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "      Thống kê";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // QuanLyNhanVien
             // 

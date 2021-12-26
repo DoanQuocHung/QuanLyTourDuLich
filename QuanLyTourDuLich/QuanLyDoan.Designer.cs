@@ -31,7 +31,6 @@ namespace QuanLyTourDuLich
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyDoan));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -52,6 +51,7 @@ namespace QuanLyTourDuLich
             this.NgayKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DoanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_Tour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_Danhsachdoan)).BeginInit();
@@ -105,7 +105,8 @@ namespace QuanLyTourDuLich
             this.NgayKhoiHanh,
             this.NgayKetThuc,
             this.DoanhThu,
-            this.NoiDung});
+            this.NoiDung,
+            this.Id_Tour});
             this.Grid_Danhsachdoan.Location = new System.Drawing.Point(11, 64);
             this.Grid_Danhsachdoan.Name = "Grid_Danhsachdoan";
             this.Grid_Danhsachdoan.RowHeadersWidth = 51;
@@ -222,8 +223,6 @@ namespace QuanLyTourDuLich
             // 
             // Id_Doan
             // 
-            dataGridViewCellStyle1.NullValue = "0";
-            this.Id_Doan.DefaultCellStyle = dataGridViewCellStyle1;
             this.Id_Doan.HeaderText = "Mã Đoàn";
             this.Id_Doan.MinimumWidth = 8;
             this.Id_Doan.Name = "Id_Doan";
@@ -254,8 +253,8 @@ namespace QuanLyTourDuLich
             // 
             // DoanhThu
             // 
-            dataGridViewCellStyle2.NullValue = null;
-            this.DoanhThu.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.NullValue = "0";
+            this.DoanhThu.DefaultCellStyle = dataGridViewCellStyle1;
             this.DoanhThu.HeaderText = "Doanh Thu";
             this.DoanhThu.MinimumWidth = 8;
             this.DoanhThu.Name = "DoanhThu";
@@ -265,6 +264,14 @@ namespace QuanLyTourDuLich
             this.NoiDung.HeaderText = "Nội dung";
             this.NoiDung.MinimumWidth = 8;
             this.NoiDung.Name = "NoiDung";
+            // 
+            // Id_Tour
+            // 
+            this.Id_Tour.HeaderText = "Id_Tour";
+            this.Id_Tour.MinimumWidth = 6;
+            this.Id_Tour.Name = "Id_Tour";
+            this.Id_Tour.ReadOnly = true;
+            this.Id_Tour.Visible = false;
             // 
             // QuanLyDoan
             // 
@@ -310,5 +317,6 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayKetThuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn DoanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoiDung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Tour;
     }
 }

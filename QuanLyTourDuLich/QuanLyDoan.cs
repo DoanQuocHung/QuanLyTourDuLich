@@ -36,7 +36,8 @@ namespace QuanLyTourDuLich
                     item.Ngaykhoihanh, 
                     item.Ngayketthuc, 
                     item.Doanhthu.ToString("#,#")+" VNĐ", 
-                    item.Noidung);
+                    item.Noidung,
+                    item.Id_Tour);
             }
         }
         
@@ -133,12 +134,16 @@ namespace QuanLyTourDuLich
                 int selectedrowindex = Grid_Danhsachdoan.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_Danhsachdoan.Rows[selectedrowindex];
                 string cellValue = Convert.ToString(selectedRow.Cells["Id_Doan"].Value);
+                string idtour = Convert.ToString(selectedRow.Cells["Id_Tour"].Value);
                 string cellValueNgayKhoiHanh = Convert.ToString(selectedRow.Cells["NgayKhoiHanh"].Value);
-                string cellValueNgayKetThuc = Convert.ToString(selectedRow.Cells["NgayKetThuc"].Value);
-                if (cellValue != null)
+                string gia = new DoanDuLichBUS().getGiaTour(cellValueNgayKhoiHanh, idtour);
+                if (!gia.Equals(""))
                 {
-                    QuanLyChiTietDoan ql_ctd = new QuanLyChiTietDoan(cellValue, cellValueNgayKhoiHanh, cellValueNgayKetThuc);
-                    ql_ctd.ShowDialog();
+                    if (cellValue != null)
+                    {
+                        QuanLyChiTietDoan ql_ctd = new QuanLyChiTietDoan(cellValue, gia);
+                        ql_ctd.ShowDialog();
+                    }
                 }
                 
             }

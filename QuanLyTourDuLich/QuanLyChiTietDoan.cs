@@ -12,17 +12,22 @@ namespace QuanLyTourDuLich
     public partial class QuanLyChiTietDoan : Form
     {
         string id;
-        string ngaykhoihanh, ngayketthuc;
+
+        string gia;
+
         List<ChiTietDoanDTO> list;
+
         List<KhachDTO> listkhach;
+
         List<ChiPhiDTO> listchiphi;
+
         List<LoaiChiPhiDTO> listloaichiphi;
-        public QuanLyChiTietDoan(string id, string ngaykhoihanh, string ngayketthuc)
+
+        public QuanLyChiTietDoan(string id, string gia)
         {
             InitializeComponent();
             this.id = id;
-            this.ngaykhoihanh = ngaykhoihanh;
-            this.ngayketthuc = ngayketthuc;
+            this.gia = gia;
 
             list = new ChiTietDoanBUS().List(id);
             listkhach = new KhachHangBUS().List();
@@ -59,7 +64,7 @@ namespace QuanLyTourDuLich
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            using (var form = new QuanLyChiTietDoan_Them(list, listkhach, id, ngaykhoihanh, ngayketthuc))
+            using (var form = new QuanLyChiTietDoan_Them(list, listkhach, id, gia))
             {
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
@@ -77,9 +82,10 @@ namespace QuanLyTourDuLich
                 DataGridViewRow selectedRow = dataGridView_CT_Doan.Rows[selectedrowindex];
                 string cellValue = id;
                 string cellValue2 = Convert.ToString(selectedRow.Cells["Id_Khach"].Value);
-                if (new ChiTietDoanBUS().Delete(cellValue, cellValue2, ngaykhoihanh, ngayketthuc))
+                if (new ChiTietDoanBUS().Delete(cellValue, cellValue2))
                 {
                     MessageBox.Show("Xóa chi tiết thành công");
+                    new DoanDuLichBUS().UpdateDoanhThu(id,long.Parse(gia));
                     list.RemoveAll(x => x.Id_Khach.Equals(cellValue2));
                     BindGrid(list);
                 }
@@ -106,9 +112,11 @@ namespace QuanLyTourDuLich
                 int selectedrowindex = Grid_ChiPhi.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_ChiPhi.Rows[selectedrowindex];
                 string cellValue2 = Convert.ToString(selectedRow.Cells["Id_ChiPhi"].Value);
+                long cellValue3 = long.Parse(Convert.ToString(selectedRow.Cells["Gia"].Value));
                 if (new ChiPhiBUS().Delete(cellValue2,id))
                 {
                     MessageBox.Show("Xóa chi tiết thành công");
+                    new DoanDuLichBUS().UpdateDoanhThu(cellValue2,-cellValue3);
                     listchiphi.RemoveAll(x => x.Id_LoaiChiPhi.Equals(cellValue2));
                     BindGrid2(listchiphi);
                 }

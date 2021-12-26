@@ -114,7 +114,7 @@ namespace DAL
 
         public bool Delete(string id)
         {
-            string query = "update KHACH set Tinh_Trang = '' where Id_Khach = @MAKH";
+            string query = "update KHACH set Tinh_Trang = 0 where Id_Khach = @MAKH";
 
             object[] para = new object[]
             {
@@ -148,7 +148,7 @@ namespace DAL
             }
             return count;
         }
-        public int Exist(String id)
+        public int Exist(string id)
         {
             string query = "select count(*) from KHACH where Id_Khach = '" + id + "'";
             int count = 0;
@@ -163,7 +163,7 @@ namespace DAL
             return count;
         }
 
-        public String MakeID()
+        public string MakeID()
         {
             int count = Count() + 1;
             string id;
