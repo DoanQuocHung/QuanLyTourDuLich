@@ -74,7 +74,6 @@ namespace DAL
 
         public DiaDiemDTO getDiaDiem(string search)
         {
-
             DataProvider datapro = new DataProvider();
 
             List<DiaDiemDTO> tours = new List<DiaDiemDTO>();
