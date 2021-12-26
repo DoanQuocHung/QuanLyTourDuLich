@@ -1,0 +1,44 @@
+﻿@page
+@model WebForm.Pages.Shared.QuanLyNhanVien_SuaModel
+@{
+    ViewData["Title"] = "Website Quản Lý Tour";
+    Layout = "QuanLyNhanVien";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Thêm Nhân Viên</h4>
+                        <form class="forms-sample">
+                            <div class="form-group">
+                                <label for="exampleInputName1">Mã Nhân Viên</label>
+                                <input type="text" class="form-control" placeholder="Mã Nhân Viên">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Họ tên</label>
+                                <input type="text" class="form-control" placeholder="Họ tên">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Email</label>
+                                <input type="text" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Số điện thoại</label>
+                                <input type="text" class="form-control" placeholder="Số điện thoại">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Giới tính</label>
+                                <input type="text" class="form-control" placeholder="Giới tính">
+                            </div>
+                            <button type="submit" class="btn btn-primary mr-2">Sửa</button>
+                            <button class="btn btn-light">Hủy</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
