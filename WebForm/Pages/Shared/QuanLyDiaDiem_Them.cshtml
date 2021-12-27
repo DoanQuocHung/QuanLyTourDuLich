@@ -27,14 +27,6 @@
                             <input type="submit" value="Thêm" asp-page-handler="AddDiaDiem" class="btn btn-primary mr-2"/>
                             <a class="btn btn-light">Hủy</a>
                         </form>
-                        @if (ViewData["Message"] != null)
-                        {
-                            <script type="text/javascript">
-                                window.onload = function () {
-                                alert("@ViewData["Message"]");
-                            };
-                            </script>
-                        }
                     </div>
                 </div>
             </div>

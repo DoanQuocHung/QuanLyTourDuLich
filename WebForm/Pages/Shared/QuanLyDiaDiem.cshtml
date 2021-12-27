@@ -7,6 +7,7 @@
 }
 @using BUS;
 @using DTO;
+@using Microsoft.AspNetCore.Http; 
 @{
     List<DiaDiemDTO> list_dd = new List<DiaDiemDTO>();
     DiaDiemBUS bus_dd = new DiaDiemBUS();
@@ -20,9 +21,26 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Danh sách Địa Điểm</h4>
-                            <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyDiaDiem_Them">
-                                Thêm
-                            </a>
+                        @{
+                            try
+                            {
+                                if (HttpContext.Session.GetString("xoadiadiem") == "thanhcong")
+                                {
+                                    <h5 style="background-color: forestgreen">Xóa thành công</h5>
+                                    HttpContext.Session.Remove("xoadiadiem");
+                                }
+                                else if (HttpContext.Session.GetString("xoadiadiem") == "khongthanhcong")
+                                {
+                                    <h5 style="background-color: forestgreen">Không được xóa do vẫn còn trong tour</h5>
+                                    HttpContext.Session.Remove("xoadiadiem");
+                                }
+
+                            }
+                            catch (Exception e) { }
+                        }
+                        <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyDiaDiem_Them">
+                            Thêm
+                        </a>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
@@ -37,12 +55,17 @@
                                         foreach (DiaDiemDTO item in list_dd)
                                         {
                                             <tr>
+
                                                 <td>@item.Id_DiaDiem</td>
                                                 <td>@item.Ten_DiaDiem</td>
+                                                <form asp- method="post">
                                                 <td>
-                                                    <button type="button" class="btn btn-warning">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
+                                                    <input type="hidden" asp-for="diadiem.Id_DiaDiem" value="@item.Id_DiaDiem" />
+                                                    <input type="hidden" asp-for="diadiem.Ten_DiaDiem" value="@item.Ten_DiaDiem" />
+                                                    <input type="submit" asp-page-handler="edit" value="Sửa" class="btn btn-warning" />
+                                                    <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-warning" />
                                                 </td>
+                                                </form>
                                             </tr>
                                         }
                                     }
