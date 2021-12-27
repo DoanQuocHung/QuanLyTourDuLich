@@ -2,26 +2,32 @@
 @model WebForm.Pages.Shared.QuanLyDiaDiem_SuaModel
 @{
     ViewData["Title"] = "Website Quản Lý Tour";
-    Layout = "QuanLyDiaDiem";
+    Layout = "_Layout";
 }
-
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;  
+@using DTO;
+@{ 
+    var str = HttpContext.Session.GetString("editdiadiem");
+    var obj = JsonConvert.DeserializeObject<DiaDiemDTO>(str);
+}
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Thêm Địa Điểm</h4>
-                        <form class="forms-sample">
+                        <h4 class="card-title">Sửa Địa Điểm</h4>
+                        <form class="forms-sample" method="post">
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Địa Điểm</label>
-                                <input type="text" class="form-control" placeholder="Mã Địa Điểm">
+                                <input type="text" class="form-control" asp-for="diadiem.Id_DiaDiem" value="@obj.Id_DiaDiem" placeholder="Mã Địa Điểm" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Tên Địa Điểm</label>
-                                <input type="text" class="form-control" placeholder="Tên Địa Điểm">
+                                <input type="text" class="form-control" asp-for="diadiem.Ten_DiaDiem" value="@obj.Ten_DiaDiem" placeholder="Tên Địa Điểm">
                             </div>
-                            <button type="submit" class="btn btn-primary mr-2">Sửa</button>
+                            <input type="submit" value="Sửa" class="btn btn-primary mr-2" />
                             <button class="btn btn-light">Hủy</button>
                         </form>
                     </div>

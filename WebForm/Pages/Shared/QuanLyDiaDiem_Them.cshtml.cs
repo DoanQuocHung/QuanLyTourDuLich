@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BUS;
 using DTO;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+
 namespace WebForm.Pages.Shared
 {
     public class QuanLyDiaDiem_ThemModel : PageModel
@@ -17,17 +20,9 @@ namespace WebForm.Pages.Shared
         }
         public IActionResult OnPost()
         {
-            if (diadiem.Ten_DiaDiem.Equals(null) || diadiem.Ten_DiaDiem.Equals(""))
+            if (new DiaDiemBUS().Insert(new DiaDiemDTO(diadiem.Id_DiaDiem, diadiem.Ten_DiaDiem)))
             {
-                ViewData["Message"] = "Xin điền đầy đủ tên địa điểm";
-                return Page();
-            }
-            else
-            {
-                if (new DiaDiemBUS().Insert(new DiaDiemDTO(diadiem.Id_DiaDiem, diadiem.Ten_DiaDiem)))
-                {
-                    return Redirect("/Shared/QuanLyDiaDiem");
-                }
+                return Redirect("/Shared/QuanLyDiaDiem");
             }
             return Page();
         }
