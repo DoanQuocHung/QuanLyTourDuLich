@@ -1,0 +1,88 @@
+﻿@page
+@model WebForm.Pages.Shared.QuanLyChiTietDoanModel
+@{
+    ViewData["Title"] = "Website Quản Lý Tour";
+    Layout = "_Layout";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Danh sách chi tiết Đoàn</h4>
+                        <button type="button" class="btn btn-primary mb-2" onclick="btnclick()">
+                            Thêm
+                        </button>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Mã khách hàng</th>
+                                        <th>Họ tên</th>
+                                        <th>CMND</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Jacob</td>
+                                        <td>53275531</td>
+                                        <td>12 May 2017</td>
+                                        <td><input type="submit" value="Xóa" class="btn btn-warning" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Messsy</td>
+                                        <td>53275532</td>
+                                        <td>15 May 2017</td>
+                                        <td><input type="submit" value="Xóa" class="btn btn-warning" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Danh sách Chi phí</h4>
+                        <button type="button" class="btn btn-primary mb-2" onclick="btnclick()">
+                            Thêm
+                        </button>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Loại Chi Phí</th>
+                                        <th>Giá</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Jacob</td>
+                                        <td>Photoshop</td>
+                                        <td>
+                                            <input type="submit" value="Sửa" class="btn btn-warning" />
+                                            <input type="submit" value="Xóa" class="btn btn-warning" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Messsy</td>
+                                        <td>Flash</td>
+                                        <td>
+                                            <input type="submit" value="Sửa" class="btn btn-warning" />
+                                            <input type="submit" value="Xóa" class="btn btn-warning" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

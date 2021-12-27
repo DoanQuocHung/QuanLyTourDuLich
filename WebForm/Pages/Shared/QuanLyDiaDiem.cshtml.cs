@@ -4,11 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using DTO;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using BUS;
 using DTO;
-using Newtonsoft.Json;
 
 namespace WebForm.Pages.Shared
 {
