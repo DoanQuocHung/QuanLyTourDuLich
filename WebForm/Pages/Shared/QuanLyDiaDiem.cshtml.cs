@@ -13,13 +13,5 @@ namespace WebForm.Pages.Shared
         {
         }
 
-        public IActionResult OnPost()
-        {
-            if(ModelState.IsValid == false)
-            {
-                return Page();
-            }
-            return RedirectToPage("/Shared/QuanLyDiaDiem_Them");
-        }
     }
 }
