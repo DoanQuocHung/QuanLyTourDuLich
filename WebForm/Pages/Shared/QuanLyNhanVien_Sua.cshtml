@@ -2,9 +2,12 @@
 @model WebForm.Pages.Shared.QuanLyNhanVien_SuaModel
 @{
     ViewData["Title"] = "Website Quản Lý Tour";
-    Layout = "QuanLyNhanVien";
+    Layout = "_Layout";
 }
-
+@using BUS;
+@{
+    NhanVienBUS bus = new NhanVienBUS();
+}
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
