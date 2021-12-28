@@ -21,10 +21,19 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Danh sách Khách hàng</h4>
+                        @{
+                            try
+                            {
+                                if (HttpContext.Session.GetString("xoakhachhang") == "thanhcong")
+                                {
+                                    <h5 style="background-color: forestgreen">Xóa thành công</h5>
+                                    HttpContext.Session.Remove("xoakhachhang");
+                                }
+                            }
+                            catch (Exception e) { }
+                        }
                         <form class="form-inline">
-                            <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyKhachHang_Them">
-                                Thêm
-                            </a>
+                            <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyKhachHang_Them">Thêm</a>
                         </form>
                         <div class="table-responsive">
                             <table class="table table-striped">
