@@ -28,8 +28,7 @@ namespace WebForm.Pages.Pages
         {
             try
             {
-                tour.Tinh_Trang = 0;
-                if (new TourBUS().Update(tour))
+                if (new TourBUS().Delete(tour.Id_Tour))
                 {
                     HttpContext.Session.SetString("xoatour", "thanhcong");
                     return Page();

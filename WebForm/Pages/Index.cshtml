@@ -12,7 +12,7 @@
     List<LoaiTourDTO> listloai = new List<LoaiTourDTO>();
     TourBUS bus = new TourBUS();
     LoaiTourBUS busloai = new LoaiTourBUS();
-    list = bus.List();
+    list = bus.List().FindAll(x => x.Tinh_Trang.Equals(1));
     listloai = busloai.List();
 }
 

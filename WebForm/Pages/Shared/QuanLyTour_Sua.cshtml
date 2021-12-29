@@ -2,35 +2,44 @@
 @model WebForm.Pages.Shared.QuanLyTour_SuaModel
 @{
     ViewData["Title"] = "Website Quản Lý Tour";
-    Layout = "QuanLyTour";
+    Layout = "_Layout";
 }
-
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@using DTO;
+@{
+    var str = HttpContext.Session.GetString("edittour");
+    var obj = JsonConvert.DeserializeObject<TourDTO>(str);
+}
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Thêm Tour</h4>
-                        <form class="forms-sample">
+                        <h4 class="card-title">Sửa Tour</h4>
+                        <form class="forms-sample" method="post">
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Tour</label>
-                                <input type="text" class="form-control" placeholder="Mã Tour">
+                                <input type="text" asp-for="tour.Id_Tour" value="@obj.Id_Tour" class="form-control" placeholder="Mã Tour" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Tên Tour</label>
-                                <input type="text" class="form-control" placeholder="Tên Tour">
+                                <input type="text" asp-for="tour.Ten_Tour" value="@obj.Ten_Tour" class="form-control" placeholder="Tên Tour">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Đặc điểm</label>
-                                <input type="text" class="form-control" placeholder="Đặc điểm">
+                                <input type="text" asp-for="tour.Dacdiem_Tour" value="@obj.Dacdiem_Tour" class="form-control" placeholder="Đặc điểm">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Loại</label>
-                                <input type="text" class="form-control" placeholder="Mã Loại">
+                                <select asp-for="loai" asp-items="@(new SelectList(Model.listloai,"Id_Loai", "Ten_Loai"))">
+                                    <option value="">Chọn Loại</option>
+                                </select>
+
                             </div>
-                            <button type="submit" class="btn btn-primary mr-2">Sửa</button>
-                            <button class="btn btn-light">Hủy</button>
+                            <input type="submit" asp-page-handler="Edit" value="Sửa" class="btn btn-primary mr-2" />
+                            <input type="submit" asp-page-handler="Cancel" class="btn btn-light" value="Hủy" />
                         </form>
                     </div>
                 </div>
