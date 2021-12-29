@@ -8,11 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Website Quản Lý Tour</title>
 
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/vendors/typicons.font/font/typicons.css")" media="screen" />
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/vendors/css/vendor.bundle.base.css")" media="screen" />
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/vertical-layout-light/style.css")" media="screen" />
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/hung_css.css")" media="screen" />
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/images/favicon.png")" media="screen" />
+    <link rel="stylesheet" href="@Url.Content("~/vendors/typicons.font/font/typicons.css")" media="screen" />
+    <link rel="stylesheet" href="@Url.Content("~/vendors/css/vendor.bundle.base.css")" media="screen" />
+    <link rel="stylesheet" href="@Url.Content("~/css/vertical-layout-light/style.css")" media="screen" />
+    <link rel="stylesheet" href="@Url.Content("~/css/hung_css.css")" media="screen" />
+    <link rel="shortcut icon" href="@Url.Content("~/images/favicon.png")" media="screen" />
+    <link rel="stylesheet" href="@Url.Content("~/vendors/select2/select2.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/vendors/select2-bootstrap-theme/select2-bootstrap.min.css")">
 </head>
 <body>
     @{
@@ -133,25 +135,19 @@
 
         </div>
     </div>
-    <script src="vendors/js/vendor.bundle.base.js"></script>
-    <script src="js/off-canvas.js"></script>
-    <script src="js/hoverable-collapse.js"></script>
-    <script src="js/template.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/todolist.js"></script>
-    <script src="vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="vendors/chart.js/Chart.min.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script>
-        function ThemTour() {
-            document.getElementById("them-tour").style.display = 'block';
-
-        }
-        function SuaTour() {
-
-        }
-
-
-    </script>
+    <script src="@Url.Content("~/vendors/js/vendor.bundle.base.js")"></script>
+    <script src="@Url.Content("~/js/off-canvas.js")"></script>
+    <script src="@Url.Content("~/js/hoverable-collapse.js")"></script>
+    <script src="@Url.Content("~/js/template.js")"></script>
+    <script src="@Url.Content("~/js/settings.js")"></script>
+    <script src="@Url.Content("~/js/todolist.js")"></script>
+    <script src="@Url.Content("~/vendors/progressbar.js/progressbar.min.js")"></script>
+    <script src="@Url.Content("~/vendors/chart.js/Chart.min.js")"></script>
+    <script src="@Url.Content("~/js/dashboard.js")"></script>
+    <script src="@Url.Content("~/vendors/typeahead.js/typeahead.bundle.min.js")"></script>
+    <script src="@Url.Content("~/vendors/select2/select2.min.js")"></script>
+    <script src="@Url.Content("~/js/file-upload.js")"></script>
+    <script src="@Url.Content("~/js/typeahead.js")"></script>
+    <script src="@Url.Content("~/js/select2.js")"></script>
 </body>
 </html>
