@@ -54,32 +54,35 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Thống kê Tour</h4>
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>ID Tour</th>
-                                        <th>Tên Tour</th>
-                                        <th>Đặc điểm</th>
-                                        <th>ID Loại</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Jacob</td>
-                                        <td>Photoshop</td>
-                                        <td>Jacob</td>
-                                        <td>Photoshop</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jacob</td>
-                                        <td>Photoshop</td>
-                                        <td>Jacob</td>
-                                        <td>Photoshop</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian bắt đầu">
+                        <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian kết thúc">
+                        <input type="submit" value="Tìm" class="btn btn-primary mr-2" />
+                        <form class="forms-sample" method="post">
+                            <div class="form-group">
+                                <label for="exampleInputName1">Chi Phí Khách Sạn</label>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Ăn Uống</label>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Phương Tiện</label>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Doanh số</label>
+                                <input type="text" class="form-control" placeholder="Loại Tour" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Số Đoàn Tham Gia</label>
+                                <input type="text" class="form-control" placeholder="Mô Tả" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Tổng</label>
+                                <input type="text" class="form-control" placeholder="Loại Tour" readonly>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
