@@ -15,6 +15,8 @@ namespace WebForm.Pages.Shared
     {
         [BindProperty]
         public NhanVienDTO nhanvien { set; get; }
+
+
         public void OnGet()
         {
         }

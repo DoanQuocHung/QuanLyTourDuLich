@@ -28,7 +28,7 @@ namespace WebForm.Pages.Shared
         {
             try
             {
-                if (new DiaDiemBUS().Delete(khachhang.Id_Khach))
+                if (new KhachHangBUS().Delete(khachhang.Id_Khach))
                 {
                     HttpContext.Session.SetString("xoakhachhang", "thanhcong");
                     return Page();

@@ -21,12 +21,18 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Danh sách Sinh Viên</h4>
-                        <form class="form-inline">
-                            <button type="button" class="btn btn-primary mb-2" onclick="ThemNhanVien()">
-                                Thêm
-                            </button>
-                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" id="inlineFormInputName2" placeholder="...">
-                        </form>
+                        @{
+                            try
+                            {
+                                if (HttpContext.Session.GetString("xoanhanvien") == "thanhcong")
+                                {
+                                    <h5 style="background-color: forestgreen">Xóa thành công</h5>
+                                    HttpContext.Session.Remove("xoanhanvien");
+                                }
+                            }
+                            catch (Exception e) { }
+                        }
+                        <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyNhanVien_Them">Thêm</a>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>

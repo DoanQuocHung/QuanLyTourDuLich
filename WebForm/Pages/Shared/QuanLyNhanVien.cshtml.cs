@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,8 +15,10 @@ namespace WebForm.Pages.Shared
     {
         [BindProperty]
         public NhanVienDTO nhanvien { set; get; }
+
         public void OnGet()
         {
+            
         }
         public IActionResult OnPostEdit()
         {

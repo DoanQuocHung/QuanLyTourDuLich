@@ -18,6 +18,7 @@ namespace WebForm.Pages.Shared
         }
         public IActionResult OnPost()
         {
+            nhanvien.Tinh_Trang = 1;
             if (new NhanVienBUS().Update(nhanvien))
             {
                 return Redirect("/Shared/QuanLyNhanVien");
