@@ -26,19 +26,19 @@
                             {
                                 if (HttpContext.Session.GetString("xoagiatour") == "true")
                                 {
-                                    <h5 style="background-color: forestgreen">Xóa thành công</h5>
+                                    <h5 style="color: red">Xóa thành công</h5>
                                     HttpContext.Session.Remove("xoagiatour");
                                 }
 
                                 if (HttpContext.Session.GetString("themgiatour") == "true")
                                 {
-                                    <h5 style="background-color: forestgreen">Thêm thành công</h5>
+                                    <h5 style="color: green">Thêm thành công</h5>
                                     HttpContext.Session.Remove("themgiatour");
                                 }
 
                                 if (HttpContext.Session.GetString("suagiatour") == "thanhcong")
                                 {
-                                    <h5 style="background-color: forestgreen">Sửa thành công</h5>
+                                    <h5 style="color: saddlebrown">Sửa thành công</h5>
                                     HttpContext.Session.Remove("suagiatour");
                                 }
                             }
