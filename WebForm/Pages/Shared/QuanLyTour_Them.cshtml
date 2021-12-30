@@ -31,9 +31,7 @@
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Loại</label>
                                 <select asp-for="tour.Id_Loai" asp-items="@(new SelectList(Model.listloai,"Id_Loai", "Ten_Loai"))">
-                                    <option value="">Chọn Loại</option>
                                 </select>
-
                             </div>
                             <input type="submit" asp-page-handler="Add" value="Thêm" class="btn btn-primary mr-2" />
                             <input type="submit" asp-page-handler="Cancel" class="btn btn-light" value="Hủy" />

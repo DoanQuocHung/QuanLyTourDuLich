@@ -2,9 +2,12 @@
 @model WebForm.Pages.Shared.QuanLyDoan_ThemModel
 @{
     ViewData["Title"] = "Website Quản Lý Tour";
-    Layout = "QuanLyDoan";
+    Layout = "_Layout";
 }
-
+@using BUS;
+@{
+    DoanDuLichBUS bus = new DoanDuLichBUS();
+}
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -12,37 +15,35 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Thêm Đoàn</h4>
-                        <form class="forms-sample">
-                            <div class="form-group">
+                        <form class="forms-sample" method="post">
+                            <div class="form-group" >
                                 <label for="exampleInputName1">Mã Đoàn</label>
-                                <input type="text" class="form-control" placeholder="Mã Đoàn">
+                                <input type="text" asp-for="doan.Id_Doan" value="@bus.MakeID()" class="form-control" placeholder="Mã Đoàn" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Tên Đoàn</label>
-                                <input type="text" class="form-control" placeholder="Tên Đoàn">
+                                <input type="text" asp-for="doan.Ten_Doan" class="form-control" placeholder="Tên Đoàn">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Mã Tour</label>
-                                <input type="text" class="form-control" placeholder="Mã Tour">
+                                <label for="exampleInputName1">Tên Tour</label>
+                                <select class="js-example-basic-single w-100" 
+                                        asp-for="doan.Id_Tour" asp-items="@(new SelectList(Model.listtour,"Id_Tour", "Ten_Tour"))" >
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Ngày khởi hành</label>
-                                <input type="text" class="form-control" placeholder="Ngày khởi hành">
+                                <input type="date" asp-for="doan.Ngaykhoihanh" class="form-control" placeholder="Ngày khởi hành">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Ngày kết thúc</label>
-                                <input type="text" class="form-control" placeholder="Ngày kết thúc">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputName1">Doanh thu</label>
-                                <input type="text" class="form-control" placeholder="Doanh thu">
+                                <input type="date" asp-for="doan.Ngayketthuc" class="form-control" placeholder="Ngày kết thúc">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Nội dung</label>
-                                <input type="text" class="form-control" placeholder="Nội dung">
+                                <textarea type="text" class="form-control" asp-for="doan.Noidung" id="exampleTextarea1" rows="4" placeholder="Nội dung Đoàn"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary mr-2">Thêm</button>
-                            <button class="btn btn-light">Hủy</button>
+                            <input type="submit" asp-page-handler="Add" value="Thêm" class="btn btn-primary mr-2" />
+                            <input type="submit" asp-page-handler="Cancel" class="btn btn-light" value="Hủy" />
                         </form>
                     </div>
                 </div>
