@@ -56,15 +56,16 @@
                                                 <td>@item.Sdt_NV</td>
                                                 <td>@item.Gioitinh_NV</td>
                                                 <form asp- method="post">
-                                                    <td>
-                                                        <input type="hidden" asp-for="nhanvien.Id_NV" value="@item.Id_NV" />
-                                                        <input type="hidden" asp-for="nhanvien.Hoten_NV" value="@item.Hoten_NV" />
-                                                        <input type="hidden" asp-for="nhanvien.Email_NV" value="@item.Email_NV" />
-                                                        <input type="hidden" asp-for="nhanvien.Sdt_NV" value="@item.Sdt_NV" />
-                                                        <input type="hidden" asp-for="nhanvien.Gioitinh_NV" value="@item.Gioitinh_NV" />
-                                                        <input type="submit" asp-page-handler="edit" value="Sửa" class="btn btn-warning" />
-                                                        <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-danger" />
-                                                    </td>
+                                                <td>
+                                                    <input type="hidden" asp-for="nhanvien.Id_NV" value="@item.Id_NV" />
+                                                    <input type="hidden" asp-for="nhanvien.Hoten_NV" value="@item.Hoten_NV" />
+                                                    <input type="hidden" asp-for="nhanvien.Email_NV" value="@item.Email_NV" />
+                                                    <input type="hidden" asp-for="nhanvien.Sdt_NV" value="@item.Sdt_NV" />
+                                                    <input type="hidden" asp-for="nhanvien.Gioitinh_NV" value="@item.Gioitinh_NV" />
+                                                    <input type="submit" asp-page-handler="edit" value="Sửa" class="btn btn-warning" />
+                                                    <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-danger" />
+                                                    <input type="submit" asp-page-handler="detail" value="Chi tiết" class="btn btn-danger" />
+                                                </td>
                                                 </form>
                                             </tr>
                                         }

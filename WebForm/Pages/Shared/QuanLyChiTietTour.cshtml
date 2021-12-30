@@ -11,6 +11,9 @@
     string idtour = HttpContext.Session.GetString("chitiettour");
     List<ChiTietTourDTO> list = new ChiTietTourBUS().List(idtour);
     List<DiaDiemDTO> listdiadiem = new DiaDiemBUS().List();
+
+
+
 }   
 <div class="main-panel">
     <div class="content-wrapper">
@@ -57,37 +60,72 @@
                     </div>
                 </div>
             </div>
+            @{
+                string khachsan = "0";
+                string anuong = "0";
+                string phuongtien = "0";
+                string sodoan = "0";
+                string doanhso = "0";
+                string tong = "0";
+                try
+                {
+                    if (HttpContext.Session.GetString("thongketimkiem") == "thanhcong")
+                    {
+                        khachsan = HttpContext.Session.GetString("khachsan");
+                        anuong = HttpContext.Session.GetString("anuong");
+                        phuongtien =HttpContext.Session.GetString("phuongtien");
+                        sodoan =HttpContext.Session.GetString("sodoan");
+                        doanhso =HttpContext.Session.GetString("doanhso");
+                        tong = HttpContext.Session.GetString("tong");
+
+                        HttpContext.Session.Remove("thongketimkiem");
+                        HttpContext.Session.Remove("khachsan");
+                        HttpContext.Session.Remove("anuong");
+                        HttpContext.Session.Remove("phuongtien");
+                        HttpContext.Session.Remove("sodoan");
+                        HttpContext.Session.Remove("doanhso");
+                        HttpContext.Session.Remove("tong");
+                    }
+                }
+                catch (Exception e)
+                {
+
+                }
+
+
+
+            }
             <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Thống kê Tour</h4>
-                        <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian bắt đầu">
-                        <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian kết thúc">
-                        <input type="submit" value="Tìm" class="btn btn-primary mr-2" />
                         <form class="forms-sample" method="post">
+                            <input type="date" asp-for="search1" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian bắt đầu">
+                            <input type="date" asp-for="search2" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian kết thúc">
+                            <input type="submit" asp-page-handler="tong" value="Tìm" class="btn btn-primary mr-2" />
                             <div class="form-group">
                                 <label for="exampleInputName1">Chi Phí Khách Sạn</label>
-                                <input type="text" class="form-control" readonly>
+                                <input type="text" asp-for="khachsan" value="@khachsan" class="form-control" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Ăn Uống</label>
-                                <input type="text" class="form-control" readonly>
+                                <input type="text" asp-for="anuong" value="@anuong" class="form-control" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Phương Tiện</label>
-                                <input type="text" class="form-control" readonly>
+                                <input type="text" asp-for="phuongtien" value="@phuongtien" class="form-control" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Doanh số</label>
-                                <input type="text" class="form-control" placeholder="Loại Tour" readonly>
+                                <input type="text" asp-for="doanhso" value="@doanhso" class="form-control" placeholder="Loại Tour" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Số Đoàn Tham Gia</label>
-                                <input type="text" class="form-control" placeholder="Mô Tả" readonly>
+                                <input type="text" asp-for="sodoan" value="@sodoan" class="form-control" placeholder="Mô Tả" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Tổng</label>
-                                <input type="text" class="form-control" placeholder="Loại Tour" readonly>
+                                <input type="text" asp-for="tong" value="@tong" class="form-control" placeholder="Loại Tour" readonly>
                             </div>
                         </form>
                     </div>
