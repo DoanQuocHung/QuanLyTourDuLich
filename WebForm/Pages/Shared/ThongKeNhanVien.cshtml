@@ -4,7 +4,29 @@
     ViewData["Title"] = "Website Quản Lý Tour";
     Layout = "_Layout";
 }
+@using BUS;
+@using DTO;
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json; 
+@{ 
+    List<DoanDuLichDTO> doan = new List<DoanDuLichDTO>();
+    int count = 0;
 
+    string idnv = HttpContext.Session.GetString("chitietnhanvien");
+    List<PhanCongDTO> phancong = new PhanCongBUS().List().FindAll(x => x.Id_NV.Equals(idnv));
+    try
+    {
+        if (HttpContext.Session.GetString("thongkenhanvien") == "thanhcong")
+        {
+            string search1 = HttpContext.Session.GetString("ngay1");
+            string search2 = HttpContext.Session.GetString("ngay2");
+            doan = new ThongKeNhanVienBUS().list(phancong, search1, search2);
+        }
+    }
+    catch (Exception e) { }
+    if (doan.Count != 0)
+        count = doan.Count;
+}
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -12,19 +34,19 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Thống kê</h4>
-                        <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian bắt đầu">
-                        <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian kết thúc">
                         <form class="forms-sample" method="post">
+                            <input type="date" asp-for="search1" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian bắt đầu">
+                            <input type="date" asp-for="search2" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian kết thúc">
+                            <input type="submit" asp-page-handler="tong" value="Tìm" class="btn btn-primary mr-2" />
+                            <a class="btn btn-light">Hủy</a>
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã nhân viên</label>
-                                <input type="text" class="form-control" placeholder="Mã nhân viên" readonly>
+                                <input type="text" value="@idnv" class="form-control" placeholder="Mã nhân viên" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Số đoàn tham gia</label>
-                                <input type="text" class="form-control" placeholder="Số đoàn tham gia" readonly>
+                                <input type="text" value="@count" class="form-control" placeholder="Số đoàn tham gia" readonly>
                             </div>
-                            <input type="submit" value="Tìm" class="btn btn-primary mr-2" />
-                            <a class="btn btn-light">Hủy</a>
                         </form>
                     </div>
                 </div>
@@ -40,16 +62,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @{
+                                        foreach (DoanDuLichDTO item in doan)
+                                        {
                                     <tr>
-                                        <td>Jacob</td>
-                                        <td>53275531</td>
-                                        <td>12 May 2017</td>
+                                        <td>@item.Id_Doan</td>
+                                        <td>@item.Ngaykhoihanh</td>
+                                        <td>@item.Ngayketthuc</td>
                                     </tr>
-                                    <tr>
-                                        <td>Messsy</td>
-                                        <td>53275532</td>
-                                        <td>15 May 2017</td>
-                                    </tr>
+                                            }
+                                        }
                                 </tbody>
                             </table>
                         </div>

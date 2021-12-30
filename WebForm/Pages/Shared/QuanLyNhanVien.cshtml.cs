@@ -43,5 +43,11 @@ namespace WebForm.Pages.Shared
             }
             return Page();
         }
+
+        public IActionResult OnPostDetail()
+        {
+            HttpContext.Session.SetString("chitietnhanvien", nhanvien.Id_NV);
+            return RedirectToPage("/Shared/ThongKeNhanVien");
+        }
     }
 }
