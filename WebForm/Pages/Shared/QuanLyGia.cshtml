@@ -7,6 +7,7 @@
 }
 @using BUS;
 @using DTO;
+@using Microsoft.AspNetCore.Http;
 @{
     List<GiaDTO> list_g = new List<GiaDTO>();
     GiaBUS bus_g = new GiaBUS();
@@ -20,12 +21,18 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Danh sách Giá</h4>
-                        <form class="form-inline">
-                            <button type="button" class="btn btn-primary mb-2" onclick="ThemGia()">
-                                Thêm
-                            </button>
-                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" id="inlineFormInputName2" placeholder="...">
-                        </form>
+                        @{
+                            try
+                            {
+                                if (HttpContext.Session.GetString("xoagia") == "thanhcong")
+                                {
+                                    <h5 style="background-color: forestgreen">Xóa thành công</h5>
+                                    HttpContext.Session.Remove("xoagia");
+                                }
+                            }
+                            catch (Exception e) { }
+                        }
+                        <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyGia_Them">Thêm</a>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
@@ -48,10 +55,17 @@
                                                 <td>@item.Gia</td>
                                                 <td>@item.Thoigianbatdau</td>
                                                 <td>@item.Thoigianketthuc</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-warning">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
-                                                </td>
+                                                <form asp- method="post">
+                                                    <td>
+                                                        <input type="hidden" asp-for="gia.Id_Gia" value="@item.Id_Gia" />
+                                                        <input type="hidden" asp-for="gia.Id_Tour" value="@item.Id_Tour" />
+                                                        <input type="hidden" asp-for="gia.Gia" value="@item.Gia" />
+                                                        <input type="hidden" asp-for="gia.Thoigianbatdau" value="@item.Thoigianbatdau" />
+                                                        <input type="hidden" asp-for="gia.Thoigianketthuc" value="@item.Thoigianketthuc" />
+                                                        <input type="submit" asp-page-handler="edit" value="Sửa" class="btn btn-warning" />
+                                                        <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-danger" />
+                                                    </td>
+                                                </form>
                                             </tr>
                                         }
                                     }
