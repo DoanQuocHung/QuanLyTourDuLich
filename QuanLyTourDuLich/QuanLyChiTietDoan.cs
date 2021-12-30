@@ -116,7 +116,7 @@ namespace QuanLyTourDuLich
                 if (new ChiPhiBUS().Delete(cellValue2,id))
                 {
                     MessageBox.Show("Xóa chi tiết thành công");
-                    new DoanDuLichBUS().UpdateDoanhThu(cellValue2,-cellValue3);
+                    new DoanDuLichBUS().UpdateDoanhThu(id,cellValue3);
                     listchiphi.RemoveAll(x => x.Id_LoaiChiPhi.Equals(cellValue2));
                     BindGrid2(listchiphi);
                 }

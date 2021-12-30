@@ -4,7 +4,21 @@
     ViewData["Title"] = "Website Quản Lý Tour";
     Layout = "_Layout";
 }
+@using BUS;
+@using DTO;
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json; 
+@{
+    string iddoan = HttpContext.Session.GetString("chitietdoan");
 
+    List<ChiTietDoanDTO> list = new ChiTietDoanBUS().List(iddoan);
+
+    List<ChiPhiDTO> listchiphi = new ChiPhiBUS().List(iddoan);
+
+    List<LoaiChiPhiDTO> listloai = new LoaiChiPhiBUS().List();
+
+    List<KhachDTO> listkhach = new KhachHangBUS().List();
+}
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -12,9 +26,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Danh sách chi tiết Đoàn</h4>
-                        <button type="button" class="btn btn-primary mb-2" onclick="btnclick()">
-                            Thêm
-                        </button>
+                        <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyChiTietDoan_Them">Thêm</a>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -26,18 +38,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @{
+                                        foreach (ChiTietDoanDTO item in list)
+                                        {
+                                            string tenkhach = listkhach.Find(x => x.Id_Khach.Equals(item.Id_Khach)).Hoten_Khach;
+                                            string cmndkhach = listkhach.Find(x => x.Id_Khach.Equals(item.Id_Khach)).Cmnd_Khach;
                                     <tr>
-                                        <td>Jacob</td>
-                                        <td>53275531</td>
-                                        <td>12 May 2017</td>
-                                        <td><input type="submit" value="Xóa" class="btn btn-warning" /></td>
+                                        <td>@item.Id_Khach</td>
+                                        <td>@tenkhach</td>
+                                        <td>@cmndkhach</td>
+                                        <td>
+                                            <form method="post">
+                                                <input type="hidden" asp-for="chitiet.Id_Doan" value="@item.Id_Doan" />
+                                                <input type="hidden" asp-for="chitiet.Id_Khach" value="@item.Id_Khach" />
+                                                <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-danger" />
+                                            </form>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td>Messsy</td>
-                                        <td>53275532</td>
-                                        <td>15 May 2017</td>
-                                        <td><input type="submit" value="Xóa" class="btn btn-warning" /></td>
-                                    </tr>
+                                        }
+                                        }
                                 </tbody>
                             </table>
                         </div>
@@ -48,9 +67,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Danh sách Chi phí</h4>
-                        <button type="button" class="btn btn-primary mb-2" onclick="btnclick()">
-                            Thêm
-                        </button>
+                        <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyChiPhi_Them">Thêm</a>
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
@@ -61,22 +78,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Jacob</td>
-                                        <td>Photoshop</td>
-                                        <td>
-                                            <input type="submit" value="Sửa" class="btn btn-warning" />
-                                            <input type="submit" value="Xóa" class="btn btn-warning" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Messsy</td>
-                                        <td>Flash</td>
-                                        <td>
-                                            <input type="submit" value="Sửa" class="btn btn-warning" />
-                                            <input type="submit" value="Xóa" class="btn btn-warning" />
-                                        </td>
-                                    </tr>
+                                    @{
+                                        foreach (ChiPhiDTO item in listchiphi)
+                                        {
+                                            string tenchiphi = listloai.Find(x => x.Id_LoaiChiPhi.Equals(item.Id_LoaiChiPhi)).Ten_LoaiChiPhi;
+                                            <tr>
+                                                <td>@tenchiphi</td>
+                                                <td>@item.Gia</td>
+                                                <td>
+                                                    <form method="post">
+                                                        <input type="hidden" asp-for="chiphi.Id_Doan" value="@item.Id_Doan" />
+                                                        <input type="hidden" asp-for="chiphi.Id_LoaiChiPhi" value="@item.Id_LoaiChiPhi" />
+                                                        <input type="hidden" asp-for="chiphi.Gia" value="@item.Gia" />
+                                                        <input type="submit" asp-page-handler="edit2" value="Sửa" class="btn btn-warning" />
+                                                        <input type="submit" asp-page-handler="delete2" value="Xóa" class="btn btn-danger" />
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
                                 </tbody>
                             </table>
                         </div>

@@ -61,7 +61,7 @@ namespace DAL
             }
             return chiphi;
         }
-        public bool Update(ChiPhiDTO tour,string loai)
+        public bool Update(ChiPhiDTO chiphi,string loai)
         {
             try
             {
@@ -72,10 +72,10 @@ namespace DAL
 
                 object[] para = new object[]
                 {
-                tour.Id_LoaiChiPhi,
-                tour.Gia,
-                loai,
-                tour.Id_Doan
+                    chiphi.Id_LoaiChiPhi,
+                    chiphi.Gia,
+                    loai,
+                    chiphi.Id_Doan
                 };
                 DataProvider datapro = new DataProvider();
                 if (datapro.ExecuteNonQuery(query, para) > 0)
