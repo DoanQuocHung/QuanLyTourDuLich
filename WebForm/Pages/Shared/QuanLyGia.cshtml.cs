@@ -39,7 +39,7 @@ namespace WebForm.Pages.Shared
         {
             try
             {
-                if (new DiaDiemBUS().Delete(gia.Id_Gia))
+                if (new GiaBUS().Delete(gia.Id_Gia))
                 {
                     HttpContext.Session.SetString("xoagiatour", "thanhcong");
                     return Page();

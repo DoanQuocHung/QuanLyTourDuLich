@@ -11,9 +11,9 @@ namespace DAL
         public DataProvider() { }
 
         //Học
-        //public string connectionString = @"Data Source=DESKTOP-P8VHEBN\HOCDB1;Initial Catalog=QUANLYTOURDULICH;USER ID=kidakai12; PASSWORD=songkhoe123";
+        public string connectionString = @"Data Source=DESKTOP-P8VHEBN\HOCDB1;Initial Catalog=QUANLYTOURDULICH;USER ID=kidakai12; PASSWORD=songkhoe123";
         //Hùng
-        public string connectionString = @"Data Source=DESKTOP-48AE0SM\SQLEXPRESS;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
+        //public string connectionString = @"Data Source=DESKTOP-48AE0SM\SQLEXPRESS;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         //Doanh
         //public string connectionString = @"Data Source=DESKTOP-TB623K0\DOANHTT;Initial Catalog=QUANLYTOURDULICH;Integrated Security=True";
         //Nguyen
