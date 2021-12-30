@@ -35,13 +35,13 @@ namespace WebForm.Pages.Pages
             {
                 if (new TourBUS().Delete(tour.Id_Tour))
                 {
-                    HttpContext.Session.SetString("xoatour", "thanhcong");
+                    HttpContext.Session.SetString("xoatour", "true");
                     return Page();
                 }
             }
             catch (Exception e1)
             {
-                HttpContext.Session.SetString("xoatour", "khongthanhcong");
+                HttpContext.Session.SetString("xoatour", "false");
                 return Page();
             }
             return Page();

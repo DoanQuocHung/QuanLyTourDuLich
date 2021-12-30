@@ -41,15 +41,16 @@ namespace WebForm.Pages.Shared
             {
                 if (new DiaDiemBUS().Delete(gia.Id_Gia))
                 {
-                    HttpContext.Session.SetString("xoagia", "thanhcong");
+                    HttpContext.Session.SetString("xoagiatour", "thanhcong");
                     return Page();
                 }
             }
             catch (Exception e1)
             {
-                HttpContext.Session.SetString("xoagia", "khongthanhcong");
+                HttpContext.Session.SetString("xoagiatour", "khongthanhcong");
                 return Page();
             }
+            HttpContext.Session.SetString("xoagiatour", "khongthanhcong");
             return Page();
         }
 

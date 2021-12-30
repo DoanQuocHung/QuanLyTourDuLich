@@ -31,8 +31,10 @@ namespace WebForm.Pages.Shared
             tour.Tinh_Trang = 1;
             if (new TourBUS().Update(tour))
             {
+                HttpContext.Session.SetString("suatour", "true");
                 return Redirect("/Shared/QuanLyTour");
             }
+            HttpContext.Session.SetString("suatour", "false");
             return Page();
         }
     }

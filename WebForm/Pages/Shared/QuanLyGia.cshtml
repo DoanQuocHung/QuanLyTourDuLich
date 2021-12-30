@@ -24,10 +24,22 @@
                         @{
                             try
                             {
-                                if (HttpContext.Session.GetString("xoagia") == "thanhcong")
+                                if (HttpContext.Session.GetString("xoagiatour") == "true")
                                 {
                                     <h5 style="background-color: forestgreen">Xóa thành công</h5>
-                                    HttpContext.Session.Remove("xoagia");
+                                    HttpContext.Session.Remove("xoagiatour");
+                                }
+
+                                if (HttpContext.Session.GetString("themgiatour") == "true")
+                                {
+                                    <h5 style="background-color: forestgreen">Thêm thành công</h5>
+                                    HttpContext.Session.Remove("themgiatour");
+                                }
+
+                                if (HttpContext.Session.GetString("suagiatour") == "thanhcong")
+                                {
+                                    <h5 style="background-color: forestgreen">Sửa thành công</h5>
+                                    HttpContext.Session.Remove("suagiatour");
                                 }
                             }
                             catch (Exception e) { }
@@ -109,15 +121,15 @@
                                                 <td>@item.Thoigianbatdau</td>
                                                 <td>@item.Thoigianketthuc</td>
                                                 <form asp- method="post">
-                                                    <td>
-                                                        <input type="hidden" asp-for="gia.Id_Gia" value="@item.Id_Gia" />
-                                                        <input type="hidden" asp-for="gia.Id_Tour" value="@item.Id_Tour" />
-                                                        <input type="hidden" asp-for="gia.Gia" value="@item.Gia" />
-                                                        <input type="hidden" asp-for="gia.Thoigianbatdau" value="@item.Thoigianbatdau" />
-                                                        <input type="hidden" asp-for="gia.Thoigianketthuc" value="@item.Thoigianketthuc" />
-                                                        <input type="submit" asp-page-handler="edit" value="Sửa" class="btn btn-warning" />
-                                                        <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-danger" />
-                                                    </td>
+                                                <td>
+                                                    <input type="hidden" asp-for="gia.Id_Gia" value="@item.Id_Gia" />
+                                                    <input type="hidden" asp-for="gia.Id_Tour" value="@item.Id_Tour" />
+                                                    <input type="hidden" asp-for="gia.Gia" value="@item.Gia" />
+                                                    <input type="hidden" asp-for="gia.Thoigianbatdau" value="@item.Thoigianbatdau" />
+                                                    <input type="hidden" asp-for="gia.Thoigianketthuc" value="@item.Thoigianketthuc" />
+                                                    <input type="submit" asp-page-handler="edit" value="Sửa" class="btn btn-warning" />
+                                                    <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-danger" />
+                                                </td>
                                                 </form>
                                             </tr>
                                         }

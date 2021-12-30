@@ -31,17 +31,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Giá</label>
-                                <input type="text" class="form-control" asp-for="gia.Gia" placeholder="Giá">
+                                <input type="number" class="form-control" asp-for="gia.Gia" placeholder="Giá" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Thời gian bắt đầu</label>
-                                <input type="text" class="form-control" asp-for="gia.Thoigianbatdau" placeholder="Thời gian bắt đầu">
+                                <input type="date" class="form-control" asp-for="dt1" placeholder="Thời gian bắt đầu" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Thời gian kết thúc</label>
-                                <input type="text" class="form-control" asp-for="gia.Thoigianketthuc" placeholder="Thời gian kết thúc">
+                                <input type="date" class="form-control" asp-for="dt2" placeholder="Thời gian kết thúc" required>
                             </div>
-                            <input type="submit" value="Thêm" asp-page-handler="AddGia" class="btn btn-primary mr-2" />
+                            <input type="submit" value="Thêm" asp-page-handler="add" class="btn btn-primary mr-2" />
                             <button class="btn btn-light">Hủy</button>
                         </form>
                     </div>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using BUS;
 using DTO;
+using Microsoft.AspNetCore.Http;
 namespace WebForm.Pages.Shared
 {
     public class QuanLyTour_ThemModel : PageModel
@@ -24,9 +25,11 @@ namespace WebForm.Pages.Shared
             tour.Tinh_Trang = 1;
             if (new TourBUS().Insert(tour))
             {
+                HttpContext.Session.SetString("themtour","true");
                 return Redirect("/Shared/QuanLyTour");
             }
-            return Page();
+            HttpContext.Session.SetString("themtour", "false");
+            return Redirect("/Shared/QuanLyTour");
         }
     }
 }

@@ -15,21 +15,28 @@ namespace WebForm.Pages.Shared
     {
         [BindProperty]
         public GiaDTO gia { set; get; }
+
+        [BindProperty]
+        public string dt1 { set; get; }
+        [BindProperty]
+        public string dt2 { set; get; }
         public void OnGet()
         {
         }
-        public IActionResult OnPost()
+        public IActionResult OnPostAdd()
         {
-            if (new GiaBUS().Insert(new GiaDTO(
-                gia.Id_Gia,
-                gia.Id_Tour, 
-                gia.Gia, 
-                gia.Thoigianbatdau, 
-                gia.Thoigianketthuc)))
+            var parsedDate1 = DateTime.ParseExact(dt1, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            gia.Thoigianbatdau = parsedDate1.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            var parsedDate2 = DateTime.ParseExact(dt2, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            gia.Thoigianketthuc = parsedDate2.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+            if (new GiaBUS().Insert(gia))
             {
+                HttpContext.Session.SetString("themgiatour","true");
                 return Redirect("/Shared/QuanLyGia");
             }
-            return Page();
+            HttpContext.Session.SetString("themgiatour", "false");
+            return Redirect("/Shared/QuanLyGia");
         }
     }
 }
