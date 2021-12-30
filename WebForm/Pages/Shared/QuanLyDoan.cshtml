@@ -7,6 +7,7 @@
 }
 @using BUS;
 @using DTO;
+@using Microsoft.AspNetCore.Http;
 @{
     List<DoanDuLichDTO> list_d = new List<DoanDuLichDTO>();
     DoanDuLichBUS bus_d = new DoanDuLichBUS();
@@ -21,18 +22,65 @@
                     <div class="card-body">
                         <h4 class="card-title">Danh sách Đoàn Du Lịch</h4>
                         <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyDoan_Them">Thêm</a>
-                        <form class="form-inline" method="get">
-                            <select class="form-control">
+                        <form class="form-inline" method="post">
+                            @{
+                                try
+                                {
+                                    string search = "";
+                                    switch (HttpContext.Session.GetString("searchtype"))
+                                    {
+                                        case "Id_Doan":
+                                            search = HttpContext.Session.GetString("search");
+                                            list_d = list_d.FindAll(x => x.Id_Doan.Contains(search));
+                                            HttpContext.Session.Remove("searchtype");
+                                            HttpContext.Session.Remove("search");
+                                            break;
+                                        case "Ten_Doan":
+                                            search = HttpContext.Session.GetString("search");
+                                            list_d = list_d.FindAll(x => x.Ten_Doan.Contains(search));
+                                            HttpContext.Session.Remove("searchtype");
+                                            HttpContext.Session.Remove("search");
+                                            break;
+                                        case "Id_Tour":
+                                            search = HttpContext.Session.GetString("search");
+                                            list_d = list_d.FindAll(x => x.Id_Tour.Contains(search));
+                                            HttpContext.Session.Remove("searchtype");
+                                            HttpContext.Session.Remove("search");
+                                            break;
+                                        case "ngay":
+                                            string dt1 = HttpContext.Session.GetString("dt1");
+                                            string dt2 = HttpContext.Session.GetString("dt2");
+                                            Tool tool = new Tool();
+                                            List<DoanDuLichDTO> listtmp = new List<DoanDuLichDTO>();
+                                            foreach (DoanDuLichDTO item in list_d)
+                                            {
+                                                if (tool.comparedate(item.Ngaykhoihanh, dt1) >= 0
+                                                    && tool.comparedate(item.Ngayketthuc, dt2) <= 0)
+                                                    listtmp.Add(item);
+                                            }
+                                            list_d = listtmp;
+                                            HttpContext.Session.Remove("searchtype");
+                                            HttpContext.Session.Remove("dt1");
+                                            HttpContext.Session.Remove("dt2");
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
+                                }
+                                catch (Exception e) { }
+                            }
+                            <select class="form-control" asp-for="searchtype">
                                 <option value="Id_Doan">Mã Đoàn</option>
                                 <option value="Ten_Doan">Tên Đoàn</option>
                                 <option value="Id_Tour">Mã Tour</option>
                             </select>
-                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
-                            <input type="button" class="btn btn-warning" value="Tìm" style="margin-left:">
-                            <input type="date" class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian bắt đầu">
+                            <input type="text" asp-for="searchvalue" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
+                            <input type="submit" asp-page-handler="search" class="btn btn-warning" value="Tìm" style="margin-left:">
+                            <input type="date" asp-for="dt1" class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian bắt đầu">
                             <p>Tới</p>
-                            <input type="date" class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian kết thúc">
-                            <input type="submit" value="Tìm" class="btn btn-primary mr-2" />
+                            <input type="date" asp-for="dt2" class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian kết thúc">
+                            <input type="submit" asp-page-handler="searchdate" value="Tìm" class="btn btn-primary mr-2" />
                         </form>
                         <div class="table-responsive">
                             <table class="table table-striped">

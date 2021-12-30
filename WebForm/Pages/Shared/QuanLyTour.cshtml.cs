@@ -14,6 +14,11 @@ namespace WebForm.Pages.Pages
     {
         [BindProperty]
         public TourDTO tour { set; get; }
+        [BindProperty]
+        public string searchtype { set; get; }
+
+        [BindProperty]
+        public string searchvalue { set; get; }
         public void OnGet()
         {
 
@@ -45,6 +50,12 @@ namespace WebForm.Pages.Pages
         {
             HttpContext.Session.SetString("chitiettour", tour.Id_Tour);
             return RedirectToPage("/Shared/QuanLyChiTietTour");
+        }
+        public IActionResult OnPostSearch()
+        {
+            HttpContext.Session.SetString("searchtype", searchtype);
+            HttpContext.Session.SetString("search", searchvalue);
+            return Page();
         }
     }
 }
