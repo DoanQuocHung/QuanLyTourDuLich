@@ -30,9 +30,11 @@ namespace WebForm.Pages.Shared
                 nhanvien.Gioitinh_NV, 
                 nhanvien.Tinh_Trang)))
             {
+                HttpContext.Session.SetString("themnhanvien", "true");
                 return Redirect("/Shared/QuanLyNhanVien");
             }
-            return Page();
+            HttpContext.Session.SetString("themnhanvien", "false");
+            return Redirect("/Shared/QuanLyNhanVien");
         }
     }
 }

@@ -34,13 +34,13 @@ namespace WebForm.Pages.Shared
             {
                 if (new PhanCongBUS().Delete(phancong.Id_Doan, phancong.Id_NV))
                 {
-                    HttpContext.Session.SetString("xoaphancong", "thanhcong");
+                    HttpContext.Session.SetString("xoaphancong", "true");
                     return Page();
                 }
             }
             catch (Exception e1)
             {
-                HttpContext.Session.SetString("xoaphancong", "khongthanhcong");
+                HttpContext.Session.SetString("xoaphancong", "false");
                 return Page();
             }
             return Page();

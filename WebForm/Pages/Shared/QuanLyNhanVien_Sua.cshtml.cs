@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using DTO;
 using BUS;
+using Microsoft.AspNetCore.Http;
 
 namespace WebForm.Pages.Shared
 {
@@ -21,8 +22,10 @@ namespace WebForm.Pages.Shared
             nhanvien.Tinh_Trang = 1;
             if (new NhanVienBUS().Update(nhanvien))
             {
+                HttpContext.Session.SetString("suanhanvien", "true");
                 return Redirect("/Shared/QuanLyNhanVien");
             }
+            HttpContext.Session.SetString("suanhanvien", "false");
             return Page();
         }
     }

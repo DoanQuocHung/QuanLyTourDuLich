@@ -24,7 +24,7 @@
                         @{
                             try
                             {
-                                <!---------------------Thông báo Thêm----------------------------------------------->
+                                <!---------------------Thông báo Xóa----------------------------------------------->
                                 if (HttpContext.Session.GetString("xoadiadiem") == "true")
                                 {
                                     <h5 style="background-color: forestgreen">Xóa thành công</h5>
@@ -36,13 +36,12 @@
                                     <h5 style="background-color: forestgreen">Thêm thành công</h5>
                                     HttpContext.Session.Remove("themdiadiem");
                                 }
-                                <!---------------------Thông báo Thêm----------------------------------------------->
+                                <!---------------------Thông báo Sửa----------------------------------------------->
                                 if (HttpContext.Session.GetString("suadiadiem") == "true")
                                 {
                                     <h5 style="background-color: forestgreen">Sửa thành công</h5>
                                     HttpContext.Session.Remove("suadiadiem");
                                 }
-
                             }
                             catch (Exception e) { }
                         }
@@ -93,12 +92,12 @@
                                                 <td>@item.Id_DiaDiem</td>
                                                 <td>@item.Ten_DiaDiem</td>
                                                 <form asp- method="post">
-                                                <td>
-                                                    <input type="hidden" asp-for="diadiem.Id_DiaDiem" value="@item.Id_DiaDiem" />
-                                                    <input type="hidden" asp-for="diadiem.Ten_DiaDiem" value="@item.Ten_DiaDiem" />
-                                                    <input type="submit" asp-page-handler="edit" value="Sửa" class="btn btn-warning" />
-                                                    <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-danger" />
-                                                </td>
+                                                    <td>
+                                                        <input type="hidden" asp-for="diadiem.Id_DiaDiem" value="@item.Id_DiaDiem" />
+                                                        <input type="hidden" asp-for="diadiem.Ten_DiaDiem" value="@item.Ten_DiaDiem" />
+                                                        <input type="submit" asp-page-handler="edit" value="Sửa" class="btn btn-warning" />
+                                                        <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-danger" />
+                                                    </td>
                                                 </form>
                                             </tr>
                                         }

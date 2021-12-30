@@ -30,9 +30,11 @@ namespace WebForm.Pages.Shared
                 khachhang.Quoctich,
                 khachhang.Tinh_Trang)))
             {
+                HttpContext.Session.SetString("themkhachhang", "true");
                 return Redirect("/Shared/QuanLyKhachHang");
             }
-            return Page();
+            HttpContext.Session.SetString("themkhachhang", "false");
+            return Redirect("/Shared/QuanLyKhachHang");
         }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using DTO;
 using BUS;
-
+using Microsoft.AspNetCore.Http;
 namespace WebForm.Pages.Shared
 {
     public class QuanLyPhanCong_SuaModel : PageModel
