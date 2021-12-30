@@ -26,6 +26,7 @@ namespace QuanLyTourDuLich
             cbTenTour.SelectedItem = listTenTour[0].Ten_Tour;
             txtMaDoan.Text = new DoanDuLichBUS().MakeID();
             txtTenDoan.Text = listTenTour[0].Ten_Tour;
+            txtDoanhThu.Text = "0";
         }
 
         private void btnThem_Click(object sender, EventArgs e)

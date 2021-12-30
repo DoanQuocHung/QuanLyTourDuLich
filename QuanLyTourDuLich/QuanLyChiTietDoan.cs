@@ -47,6 +47,7 @@ namespace QuanLyTourDuLich
             dataGridView_CT_Doan.Refresh();
             foreach (ChiTietDoanDTO item in list)
             {
+                
                 string tenkhach = listkhach.Find(x => x.Id_Khach.Equals(item.Id_Khach)).Hoten_Khach;
                 string cmndkhach = listkhach.Find(x => x.Id_Khach.Equals(item.Id_Khach)).Cmnd_Khach;
                 dataGridView_CT_Doan.Rows.Add(item.Id_Khach, tenkhach, cmndkhach);
@@ -59,7 +60,7 @@ namespace QuanLyTourDuLich
             foreach (ChiPhiDTO item in list)
             {
                 string tenchiphi =  listloaichiphi.Find(x => x.Id_LoaiChiPhi.Equals(item.Id_LoaiChiPhi)).Ten_LoaiChiPhi;
-                Grid_ChiPhi.Rows.Add(tenchiphi,item.Gia,item.Id_LoaiChiPhi);
+                Grid_ChiPhi.Rows.Add(tenchiphi,item.Gia.ToString("#,#") + " VNĐ", item.Id_LoaiChiPhi, item.Gia);
             }
         }
         private void btnThem_Click(object sender, EventArgs e)
@@ -112,7 +113,7 @@ namespace QuanLyTourDuLich
                 int selectedrowindex = Grid_ChiPhi.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = Grid_ChiPhi.Rows[selectedrowindex];
                 string cellValue2 = Convert.ToString(selectedRow.Cells["Id_ChiPhi"].Value);
-                long cellValue3 = long.Parse(Convert.ToString(selectedRow.Cells["Gia"].Value));
+                long cellValue3 = long.Parse(Convert.ToString(selectedRow.Cells["giareal"].Value));
                 if (new ChiPhiBUS().Delete(cellValue2,id))
                 {
                     MessageBox.Show("Xóa chi tiết thành công");

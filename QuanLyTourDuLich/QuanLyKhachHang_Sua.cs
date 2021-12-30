@@ -51,7 +51,11 @@ namespace QuanLyTourDuLich
                 MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
                 return;
             }
-
+            if (sdt.Length < 10)
+            {
+                MessageBox.Show("Số điện thoại phải có độ dài ít nhất là 10");
+                return;
+            }
             if (new KhachHangBUS().Update(new KhachDTO(maKH, hoten, cmnd, diachi, gioiTinh, sdt, quoctich, 1)))
             {
                 MessageBox.Show("Sửa thành công");

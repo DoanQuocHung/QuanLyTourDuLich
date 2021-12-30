@@ -42,7 +42,7 @@ namespace QuanLyTourDuLich
             string dacdiem = textBox3.Text;
             string tenloai = comboBox2.SelectedItem.ToString();
             string idloai = listloai.Find(x => x.Ten_Loai.Equals(tenloai)).Id_Loai;
-            if (matour.Equals(null) || tentour.Equals(null) || dacdiem.Equals(null))
+            if (tentour.Equals(null) || tentour.Equals("") || dacdiem.Equals("") || dacdiem.Equals(null))
             {
                 MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
                 return;

@@ -29,7 +29,7 @@ namespace QuanLyTourDuLich
             ChiTietTourDTO edit = list.Find(x => x.Id_DiaDiem.Equals(id));
             IdTour_txt.Text = edit.Id_Tour;
             DiaDiem_cb.SelectedItem = listdd.Find(x => x.Id_DiaDiem.Equals(id)).Ten_DiaDiem;
-            txtThuTu.Text = edit.Thutu.ToString();
+            ThuTu_num.Value = edit.Thutu;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,11 +37,27 @@ namespace QuanLyTourDuLich
             string matour = IdTour_txt.Text;
             string diadiem = DiaDiem_cb.Text;
             string madiadiem = listdd.Find(x => x.Ten_DiaDiem.Equals(diadiem)).Id_DiaDiem;
-            int thutu = int.Parse(txtThuTu.Text);
+            if (diadiem.Equals(null))
+            {
+                MessageBox.Show("Vui lòng chọn địa điểm");
+                return;
+            }
+            if (ThuTu_num.Text.Equals(""))
+            {
+                MessageBox.Show("Vui lòng nhập thứ tự");
+                return;
+            }
+            if (ThuTu_num.Text == "" || ThuTu_num.Text == null)
+            {
+                MessageBox.Show("Vui lòng nhập thứ tự lớn hơn 0");
+                return;
+            }
+            int thutu = int.Parse(ThuTu_num.Text);
             if (new ChiTietTourBUS().Update(new ChiTietTourDTO(matour, madiadiem, thutu), id))
             {
                 MessageBox.Show("Sửa thành công");
                 list.Find(x => x.Id_DiaDiem.Equals(id)).Id_DiaDiem = madiadiem;
+                list.Find(x => x.Id_DiaDiem.Equals(id)).Thutu = thutu;
                 this.DialogResult = DialogResult.OK;
                 Hide();
             }

@@ -42,11 +42,12 @@ namespace QuanLyTourDuLich
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dataGridView_CT_Doan = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnReload = new System.Windows.Forms.Button();
             this.Id_Khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hoten_Khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cmnd_Khach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnReload = new System.Windows.Forms.Button();
+            this.giareal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_ChiPhi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CT_Doan)).BeginInit();
@@ -125,7 +126,8 @@ namespace QuanLyTourDuLich
             this.Grid_ChiPhi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ten_LoaiChiPhi,
             this.Gia,
-            this.Id_ChiPhi});
+            this.Id_ChiPhi,
+            this.giareal});
             this.Grid_ChiPhi.Location = new System.Drawing.Point(672, 73);
             this.Grid_ChiPhi.Name = "Grid_ChiPhi";
             this.Grid_ChiPhi.RowHeadersWidth = 51;
@@ -196,6 +198,24 @@ namespace QuanLyTourDuLich
             this.dataGridView_CT_Doan.Size = new System.Drawing.Size(641, 485);
             this.dataGridView_CT_Doan.TabIndex = 10;
             // 
+            // Id_Khach
+            // 
+            this.Id_Khach.HeaderText = "Mã Khách Hàng";
+            this.Id_Khach.MinimumWidth = 8;
+            this.Id_Khach.Name = "Id_Khach";
+            // 
+            // Hoten_Khach
+            // 
+            this.Hoten_Khach.HeaderText = "Họ Tên";
+            this.Hoten_Khach.MinimumWidth = 8;
+            this.Hoten_Khach.Name = "Hoten_Khach";
+            // 
+            // Cmnd_Khach
+            // 
+            this.Cmnd_Khach.HeaderText = "CMND";
+            this.Cmnd_Khach.MinimumWidth = 8;
+            this.Cmnd_Khach.Name = "Cmnd_Khach";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -219,23 +239,13 @@ namespace QuanLyTourDuLich
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.button5_Click);
             // 
-            // Id_Khach
+            // giareal
             // 
-            this.Id_Khach.HeaderText = "Mã Khách Hàng";
-            this.Id_Khach.MinimumWidth = 8;
-            this.Id_Khach.Name = "Id_Khach";
-            // 
-            // Hoten_Khach
-            // 
-            this.Hoten_Khach.HeaderText = "Họ Tên";
-            this.Hoten_Khach.MinimumWidth = 8;
-            this.Hoten_Khach.Name = "Hoten_Khach";
-            // 
-            // Cmnd_Khach
-            // 
-            this.Cmnd_Khach.HeaderText = "CMND";
-            this.Cmnd_Khach.MinimumWidth = 8;
-            this.Cmnd_Khach.Name = "Cmnd_Khach";
+            this.giareal.HeaderText = "giareal";
+            this.giareal.MinimumWidth = 6;
+            this.giareal.Name = "giareal";
+            this.giareal.ReadOnly = true;
+            this.giareal.Visible = false;
             // 
             // QuanLyChiTietDoan
             // 
@@ -276,5 +286,6 @@ namespace QuanLyTourDuLich
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Khach;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hoten_Khach;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cmnd_Khach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn giareal;
     }
 }

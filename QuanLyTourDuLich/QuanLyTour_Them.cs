@@ -33,7 +33,7 @@ namespace QuanLyTourDuLich
             string tentour = textBox2.Text;
             string dacdiem = textBox3.Text;
             string tenloai = comboBox1.SelectedItem.ToString();
-            if(tentour.Equals(null)||dacdiem.Equals(null))
+            if(tentour.Equals(null)|| tentour.Equals("")|| dacdiem.Equals("") || dacdiem.Equals(null))
             {
                 MessageBox.Show("Vui lòng nhập thông tin đầy đủ");
                 return;

@@ -18,7 +18,8 @@ namespace QuanLyTourDuLich
         public QuanLyDoan()
         {
             InitializeComponent();
-            list = new DoanDuLichBUS().List();
+            Tool tool = new Tool();
+            list = new DoanDuLichBUS().List().FindAll(x => tool.comparetoday(x.Ngayketthuc) <= 0);
             listTenTour = new TourBUS().List();
             Grid_Danhsachdoan.AutoGenerateColumns = false;
             BindGrid(list);
@@ -149,6 +150,11 @@ namespace QuanLyTourDuLich
             }
             list = new DoanDuLichBUS().List();
             BindGrid(list);
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
