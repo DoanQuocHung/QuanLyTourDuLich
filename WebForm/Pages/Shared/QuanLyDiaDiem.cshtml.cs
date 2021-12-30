@@ -15,10 +15,8 @@ namespace WebForm.Pages.Shared
     {
         [BindProperty]
         public DiaDiemDTO diadiem { set; get; }
-
         [BindProperty]
         public string searchtype { set; get; }
-
         [BindProperty]
         public string searchvalue { set; get; }
         public void OnGet()

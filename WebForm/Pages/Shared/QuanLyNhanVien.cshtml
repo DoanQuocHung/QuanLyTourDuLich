@@ -33,13 +33,33 @@
                             catch (Exception e) { }
                         }
                         <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyNhanVien_Them">Thêm</a>
-                        <form class="form-inline" method="get">
-                            <select class="form-control">
+                        <form class="form-inline" method="post">
+                            @{
+                                string search = HttpContext.Session.GetString("search");
+                                try
+                                {
+                                    switch (HttpContext.Session.GetString("searchtype"))
+                                    {
+                                        case "Id_NV":
+                                            list_nv = list_nv.FindAll(x => x.Id_NV.Contains(search));
+                                            break;
+                                        case "Hoten_NV":
+                                            list_nv = list_nv.FindAll(x => x.Hoten_NV.Contains(search));
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                                catch (Exception e) { }
+                                HttpContext.Session.Remove("searchtype");
+                                HttpContext.Session.Remove("search");
+                            }
+                            <select class="form-control" asp-for="searchtype">
                                 <option value="Id_NV">Mã Nhân Viên</option>
                                 <option value="Hoten_NV">Họ tên</option>
                             </select>
-                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
-                            <input type="button" class="btn btn-warning" value="Tìm" style="margin-left:">
+                            <input type="text" asp-for="searchvalue" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
+                            <input type="submit" asp-page-handler="search" class="btn btn-warning" value="Tìm" style="margin-left:">
                         </form>
                         <div class="table-responsive">
                             <table class="table table-striped">

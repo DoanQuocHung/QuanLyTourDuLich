@@ -15,6 +15,10 @@ namespace WebForm.Pages.Shared
     {
         [BindProperty]
         public KhachDTO khachhang { set; get; }
+        [BindProperty]
+        public string searchtype { set; get; }
+        [BindProperty]
+        public string searchvalue { set; get; }
         public void OnGet()
         {
         }
@@ -39,6 +43,12 @@ namespace WebForm.Pages.Shared
                 HttpContext.Session.SetString("xoakhachhang", "khongthanhcong");
                 return Page();
             }
+            return Page();
+        }
+        public IActionResult OnPostSearch()
+        {
+            HttpContext.Session.SetString("searchtype", searchtype);
+            HttpContext.Session.SetString("search", searchvalue);
             return Page();
         }
     }

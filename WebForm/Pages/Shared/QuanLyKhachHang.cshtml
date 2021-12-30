@@ -33,15 +33,41 @@
                             catch (Exception e) { }
                         }
                         <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyKhachHang_Them">Thêm</a>
-                        <form class="form-inline" method="get">
-                            <select class="form-control">
+                        <form class="form-inline" method="post">
+                            @{
+                                string search = HttpContext.Session.GetString("search");
+                                try
+                                {
+                                    switch (HttpContext.Session.GetString("searchtype"))
+                                    {
+                                        case "Id_Khach":
+                                            list_kh = list_kh.FindAll(x => x.Id_Khach.Contains(search));
+                                            break;
+                                        case "Hoten_Khach":
+                                            list_kh = list_kh.FindAll(x => x.Hoten_Khach.Contains(search));
+                                            break;
+                                        case "Cmnd_Khach":
+                                            list_kh = list_kh.FindAll(x => x.Cmnd_Khach.Contains(search));
+                                            break;
+                                        case "Sdt_Khach":
+                                            list_kh = list_kh.FindAll(x => x.Sdt_Khach.Contains(search));
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                                catch (Exception e) { }
+                                HttpContext.Session.Remove("searchtype");
+                                HttpContext.Session.Remove("search");
+                            }
+                            <select class="form-control" asp-for="searchtype">
                                 <option value="Id_Khach">Mã Khách</option>
                                 <option value="Hoten_Khach">Họ tên</option>
                                 <option value="Cmnd_Khach">CMND</option>
                                 <option value="Sdt_Khach">Số điện thoại</option>
                             </select>
-                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
-                            <input type="button" class="btn btn-warning" value="Tìm" style="margin-left:">
+                            <input type="text" asp-for="searchvalue" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
+                            <input type="submit" asp-page-handler="search" class="btn btn-warning" value="Tìm" style="margin-left:">
                         </form>
                         <div class="table-responsive">
                             <table class="table table-striped">
