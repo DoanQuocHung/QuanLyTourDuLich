@@ -2,20 +2,21 @@
 @model WebForm.Pages.Shared.QuanLyDoan_SuaModel
 @{
     ViewData["Title"] = "Website Quản Lý Tour";
-    Layout = "QuanLyDoan";
+    Layout = "_Layout";
 }
 @using Microsoft.AspNetCore.Http;
 @using Newtonsoft.Json;
 @using DTO;
 @{
-    var str = HttpContext.Session.GetString("editdoan");
-    var obj = JsonConvert.DeserializeObject<DoanDuLichDTO>(str);
+    string str = HttpContext.Session.GetString("editdoan");
+    DoanDuLichDTO obj = JsonConvert.DeserializeObject<DoanDuLichDTO>(str);
 
     var parsedDate1 = DateTime.ParseExact(obj.Ngaykhoihanh, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
     obj.Ngaykhoihanh = parsedDate1.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
     var parsedDate2 = DateTime.ParseExact(obj.Ngayketthuc, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
     obj.Ngayketthuc = parsedDate2.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
 }
+
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -23,34 +24,34 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Thêm Đoàn</h4>
-                        <form class="forms-sample" method="post">
+                        <form class="forms-sample">
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Đoàn</label>
-                                <input type="text" asp-for="doan.Id_Doan" value="@obj.Id_Doan" class="form-control" placeholder="Mã Đoàn" readonly>
+                                <input type="text" asp-for="doan.Id_Doan" value="@obj.Id_Doan" class="form-control" readonly/>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Tên Đoàn</label>
-                                <input type="text" asp-for="doan.Ten_Doan" value="@obj.Ten_Doan" class="form-control" placeholder="Tên Đoàn">
+                                <input type="text" asp-for="doan.Ten_Doan" value="@obj.Ten_Doan" class="form-control" placeholder="Tên Đoàn"/>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Tên Tour</label>
-                                <select class="js-example-basic-single w-100"
-                                        asp-for="doan.Id_Tour" asp-items="@(new SelectList(Model.listtour,"Id_Tour", "Ten_Tour"))">
+                                <select asp-for="tour" asp-items="@(new SelectList(Model.listtour,"Id_Tour", "Ten_Tour"))">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Ngày khởi hành</label>
-                                <input type="date" asp-for="doan.Ngaykhoihanh" value="@obj.Ngaykhoihanh" class="form-control" placeholder="Ngày khởi hành">
+                                <input type="date" asp-for="doan.Ngaykhoihanh" value="@obj.Ngaykhoihanh" class="form-control" placeholder="Ngày khởi hành"/>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Ngày kết thúc</label>
-                                <input type="date" asp-for="doan.Ngayketthuc" value="@obj.Ngayketthuc" class="form-control" placeholder="Ngày kết thúc">
+                                <input type="date" asp-for="doan.Ngayketthuc" value="@obj.Ngayketthuc" class="form-control" placeholder="Ngày kết thúc"/>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Nội dung</label>
-                                <textarea type="text" class="form-control" asp-for="doan.Noidung" value="@obj.Noidung" id="exampleTextarea1" rows="4" placeholder="Nội dung Đoàn"></textarea>
+                                <textarea class="form-control" asp-for="noidung" id="exampleTextarea1" rows="4" placeholder="Nội dung Đoàn">
+                                       </textarea>
                             </div>
-                            <input type="submit" asp-page-handler="Add" value="Thêm" class="btn btn-primary mr-2" />
+                            <input type="submit" asp-page-handler="Edit" value="Sửa" class="btn btn-primary mr-2" />
                             <input type="submit" asp-page-handler="Cancel" class="btn btn-light" value="Hủy" />
                         </form>
                     </div>

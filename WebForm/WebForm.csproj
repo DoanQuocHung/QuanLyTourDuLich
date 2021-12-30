@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\Forms\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
