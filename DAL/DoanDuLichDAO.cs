@@ -140,9 +140,13 @@ namespace DAL
                 doanDuLich.Doanhthu,
                 doanDuLich.Noidung
             };
-            DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
+            try
+            {
+                DataProvider dataProvider = new DataProvider();
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e) { }
             return false;
         }
 
@@ -189,8 +193,8 @@ namespace DAL
                 object[] para = new object[]
                 {
 
-               value,
-               id
+                    value,
+                    id
                 };
                 DataProvider dataProvider = new DataProvider();
                 if (dataProvider.ExecuteNonQuery(query, para) > 0)

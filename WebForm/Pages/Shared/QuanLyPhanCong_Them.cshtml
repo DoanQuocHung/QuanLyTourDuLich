@@ -18,13 +18,13 @@
                         <form class="forms-sample" method="post">
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Đoàn</label>
-                                <select asp-for="phancong.Id_Doan" asp-items="@(new SelectList(Model.listdoan,"Id_Doan", "Ten_Doan"))">
+                                <select asp-for="phancong.Id_Doan" class="form-control" asp-items="@(new SelectList(Model.listdoan,"Id_Doan", "Ten_Doan"))">
                                     
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Nhân Viên</label>
-                                <select asp-for="phancong.Id_NV" asp-items="@(new SelectList(Model.listnv,"Id_NV", "Hoten_NV"))">
+                                <select asp-for="phancong.Id_NV" class="form-control" asp-items="@(new SelectList(Model.listnv,"Id_NV", "Hoten_NV"))">
                                     
                                 </select>
                             </div>

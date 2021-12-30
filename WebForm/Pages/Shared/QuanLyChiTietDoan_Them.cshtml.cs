@@ -29,14 +29,17 @@ namespace WebForm.Pages.Shared
                 if (new ChiTietDoanBUS().Insert(new ChiTietDoanDTO(iddoan, idkhach)))
                 {
                     new DoanDuLichBUS().UpdateDoanhThu(iddoan, -long.Parse(gia));
+                    HttpContext.Session.SetString("themchitietdoan", "true");
                     return Redirect("/Shared/QuanLyChiTietDoan");
                 }
             }
             catch (Exception e)
             {
-                return Page();
+                HttpContext.Session.SetString("themchitietdoan", "false");
+                return Redirect("/Shared/QuanLyChiTietDoan");
             }
-            return Page();
+            HttpContext.Session.SetString("themchitietdoan", "false");
+            return Redirect("/Shared/QuanLyChiTietDoan");
         }
     }
 }

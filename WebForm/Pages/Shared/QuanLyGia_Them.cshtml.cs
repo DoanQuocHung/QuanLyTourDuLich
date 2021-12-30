@@ -33,6 +33,13 @@ namespace WebForm.Pages.Shared
             var parsedDate2 = DateTime.ParseExact(dt2, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
             gia.Thoigianketthuc = parsedDate2.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
+            Tool tool = new Tool();
+            if (tool.comparedate(gia.Thoigianbatdau, gia.Thoigianketthuc) > 0 ||
+                tool.comparetoday(gia.Thoigianbatdau) < 0)
+            {
+                HttpContext.Session.SetString("themgiatour", "false");
+                return Redirect("/Shared/QuanLyGia");
+            }
             if (new GiaBUS().Insert(gia))
             {
                 HttpContext.Session.SetString("themgiatour","true");

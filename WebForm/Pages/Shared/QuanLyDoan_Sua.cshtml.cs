@@ -38,6 +38,13 @@ namespace WebForm.Pages.Shared
             var parsedDate2 = DateTime.ParseExact(doan.Ngayketthuc, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
             doan.Ngayketthuc = parsedDate2.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
+            Tool tool = new Tool();
+            if (tool.comparedate(doan.Ngaykhoihanh, doan.Ngayketthuc) > 0 ||
+                tool.comparetoday(doan.Ngaykhoihanh) < 0)
+            {
+                HttpContext.Session.SetString("suadoan", "false");
+                return Redirect("/Shared/QuanLyDoan");
+            }
             doan.Id_Tour = tour;
             doan.Noidung = noidung;
             if (new DoanDuLichBUS().Update(doan))

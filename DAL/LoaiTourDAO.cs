@@ -19,15 +19,22 @@ namespace DAL
             string query = "Select * from LOAITOUR";
 
             DataTable data = datapro.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
+            try
             {
-                string maloai = item["Id_Loai"].ToString();
-                string tenloai = item["Ten_Loai"].ToString();
+                foreach (DataRow item in data.Rows)
+                {
+                    string maloai = item["Id_Loai"].ToString();
+                    string tenloai = item["Ten_Loai"].ToString();
 
-                LoaiTourDTO newTour = new LoaiTourDTO(maloai, tenloai);
+                    LoaiTourDTO newTour = new LoaiTourDTO(maloai, tenloai);
 
-                tours.Add(newTour);
+                    tours.Add(newTour);
+                }
+                return tours;
+            }
+            catch (Exception e)
+            {
+
             }
             return tours;
         }

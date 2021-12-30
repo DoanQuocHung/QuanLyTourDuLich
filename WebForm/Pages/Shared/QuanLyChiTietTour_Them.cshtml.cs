@@ -26,9 +26,11 @@ namespace WebForm.Pages.Shared
             tour.Id_Tour = idtour;
             if (new ChiTietTourBUS().Insert(tour))
             {
+                HttpContext.Session.SetString("themchitiettour", "true");
                 return Redirect("/Shared/QuanLyChiTietTour");
             }
-            return Page();
+            HttpContext.Session.SetString("themchitiettour", "false");
+            return Redirect("/Shared/QuanLyChiTietTour");
         }
     }
 }

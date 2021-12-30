@@ -11,7 +11,9 @@
 @{
     List<DoanDuLichDTO> list_d = new List<DoanDuLichDTO>();
     DoanDuLichBUS bus_d = new DoanDuLichBUS();
+    Tool tool = new Tool();
     list_d = bus_d.List();
+    list_d = list_d.FindAll(x =>tool.comparetoday(x.Ngayketthuc) <= 0);
 }
 
 <div class="main-panel">
@@ -30,6 +32,11 @@
                                     <h5 style="color:green">Xóa thành công</h5>
                                     HttpContext.Session.Remove("xoadoan");
                                 }
+                                else if (HttpContext.Session.GetString("xoadoan") == "false")
+                                {
+                                    <h5 style="color:green">Đoàn này đã dc đăng ký bởi khách hàng</h5>
+                                    HttpContext.Session.Remove("xoadoan");
+                                }
                                 <!---------------------Thông báo Thêm----------------------------------------------->
                                 if (HttpContext.Session.GetString("themdoan") == "true")
                                 {
@@ -41,6 +48,11 @@
                                 {
                                     <h5 style="color: green">Sửa thành công</h5>
                                     HttpContext.Session.Remove("suadoan");
+                                }
+                                if (HttpContext.Session.GetString("xemchitietdoan") == "false")
+                                {
+                                    <h5 style="color: green">Tour của đoàn này chưa được định giá</h5>
+                                    HttpContext.Session.Remove("xemchitietdoan");
                                 }
                             }
                             catch (Exception e) { }
@@ -99,11 +111,13 @@
                                 <option value="Ten_Doan">Tên Đoàn</option>
                                 <option value="Id_Tour">Mã Tour</option>
                             </select>
-                            <input type="text" asp-for="searchvalue" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
+                            <input type="text" asp-for="searchvalue" required class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
                             <input type="submit" asp-page-handler="search" class="btn btn-warning" value="Tìm" style="margin-left:">
-                            <input type="date" asp-for="dt1" class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian bắt đầu">
+                        </form>
+                        <form class="form-inline" method="post">
+                            <input type="date" asp-for="dt1" required class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian bắt đầu">
                             <p>Tới</p>
-                            <input type="date" asp-for="dt2" class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian kết thúc">
+                            <input type="date" asp-for="dt2" required class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian kết thúc">
                             <input type="submit" asp-page-handler="searchdate" value="Tìm" class="btn btn-primary mr-2" />
                         </form>
                         <div class="table-responsive">
@@ -130,7 +144,7 @@
                                                 <td>@item.Id_Tour</td>
                                                 <td>@item.Ngaykhoihanh</td>
                                                 <td>@item.Ngayketthuc</td>
-                                                <td>@item.Doanhthu</td>
+                                                <td>@item.Doanhthu.ToString("#,#") VNĐ</td>
                                                 <td>@item.Noidung</td>
                                                 <td>
                                                     <form method="post">

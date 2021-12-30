@@ -33,11 +33,6 @@
                                     <h4 style="color: green">Xóa thành công</h4>
                                     HttpContext.Session.Remove("xoatour");
                                 }
-                                else if (HttpContext.Session.GetString("suatour") == "false")
-                                {
-                                    <h4 style="color: red">Không được xóa do vẫn còn trong tour</h4>
-                                    HttpContext.Session.Remove("suatour");
-                                }
                                 <!---------------------Thông báo Thêm----------------------------------------------->
                                 if (HttpContext.Session.GetString("themtour") == "true")
                                 {
@@ -81,7 +76,7 @@
                                 <option value="Id_Tour">Mã Tour</option>
                                 <option value="Ten_Tour">Tên Tour</option>
                             </select>
-                            <input type="text" asp-for="searchvalue" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
+                            <input type="text" asp-for="searchvalue" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm" required>
                             <input type="submit" asp-page-handler="search" class="btn btn-warning" value="Tìm" style="margin-left:">
                         </form>
                         <div class="table-responsive">

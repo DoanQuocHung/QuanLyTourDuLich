@@ -54,9 +54,14 @@ namespace WebForm.Pages.Shared
         public IActionResult OnPostDetail()
         {
             string gia = new DoanDuLichBUS().getGiaTour(doan.Ngaykhoihanh, doan.Id_Tour);
-            HttpContext.Session.SetString("chitietdoan-giatour", gia);
-            HttpContext.Session.SetString("chitietdoan", doan.Id_Doan);
-            return RedirectToPage("/Shared/QuanLyChiTietDoan");
+            if (gia != null)
+            {
+                HttpContext.Session.SetString("chitietdoan-giatour", gia);
+                HttpContext.Session.SetString("chitietdoan", doan.Id_Doan);
+                return RedirectToPage("/Shared/QuanLyChiTietDoan");
+            }
+            HttpContext.Session.SetString("xemchitietdoan", "false");
+            return RedirectToPage("/Shared/QuanLyDoan");
         }
 
         public IActionResult OnPostSearch()

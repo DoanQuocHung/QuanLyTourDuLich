@@ -19,11 +19,11 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Thêm Tour</h4>
+                        <h4 class="card-title">Sửa Chi Phí</h4>
                         <form class="forms-sample" method="post">
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Loại</label>
-                                <select asp-for="loai" asp-items="@(new SelectList(Model.loaichiphi,"Id_LoaiChiPhi", "Ten_LoaiChiPhi"))">
+                                <select asp-for="loai" class="form-control" asp-items="@(new SelectList(Model.loaichiphi,"Id_LoaiChiPhi", "Ten_LoaiChiPhi"))">
                                 </select>
                                 </div><input type="hidden" asp-for="chiphi.Id_LoaiChiPhi" value="@obj.Id_LoaiChiPhi">
                                       <div class="form-group">

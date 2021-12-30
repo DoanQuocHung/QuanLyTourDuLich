@@ -74,9 +74,13 @@ namespace DAL
                 tour.Id_Tour,
                 id
             };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+            try
+            {
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e) { }
             return false;
         }
 
@@ -99,11 +103,18 @@ namespace DAL
                 tour.Thutu
             };
             DataProvider datapro = new DataProvider();
-            DataTable data = datapro.ExecuteQuery(queryThuTu, paraThuTu);
-            if (data.Rows.Count > 0)
+            try
+            {
+                DataTable data = datapro.ExecuteQuery(queryThuTu, paraThuTu);
+                if (data.Rows.Count > 0)
+                    return false;
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
                 return false;
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+            }
             return false;
         }
 
@@ -117,8 +128,12 @@ namespace DAL
                 iddiadiem,
             };
             DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+            try
+            {
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e) { }
             return false;
         }
     }

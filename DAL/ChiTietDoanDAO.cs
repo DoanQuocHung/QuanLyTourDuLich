@@ -70,8 +70,12 @@ namespace DAL
                 doan.Id_Khach
             };
             DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
+            try
+            {
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e) { }
             return false;
         }
 
@@ -86,8 +90,12 @@ namespace DAL
                 idkhach,
             };
             DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
+            try
+            {
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e) { }
             return false;
         }
     }

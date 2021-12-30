@@ -26,6 +26,29 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Danh sách chi tiết Đoàn</h4>
+                        @{
+                            try
+                            {
+                                <!---------------------Thông báo Xóa----------------------------------------------->
+                                if (HttpContext.Session.GetString("xoachitietdoan") == "true")
+                                {
+                                    <h5 style="color:green">Xóa thành công</h5>
+                                    HttpContext.Session.Remove("xoachitietdoan");
+                                }
+                                <!---------------------Thông báo Thêm----------------------------------------------->
+                                if (HttpContext.Session.GetString("themchitietdoan") == "true")
+                                {
+                                    <h5 style="color: green">Thêm thành công</h5>
+                                    HttpContext.Session.Remove("themchitietdoan");
+                                }
+                                else if (HttpContext.Session.GetString("themchitietdoan") == "false")
+                                {
+                                    <h5 style="color:red">Khách này đã có trong đoàn</h5>
+                                    HttpContext.Session.Remove("themchitietdoan");
+                                }
+                            }
+                            catch (Exception e) { }
+                        }
                         <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyChiTietDoan_Them">Thêm</a>
                         <div class="table-responsive">
                             <table class="table">
@@ -43,20 +66,20 @@
                                         {
                                             string tenkhach = listkhach.Find(x => x.Id_Khach.Equals(item.Id_Khach)).Hoten_Khach;
                                             string cmndkhach = listkhach.Find(x => x.Id_Khach.Equals(item.Id_Khach)).Cmnd_Khach;
-                                    <tr>
-                                        <td>@item.Id_Khach</td>
-                                        <td>@tenkhach</td>
-                                        <td>@cmndkhach</td>
-                                        <td>
-                                            <form method="post">
-                                                <input type="hidden" asp-for="chitiet.Id_Doan" value="@item.Id_Doan" />
-                                                <input type="hidden" asp-for="chitiet.Id_Khach" value="@item.Id_Khach" />
-                                                <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-danger" />
-                                            </form>
-                                        </td>
-                                    </tr>
+                                            <tr>
+                                                <td>@item.Id_Khach</td>
+                                                <td>@tenkhach</td>
+                                                <td>@cmndkhach</td>
+                                                <td>
+                                                    <form method="post">
+                                                        <input type="hidden" asp-for="chitiet.Id_Doan" value="@item.Id_Doan" />
+                                                        <input type="hidden" asp-for="chitiet.Id_Khach" value="@item.Id_Khach" />
+                                                        <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-danger" />
+                                                    </form>
+                                                </td>
+                                            </tr>
                                         }
-                                        }
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -84,7 +107,7 @@
                                             string tenchiphi = listloai.Find(x => x.Id_LoaiChiPhi.Equals(item.Id_LoaiChiPhi)).Ten_LoaiChiPhi;
                                             <tr>
                                                 <td>@tenchiphi</td>
-                                                <td>@item.Gia</td>
+                                                <td>@item.Gia.ToString("#,#") VNĐ</td>
                                                 <td>
                                                     <form method="post">
                                                         <input type="hidden" asp-for="chiphi.Id_Doan" value="@item.Id_Doan" />

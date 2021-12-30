@@ -35,10 +35,9 @@
                     <div class="card-body">
                         <h4 class="card-title">Thống kê</h4>
                         <form class="forms-sample" method="post">
-                            <input type="date" asp-for="search1" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian bắt đầu">
-                            <input type="date" asp-for="search2" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian kết thúc">
+                            <input type="date" asp-for="search1" required class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian bắt đầu">
+                            <input type="date" asp-for="search2"  required class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Thời gian kết thúc">
                             <input type="submit" asp-page-handler="tong" value="Tìm" class="btn btn-primary mr-2" />
-                            <a class="btn btn-light">Hủy</a>
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã nhân viên</label>
                                 <input type="text" value="@idnv" class="form-control" placeholder="Mã nhân viên" readonly>

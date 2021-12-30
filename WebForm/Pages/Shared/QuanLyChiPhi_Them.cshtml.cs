@@ -23,18 +23,16 @@ namespace WebForm.Pages.Shared
             loaichiphi = new LoaiChiPhiBUS().List();
         }
 
-        public IActionResult OnPostAdd()
+        public IActionResult OnPost()
         {
-            string iddoan = HttpContext.Session.GetString("chitietdoan");
-            chiphi.Id_Doan = iddoan;
             if (new ChiPhiBUS().Insert(chiphi))
             {
                 new DoanDuLichBUS().UpdateDoanhThu(chiphi.Id_Doan, chiphi.Gia);
                 HttpContext.Session.SetString("themchiphi", "thanhcong");
-                return Page();
+                return Redirect("/Shared/QuanLyChiTietDoan");
             }
             HttpContext.Session.SetString("themchiphi", "thatbai");
-            return Page();
+            return Redirect("/Shared/QuanLyChiTietDoan");
         }
     }
 }

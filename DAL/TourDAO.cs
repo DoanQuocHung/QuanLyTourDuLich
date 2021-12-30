@@ -39,58 +39,79 @@ namespace DAL
         }
         public bool Update(TourDTO tour)
         {
-            string query = "update TOUR set " +
-                "Ten_Tour = @TENTOUR , " +
-                "Dacdiem_Tour = @DACDIEM , " +
-                "Id_Loai = @MALOAI " +
-                "where Id_Tour = @oldMATOUR";
-
-            object[] para = new object[]
+            try
             {
+                string query = "update TOUR set " +
+                    "Ten_Tour = @TENTOUR , " +
+                    "Dacdiem_Tour = @DACDIEM , " +
+                    "Id_Loai = @MALOAI " +
+                    "where Id_Tour = @oldMATOUR";
+
+                object[] para = new object[]
+                {
                 tour.Ten_Tour,
                 tour.Dacdiem_Tour,
                 tour.Id_Loai,
                 tour.Id_Tour
-            };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+                };
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             return false;
         }
 
         public bool Insert(TourDTO tour)
         {
-            string query = "insert into TOUR (Id_Tour , Ten_Tour , Dacdiem_Tour , Id_Loai , Tinh_Trang ) " +
-                "values( @MATOUR , @TENTOUR , @DACDIEM , @MALOAI , @tinhtrang )";
-
-            object[] para = new object[]
+            try
             {
+                string query = "insert into TOUR (Id_Tour , Ten_Tour , Dacdiem_Tour , Id_Loai , Tinh_Trang ) " +
+                    "values( @MATOUR , @TENTOUR , @DACDIEM , @MALOAI , @tinhtrang )";
+
+                object[] para = new object[]
+                {
                 tour.Id_Tour,
                 tour.Ten_Tour,
                 tour.Dacdiem_Tour,
                 tour.Id_Loai,
                 tour.Tinh_Trang
-            };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+                };
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             return false;
         }
 
         public bool Delete(string id)
         {
-            string query = "update TOUR set " +
-                "Tinh_Trang = @tinhtrang " +
-                "where Id_Tour = @oldMATOUR ";
-
-            object[] para = new object[]
+            try
             {
+                string query = "update TOUR set " +
+                    "Tinh_Trang = @tinhtrang " +
+                    "where Id_Tour = @oldMATOUR ";
+
+                object[] para = new object[]
+                {
                 0,
                 id
-            };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+                };
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             return false;
         }
         public int Count()
@@ -113,6 +134,9 @@ namespace DAL
             int count = Count();
             while (true)
             {
+                if(count < 10)
+                id = "T0" + count;
+                else
                 id = "T" + count;
                 if (Exist(id) == 0)
                     break;

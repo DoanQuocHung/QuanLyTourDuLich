@@ -130,9 +130,13 @@ namespace DAL
                 nhanVien.Tinh_Trang,
                 nhanVien.Id_NV
             };
-            DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
+            try
+            {
+                DataProvider dataProvider = new DataProvider();
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e) { }
             return false;
         }
 
@@ -149,9 +153,13 @@ namespace DAL
                 nhanVien.Gioitinh_NV,
                 nhanVien.Tinh_Trang
             };
-            DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
+            try
+            {
+                DataProvider dataProvider = new DataProvider();
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e) { }
             return false;
         }
 
@@ -165,15 +173,22 @@ namespace DAL
             };
 
             string query = "update NHANVIEN set Tinh_Trang = 0 where Id_NV = @MANV";
-            DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(queryTimMaNhanVienTrongBangPhanCong, para) > 0)
+            try
             {
-                return false;
+                DataProvider dataProvider = new DataProvider();
+                if (dataProvider.ExecuteNonQuery(queryTimMaNhanVienTrongBangPhanCong, para) > 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                        return true;
+                }
             }
-            else
+            catch (Exception e)
             {
-                if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                    return true;
+
             }
             return false;
         }
@@ -197,7 +212,9 @@ namespace DAL
             string id;
             while (true)
             {
+                if(count < 10)
                 id = "NV0" + count;
+                else id = "NV" + count;
                 if (Exist(id) == 0)
                     break;
                 else count++;

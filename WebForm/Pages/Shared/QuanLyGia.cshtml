@@ -35,10 +35,20 @@
                                     <h5 style="color: green">Thêm thành công</h5>
                                     HttpContext.Session.Remove("themgiatour");
                                 }
+                                else if (HttpContext.Session.GetString("themgiatour") == "false")
+                                {
+                                    <h5 style="color: red">Ngày bắt đầu không được lớn hơn ngày kết thúc</h5>
+                                    HttpContext.Session.Remove("themgiatour");
+                                }
 
-                                if (HttpContext.Session.GetString("suagiatour") == "thanhcong")
+                                if (HttpContext.Session.GetString("suagiatour") == "true")
                                 {
                                     <h5 style="color: green">Sửa thành công</h5>
+                                    HttpContext.Session.Remove("suagiatour");
+                                }
+                                else if (HttpContext.Session.GetString("suagiatour") == "false")
+                                {
+                                    <h5 style="color: red">Ngày bắt đầu không được lớn hơn ngày kết thúc</h5>
                                     HttpContext.Session.Remove("suagiatour");
                                 }
                             }
@@ -91,11 +101,13 @@
                                 <option value="Id_Tour">Mã Tour</option>
                                 <option value="Gia">Giá</option>
                             </select>
-                            <input type="text" asp-for="searchvalue" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
+                            <input type="text" asp-for="searchvalue" required class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
                             <input type="submit" asp-page-handler="search" class="btn btn-warning" value="Tìm" style="margin-left:">
-                            <input type="date" asp-for="dt1" class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian bắt đầu">
+                        </form>
+                        <form class="form-inline" method="post">
+                            <input type="date" asp-for="dt1" required class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian bắt đầu">
                             <p>Tới</p>
-                            <input type="date" asp-for="dt2" class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian kết thúc">
+                            <input type="date" asp-for="dt2" required class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian kết thúc">
                             <input type="submit" asp-page-handler="searchdate" value="Tìm" class="btn btn-primary mr-2" />
                         </form>
                         <div class="table-responsive">

@@ -27,28 +27,28 @@
                         <form class="forms-sample" method="post">
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Đoàn</label>
-                                <input type="text" asp-for="doan.Id_Doan" value="@obj.Id_Doan" class="form-control" readonly/>
+                                <input type="text" asp-for="doan.Id_Doan" required value="@obj.Id_Doan" class="form-control" readonly/>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Tên Đoàn</label>
-                                <input type="text" asp-for="doan.Ten_Doan" value="@obj.Ten_Doan" class="form-control" placeholder="Tên Đoàn"/>
+                                <input type="text" asp-for="doan.Ten_Doan" required value="@obj.Ten_Doan" class="form-control" placeholder="Tên Đoàn"/>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Tên Tour</label>
-                                <select asp-for="tour" asp-items="@(new SelectList(Model.listtour,"Id_Tour", "Ten_Tour"))">
+                                <select asp-for="tour" class="form-control" asp-items="@(new SelectList(Model.listtour,"Id_Tour", "Ten_Tour"))">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Ngày khởi hành</label>
-                                <input type="date" asp-for="doan.Ngaykhoihanh" value="@obj.Ngaykhoihanh" class="form-control" placeholder="Ngày khởi hành"/>
+                                <input type="date" asp-for="doan.Ngaykhoihanh" required value="@obj.Ngaykhoihanh" class="form-control" placeholder="Ngày khởi hành"/>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Ngày kết thúc</label>
-                                <input type="date" asp-for="doan.Ngayketthuc" value="@obj.Ngayketthuc" class="form-control" placeholder="Ngày kết thúc"/>
+                                <input type="date" asp-for="doan.Ngayketthuc" required value="@obj.Ngayketthuc" class="form-control" placeholder="Ngày kết thúc"/>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Nội dung</label>
-                                <textarea class="form-control" asp-for="noidung" id="exampleTextarea1" rows="4" placeholder="Nội dung Đoàn">
+                                <textarea class="form-control" asp-for="noidung" required id="exampleTextarea1" rows="4" placeholder="Nội dung Đoàn">
                                        </textarea>
                             </div>
                             <input type="submit" asp-page-handler="edit" value="Sửa" class="btn btn-primary mr-2" />

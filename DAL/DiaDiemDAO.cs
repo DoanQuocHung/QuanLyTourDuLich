@@ -123,9 +123,13 @@ namespace DAL
                 diadiem.Ten_DiaDiem,
                 diadiem.Id_DiaDiem
             };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+            try
+            {
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e) { }
             return false;
         }
 
@@ -139,9 +143,13 @@ namespace DAL
                 diadiem.Id_DiaDiem,
                 diadiem.Ten_DiaDiem
             };
-            DataProvider datapro = new DataProvider();
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+            try
+            {
+                DataProvider datapro = new DataProvider();
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e) { }
             return false;
         }
 
@@ -155,8 +163,12 @@ namespace DAL
             };
             DataProvider datapro = new DataProvider();
             //datapro.ExecuteNonQuery(query2, para);
-            if (datapro.ExecuteNonQuery(query, para) > 0)
-                return true;
+            try
+            {
+                if (datapro.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e) { }
             return false;
         }
 

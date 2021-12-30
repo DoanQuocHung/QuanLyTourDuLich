@@ -25,15 +25,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Tên Tour</label>
-                                <input type="text" asp-for="tour.Ten_Tour" value="@obj.Ten_Tour" class="form-control" placeholder="Tên Tour">
+                                <input type="text" asp-for="tour.Ten_Tour" required value="@obj.Ten_Tour" class="form-control" placeholder="Tên Tour">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Đặc điểm</label>
-                                <input type="text" asp-for="tour.Dacdiem_Tour" value="@obj.Dacdiem_Tour" class="form-control" placeholder="Đặc điểm">
+                                <input type="text" asp-for="tour.Dacdiem_Tour" required value="@obj.Dacdiem_Tour" class="form-control" placeholder="Đặc điểm">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Loại</label>
-                                <select asp-for="loai" asp-items="@(new SelectList(Model.listloai,"Id_Loai", "Ten_Loai"))">
+                                <select class="form-control" asp-for="loai" asp-items="@(new SelectList(Model.listloai,"Id_Loai", "Ten_Loai"))">
                                     <option value="">Chọn Loại</option>
                                 </select>
 

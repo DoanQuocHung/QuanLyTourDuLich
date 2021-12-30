@@ -27,24 +27,62 @@
                         @{
                             try
                             {
-                                if (HttpContext.Session.GetString("xoatour") == "thanhcong")
+                                <!---------------------Thông báo Xóa----------------------------------------------->
+                                if (HttpContext.Session.GetString("xoatour") == "true")
                                 {
-                                    <h4 style="background-color: forestgreen">Xóa thành công</h4>
+                                    <h4 style="color: green">Xóa thành công</h4>
                                     HttpContext.Session.Remove("xoatour");
                                 }
-                                else if (HttpContext.Session.GetString("xoatour") == "khongthanhcong")
+                                else if (HttpContext.Session.GetString("suatour") == "false")
                                 {
-                                    <h4 style="background-color: forestgreen">Không được xóa do vẫn còn trong tour</h4>
-                                    HttpContext.Session.Remove("xoatour");
+                                    <h4 style="color: red">Không được xóa do vẫn còn trong tour</h4>
+                                    HttpContext.Session.Remove("suatour");
+                                }
+                                <!---------------------Thông báo Thêm----------------------------------------------->
+                                if (HttpContext.Session.GetString("themtour") == "true")
+                                {
+                                    <h4 style="color: green">Thêm thành công</h4>
+                                    HttpContext.Session.Remove("themtour");
+                                }
+                                <!---------------------Thông báo Sửa----------------------------------------------->
+                                if (HttpContext.Session.GetString("suatour") == "true")
+                                {
+                                    <h4 style="color: green">Sửa thành công</h4>
+                                    HttpContext.Session.Remove("suatour");
                                 }
 
                             }
                             catch (Exception e) { }
                         }
                         <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyTour_Them">Thêm</a>
-                        <form class="form-inline" method="get">
-                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" id="inlineFormInputName2" placeholder="Tên Tour">
-                            <input type="button" class="btn btn-warning" value="Tìm" style="margin-left:" id="inlineFormInputName2">
+                        <form class="form-inline" method="post">
+                            @{
+                                string search = HttpContext.Session.GetString("search");
+                                try
+                                {
+                                    switch (HttpContext.Session.GetString("searchtype"))
+                                    {
+                                        case "Id_Tour":
+                                            list = list.FindAll(x => x.Id_Tour.Contains(search));
+                                            break;
+                                        case "Ten_Tour":
+                                            list = list.FindAll(x => x.Ten_Tour.Contains(search));
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
+                                }
+                                catch (Exception e) { }
+                                HttpContext.Session.Remove("searchtype");
+                                HttpContext.Session.Remove("search");
+                            }
+                            <select class="form-control" asp-for="searchtype">
+                                <option value="Id_Tour">Mã Tour</option>
+                                <option value="Ten_Tour">Tên Tour</option>
+                            </select>
+                            <input type="text" asp-for="searchvalue" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm" required>
+                            <input type="submit" asp-page-handler="search" class="btn btn-warning" value="Tìm" style="margin-left:">
                         </form>
                         <div class="table-responsive">
                             <table class="table table-striped">

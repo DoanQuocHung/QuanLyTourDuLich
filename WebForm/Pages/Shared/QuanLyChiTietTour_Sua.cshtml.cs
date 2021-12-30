@@ -36,9 +36,11 @@ namespace WebForm.Pages.Shared
             tour.Id_DiaDiem = diadiem;
             if (new ChiTietTourBUS().Update(tour,tmp))
             {
+                HttpContext.Session.SetString("suachitiettour", "true");
                 return Redirect("/Shared/QuanLyChiTietTour");
             }
-            return Page();
+            HttpContext.Session.SetString("suachitiettour", "false");
+            return Redirect("/Shared/QuanLyChiTietTour");
         }
     }
 }
