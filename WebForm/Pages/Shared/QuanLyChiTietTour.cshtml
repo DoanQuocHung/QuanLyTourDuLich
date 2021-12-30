@@ -7,7 +7,7 @@
 @using BUS;
 @using DTO;
 @using Microsoft.AspNetCore.Http;
-@{ 
+@{
     string idtour = HttpContext.Session.GetString("chitiettour");
     List<ChiTietTourDTO> list = new ChiTietTourBUS().List(idtour);
     List<DiaDiemDTO> listdiadiem = new DiaDiemBUS().List();
