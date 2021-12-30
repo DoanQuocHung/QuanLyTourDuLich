@@ -25,8 +25,10 @@ namespace WebForm.Pages.Shared
                 phancong.Id_NV,
                 phancong.Nhiemvu)))
             {
+                HttpContext.Session.SetString("themphancong", "true");
                 return Redirect("/Shared/QuanLyPhanCong");
             }
+            HttpContext.Session.SetString("themphancong", "false");
             return Page();
         }
     }

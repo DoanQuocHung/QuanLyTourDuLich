@@ -36,13 +36,13 @@ namespace WebForm.Pages.Shared
             {
                 if (new NhanVienBUS().Delete(nhanvien.Id_NV))
                 {
-                    HttpContext.Session.SetString("xoanhanvien", "thanhcong");
+                    HttpContext.Session.SetString("xoanhanvien", "true");
                     return Page();
                 }
             }
             catch (Exception e1)
             {
-                HttpContext.Session.SetString("xoanhanvien", "khongthanhcong");
+                HttpContext.Session.SetString("xoanhanvien", "false");
                 return Page();
             }
             return Page();

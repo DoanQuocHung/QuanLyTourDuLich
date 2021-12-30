@@ -24,10 +24,23 @@
                         @{
                             try
                             {
-                                if (HttpContext.Session.GetString("xoakhachhang") == "thanhcong")
+                                <!---------------------Thông báo Xóa----------------------------------------------->
+                                if (HttpContext.Session.GetString("xoakhachhang") == "true")
                                 {
                                     <h5 style="background-color: forestgreen">Xóa thành công</h5>
                                     HttpContext.Session.Remove("xoakhachhang");
+                                }
+                                <!---------------------Thông báo Thêm----------------------------------------------->
+                                if (HttpContext.Session.GetString("themkhachhang") == "true")
+                                {
+                                    <h5 style="background-color: forestgreen">Thêm thành công</h5>
+                                    HttpContext.Session.Remove("themkhachhang");
+                                }
+                                <!---------------------Thông báo Sửa----------------------------------------------->
+                                if (HttpContext.Session.GetString("suakhachhang") == "true")
+                                {
+                                    <h5 style="background-color: forestgreen">Sửa thành công</h5>
+                                    HttpContext.Session.Remove("suakhachhang");
                                 }
                             }
                             catch (Exception e) { }
