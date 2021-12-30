@@ -15,10 +15,15 @@ namespace WebForm.Pages.Shared
     {
         [BindProperty]
         public PhanCongDTO phancong { set; get; }
+
+        public List<DoanDuLichDTO> listdoan { get; set; }
+        public List<NhanVienDTO> listnv { get; set; }
         public void OnGet()
         {
+            listdoan = new DoanDuLichBUS().List();
+            listnv = new NhanVienBUS().List();
         }
-        public IActionResult OnPost()
+        public IActionResult OnPostAdd()
         {
             if (new PhanCongBUS().Insert(new PhanCongDTO(
                 phancong.Id_Doan, 
@@ -29,7 +34,7 @@ namespace WebForm.Pages.Shared
                 return Redirect("/Shared/QuanLyPhanCong");
             }
             HttpContext.Session.SetString("themphancong", "false");
-            return Page();
+            return Redirect("/Shared/QuanLyPhanCong");
         }
     }
 }

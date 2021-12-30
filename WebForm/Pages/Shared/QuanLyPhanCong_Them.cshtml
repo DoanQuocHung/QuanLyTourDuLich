@@ -18,23 +18,21 @@
                         <form class="forms-sample" method="post">
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Đoàn</label>
-                                <select class="js-example-basic-single w-100" asp-for="phancong.Id_Doan">
-                                    <option value="D01">D01</option>
-                                    <option value="D02">D02</option>
+                                <select asp-for="phancong.Id_Doan" asp-items="@(new SelectList(Model.listdoan,"Id_Doan", "Ten_Doan"))">
+                                    
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Mã Nhân Viên</label>
-                                <select class="js-example-basic-single w-100" asp-for="phancong.Id_NV">
-                                    <option value="NV01">NV01</option>
-                                    <option value="NV02">NV02</option>
+                                <select asp-for="phancong.Id_NV" asp-items="@(new SelectList(Model.listnv,"Id_NV", "Hoten_NV"))">
+                                    
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Nhiệm vụ</label>
                                 <input type="text" class="form-control" asp-for="phancong.Nhiemvu" placeholder="Nhiệm vụ">
                             </div>
-                            <input type="submit" value="Thêm" asp-page-handler="AddPhanCong" class="btn btn-primary mr-2" />
+                            <input type="submit" value="Thêm" asp-page-handler="add" class="btn btn-primary mr-2" />
                             <button class="btn btn-light">Hủy</button>
                         </form>
                     </div>

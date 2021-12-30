@@ -92,11 +92,13 @@
                                                 <td>@item.Id_NV</td>
                                                 <td>@item.Nhiemvu</td>
                                                 <td>
+                                                    <form method="post">
                                                     <input type="hidden" asp-for="phancong.Id_Doan" value="@item.Id_Doan" />
                                                     <input type="hidden" asp-for="phancong.Id_NV" value="@item.Id_NV" />
                                                     <input type="hidden" asp-for="phancong.Nhiemvu" value="@item.Nhiemvu" />
                                                     <input type="submit" asp-page-handler="edit" value="Sửa" class="btn btn-warning" />
                                                     <input type="submit" asp-page-handler="delete" value="Xóa" class="btn btn-danger" />
+                                                    </form>
                                                 </td>
                                             </tr>
                                         }
