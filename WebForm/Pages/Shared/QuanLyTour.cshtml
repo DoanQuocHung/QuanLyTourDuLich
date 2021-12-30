@@ -43,8 +43,12 @@
                         }
                         <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyTour_Them">Thêm</a>
                         <form class="form-inline" method="get">
-                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" id="inlineFormInputName2" placeholder="Tên Tour">
-                            <input type="button" class="btn btn-warning" value="Tìm" style="margin-left:" id="inlineFormInputName2" >
+                            <select class="form-control">
+                                <option value="Id_Tour">Mã Tour</option>
+                                <option value="Ten_Tour">Tên Tour</option>
+                            </select>
+                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
+                            <input type="button" class="btn btn-warning" value="Tìm" style="margin-left:">
                         </form>
                         <div class="table-responsive">
                             <table class="table table-striped">

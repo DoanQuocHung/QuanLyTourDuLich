@@ -20,9 +20,19 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Danh sách Đoàn Du Lịch</h4>
-                        <form class="form-inline">
-                            <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyDoan_Them">Thêm</a>
-                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" id="inlineFormInputName2" placeholder="...">
+                        <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyDoan_Them">Thêm</a>
+                        <form class="form-inline" method="get">
+                            <select class="form-control">
+                                <option value="Id_Doan">Mã Đoàn</option>
+                                <option value="Ten_Doan">Tên Đoàn</option>
+                                <option value="Id_Tour">Mã Tour</option>
+                            </select>
+                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
+                            <input type="button" class="btn btn-warning" value="Tìm" style="margin-left:">
+                            <input type="date" class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian bắt đầu">
+                            <p>Tới</p>
+                            <input type="date" class="form-control mb-2 mr-sm-2" style="margin-left:5px" placeholder="Thời gian kết thúc">
+                            <input type="submit" value="Tìm" class="btn btn-primary mr-2" />
                         </form>
                         <div class="table-responsive">
                             <table class="table table-striped">

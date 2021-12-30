@@ -32,6 +32,14 @@
                             catch (Exception e) { }
                         }
                         <a class="btn btn-primary mb-2" asp-page="/Shared/QuanLyPhanCong_Them">Thêm</a>
+                        <form class="form-inline" method="get">
+                            <select class="form-control">
+                                <option value="Id_Doan">Mã Đoàn</option>
+                                <option value="Id_NV">Mã Nhân Viên</option>
+                            </select>
+                            <input type="text" class="form-control mb-2 mr-sm-2" style="margin-left:" placeholder="Tìm kiếm">
+                            <input type="button" class="btn btn-warning" value="Tìm" style="margin-left:">
+                        </form>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
