@@ -169,7 +169,9 @@ namespace DAL
             string id;
             while (true)
             {
-                id = "KH" + count;
+                if(count <10)
+                id = "KH0" + count;
+                else id = "KH" + count;
                 if (Exist(id) == 0)
                     break;
                 else count++;

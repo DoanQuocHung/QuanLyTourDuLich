@@ -155,7 +155,9 @@ namespace DAL
             int count = Count();
             while (true)
             {
-                id = "GIA" + count;
+                if(count < 10 )
+                id = "G0" + count;
+                else id = "G" + count;
                 if (Exist(id) == 0)
                     break;
                 else count++;

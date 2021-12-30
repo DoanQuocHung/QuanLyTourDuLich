@@ -250,7 +250,9 @@ namespace DAL
             int count = Count();
             while (true)
             {
-                id = "DOAN" + count;
+                if(count<10)
+                id = "D0" + count;
+                else id = "D" + count;
                 if (Exist(id) == 0)
                     break;
                 else count++;

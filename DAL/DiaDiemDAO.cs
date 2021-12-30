@@ -192,7 +192,9 @@ namespace DAL
             int count = Count();
             while (true)
             {
-                id = "D" + count;
+                if(count < 10)
+                id = "DD0" + count;
+                else id = "DD" + count;
                 if (Exist(id) == 0)
                     break;
                 else count++;
