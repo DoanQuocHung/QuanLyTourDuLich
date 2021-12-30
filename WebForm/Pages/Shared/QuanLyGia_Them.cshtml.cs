@@ -20,8 +20,11 @@ namespace WebForm.Pages.Shared
         public string dt1 { set; get; }
         [BindProperty]
         public string dt2 { set; get; }
+
+        public List<TourDTO> listtour { get; set; }
         public void OnGet()
         {
+            listtour = new TourBUS().List().FindAll(x => x.Tinh_Trang == 1);
         }
         public IActionResult OnPostAdd()
         {

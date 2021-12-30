@@ -104,8 +104,8 @@ namespace DAL
         }
         public bool Insert(GiaDTO gia)
         {
-            try
-            {
+            /*try
+            {*/
                 string query = "INSERT INTO GIA values( @magia " +
                     ", @matour " +
                     ", @gia " +
@@ -123,12 +123,12 @@ namespace DAL
                 DataProvider datapro = new DataProvider();
                 if (datapro.ExecuteNonQuery(query, para) > 0)
                     return true;
-            }
+            /*}
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 return false;
-            }
+            }*/
             return false;
         }
         public int Count()
