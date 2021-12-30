@@ -37,8 +37,10 @@ namespace WebForm.Pages.Shared
             {
                 long value2 = chiphi.Gia - long.Parse(phi);
                 new DoanDuLichBUS().UpdateDoanhThu(chiphi.Id_Doan, value2);
+                HttpContext.Session.SetString("suachiphi","thanhcong");
                 return Redirect("/Shared/QuanLyChiTietDoan");
             }
+            HttpContext.Session.SetString("suachiphi", "thatbai");
             return Page();
         }
     }

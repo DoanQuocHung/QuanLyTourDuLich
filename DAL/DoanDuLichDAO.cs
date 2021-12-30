@@ -176,20 +176,26 @@ namespace DAL
         }
         public bool UpdateDoanhThu(string id, long value)
         {
-
-            string query = "update DOANDULICH set " +
-                "Doanhthu = Doanhthu - @value " +
-                "where Id_Doan = @oldMADOAN ";
-
-            object[] para = new object[]
+            try
             {
+                string query = "update DOANDULICH set " +
+                    "Doanhthu = Doanhthu - @value " +
+                    "where Id_Doan = @oldMADOAN ";
+
+                object[] para = new object[]
+                {
 
                value,
                id
-            };
-            DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
+                };
+                DataProvider dataProvider = new DataProvider();
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             return false;
         }
 

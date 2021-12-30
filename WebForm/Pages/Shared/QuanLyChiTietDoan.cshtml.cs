@@ -27,8 +27,10 @@ namespace WebForm.Pages.Shared
             if (new ChiTietDoanBUS().Delete(chitiet.Id_Doan, chitiet.Id_Khach))
             {
                 new DoanDuLichBUS().UpdateDoanhThu(chitiet.Id_Doan, long.Parse(gia));
+                HttpContext.Session.SetString("xoachitietdoan", "thanhcong");
                 return Redirect("/Shared/QuanLyChiTietDoan");
             }
+            HttpContext.Session.SetString("xoachitietdoan", "thatbai");
             return Page();
         }
 
@@ -37,8 +39,10 @@ namespace WebForm.Pages.Shared
             if (new ChiPhiBUS().Delete(chiphi.Id_LoaiChiPhi, chiphi.Id_Doan))
             {
                 new DoanDuLichBUS().UpdateDoanhThu(chiphi.Id_Doan, chiphi.Gia);
+                HttpContext.Session.SetString("xoachiphi", "thanhcong");
                 return Redirect("/Shared/QuanLyChiTietDoan");
             }
+            HttpContext.Session.SetString("xoachiphi", "thatbai");
             return Page();
         }
 
