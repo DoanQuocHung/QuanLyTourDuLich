@@ -55,9 +55,10 @@
                                         default:
                                             break;
                                     }
-
                                 }
                                 catch (Exception e) { }
+                                HttpContext.Session.Remove("searchtype");
+                                HttpContext.Session.Remove("search");
                             }
                             <select class="form-control" asp-for="searchtype">
                                 <option value="Id_DiaDiem">Mã Địa điểm</option>
