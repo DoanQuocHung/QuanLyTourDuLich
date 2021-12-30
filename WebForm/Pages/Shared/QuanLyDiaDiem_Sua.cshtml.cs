@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using DTO;
 using BUS;
+using Microsoft.AspNetCore.Http;
 namespace WebForm.Pages.Shared
 {
     public class QuanLyDiaDiem_SuaModel : PageModel
@@ -19,8 +20,10 @@ namespace WebForm.Pages.Shared
         {
             if (new DiaDiemBUS().Update(diadiem))
             {
+                HttpContext.Session.SetString("suadiadiem", "true");
                 return Redirect("/Shared/QuanLyDiaDiem");
             }
+            HttpContext.Session.SetString("suadiadiem", "false");
             return Page();
         }
     }

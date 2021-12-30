@@ -22,9 +22,11 @@ namespace WebForm.Pages.Shared
         {
             if (new DiaDiemBUS().Insert(new DiaDiemDTO(diadiem.Id_DiaDiem, diadiem.Ten_DiaDiem)))
             {
+                HttpContext.Session.SetString("themdiadiem","true");
                 return Redirect("/Shared/QuanLyDiaDiem");
             }
-            return Page();
+            HttpContext.Session.SetString("themdiadiem", "false");
+            return Redirect("/Shared/QuanLyDiaDiem");
         }
     }
 }

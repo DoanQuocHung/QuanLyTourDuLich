@@ -34,13 +34,13 @@ namespace WebForm.Pages.Shared
             {
                 if (new DiaDiemBUS().Delete(diadiem.Id_DiaDiem))
                 {
-                    HttpContext.Session.SetString("xoadiadiem", "thanhcong");
+                    HttpContext.Session.SetString("xoadiadiem", "true");
                     return Page();
                 }
             }
             catch (Exception e1)
             {
-                HttpContext.Session.SetString("xoadiadiem", "khongthanhcong");
+                HttpContext.Session.SetString("xoadiadiem", "false");
                 return Page();
             }
             return Page();
