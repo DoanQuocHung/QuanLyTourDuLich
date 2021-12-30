@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BUS;
 using DTO;
+using Microsoft.AspNetCore.Http;
+
 namespace WebForm.Pages.Shared
 {
     public class QuanLyChiTietTour_ThemModel : PageModel
@@ -20,6 +22,8 @@ namespace WebForm.Pages.Shared
 
         public IActionResult OnPostAdd()
         {
+            string idtour = HttpContext.Session.GetString("chitiettour");
+            tour.Id_Tour = idtour;
             if (new ChiTietTourBUS().Insert(tour))
             {
                 return Redirect("/Shared/QuanLyChiTietTour");
