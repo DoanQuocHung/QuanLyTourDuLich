@@ -27,26 +27,27 @@
                         @{
                             try
                             {
+                                <!---------------------Thông báo Xóa----------------------------------------------->
                                 if (HttpContext.Session.GetString("xoatour") == "true")
                                 {
-                                    <h4 style="background-color: forestgreen">Xóa thành công</h4>
+                                    <h4 style="color: red">Xóa thành công</h4>
                                     HttpContext.Session.Remove("xoatour");
                                 }
                                 else if (HttpContext.Session.GetString("suatour") == "false")
                                 {
-                                    <h4 style="background-color: forestgreen">Không được xóa do vẫn còn trong tour</h4>
+                                    <h4 style="color: red">Không được xóa do vẫn còn trong tour</h4>
                                     HttpContext.Session.Remove("suatour");
                                 }
-
+                                <!---------------------Thông báo Thêm----------------------------------------------->
                                 if (HttpContext.Session.GetString("themtour") == "true")
                                 {
-                                    <h4 style="background-color: forestgreen">Thêm thành công</h4>
+                                    <h4 style="color: green">Thêm thành công</h4>
                                     HttpContext.Session.Remove("themtour");
                                 }
-
+                                <!---------------------Thông báo Sửa----------------------------------------------->
                                 if (HttpContext.Session.GetString("suatour") == "true")
                                 {
-                                    <h4 style="background-color: forestgreen">Sửa thành công</h4>
+                                    <h4 style="color: saddlebrown">Sửa thành công</h4>
                                     HttpContext.Session.Remove("suatour");
                                 }
 

@@ -27,19 +27,19 @@
                                 <!---------------------Thông báo Xóa----------------------------------------------->
                                 if (HttpContext.Session.GetString("xoadiadiem") == "true")
                                 {
-                                    <h5 style="background-color: forestgreen">Xóa thành công</h5>
+                                    <h5 style="color:red">Xóa thành công</h5>
                                     HttpContext.Session.Remove("xoadiadiem");
                                 }
                                 <!---------------------Thông báo Thêm----------------------------------------------->
                                 if (HttpContext.Session.GetString("themdiadiem") == "true")
                                 {
-                                    <h5 style="background-color: forestgreen">Thêm thành công</h5>
+                                    <h5 style="color: green">Thêm thành công</h5>
                                     HttpContext.Session.Remove("themdiadiem");
                                 }
                                 <!---------------------Thông báo Sửa----------------------------------------------->
                                 if (HttpContext.Session.GetString("suadiadiem") == "true")
                                 {
-                                    <h5 style="background-color: forestgreen">Sửa thành công</h5>
+                                    <h5 style="color: saddlebrown">Sửa thành công</h5>
                                     HttpContext.Session.Remove("suadiadiem");
                                 }
                             }

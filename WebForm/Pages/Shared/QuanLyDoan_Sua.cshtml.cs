@@ -43,8 +43,10 @@ namespace WebForm.Pages.Shared
             doan.Doanhthu = doanhthu;
             if (new DoanDuLichBUS().Update(doan))
             {
+                HttpContext.Session.SetString("suadoan", "true");
                 return Redirect("/Shared/QuanLyDoan");
             }
+            HttpContext.Session.SetString("suadoan", "false");
             return Page();
         }
     }

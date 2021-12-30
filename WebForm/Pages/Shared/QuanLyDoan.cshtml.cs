@@ -40,13 +40,13 @@ namespace WebForm.Pages.Shared
             {
                 if (new DoanDuLichBUS().Delete(doan.Id_Doan))
                 {
-                    HttpContext.Session.SetString("xoadoan", "thanhcong");
+                    HttpContext.Session.SetString("xoadoan", "true");
                     return Page();
                 }
             }
             catch (Exception e)
             {
-                HttpContext.Session.SetString("xoadoan", "khongthanhcong");
+                HttpContext.Session.SetString("xoadoan", "false");
                 return Page();
             }
             return Page();

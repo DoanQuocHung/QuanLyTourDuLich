@@ -29,9 +29,11 @@ namespace WebForm.Pages.Shared
             doan.Doanhthu = 0;
             if (new DoanDuLichBUS().Insert(doan))
             {
+                HttpContext.Session.SetString("themdoan", "true");
                 return Redirect("/Shared/QuanLyDoan");
             }
-            return Page();
+            HttpContext.Session.SetString("themdoan", "false");
+            return Redirect("/Shared/QuanLyDoan");
         }
     }
 }
