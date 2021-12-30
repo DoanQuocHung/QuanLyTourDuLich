@@ -26,7 +26,7 @@
                             {
                                 if (HttpContext.Session.GetString("xoagiatour") == "true")
                                 {
-                                    <h5 style="color: red">Xóa thành công</h5>
+                                    <h5 style="color: green">Xóa thành công</h5>
                                     HttpContext.Session.Remove("xoagiatour");
                                 }
 
@@ -38,7 +38,7 @@
 
                                 if (HttpContext.Session.GetString("suagiatour") == "thanhcong")
                                 {
-                                    <h5 style="color: saddlebrown">Sửa thành công</h5>
+                                    <h5 style="color: green">Sửa thành công</h5>
                                     HttpContext.Session.Remove("suagiatour");
                                 }
                             }

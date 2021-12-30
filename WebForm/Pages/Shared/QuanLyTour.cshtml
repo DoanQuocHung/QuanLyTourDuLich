@@ -30,7 +30,7 @@
                                 <!---------------------Thông báo Xóa----------------------------------------------->
                                 if (HttpContext.Session.GetString("xoatour") == "true")
                                 {
-                                    <h4 style="color: red">Xóa thành công</h4>
+                                    <h4 style="color: green">Xóa thành công</h4>
                                     HttpContext.Session.Remove("xoatour");
                                 }
                                 else if (HttpContext.Session.GetString("suatour") == "false")
@@ -47,7 +47,7 @@
                                 <!---------------------Thông báo Sửa----------------------------------------------->
                                 if (HttpContext.Session.GetString("suatour") == "true")
                                 {
-                                    <h4 style="color: saddlebrown">Sửa thành công</h4>
+                                    <h4 style="color: green">Sửa thành công</h4>
                                     HttpContext.Session.Remove("suatour");
                                 }
 

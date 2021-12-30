@@ -26,7 +26,7 @@
                                 <!---------------------Thông báo Xóa----------------------------------------------->
                                 if (HttpContext.Session.GetString("xoaphancong") == "true")
                                 {
-                                    <h5 style="color: red">Xóa thành công</h5>
+                                    <h5 style="color: green">Xóa thành công</h5>
                                     HttpContext.Session.Remove("xoaphancong");
                                 }
                                 <!---------------------Thông báo Thêm----------------------------------------------->
@@ -38,7 +38,7 @@
                                 <!---------------------Thông báo Sửa----------------------------------------------->
                                 if (HttpContext.Session.GetString("suaphancong") == "true")
                                 {
-                                    <h5 style="color: saddlebrown">Sửa thành công</h5>
+                                    <h5 style="color: green">Sửa thành công</h5>
                                     HttpContext.Session.Remove("suaphancong");
                                 }
                             }
