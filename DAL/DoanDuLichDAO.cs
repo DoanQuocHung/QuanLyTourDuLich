@@ -148,30 +148,34 @@ namespace DAL
 
         public bool Update(DoanDuLichDTO doanDuLich)
         {
-
-            string query = "update DOANDULICH set " +
-                "Ten_Doan = @TENDOAN , " +
-                "Id_Tour = @MATOUR , " +
-                "Ngaykhoihanh = @NGAYKHOIHANH , " +
-                "Ngayketthuc = @NGAYKETTHUC , " +
-                "Doanhthu = @DOANHTHU , " +
-                "Noidung  = @NOIDUNG " +
-                "where Id_Doan = @oldMADOAN ";
-
-            object[] para = new object[]
+            try
             {
+                string query = "update DOANDULICH set " +
+                    "Ten_Doan = @TENDOAN , " +
+                    "Id_Tour = @MATOUR , " +
+                    "Ngaykhoihanh = @NGAYKHOIHANH , " +
+                    "Ngayketthuc = @NGAYKETTHUC , " +
+                    "Noidung  = @NOIDUNG " +
+                    "where Id_Doan = @oldMADOAN ";
+
+                object[] para = new object[]
+                {
 
                 doanDuLich.Ten_Doan,
                 doanDuLich.Id_Tour,
                 doanDuLich.Ngaykhoihanh,
                 doanDuLich.Ngayketthuc,
-                doanDuLich.Doanhthu,
                 doanDuLich.Noidung,
                 doanDuLich.Id_Doan
-            };
-            DataProvider dataProvider = new DataProvider();
-            if (dataProvider.ExecuteNonQuery(query, para) > 0)
-                return true;
+                };
+                DataProvider dataProvider = new DataProvider();
+                if (dataProvider.ExecuteNonQuery(query, para) > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             return false;
         }
         public bool UpdateDoanhThu(string id, long value)

@@ -31,7 +31,7 @@ namespace WebForm.Pages.Shared
             doanhthu = obj.Doanhthu;
         }
 
-        public IActionResult OnPostAdd()
+        public IActionResult OnPostEdit()
         {
             var parsedDate1 = DateTime.ParseExact(doan.Ngaykhoihanh, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
             doan.Ngaykhoihanh = parsedDate1.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
@@ -40,14 +40,13 @@ namespace WebForm.Pages.Shared
 
             doan.Id_Tour = tour;
             doan.Noidung = noidung;
-            doan.Doanhthu = doanhthu;
             if (new DoanDuLichBUS().Update(doan))
             {
                 HttpContext.Session.SetString("suadoan", "true");
                 return Redirect("/Shared/QuanLyDoan");
             }
             HttpContext.Session.SetString("suadoan", "false");
-            return Page();
+            return Redirect("/Shared/QuanLyDoan");
         }
     }
 }
