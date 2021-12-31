@@ -54,7 +54,7 @@ namespace QuanLyTourDuLich
                 list.Find(x => x.Id_Tour.Equals(matour)).Dacdiem_Tour = dacdiem;
                 list.Find(x => x.Id_Tour.Equals(matour)).Id_Loai = idloai;
                 this.DialogResult = DialogResult.OK;
-                Hide();
+                Close();
             }
         }
 

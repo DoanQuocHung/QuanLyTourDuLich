@@ -26,15 +26,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Họ tên</label>
-                                <input type="text" class="form-control" asp-for="khachhang.Hoten_Khach" value="@obj.Hoten_Khach" placeholder="Họ tên">
+                                <input type="text" class="form-control" required asp-for="khachhang.Hoten_Khach" value="@obj.Hoten_Khach" placeholder="Họ tên">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">CMND</label>
-                                <input type="text" class="form-control" asp-for="khachhang.Cmnd_Khach" value="@obj.Cmnd_Khach" placeholder="CMND">
+                                <input type="text" class="form-control" required asp-for="khachhang.Cmnd_Khach" value="@obj.Cmnd_Khach" placeholder="CMND">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Địa Chỉ</label>
-                                <input type="text" class="form-control" asp-for="khachhang.Diachi_Khach" value="@obj.Diachi_Khach" placeholder="Địa Chỉ">
+                                <input type="text" class="form-control" required asp-for="khachhang.Diachi_Khach" value="@obj.Diachi_Khach" placeholder="Địa Chỉ">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Giới tính</label>
@@ -45,11 +45,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Số điện thoại</label>
-                                <input type="text" class="form-control" asp-for="khachhang.Sdt_Khach" value="@obj.Sdt_Khach" placeholder="Số điện thoại">
+                                <input type="text" class="form-control" required min="1000000000" asp-for="khachhang.Sdt_Khach" value="@obj.Sdt_Khach" placeholder="Số điện thoại">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Quốc tịch</label>
-                                <input type="text" class="form-control" asp-for="khachhang.Quoctich" value="@obj.Quoctich" placeholder="Quốc tịch">
+                                <input type="text" class="form-control" required asp-for="khachhang.Quoctich" value="@obj.Quoctich" placeholder="Quốc tịch">
                             </div>
                             
                             <input type="submit" value="Sửa" asp-page-handler="AddKhachHang" class="btn btn-primary mr-2" />

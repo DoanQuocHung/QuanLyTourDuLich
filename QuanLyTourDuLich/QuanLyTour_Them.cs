@@ -44,7 +44,7 @@ namespace QuanLyTourDuLich
                 MessageBox.Show("Thêm thành công");
                 this.list.Add(new TourDTO(matour, tentour, dacdiem, idloai,1));
                 this.DialogResult = DialogResult.OK;
-                Hide();
+                Close();
             }
         }
 

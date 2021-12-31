@@ -23,15 +23,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Họ tên</label>
-                                <input type="text" class="form-control" asp-for="khachhang.Hoten_Khach" placeholder="Họ tên">
+                                <input type="text" class="form-control" required asp-for="khachhang.Hoten_Khach" placeholder="Họ tên">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">CMND</label>
-                                <input type="text" class="form-control" asp-for="khachhang.Cmnd_Khach" placeholder="CMND">
+                                <input type="text" class="form-control" required asp-for="khachhang.Cmnd_Khach" placeholder="CMND">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Địa Chỉ</label>
-                                <input type="text" class="form-control" asp-for="khachhang.Diachi_Khach" placeholder="Địa Chỉ">
+                                <input type="text" class="form-control" required asp-for="khachhang.Diachi_Khach" placeholder="Địa Chỉ">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Giới tính</label>
@@ -42,11 +42,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Số điện thoại</label>
-                                <input type="number" class="form-control" asp-for="khachhang.Sdt_Khach" placeholder="Số điện thoại">
+                                <input type="number" class="form-control" required min="1000000000" asp-for="khachhang.Sdt_Khach" placeholder="Số điện thoại">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Quốc tịch</label>
-                                <input type="text" class="form-control" asp-for="khachhang.Quoctich" placeholder="Quốc tịch">
+                                <input type="text" class="form-control" required asp-for="khachhang.Quoctich" placeholder="Quốc tịch">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Tình trạng</label>

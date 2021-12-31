@@ -130,7 +130,7 @@ namespace QuanLyTourDuLich
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(563, 236);
+            this.ClientSize = new System.Drawing.Size(571, 233);
             this.Controls.Add(this.panel1);
             this.Name = "QuanLyChiPhi_Them";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
