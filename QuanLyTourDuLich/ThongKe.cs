@@ -11,6 +11,7 @@ namespace QuanLyTourDuLich
 {
     public partial class ThongKe : Form
     {
+        List<string> hi;
         List<DoanDuLichDTO> list;
         public ThongKe(string id)
         {
